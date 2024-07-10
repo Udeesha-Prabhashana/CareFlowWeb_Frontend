@@ -8,7 +8,7 @@ import MailList from "../../components/MailList/MailList";
 import Footer from "../../components/footer/Footer";
 import "./home1.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
-
+import Widget_L from "../../components/widget_L/Widget_L";
 const Home: React.FC = () => {
     return (
         <div>
@@ -17,14 +17,28 @@ const Home: React.FC = () => {
             <Navbar />
             <Header type="no-list" />
             <div className="homeContainer">
-                <h1 className="homeTitle"> Cities</h1> 
+                <h1 className="homeTitle"> How to use Care Flow</h1> 
                 <Featured />
                 <Featured />
-                <h1 className="homeTitle"> Browse by properties</h1>
+            </div>
+            <div className="homeContainer2">    
+                    <h1 className="homeTitle"> Top Specialists</h1>
+                    <div className="widgetsA">
+                        <Widget_L type="user"/>
+                        <Widget_L type="order"/>
+                        <Widget_L type="order"/>
+                    </div>
+                    <div className="widgetsA">
+                        <Widget_L type="earning"/>
+                        <Widget_L type="balance"/>
+                        <Widget_L type="balance"/>
+                </div>
                 <PropertyList />
                 {/* <h1 className="homeTitle"> home guest love</h1>
                 <FeaturesProperties /> */}
                 <MailList />
+            </div> 
+            <div className="homeContainer3">
                 <Footer />
             </div>
         </div>

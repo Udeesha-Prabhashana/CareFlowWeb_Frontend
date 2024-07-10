@@ -1,10 +1,17 @@
 .header{
-    background-color: #003580;
+    background-color: rgb(186, 108, 231);
     color: white;
     display: flex;
     justify-content: center;
     position: relative;
 }
+
+.headerTitle{
+    justify-content: center;
+    margin-left: 100px;
+    margin-top: 150px;
+}
+
 
 .headerContainer{
     width: 100%;
@@ -36,35 +43,48 @@
 
 .headerDesc{
     margin: 20px 0px ;
+    margin-left: 300px;
 }
 
 .headerBtn{
-    background-color: #0071c2;
+    background-color: rgb(186, 108, 231);
     color: white;
     font-weight: 500;
     border: none;
-    padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
 }
 
+
 .headerSerch{
-    height: 30px;
+    height: 50px;
     background-color: white;
-    border: 3px solid #febb02;
+    border: 3px solid rgb(186, 108, 231);
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 10px 0px;
     border-radius: 5px;
     position: absolute;
-    bottom: -25px;
+    bottom: -130px;
     width: 100%;
     max-width: 1024px;
+    margin-bottom: 10px;
 }
 
 .headerIcon{
     color: lightgray;
 
+}
+
+.finddoctore{
+    margin-top: 150px;
+    margin-bottom:-130px;
+    margin-left: 220px;
+    color: rgb(186, 108, 231);
+    align-items: center;
+    justify-content: center;
 }
 
 .headerSearchItem{
@@ -76,12 +96,19 @@
 .headerSearchInput{
     border: none;
     outline: none;
+    color: gray;
+    border-radius: 10px;
+    font-size: 17px;
 }
 
 .headerSearchtext{
     color: lightgray;
     cursor: pointer;
 }
+
+/* .place{
+    color: aliceblue;
+} */
 
 .date{
     position: absolute;
