@@ -16,8 +16,33 @@
     padding: 0;
 }
 
+.fListItem1{
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+    font-size: 18px;
+}
+
 .fListItem {
+    margin-top: 20px;
     margin-bottom: 10px;
-    color: #003580;
+    color: white;
     cursor: pointer;
+    font-size: 15px;
+}
+
+.fText{
+    margin-bottom: 20px;
+    display: contents;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    size: 25px;
+}
+
+.contact{
+    width: 250px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
 }
