@@ -1,5 +1,5 @@
 .searchItem {
-    border: 1px solid lightgray;
+    border: 1px solid rgb(186, 108, 231);
     padding: 10px;
     border-radius: 5px;
     display: flex;
@@ -23,7 +23,7 @@
 
 .siTitle {
     font-size: 20px;
-    color: #0071c2;
+    color: black;
 }
 
 .siDistance {
@@ -101,7 +101,7 @@
  
 
 .siCheckButton {
-    background-color: #0071c2;
+    background-color: rgb(186, 108, 231);
     color: white;                
     font-weight: bold;
     padding: 10px 5px;
