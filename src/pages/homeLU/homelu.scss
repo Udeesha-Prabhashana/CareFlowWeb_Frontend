@@ -1,28 +1,31 @@
-.homeA{
+.homelu{
     display: flex;    //home class is sidebar 
 
-    .homeContainerA{ //homeContainer class is navbar 
+    .homeContainer2lu{ //homeContainer class is navbar 
 
         flex: 6;     //used to divide both sidebar and navbar 
+        margin-left: 250px;    //used to get the space between sidebar and navbar
     }
 
-    .widgetsA , .chartsA{
+    .widgetslu , .chartslu{
         display: flex;    //use to get horizontal given datas
         padding: 20px;
         gap: 20px;   //get the space
+        margin-top: 60px;
+        z-index: 1;    //used to get the top of the page
     }
 
-    .chartsA{
+    .chartslu{
         padding: 5px 20px;        
     }
 
-    .listContainerA{
+    .listContainerlu{
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);    //use to get some box to write some contient in side the box
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
         margin: 20px;
 
-        .listTitleA{
+        .listTitlelu{
             font-weight: 500;
             color: gray;
             margin-bottom: 15px;

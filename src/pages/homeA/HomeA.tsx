@@ -9,22 +9,22 @@ import "./home.scss";
 
 const Home: React.FC = () => {
     return (
-        <div className="home2">
+        <div className="homeA">
             <Sidebar />
-            <div className="homeContainer2">
+            <div className="homeContainerA">
                 <Navbar />
-                <div className="widgets">
+                <div className="widgetsA">
                     <Widget type="user"/>
                     <Widget type="order"/>
                     <Widget type="earning"/>
                     <Widget type="balance"/>
                 </div>
-                <div className="charts">
+                <div className="chartsA">
                     <Featured />
                     <Chart title="Last 6 Month (Revenue)" aspect={2/1} />
                 </div>
-                <div className="listContainer">
-                    <div className="listTitle">Latest Transaction</div>
+                <div className="listContainerA">
+                    <div className="listTitleA">Latest Transaction</div>
                     <List />
                 </div>
             </div>

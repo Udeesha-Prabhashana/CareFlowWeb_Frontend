@@ -20,6 +20,7 @@ import NewRoom from "./pages/newRoom/NewRoom";
 import "./style/dark.scss";
 import Register from "./pages/Register/Register";
 import { Input } from "./formSource"; // Ensure to import the Input interface if separate
+import HomeLu from "./pages/homeLU/HomeLU";
 
 
 interface ProtectedRouteProps {
@@ -60,6 +61,15 @@ function App() {
             element={
               // <ProtectedRoute>
                 <Home2 />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="userloginhome"
+            index
+            element={
+              // <ProtectedRoute>
+                <HomeLu />
               // </ProtectedRoute>
             }
           />
