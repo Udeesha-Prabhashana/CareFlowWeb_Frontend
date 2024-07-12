@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./navbar.scss";
+import "./navbarLu.scss";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -9,7 +9,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 
-const Navbar: React.FC = () => {
+const NavbarLu: React.FC = () => {
     const context = useContext(DarkModeContext);
 
     if (!context) {
@@ -21,9 +21,9 @@ const Navbar: React.FC = () => {
     return (
         <div className="navbar2">
             <div className="wrapper2">
-                <div className="search2">
-                    <input type="text" placeholder="Search..." />
-                    <SearchOutlinedIcon />
+                <div >
+                    {/* <input type="text" placeholder="Search..." />
+                    <SearchOutlinedIcon /> */}
                 </div>
                 <div className="items2">
                     <div className="item2">
@@ -60,4 +60,4 @@ const Navbar: React.FC = () => {
     );
 };
 
-export default Navbar;
+export default NavbarLu;

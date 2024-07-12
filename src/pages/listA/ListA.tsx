@@ -3,6 +3,7 @@ import "./list.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbarA/NavbarA";
 import Datatable from "../../components/datatable/Datatable";
+import SidebarLu from '../../components/sidebarLu/SidebarLu';
 
 interface Column {
   field: string;
@@ -18,7 +19,7 @@ interface ListProps {
 const List: React.FC<ListProps> = ({ columns }) => {
   return (
     <div className="list2">
-      <Sidebar />
+      <SidebarLu />
       <div className="listContainer2">
         <Navbar />
         <Datatable columns={columns} />

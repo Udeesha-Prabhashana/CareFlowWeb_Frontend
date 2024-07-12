@@ -50,6 +50,33 @@
         }
     }
 
+    .SidebarLu{
+        background-color: #111;
+            border-color: #333;
+        
+            .top {
+                .logo {
+                    color: #999;
+                }
+            }
+        
+            hr {
+                border-color: #333;
+            }
+        
+            ul {
+                li {
+                    &:hover {
+                        background-color: #333;
+                    }
+        
+                    .icon {
+                        color: #999;
+                    }
+                }
+            }
+    }
+
     .datatable {
         .datagrid {
             color: gray;

@@ -1,19 +1,29 @@
-import "./widget.scss";
+import React from "react";
+import "./widgetLu.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
-const WidgetA = ({ type }) => {
-    let data;
+type WidgetProps = {
+    type: "userlu" | "orderlu" | "earninglu" | "balancelu";
+};
 
-    //temporary
+const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
+    let data: {
+        title: string;
+        isMoney: boolean;
+        link: string;
+        icon: JSX.Element;
+    };
+
+    // temporary
     const amount = 100;
     const diff = 20;
 
     switch (type) {
-        case "user":
+        case "userlu":
             data = {
                 title: "USERS",
                 isMoney: false,
@@ -26,11 +36,11 @@ const WidgetA = ({ type }) => {
                 />,
             };
             break;
-        case "order":
+        case "orderlu":
             data = {
                 title: "BOOKINGS",
                 isMoney: false,
-                link: "View all booking",
+                link: "View all bookings",
                 icon: <ShoppingCartOutlinedIcon className="icon"
                 style={{
                     backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -39,10 +49,10 @@ const WidgetA = ({ type }) => {
                 />, 
             };
             break;
-        case "earning":
+        case "earninglu":
             data = {
                 title: "EARNINGS",
-                isMoney: false,
+                isMoney: true,
                 link: "View net earnings",
                 icon: <MonetizationOnOutlinedIcon className="icon"
                     style={{
@@ -52,10 +62,10 @@ const WidgetA = ({ type }) => {
                 />,
             };
             break;
-        case "balance":
+        case "balancelu":
             data = {
                 title: "BALANCE",
-                isMoney: false,
+                isMoney: true,
                 link: "View all orders",
                 icon: <AccountBalanceWalletOutlinedIcon className="icon"
                     style={{
@@ -66,18 +76,17 @@ const WidgetA = ({ type }) => {
             };
             break;
         default:
-            break;
-        
+            throw new Error("Invalid type");
     }
 
     return (
-        <div className="widget">
-            <div className="left">
-                <span className="title"> {data.title} </span>
-                <span className="counter">{data.isMoney && "$"} { amount}</span>
-                <span className="link">{data.link} </span>
+        <div className="widgetLu">
+            <div className="leftLu">
+                <span className="titleLu">{data.title}</span>
+                <span className="counterLu">{data.isMoney && "$"}{amount}</span>
+                <span className="linkLu">{data.link}</span>
             </div>
-            <div className="right">
+            <div className="rightLu">
                 <div className="percentage positive">
                     <KeyboardArrowUpIcon />
                     {diff} %
@@ -85,7 +94,7 @@ const WidgetA = ({ type }) => {
                 {data.icon}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default WidgetA
+export default WidgetLu;
