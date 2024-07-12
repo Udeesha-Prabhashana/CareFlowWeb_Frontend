@@ -1,4 +1,4 @@
-{
+ {
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,6 +15,9 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "node_modules/@material-ui/core" // Add this line to include Material-UI
+  ],
   "exclude": ["node_modules"]
 }
