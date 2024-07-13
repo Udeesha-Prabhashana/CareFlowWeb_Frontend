@@ -1,25 +1,23 @@
 .appointments {
-  display: grid;
+  display: flex;
   height: 100vh;
 }
 
 .appointmentsContainer {
-
+  display: flex;
   flex: 8;
-  display: grid;
   flex-direction: column;
 }
 .mainContent{
   display: grid;
   color: #000;
-  //font-family: Roboto;
   font-size: 25px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 80% */
   padding-top: 10px;
   max-width: 1000px;
-  margin: 0  auto;
+  margin: 0  20%;
 }
 .subContent{
   color: #000;

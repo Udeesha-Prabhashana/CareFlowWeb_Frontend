@@ -12,11 +12,16 @@ const BookingSummary: React.FC = () => {
             <Sidebar />
             <div className="appointmentsContainer">
                 <Navbar />
-                <div className="mainContent">
+                <div className="main">
                     Booking Summary
-                    <div className="subContent">
+                    <div className="sub">
                         View and Confirm The Booking Details
+                        <div className="content">
+                            this is content
+                        </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
