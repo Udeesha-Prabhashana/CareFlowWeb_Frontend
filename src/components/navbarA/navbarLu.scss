@@ -1,13 +1,18 @@
 .navbar2{
-    height: 50px;
+    height: 60px;
+    width: 1300px;
     border-bottom: 0.5px solid rgb(231, 228, 228);
     display: flex;
     align-items: center;
     font-size: 14px;
     color: #555;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    margin-left: 250px;
 
     .wrapper2{    
-        width: 100%;
+        width: 1300px;
         display: flex; //use get vertical bar
         padding: 20px;
         align-items: center;

@@ -2,13 +2,21 @@ import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from "@fortaw
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { DateRange, RangeKeyDict } from "react-date-range";
-import { useContext, useState } from "react";
+import { useContext, useState, ChangeEvent } from "react";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import VaccinesIcon from '@mui/icons-material/Vaccines';
+import Icon from '@mdi/react';
+import { mdiDoctor } from '@mdi/js';
+import { mdiPill } from '@mdi/js';
+import { mdiAccountCheckOutline } from '@mdi/js';
+import { mdiHistory } from '@mdi/js';
+import { HiIdentification } from "react-icons/hi2";
 
 interface HeaderProps {
   type: string;
@@ -54,46 +62,69 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
     navigate("/hotel", { state: { destination, dates, options } });
   };
 
+  const handleSpecializationChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setDestination(e.target.value);
+  };
+  
   return (
     <div className="header">
       <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
           <div className="headerListItem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stay</span>
+            {/* <FontAwesomeIcon icon={faBed} /> */}
+            <LocalHospitalIcon/>
+            <span>Hospital</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
+            {/* <FontAwesomeIcon icon={faCar} /> */}
+            <Icon path={mdiDoctor} size={1} />
+            <span>Medical Doctor</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car rentals</span>
+            <Icon path={mdiPill} size={1} />
+            <span>Medicine</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
+            <Icon path={mdiHistory} size={1} />
+            <span>Medical History</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
+            <HiIdentification/>
+            <span>Check</span>
           </div>
         </div>
         {type !== "list" && (
           <>
-            <h1 className="headerTitle">A lifetime of discounts? It's Genius</h1>
-            <p className="headerDesc">
-              Get rewarded for your travels - unlock instant saving of 10% or more with a free WH booking account
-            </p>
+            <h1 className="headerTitle">Expert Doctor Appointments at your Fingertips</h1>
+            <h3 className="headerDesc">
+              Streamline Your Health with Careflow
+            </h3>
+            <h2 className="finddoctore">
+              Book an appointment with the best doctors
+            </h2>
             <div className="headerSerch">
               <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faBed} className="headerIcon" />
+                <Icon path={mdiDoctor} size={1}  className="headerIcon" />
                 <input
                   type="text"
-                  placeholder="Where are you going?"
+                  placeholder="Search Doctor Name"
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
                 />
+              </div>
+              <div className="headerSearchItem">
+                <Icon path={mdiAccountCheckOutline} size={1} className="headerIcon" />
+                <select
+                  className="headerSearchInput"
+                  onChange={handleSpecializationChange}
+                >
+                  
+                  <option className="place">Select Specialization</option>
+                  <option value="Specialization 1">Specialization 1</option>
+                  <option value="Specialization 2">Specialization 2</option>
+                  <option value="Specialization 3">Specialization 3</option>
+                  {/* Add more options as needed */}
+                </select>
               </div>
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
@@ -112,11 +143,11 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                {/* <FontAwesomeIcon icon={faPerson} className="headerIcon" />
                 <span onClick={() => setOpenOptions(!openOption)} className="headerSearchtext">
                   {`${options.adult} adult • ${options.children} children • ${options.room} room`}
-                </span>
-                {openOption && (
+                </span> */}
+                {/* {openOption && (
                   <div className="option">
                     <div className="optionItem">
                       <span className="optionText"> Adult</span>
@@ -167,11 +198,11 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
               <div className="headerSearchItem">
                 <button className="headerBtn" onClick={handleSearch}>
-                  Search
+                  Search Doctor
                 </button>
               </div>
             </div>
