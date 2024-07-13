@@ -39,7 +39,17 @@ function App() {
         throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
     }
 
-    const { darkMode } = context;
+  const { darkMode } = context;
+  
+  // const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  //   const { user } = useContext(AuthContext);
+
+  //   if (!user) {
+  //     return <Navigate to="/login" />;
+  //   } else {
+  //     return <>{children}</>;
+  //   }
+  // };
   
   return (
     <div className={darkMode ? "app dark" : "app"}>
