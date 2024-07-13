@@ -1,51 +1,41 @@
 import React from "react";
 import "./footer.css";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 
 const Footer: React.FC = () => {
   return (
     <div className="footer">
       <div className="fLists">
         <ul className="fList">
-          <li className="fListItem">Countries</li>
-          <li className="fListItem">Regions</li>
-          <li className="fListItem">Cities</li>
-          <li className="fListItem">Districts</li>
-          <li className="fListItem">Airports</li>
-          <li className="fListItem">Hotels</li>
+          <li className="fListItem1">CareFlow</li>
+          <li className="fListItem">+94 71 0 225 225</li>
+          <li className="fListItem">info@echannelling.com</li>
+          <li className="fListItem">CareFlow PLC, No: 108, W A D Ramanayake Mawatha, Colombo 2, Sri Lanka.</li>
         </ul>
         <ul className="fList">
-          <li className="fListItem">Homes </li>
-          <li className="fListItem">Apartments </li>
-          <li className="fListItem">Resorts </li>
-          <li className="fListItem">Villas</li>
-          <li className="fListItem">Hostels</li>
-          <li className="fListItem">Guest houses</li>
+          <li className="fListItem1">Others </li>
+          <li className="fListItem">Terms and Conditions </li>
+          {/* <li className="fListItem">FAQ </li> */}
+          <li className="fListItem">Feedback</li>
+          <li className="fListItem">Privacy Policy</li>
         </ul>
         <ul className="fList">
-          <li className="fListItem">Unique places to stay </li>
-          <li className="fListItem">Reviews</li>
-          <li className="fListItem">Unpacked: Travel articles </li>
-          <li className="fListItem">Travel communities </li>
-          <li className="fListItem">Seasonal and holiday deals </li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Car rental </li>
-          <li className="fListItem">Flight Finder</li>
-          <li className="fListItem">Restaurant reservations </li>
-          <li className="fListItem">Travel Agents </li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Customer Service</li>
-          <li className="fListItem">Partner Help</li>
+          <li className="fListItem1">About </li>
+          <li className="fListItem">The Company</li>
+          <li className="fListItem">Investor Relations </li>
           <li className="fListItem">Careers</li>
-          <li className="fListItem">Sustainability</li>
-          <li className="fListItem">Press center</li>
-          <li className="fListItem">Safety Resource Center</li>
-          <li className="fListItem">Investor relations</li>
-          <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Copyright © 2022 Lamabooking.</div>
+      <div className="contact">
+        <div className="fText"><WhatsAppIcon/></div>
+        <div className="fText"><InstagramIcon/></div>
+        <div className="fText"><FacebookIcon/></div>
+        <div className="fText"><TwitterIcon/></div>
+      </div>
     </div>
   );
 };

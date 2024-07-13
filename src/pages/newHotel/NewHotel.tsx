@@ -6,6 +6,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 import { Input } from "../../formSource";
+import SidebarLu from "../../components/sidebarLu/SidebarLu";
 
 
 interface Room {
@@ -77,7 +78,7 @@ const NewHotel: React.FC<NewHotelProps> = ({ inputs, title }) => {
 
   return (
     <div className="new">
-      <Sidebar />
+      <SidebarLu />
       <div className="newContainer">
         <Navbar />
         <div className="top">

@@ -11,14 +11,14 @@ const Navbar: React.FC = () => {
         <div className="navbar">
             <div className="navContainer">
                 <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-                    <span className="logo">Neotropolice</span>
+                    <span className="logo">Care Flow</span>
                 </Link>
                 {user ? (
-                    <div className="newTtem">
+                    <div className="newItem">
                         <button className="navButton" onClick={() => navigate("/login")}>Logout</button>
                     </div>
                 ) : (
-                    <div className="newTtem">
+                    <div className="newItem">
                         <button className="navButton" onClick={() => navigate("/register")}>Register</button>
                         <button className="navButton" onClick={() => navigate("/login")}>Login</button>
                     </div>
