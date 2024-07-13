@@ -171,7 +171,7 @@ const Appointments: React.FC = () => {
                         View Details of your Appointments
                     </div>
                     <ThemeProvider theme={theme}>
-                        <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
+                        <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
                                 <ToggleButtonGroup
                                     color="primary"
