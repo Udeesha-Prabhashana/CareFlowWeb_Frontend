@@ -22,7 +22,7 @@ const SidebarLu: React.FC = () => {
   return (
     <div className="SidebarLu">
       <div className="topLu">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/userloginhome" style={{ textDecoration: "none" }}>
           <span className="logoLu">Care Flow</span>
         </Link>
       </div>
