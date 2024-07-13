@@ -37,7 +37,7 @@ const SidebarLu: React.FC = () => {
             </li>
           </Link>
           <p className="titleLu">LIST</p>
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link to="/channeling" style={{ textDecoration: "none" }}>
             <li>
               <Person2OutlinedIcon className="iconLu" />
               <span> New Booking </span>
