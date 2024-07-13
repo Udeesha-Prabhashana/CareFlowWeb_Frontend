@@ -202,7 +202,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
               </div>
               <div className="headerSearchItem">
                 <button className="headerBtn" onClick={handleSearch}>
-                  Search Doctore
+                  Search Doctor
                 </button>
               </div>
             </div>
