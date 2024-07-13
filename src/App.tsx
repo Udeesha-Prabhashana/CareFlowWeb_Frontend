@@ -8,6 +8,7 @@ import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
+import HomeP from "./pages/homeP/HomeP";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
@@ -60,6 +61,16 @@ function App() {
             element={
               // <ProtectedRoute>
                 <Home2 />
+              // </ProtectedRoute>
+            }
+          />
+
+<Route
+            path="paitenthome"
+            index
+            element={
+              // <ProtectedRoute>
+                <HomeP />
               // </ProtectedRoute>
             }
           />
