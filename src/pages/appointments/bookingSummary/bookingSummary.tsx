@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from "../../../components/sidebar/Sidebar";
-import Navbar from "../../../components/navbarA/NavbarA";
+import SidebarLu from "../../../components/sidebarLu/SidebarLu";
+import NavbarLu from "../../../components/navbarA/NavbarA";
 import "../bookingSummary/bookingSummary.scss";
 import { useParams } from 'react-router-dom';
 
@@ -9,9 +9,9 @@ const BookingSummary: React.FC = () => {
 
     return (
         <div className="appointments">
-            <Sidebar />
+            <SidebarLu />
             <div className="appointmentsContainer">
-                <Navbar />
+                <NavbarLu />
                 <div className="main">
                     Booking Summary
                     <div className="sub">
