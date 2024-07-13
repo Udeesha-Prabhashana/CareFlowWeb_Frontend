@@ -5,9 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b049c02-d294-43d9-a984-0a0be20a6dc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sidebarLu/SidebarLu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sidebarLu/sidebarLu.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/widgetLU/WidgetLU.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/widgetLU/widgetLu.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/widget_L/Widget_L.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/widget_L/widget_l.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/homeLU/HomeLU.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/homeLU/homelu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MailList/mailList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MailList/mailList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/datatable/datatable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datatable/datatable.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/featured/Featured.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/featured/Featured.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/featured/featured.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/featured/featured.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarA/NavbarA.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarA/NavbarA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarA/NavbarA.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarA/navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/propertyList/propertyList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/propertyList/propertyList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchItem/SearchItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchItem/SearchItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchItem/searchItem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchItem/searchItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sidebar/sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/sidebar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widget/Widget.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widget/Widget.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home1.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home1.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/homeA/HomeA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeA/HomeA.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/homeA/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeA/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/hotel/Hotel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotel/Hotel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/hotel/hotel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotel/hotel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list/List.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list/list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/listA/ListA.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/listA/ListA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/listA/ListA.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/listA/list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/listA/list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/newHotel/NewHotel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/newHotel/NewHotel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/newHotel/newHotel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/newHotel/newHotel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/newRoom/newRoom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/newRoom/newRoom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/dark.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/dark.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +78,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "liviru-dev",
+    "git-widget-placeholder": "Merging liviru-dev",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1720832052647</updated>
       <workItem from="1720832054722" duration="7041000" />
-      <workItem from="1720846046000" duration="311000" />
+      <workItem from="1720846046000" duration="1086000" />
     </task>
     <servers />
   </component>
