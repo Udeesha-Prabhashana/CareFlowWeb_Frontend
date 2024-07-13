@@ -21,6 +21,8 @@ import "./style/dark.scss";
 import Register from "./pages/Register/Register";
 import { Input } from "./formSource"; // Ensure to import the Input interface if separate
 import HomeLu from "./pages/homeLU/HomeLU";
+import Channeling from "./pages/channeling/Channeling";
+import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 
 
 interface ProtectedRouteProps {
@@ -73,6 +75,41 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route
+            path="channeling"
+            index
+            element={
+              // <ProtectedRoute>
+                <Channeling />
+              // </ProtectedRoute>
+            }
+          />
+          <Route path="doclist">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
+                  <DoctorListLu />
+                // </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path=":doctorId"
+              element={
+                // <ProtectedRoute>
+                  <Single />
+                // </ProtectedRoute>
+              }
+            /> */}
+            {/* <Route
+              path="new"
+              element={
+                // <ProtectedRoute>
+                  <NewHotel inputs={ hotelInputs} title="Add New Hotel" />
+                // </ProtectedRoute>
+              }
+            /> */}
+          </Route>
           <Route path="users">
             <Route
               index

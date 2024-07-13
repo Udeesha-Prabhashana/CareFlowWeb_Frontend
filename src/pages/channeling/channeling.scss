@@ -1,0 +1,247 @@
+.homelu {
+    display: flex; //home class is sidebar 
+
+    .homeContainer2lu {
+        //homeContainer class is navbar 
+
+        flex: 6; //used to divide both sidebar and navbar 
+        margin-left: 250px; //used to get the space between sidebar and navbar
+    }
+
+                .finddoctore2 {
+                    display: flex;
+                    margin-top: 80px;
+                    font-size: 25px;
+                    margin-left: 90px;
+                    margin-bottom: 20px;
+                    color: rgb(186, 108, 231);
+                }
+        
+                .finddoctore22 {
+                    display: flex;
+                    margin-top: -10px;
+                    font-size: 15px;
+                    margin-left: 90px;
+                    margin-bottom: 20px;
+                    color: black;
+                }
+
+    .headerSerch2 {
+        height: 500px;
+        background-color: white;
+        // border: 3px solid rgb(186, 108, 231);
+        display: flex;
+        max-width: 500px;
+        flex-direction: column;
+        // align-items: center;
+        justify-content: space-around;
+        padding: 10px 0px;
+        // border-radius: 5px;
+        margin-left: 80px;
+        margin-right: 30px;
+
+    }
+
+        .headerSearchInput2 {
+            outline: none;
+            color: gray;
+            border-radius: 10px;
+            font-size: 17px;
+            border: 1px solid rgb(186, 108, 231);
+            width: 300px;
+            height: 50px;
+        }
+
+
+    .listContainerlu {
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47); //use to get some box to write some contient in side the box
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        padding: 20px;
+        margin: 20px;
+
+        .listTitlelu {
+            font-weight: 500;
+            color: gray;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+
+
+
+.headerList2 {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.headerListItem2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerListItem.active {
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.headerDesc2 {
+    margin: 20px 0px;
+    margin-left: 300px;
+}
+
+.headerBtn2 {
+    background-color: rgb(186, 108, 231);
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+
+
+
+.headerIcon2 {
+    color: lightgray;
+
+}
+
+.headerSearchItem2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.headerSearchItem2Button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 80px;
+}
+
+
+.headerSearchInput2 {
+    border: none;
+    outline: none;
+    color: gray;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.headerSearchtext2 {
+    color: gray;
+    cursor: pointer;
+    border: 1px solid rgb(186, 108, 231);
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.date2 {
+    position: absolute;
+    top: 550px;
+    right: 850px;
+    z-index: 2;
+    border: 3px solid #0071c2;
+}
+
+.lables{
+    margin-left: 20px;
+    margin-bottom: -50px;
+    font-weight: bold;
+}
+
+.option {
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    color: gray;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    /* use to display at above */
+}
+
+.optionItem2 {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.optionCounter2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: black;
+}
+
+.optionCounterButton2 {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0071c2;
+    color: #0071c2;
+    cursor: pointer;
+}
+
+.optionCounterButton:disabled {
+    cursor: not-allowed;
+}
+
+.askqura{
+    display: flex;
+    border: 1px solid rgb(186, 108, 231);
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 100px;
+    margin-right: 120px;
+}
+
+.askquraImage{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-left: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 3px solid rgb(186, 108, 231);
+
+}
+
+.text1{
+    max-width: 300px;
+    margin-left: 60px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.text2{
+    max-width: 300px;
+    margin-left: 60px;
+    margin-top: 20px;
+    color: rgb(186, 108, 231);
+}
+
+.askCuraButtton{
+    background-color: rgb(186, 108, 231);
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left: 80px;
+    margin-top: 40px;
+    width: 250px;
+}
