@@ -13,6 +13,7 @@ import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
+
 import New from "./pages/new/New";  // Make sure this path is correct
 import { hotelInputs, roomInputs, userInputs } from "./formSource";  // Import userInputs correctly
 
@@ -21,21 +22,27 @@ import NewRoom from "./pages/newRoom/NewRoom";
 import "./style/dark.scss";
 import Register from "./pages/Register/Register";
 import { Input } from "./formSource"; // Ensure to import the Input interface if separate
+import HomeLu from "./pages/homeLU/HomeLU";
+import Channeling from "./pages/channeling/Channeling";
+import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 
+import Appointments from "./pages/appointments/appointments";
+import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
+import Doctor from "./pages/doctorLU/Doctor";
 
 interface ProtectedRouteProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 function App() {
-  const context = useContext(DarkModeContext);
+    const context = useContext(DarkModeContext);
 
-  if (!context) {
-    throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
-  }
+    if (!context) {
+        throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
+    }
 
   const { darkMode } = context;
-
+  
   // const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   //   const { user } = useContext(AuthContext);
 
@@ -45,7 +52,7 @@ function App() {
   //     return <>{children}</>;
   //   }
   // };
-
+  
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -64,16 +71,51 @@ function App() {
               // </ProtectedRoute>
             }
           />
-
-<Route
-            path="paitenthome"
+          <Route
+            path="userloginhome"
             index
             element={
               // <ProtectedRoute>
-                <HomeP />
+                <HomeLu />
               // </ProtectedRoute>
             }
           />
+          <Route
+            path="channeling"
+            index
+            element={
+              // <ProtectedRoute>
+                <Channeling />
+              // </ProtectedRoute>
+            }
+          />
+          <Route path="doclist">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
+                  <DoctorListLu />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path=":doctorId"
+              element={
+                // <ProtectedRoute>
+                  <Doctor />
+                // </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path="new"
+              element={
+                // <ProtectedRoute>
+                  <NewHotel inputs={ hotelInputs} title="Add New Hotel" />
+                // </ProtectedRoute>
+              }
+            /> */}
+          </Route>
+
           <Route path="users">
             <Route
               index
@@ -152,6 +194,8 @@ function App() {
               }
             />
           </Route>
+          <Route path="appointments" element={<Appointments />} />
+          <Route path="appointments/bookingSummary" element={<BookingSummary />} />
         </Routes>
       </BrowserRouter>
     </div>

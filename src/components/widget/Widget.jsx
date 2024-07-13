@@ -5,7 +5,7 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
-const Widget = ({ type }) => {
+const WidgetA = ({ type }) => {
     let data;
 
     //temporary
@@ -88,4 +88,4 @@ const Widget = ({ type }) => {
     )
 }
 
-export default Widget
+export default WidgetA

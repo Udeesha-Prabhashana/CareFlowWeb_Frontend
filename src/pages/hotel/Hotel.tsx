@@ -16,20 +16,63 @@ interface HotelData {
   photos: string[];
   address: string;
   distance: number;
-  cheapestPrice: number;
+  fee: number;
   title: string;
   desc: string;
 }
 
+const dummyData: HotelData[] = [
+  {
+    photos: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU"],
+    address: "123 Sunshine St, Kottawa",
+    distance: 1.5,
+    fee: 3000,
+    title: "Expert General Practitioner",
+    desc: "Dr. Amarasiri Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health."
+  },
+  {
+    photos: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    address: "456 Mountain Rd, Colombo",
+    distance: 3.0,
+    fee: 3500,
+    title: "Renowned Cardiologist",
+    desc: "Dr. Sampath Samarasinghe specializes in cardiology with a focus on preventive care and advanced treatments. His expertise and patient-centered approach have earned him high regard."
+  },
+  {
+    photos: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    address: "789 Ocean Ave, Colombo",
+    distance: 2.0,
+    fee: 3200,
+    title: "Pediatric Specialist",
+    desc: "Dr. Nimal Jayasinghe is a dedicated pediatrician with a passion for children's health and development. He provides expert care in a friendly and welcoming environment."
+  },
+  {
+    photos: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    address: "321 Garden St, Kandy",
+    distance: 4.0,
+    fee: 4000,
+    title: "Leading Dermatologist",
+    desc: "Dr. Malini Fernando offers comprehensive dermatological care, including treatment for skin conditions and cosmetic procedures. She is known for her precision and patient care."
+  },
+  {
+    photos: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    address: "654 City St, Galle",
+    distance: 5.0,
+    fee: 3600,
+    title: "Orthopedic Surgeon",
+    desc: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment."
+  },
+];
+
 const Hotel: React.FC = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  const id = parseInt(location.pathname.split("/")[2], 10); // Convert id to integer
   console.log("HOTEL-ID", id);
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
 
-  const { data, loading, error } = useFetch<HotelData>(`http://127.0.0.1:5000/getHotelByID?id=${id}`);
+  const data = dummyData[id - 1]; // Get the dummy data by id
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -41,8 +84,8 @@ const Hotel: React.FC = () => {
     return diffDays;
   }
 
-    const days =  dayDifference(dates[0].endDate, dates[0].startDate);
-    console.log("Days", days)
+  const days =  dayDifference(dates[0].endDate, dates[0].startDate);
+  console.log("Days", days)
 
   const handleOpen = (i: number) => {
     setSlideNumber(i);
@@ -53,9 +96,9 @@ const Hotel: React.FC = () => {
     let newSlideNumber;
 
     if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSlideNumber = slideNumber === 0 ? data.photos.length - 1 : slideNumber - 1;
     } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSlideNumber = slideNumber === data.photos.length - 1 ? 0 : slideNumber + 1;
     }
 
     setSlideNumber(newSlideNumber);
@@ -71,65 +114,63 @@ const Hotel: React.FC = () => {
 
   console.log("Data", data);
 
-  const totalCost = (days * (data?.cheapestPrice ?? 0) * (options.room ?? 1));
+  // const totalCost = (days * (data.cheapestPrice) * (options.room ?? 1));
 
   return (
     <div>
       <Navbar />
       <Header type="list" />
-      {loading ? (
-        "loading"
-      ) : (
-        <>
-          <div className="hotelContainer">
-            {open && (
-              <div className="slider">
-                <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={() => setOpen(false)} />
-                <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={() => handleMove("l")} />
-                <div className="sliderWrapper">
-                  <img src={data?.photos[slideNumber]} alt="" className="sliderImg" />
-                </div>
-                <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={() => handleMove("r")} />
+      <>
+        <div className="hotelContainer">
+          {open && (
+            <div className="slider">
+              <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={() => setOpen(false)} />
+              <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={() => handleMove("l")} />
+              <div className="sliderWrapper">
+                <img src={data.photos[slideNumber]} alt="" className="sliderImg" />
               </div>
-            )}
-            <div className="hotelWrapper">
-              <button className="bookNow" onClick={handleClick}>
-                Reserve or Book Now!
-              </button>
-              <h1 className="hotelTitle">{data?.title}</h1>
-              <div className="hotelAddress">
-                <FontAwesomeIcon icon={faLocationDot} />
-                <span>{data?.address}</span>
-              </div>
-              <span className="hotelDistance">Excellent location {data?.distance}m from center</span>
-              <span className="hotelPriceHighlight">Book a stay over ${data?.cheapestPrice} at this property and get a free airport taxi</span>
-              <div className="hotelImages">
-                {data?.photos && data.photos.map((photo, i) => (
-                  <div className="hotelImgWrapper" key={i}>
-                    <img onClick={() => handleOpen(i)} src={photo} alt="" className="hotelImg" />
-                  </div>
-                ))}
-              </div>
-              <div className="hotelDetails">
-                <div className="hotelDetailsTexts">
-                  <h1 className="hotelTitle">{data?.title}</h1>
-                  <p className="hotelDesc">{data?.desc}</p>
+              <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={() => handleMove("r")} />
+            </div>
+          )}
+          <div className="hotelWrapper">
+            <button className="bookNow" onClick={handleClick}>
+              Reserve or Book Now!
+            </button>
+            <h1 className="hotelTitle">{data.title}</h1>
+            <div className="hotelAddress">
+              <FontAwesomeIcon icon={faLocationDot} />
+              <span>{data.address}</span>
+            </div>
+            <span className="hotelDistance">Excellent location {data.distance}m from center</span>
+            {/* <span className="hotelPriceHighlight">Book a stay over ${data.cheapestPrice} at this property and get a free airport taxi</span> */}
+            <div className="hotelImages">
+              {data.photos.map((photo, i) => (
+                <div className="hotelImgWrapper" key={i}>
+                  <img onClick={() => handleOpen(i)} src={photo} alt="" className="hotelImg" />
                 </div>
-                <div className="hotelDetailsPrice">
-                  <h1>Perfect for a {days}-night stay!</h1>
-                  <span>Located in the real heart of Krakow, this property has an excellent location score of 9.8!</span>
-                  <h2>
-                    <b>${totalCost}</b> ({days} nights)
-                  </h2>
-                  <button onClick={handleClick}>Reserve or Book Now!</button>
-                </div>
+              ))}
+            </div>
+            <div className="hotelDetails">
+              <div className="hotelDetailsTexts">
+                <h1 className="hotelTitle">{data.title}</h1>
+                <p className="hotelDesc">{data.desc}</p>
+              </div>
+              <div className="hotelDetailsPrice">
+                <h1>Perfect for a one-on-one consultation!</h1>
+                <span>Located in the real heart of the city, this doctor has an excellent location score of 9.8!</span>
+                <h2>
+                  <b>Rs. {data.fee}</b> per consultation
+                </h2>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
-            <MailList />
-            <Footer />
           </div>
-        </>
-      )}
+          <MailList />
+        </div>
+        <div className="hotelfooter">
+            <Footer />
+        </div>
+      </>
       {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
     </div>
   );
