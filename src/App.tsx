@@ -30,6 +30,9 @@ import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
 
+import HistoryCards from "./pages/medical_history/medical_history";
+import Details from "./pages/medical_history/details/details";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -194,9 +197,18 @@ function App() {
               }
             />
           </Route>
+
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+          <Route path="medical_history" element={<HistoryCards />} />
+          <Route path="medical_history/details" element={<Details />} />
+
         </Routes>
+
+ 
+
+
       </BrowserRouter>
     </div>
   );
