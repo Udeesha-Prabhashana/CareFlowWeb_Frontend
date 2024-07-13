@@ -1,28 +1,25 @@
-import "./list.css";
-import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
+import "./doctorlistLu.css";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import useFetch from "../../hooks/useFetch";
 import SearchItem from "../../components/searchItem/searchItem";
+import SidebarLu from "../../components/sidebarLu/SidebarLu";
+import NavbarLu from "../../components/navbarA/NavbarA";
 
-interface Hotel {
+interface Doctor {
   _id: string;
   name: string;
   address: string;
   city: string;
-  // distance: number;
   photo: string[];
   title: string;
   desc: string;
-  // cheapestPrice: number;
-  // rating: number;
   featured: boolean;
 }
 
-const dummyData: Hotel[] = [
+const dummyData: Doctor[] = [
   {
     _id: "1",
     name: "Dr. Amarasiri Perera",
@@ -75,8 +72,13 @@ const dummyData: Hotel[] = [
   },
 ];
 
+interface DateRangeType {
+  startDate: Date;
+  endDate: Date;
+  key: string;
+}
 
-const List: React.FC = () => {
+const DoctorListLu: React.FC = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state?.destination || "");
   const [dates, setDates] = useState(location.state?.dates || [{ startDate: new Date(), endDate: new Date(), key: 'selection' }]);
@@ -85,8 +87,8 @@ const List: React.FC = () => {
   const [min, setMin] = useState<number | undefined>(undefined);
   const [max, setMax] = useState<number | undefined>(undefined);
 
-  const { data, loading, error, reFetch } = useFetch<Hotel[]>(
-    `http://127.0.0.1:5000/getAllFilterdHotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  const { data, loading, error, reFetch } = useFetch<Doctor[]>(
+    `http://127.0.0.1:5000/getAllFilteredDoctors?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
   useEffect(() => {
@@ -99,19 +101,23 @@ const List: React.FC = () => {
     reFetch();
   };
 
+  
+
   return (
-    <div>
-      <Navbar />
-      <Header type="list" />
-      <div className="listContainer">
-        <div className="listWrapper">
-          <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
+    <div className="homeDL">
+      <SidebarLu />
+      <NavbarLu />
+      <div className="listContainerDL">
+        <div className="listWrapperDL">
+          <div className="topic">
+          </div>
+          <div className="listSearchDL">
+            <h1 className="lsTitleDL">Search</h1>
+            <div className="lsItemDL">
               <label>Doctor Name</label>
               <input placeholder={destination} type="text" />
             </div>
-            <div className="lsItem">
+            <div className="lsItemDL">
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>
                 {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
@@ -124,44 +130,28 @@ const List: React.FC = () => {
                 />
               )}
             </div>
-            <div className="lsItem">
+            <div className="lsItemDL">
               <label>Options</label>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">
-                  Min price
-                </span>
+              <div className="lsOptionItemDL">
+                <span className="lsOptionText">Min experience (years)</span>
                 <input
                   type="number"
                   onChange={(e) => setMin(Number(e.target.value))}
-                  className="lsOptionInput"
+                  className="lsOptionInputDL"
                 />
               </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">
-                  Max price 
-                </span>
+              <div className="lsOptionItemDL">
+                <span className="lsOptionTextDL">Max experience (years)</span>
                 <input
                   type="number"
                   onChange={(e) => setMax(Number(e.target.value))}
-                  className="lsOptionInput"
+                  className="lsOptionInputDL"
                 />
               </div>
-              {/* <div className="lsOptionItem">
-                <span className="lsOptionText">Adult</span>
-                <input type="number" min={1} className="lsOptionInput" placeholder={String(options.adult)} />
-              </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Children</span>
-                <input type="number" min={0} className="lsOptionInput" placeholder={String(options.children)} />
-              </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Room</span>
-                <input type="number" min={1} className="lsOptionInput" placeholder={String(options.room)} />
-              </div> */}
             </div>
             <button onClick={handleClick}>Search</button>
           </div>
-          <div className="listResult">
+          <div className="listResultDL">
             {loading ? (
               "loading"
             ) : (
@@ -174,4 +164,4 @@ const List: React.FC = () => {
   );
 };
 
-export default List;
+export default DoctorListLu;
