@@ -1,7 +1,7 @@
 import React from "react";
 import Button from '@mui/material/Button';
-import Navbar from "../../components/navbarA/NavbarA";
-import Sidebar from "../../components/sidebar/Sidebar";
+import NavbarLu from "../../components/navbarA/NavbarA";
+import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import "../appointments/appointments.scss";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -162,9 +162,9 @@ const Appointments: React.FC = () => {
 
     return (
         <div className="appointments">
-            <Sidebar />
+            <SidebarLu />
             <div className="appointmentsContainer">
-                <Navbar />
+                <NavbarLu />
                 <div className="mainContent">
                     View Appointments
                     <div className="subContent">
