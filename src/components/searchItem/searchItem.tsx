@@ -40,7 +40,7 @@ const SearchItem: React.FC<SearchItemProps> = ({ item }) => {
           <button>{item.rating}</button>
         </div>}
         <div className="siDetailTexts">
-          <Link to={`/hotels/${item._id}`}>
+          <Link to={`/doclist/${item._id}`}>
             <button className="siCheckButton">See availability</button>
           </Link>
         </div>

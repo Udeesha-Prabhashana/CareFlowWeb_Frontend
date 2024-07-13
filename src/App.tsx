@@ -27,6 +27,7 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
+import Doctor from "./pages/doctorLU/Doctor";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -96,14 +97,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
-            {/* <Route
+            <Route
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Single />
+                  <Doctor />
                 // </ProtectedRoute>
               }
-            /> */}
+            />
             {/* <Route
               path="new"
               element={
