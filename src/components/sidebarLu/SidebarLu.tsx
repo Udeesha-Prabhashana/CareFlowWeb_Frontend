@@ -22,7 +22,7 @@ const SidebarLu: React.FC = () => {
   return (
     <div className="SidebarLu">
       <div className="topLu">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/userloginhome" style={{ textDecoration: "none" }}>
           <span className="logoLu">Care Flow</span>
         </Link>
       </div>
@@ -43,7 +43,7 @@ const SidebarLu: React.FC = () => {
               <span> New Booking </span>
             </li>
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/appointments/" style={{ textDecoration: "none" }}>
             <li>
               <Person2OutlinedIcon className="iconLu" />
               <span> Appointment </span>
@@ -61,7 +61,7 @@ const SidebarLu: React.FC = () => {
               <span> Chat with Cura </span>
             </li>
           </Link>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/medical_history" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="iconLu" />
               <span> Medical History</span>
