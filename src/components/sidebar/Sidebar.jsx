@@ -49,11 +49,12 @@ const Sidebar = () => {
                         <span> Hotels</span>
                     </li>                
                     </Link>
-                    <Link to="/rooms" style={{ textDecoration: "none" }}>
-                    <li>
-                        <CreditCardIcon className="icon" />
-                        <span> Rooms</span>
-                    </li>
+
+                    <Link to="/appointments" style={{ textDecoration: "none" }}>
+                        <li>
+                            <CreditCardIcon className="icon" />
+                            <span>Appointments</span>
+                        </li>
                     </Link>
                     <li>
                         <LocalShippingIcon className="icon" />

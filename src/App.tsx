@@ -8,10 +8,12 @@ import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
+import HomeP from "./pages/homeP/HomeP";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
+
 import New from "./pages/new/New";  // Make sure this path is correct
 import { hotelInputs, roomInputs, userInputs } from "./formSource";  // Import userInputs correctly
 
@@ -24,20 +26,23 @@ import HomeLu from "./pages/homeLU/HomeLU";
 import Channeling from "./pages/channeling/Channeling";
 import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 
+import Appointments from "./pages/appointments/appointments";
+import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
+import Doctor from "./pages/doctorLU/Doctor";
 
 interface ProtectedRouteProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 function App() {
-  const context = useContext(DarkModeContext);
+    const context = useContext(DarkModeContext);
 
-  if (!context) {
-    throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
-  }
+    if (!context) {
+        throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
+    }
 
   const { darkMode } = context;
-
+  
   // const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   //   const { user } = useContext(AuthContext);
 
@@ -47,7 +52,7 @@ function App() {
   //     return <>{children}</>;
   //   }
   // };
-
+  
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -93,14 +98,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
-            {/* <Route
+            <Route
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Single />
+                  <Doctor />
                 // </ProtectedRoute>
               }
-            /> */}
+            />
             {/* <Route
               path="new"
               element={
@@ -110,6 +115,7 @@ function App() {
               }
             /> */}
           </Route>
+
           <Route path="users">
             <Route
               index
@@ -188,6 +194,8 @@ function App() {
               }
             />
           </Route>
+          <Route path="appointments" element={<Appointments />} />
+          <Route path="appointments/bookingSummary" element={<BookingSummary />} />
         </Routes>
       </BrowserRouter>
     </div>
