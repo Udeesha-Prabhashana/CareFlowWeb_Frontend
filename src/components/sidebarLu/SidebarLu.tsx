@@ -68,10 +68,12 @@ const SidebarLu: React.FC = () => {
             </li>
           </Link>
           <p className="titleLu">USEFUL</p>
+          <Link to="/notifications" style={{ textDecoration: "none" }}>
           <li>
             <NotificationsNoneIcon className="iconLu" />
             <span> Notification</span>
           </li>
+          </Link>
           <li>
             <InsertChartIcon className="iconLu" />
             <span> Stats</span>
