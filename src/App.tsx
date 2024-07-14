@@ -8,6 +8,7 @@ import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
+import HomeP from "./pages/homeP/HomeP";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
@@ -28,6 +29,9 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
+
+import HistoryCards from "./pages/medical_history/medical_history";
+import Details from "./pages/medical_history/details/details";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -114,6 +118,7 @@ function App() {
               }
             /> */}
           </Route>
+
           <Route path="users">
             <Route
               index
@@ -192,9 +197,18 @@ function App() {
               }
             />
           </Route>
+
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+          <Route path="medical_history" element={<HistoryCards />} />
+          <Route path="medical_history/details" element={<Details />} />
+
         </Routes>
+
+ 
+
+
       </BrowserRouter>
     </div>
   );
