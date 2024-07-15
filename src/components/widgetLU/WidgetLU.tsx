@@ -1,76 +1,55 @@
 import React from "react";
 import "./widgetLu.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+
+import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
+import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+
 
 type WidgetProps = {
-    type: "userlu" | "orderlu" | "earninglu" | "balancelu";
+    type: "ong_appointments" | "upcom_appointments" | "miss_appointments" ;
 };
 
 const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
     let data: {
         title: string;
         isMoney: boolean;
-        link: string;
         icon: JSX.Element;
     };
 
     // temporary
-    const amount = 100;
-    const diff = 20;
+    const diff = 0;
 
     switch (type) {
-        case "userlu":
+        case "ong_appointments":
             data = {
-                title: "USERS",
+                title: "Ongoing Appointments",
                 isMoney: false,
-                link: "See all users",
-                icon: <PersonOutlinedIcon className="icon"
+                icon: <MedicalServicesOutlinedIcon className="icon"
                     style={{
-                        color: "crimson",
-                        backgroundColor: "rgba(255, 0, 0, 0.2)",
+                        color: "black",
                     }}
                 />,
             };
             break;
-        case "orderlu":
+        case "upcom_appointments":
             data = {
-                title: "BOOKINGS",
+                title: "Upcoming Appointments",
                 isMoney: false,
-                link: "View all bookings",
-                icon: <ShoppingCartOutlinedIcon className="icon"
+                icon: <RestoreOutlinedIcon className="icon"
                 style={{
-                    backgroundColor: "rgba(218, 165, 32, 0.2)",
-                    color: "goldenrod",
+                    color: "black",
                     }}
                 />, 
             };
             break;
-        case "earninglu":
+        case "miss_appointments":
             data = {
-                title: "EARNINGS",
+                title: "Missed Appointments",
                 isMoney: true,
-                link: "View net earnings",
-                icon: <MonetizationOnOutlinedIcon className="icon"
+                icon: <CancelOutlinedIcon className="icon"
                     style={{
-                        backgroundColor: "rgba(0, 128, 0, 0.2)",
-                        color: "green"
-                    }}
-                />,
-            };
-            break;
-        case "balancelu":
-            data = {
-                title: "BALANCE",
-                isMoney: true,
-                link: "View all orders",
-                icon: <AccountBalanceWalletOutlinedIcon className="icon"
-                    style={{
-                        backgroundColor: "rgba(128, 0, 128, 0.2)",
-                        color: "purple",
+                        color: "black"
                     }}
                 />,
             };
@@ -81,17 +60,15 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
 
     return (
         <div className="widgetLu">
-            <div className="leftLu">
-                <span className="titleLu">{data.title}</span>
-                <span className="counterLu">{data.isMoney && "$"}{amount}</span>
-                <span className="linkLu">{data.link}</span>
-            </div>
-            <div className="rightLu">
-                <div className="percentage positive">
-                    <KeyboardArrowUpIcon />
-                    {diff} %
-                </div>
+            <div className="left">
+                <span className="title"> {data.title.split(' ')[0]} </span>
+                <span className="title"> {data.title.split(' ')[1]} </span>
                 {data.icon}
+            </div>
+            <div className="right">
+                <div className="counter">
+                    {diff}
+                </div>
             </div>
         </div>
     );
