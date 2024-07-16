@@ -31,6 +31,9 @@ import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary";
 import Doctor from "./pages/doctorLU/Doctor";
 import ProfileLu from "./pages/profileLu/ProfileLu";
 
+import HistoryCards from "./pages/medical_history/medical_history";
+import Details from "./pages/medical_history/details/details";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -119,6 +122,7 @@ function App() {
               }
             /> */}
           </Route>
+<<<<<<< HEAD
           <Route
             path="profileLu"
             index
@@ -128,6 +132,9 @@ function App() {
               // </ProtectedRoute>
             }
           />
+=======
+
+>>>>>>> dd3073e56b357a54b3f3d84af4138d21fa85d19c
           <Route path="users">
             <Route
               index
@@ -206,9 +213,18 @@ function App() {
               }
             />
           </Route>
+
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+          <Route path="medical_history" element={<HistoryCards />} />
+          <Route path="medical_history/details" element={<Details />} />
+
         </Routes>
+
+ 
+
+
       </BrowserRouter>
     </div>
   );

@@ -8,17 +8,19 @@
   display: flex;
   flex-direction: column;
 }
-.main{
+
+.main {
   color: #000;
   font-size: 25px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 80% */
   padding-top: 10px;
-  max-width: 1000px;
-  margin: 0 20%;
+  max-width: 2000px;
+  margin: 6% 10% 10% 25%;
 }
-.sub{
+
+.sub {
   color: #000;
   font-size: 18px;
   font-style: normal;
@@ -28,14 +30,16 @@
   max-width: 1000px;
 }
 
-.content{
+.content {
   color: #000;
-
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 20px; /* 111.111% */
   padding-top: 80px;
   max-width: 1000px;
+}
 
+.line {
+  margin-bottom: 16px; /* Adjust the value as needed */
 }
