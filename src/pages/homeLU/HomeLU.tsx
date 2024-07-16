@@ -7,7 +7,6 @@ import List from "../../components/table/Table";
 import "./homelu.scss";
 import "../../tailwind.css"
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
-import heroImage from '../../pages/images/Home1.png';
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
@@ -66,7 +65,7 @@ const HomeLu: React.FC = () => {
                             </div>
                         </div>
                         <div className="hero_image">
-                            <img src={heroImage} alt="Hero" className="w-600 h-auto" />
+                            <img src= "/images/locations/Home1.png" alt="Hero" className="w-600 h-auto" />
                         </div>
                     </div>
                 </div>

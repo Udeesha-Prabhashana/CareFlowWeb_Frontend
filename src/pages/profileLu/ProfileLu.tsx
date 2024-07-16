@@ -3,8 +3,6 @@ import NavbarLu from "../../components/navbarA/NavbarA";
 import "./ProfileLu.scss";
 import "../../tailwind.css";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
-import profileCover from "../../pages/images/Profile1.png";
-import profilePic from "../../pages/images/Profile2.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
@@ -22,7 +20,7 @@ const ProfileLu: React.FC = () => {
         </div>
 
         <div className="w-full ml-14 mr-14 relative">
-            <img src={profileCover} alt="Cover" className="w-full rounded-lg" />
+            <img src= "/images/locations/Profile1.png" alt="Cover" className="w-full rounded-lg" />
             <div className="absolute bottom-0 right-0 mb-4 mr-4">
                 <button
                 className="flex items-center justify-center p-2 border-2 rounded-lg"
@@ -63,7 +61,7 @@ const ProfileLu: React.FC = () => {
         <div className="flex items-start -mt-20 ml-24">
           <div className="relative inline-block">
             <img
-              src={profilePic}
+              src="/images/locations/Profile2.png" 
               className="w-40 border-4 border-white rounded-full"
               alt="Profile"
             />
