@@ -13,9 +13,9 @@ const BookingSummary: React.FC = () => {
             <SidebarLu />
             <div className="appointmentsContainer">
                 <NavbarLu />
-                <div className="main">
+                <div className="mainContent">
                     Booking Summary
-                    <div className="sub">
+                    <div className="subContent">
                         View and Confirm The Booking Details
                         <Box className="content">
                             <Grid container spacing={2}>
