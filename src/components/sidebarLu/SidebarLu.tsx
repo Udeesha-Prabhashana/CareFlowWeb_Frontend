@@ -90,10 +90,12 @@ const SidebarLu: React.FC = () => {
             <span> Setting</span>
           </li>
           <p className="titleLu">USER</p>
+          <Link to="/profileLu" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="iconLu" />
             <span> Profile</span>
-          </li>
+            </li>
+            </Link>
           <li>
             <ExitToAppIcon className="iconLu" />
             <span onClick={() => navigate("/login")}> Logout</span>
