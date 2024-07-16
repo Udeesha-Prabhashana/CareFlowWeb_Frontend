@@ -33,6 +33,8 @@ import Doctor from "./pages/doctorLU/Doctor";
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
 
+import ProfileLu from "./pages/profileLu/ProfileLu";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -118,6 +120,16 @@ function App() {
               }
             /> */}
           </Route>
+
+          <Route
+            path="profileLu"
+            index
+            element={
+              // <ProtectedRoute>
+                <ProfileLu />
+              // </ProtectedRoute>
+            }
+          />
 
           <Route path="users">
             <Route
