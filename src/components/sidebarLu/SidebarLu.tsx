@@ -68,10 +68,12 @@ const SidebarLu: React.FC = () => {
             </li>
           </Link>
           <p className="titleLu">USEFUL</p>
+          <Link to="/notifications" style={{ textDecoration: "none" }}>
           <li>
             <NotificationsNoneIcon className="iconLu" />
             <span> Notification</span>
           </li>
+          </Link>
           <li>
             <InsertChartIcon className="iconLu" />
             <span> Stats</span>
@@ -85,10 +87,12 @@ const SidebarLu: React.FC = () => {
             <PsychologyOutlinedIcon className="iconLu" />
             <span> Logs</span>
           </li>
+          <Link to="/settings" style={{ textDecoration: "none" }}>
           <li>
             <SettingsApplicationsIcon className="iconLu" />
             <span> Setting</span>
           </li>
+          </Link>
           <p className="titleLu">USER</p>
           <Link to="/profileLu" style={{ textDecoration: "none" }}>
           <li>
