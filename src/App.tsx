@@ -35,6 +35,10 @@ import Details from "./pages/medical_history/details/details";
 
 import ProfileLu from "./pages/profileLu/ProfileLu";
 
+import Settings from "./pages/settings/settings";
+
+import Notifications from "./pages/notifications/notifications";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -215,6 +219,9 @@ function App() {
 
           <Route path="medical_history" element={<HistoryCards />} />
           <Route path="medical_history/details" element={<Details />} />
+
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
 
         </Routes>
 
