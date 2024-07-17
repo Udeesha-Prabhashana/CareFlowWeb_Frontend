@@ -217,7 +217,15 @@ function App() {
 
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+     
+
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
+          
         </Routes>
+
+        
 
  
 
