@@ -3,6 +3,7 @@ import SidebarLu from "../../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../../components/navbarA/NavbarA";
 import "../bookingSummary/bookingSummary.scss";
 import { useParams } from 'react-router-dom';
+import { Grid, Box } from '@mui/material';
 
 const BookingSummary: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -12,16 +13,27 @@ const BookingSummary: React.FC = () => {
             <SidebarLu />
             <div className="appointmentsContainer">
                 <NavbarLu />
-                <div className="main">
+                <div className="mainContent">
                     Booking Summary
-                    <div className="sub">
+                    <div className="subContent">
                         View and Confirm The Booking Details
-                        <div className="content">
-                            this is content
-                        </div>
+                        <Box className="content">
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <div className="line">Doctor Name :</div>
+                                    <div className="line">Date :</div>
+                                    <div className="line">Appointment Number :</div>
+                                    <div className="line">Time :</div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div className="line"><b>Dr. Ravindra Alahakoon</b></div>
+                                    <div className="line"><b>2022/04/04</b></div>
+                                    <div className="line"><b>23</b></div>
+                                    <div className="line"><b>06:50</b></div>
+                                </Grid>
+                            </Grid>
+                        </Box>
                     </div>
-
-
                 </div>
             </div>
         </div>

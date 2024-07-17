@@ -61,7 +61,7 @@ const SidebarLu: React.FC = () => {
               <span> Chat with Cura </span>
             </li>
           </Link>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/medical_history" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="iconLu" />
               <span> Medical History</span>
@@ -94,10 +94,12 @@ const SidebarLu: React.FC = () => {
           </li>
           </Link>
           <p className="titleLu">USER</p>
+          <Link to="/profileLu" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="iconLu" />
             <span> Profile</span>
-          </li>
+            </li>
+            </Link>
           <li>
             <ExitToAppIcon className="iconLu" />
             <span onClick={() => navigate("/login")}> Logout</span>

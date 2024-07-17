@@ -35,6 +35,11 @@ import Notifications from "./pages/notifications/notifications";
 import Settings from "./pages/settings/settings";
 
 
+import HistoryCards from "./pages/medical_history/medical_history";
+import Details from "./pages/medical_history/details/details";
+
+import ProfileLu from "./pages/profileLu/ProfileLu";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -121,6 +126,16 @@ function App() {
             /> */}
           </Route>
 
+          <Route
+            path="profileLu"
+            index
+            element={
+              // <ProtectedRoute>
+                <ProfileLu />
+              // </ProtectedRoute>
+            }
+          />
+
           <Route path="users">
             <Route
               index
@@ -199,11 +214,14 @@ function App() {
               }
             />
           </Route>
+
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="settings" element={<Settings />} />
         </Routes>
+
+ 
+
+
       </BrowserRouter>
     </div>
   );
