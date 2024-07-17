@@ -87,10 +87,12 @@ const SidebarLu: React.FC = () => {
             <PsychologyOutlinedIcon className="iconLu" />
             <span> Logs</span>
           </li>
+          <Link to="/settings" style={{ textDecoration: "none" }}>
           <li>
             <SettingsApplicationsIcon className="iconLu" />
             <span> Setting</span>
           </li>
+          </Link>
           <p className="titleLu">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="iconLu" />

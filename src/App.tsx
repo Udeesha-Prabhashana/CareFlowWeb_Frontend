@@ -32,6 +32,7 @@ import Doctor from "./pages/doctorLU/Doctor";
 
 
 import Notifications from "./pages/notifications/notifications";
+import Settings from "./pages/settings/settings";
 
 
 interface ProtectedRouteProps {
@@ -201,6 +202,7 @@ function App() {
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
           <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </div>

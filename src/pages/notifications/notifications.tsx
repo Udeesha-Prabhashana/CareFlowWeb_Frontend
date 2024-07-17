@@ -55,11 +55,7 @@ const notifications_list: Notification[] = [
     time: "3 Hours ago",
     body: "You have a new message from Dr. Sarah Johnson regarding your recent lab results. Please check your inbox for more details.",
   },
-  {
-    title: "Cancellation Notice",
-    time: "4 Hours ago",
-    body: "We regret to inform you that your appointment with Dr. David Kim scheduled for today at 3:00 PM has been canceled. Please contact us to reschedule.",
-  },
+
 ];
 
 const Notifications: React.FC = () => {
