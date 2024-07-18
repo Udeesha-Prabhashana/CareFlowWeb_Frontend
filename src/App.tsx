@@ -39,6 +39,9 @@ import Settings from "./pages/settings/settings";
 
 import Notifications from "./pages/notifications/notifications";
 
+import HomeDoc from "./pages/Doctor/home/homeDoc";
+import DoctorBookings from "./pages/Doctor/bookings/bookings";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -222,6 +225,15 @@ function App() {
 
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
+
+
+
+          <Route path="doctor/home" element={<HomeDoc/>}/>
+            <Route path="doctor/bookings" element={<DoctorBookings/>}/>
+            {/*<Route path="doctor/revenue_records" element={<DoctorRevenueRecords/>}/>*/}
+            {/*<Route path="doctor/medical_records" element={<MedicalRecords/>}/>*/}
+            {/*<Route path="doctor/patients" element={<Patients/>}/>*/}
+
 
         </Routes>
 

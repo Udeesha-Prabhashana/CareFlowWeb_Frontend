@@ -1,0 +1,78 @@
+.navbarDoc{
+  height: 50px;
+  width: 1300px;
+  border-bottom: 0.5px solid rgb(231, 228, 228);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  //margin-left: 250px;
+
+  .wrapperDoc{
+    width: 1300px;
+    display: flex; //use get vertical bar
+    padding: 50px;
+    align-items: center;
+    justify-content: space-between;    //used to get space between items and search class.
+
+    .searchDoc{
+      display: flex;
+      align-items: center;
+      border: 0.5px solid lightgray;
+      padding: 3px;
+
+      input{
+        border: none;
+        outline: none;
+        background: transparent;
+
+        &::placeholder{
+          font-size: 12px;
+        }
+      }
+
+    }
+
+    .itemsDoc {
+      display: flex;
+      align-items: center;
+
+      .itemDoc{
+        display: flex;
+        align-items: center;
+        margin-right: 20px; //give right margin
+        position: relative;
+
+        .iconDoc{
+          font-size: 20px;
+        }
+
+        .avatarDoc{
+          width: 30px;
+          height: 30px;
+          border-radius: 50px;
+        }
+
+        .counterDoc{
+          width: 15px;
+          height: 15px;
+          background-color: red;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10px;
+          font-weight: bold;
+          position: absolute;
+          top: -5px;
+          right: -5px;
+        }
+      }
+    }
+
+  }
+}
