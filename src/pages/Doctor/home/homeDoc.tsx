@@ -15,20 +15,15 @@ import NavbarDoc from "../../../components/navbarDoc/navbarDoc";
 
 const HomeDoc: React.FC = () => {
     return (
-        <div className="homeDoc">
+        <div className="sideDoc">
             <SidebarDoc />
-
-
-
-
-
-            <div className="homeContainer2Doc">
+            <div className="navDoc">
                 <NavbarDoc />
-                <div className="bodyContainerDoc">
-                    <div className="mainTopicDoc">
+                <div className="bodyContainerDocHome">
+                    <div className="mainTopicDocHome">
                         Good Morning, <span className="purpleTextDoc">Dr. Micheal</span>
                     </div>
-                    <div className="subTopicDoc">
+                    <div className="subTopicDocHome">
                         Welcome to your Dashboard
                     </div>
                     <div className="widgetsDoc">

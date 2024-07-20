@@ -1,14 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
-
-import NavbarLu from "../../../components/navbarA/NavbarA";
+import NavbarDoc from "../../../components/navbarDoc/navbarDoc";
 import SidebarDoc from "../../../components/sidebarDoctor/sidebarDoc";
-import "../bookings/bookings.scss"
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import "../bookings/bookings.scss";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -20,156 +14,78 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from "dayjs";
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-
-
-interface DoctorBooking {
-    title: string;
-    description: string;
-    body: string;
-}
-
-const upcomingAppointments: DoctorBooking[] = [
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    // add more appointments as needed
-];
-
-const completedAppointments: DoctorBooking[] = [
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
-    // add more appointments as needed
-];
-
-const missedAppointments: DoctorBooking[] = [
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
-    // add more appointments as needed
-];
-
-const DoctorBookings: React.FC = () => {
-    const [alignment, setAlignment] = React.useState<string>('upcoming');
-    const navigate = useNavigate();
-
-    const theme = createTheme({
-        palette: {
-            primary: {
-                main: '#855CDD',
-            },
-            secondary: {
-                main: '#FFA07A',
-            },
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#855CDD',
         },
-    });
+    },
+});
+
+const historyRows = [
+    { number: 1, name: 'Namal Rajapakshe' },
+    { number: 2, name: 'Dasuni Gamage' },
+    { number: 3, name: 'Chris Evan' },
+    { number: 4, name: 'Gayan Perera' },
+];
+
+const todayRows = [
+    { number: 1, name: 'Sandani Gamage' },
+    { number: 2, name: 'Piyath Rajapakshe' },
+    { number: 3, name: 'Nelly Jackson' },
+    { number: 4, name: 'Kasun Priyantha' },
+    { number: 5, name: 'Abdulla Naseem' },
+];
+
+const upcomingRows = [
+    { number: 1, name: 'Abdulla Afar' },
+    { number: 2, name: 'Piyath Rajapakshe' },
+    { number: 3, name: 'Kasuni Wedege' },
+];
+
+const BookingDoc: React.FC = () => {
+    const [alignment, setAlignment] = useState('today');
+    const [rows, setRows] = useState(todayRows);
 
     const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
         if (newAlignment !== null) {
             setAlignment(newAlignment);
+            if (newAlignment === 'history') {
+                setRows(historyRows);
+            } else if (newAlignment === 'today') {
+                setRows(todayRows);
+            } else {
+                setRows(upcomingRows);
+            }
         }
     };
 
-    const handleViewDetails = () => {
-        navigate("/appointments/bookingSummary");
-    };
-
-    const getCards = () => {
-        let cards: DoctorBooking[] = [];
-        switch (alignment) {
-            case 'upcoming':
-                cards = upcomingAppointments;
-                break;
-            case 'completed':
-                cards = completedAppointments;
-                break;
-            case 'missed':
-                cards = missedAppointments;
-                break;
-            default:
-                cards = [];
-                break;
-        }
-        return cards.map((card, index) => (
-            <Box key={index} sx={{ mb: 2 }}>
-                <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
-                    <CardContent sx={{ flex: 1 }}>
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            sx={{
-                                color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
-                                fontSize: '30px',
-                                fontStyle: 'normal',
-                                fontWeight: '700',
-                                lineHeight: '20px',
-                            }}
-                        >
-                            {card.title}
-                        </Typography>
-                        <Typography
-                            sx={{
-                                mb: 1.5,
-                                color: '#000',
-                                fontSize: '20px',
-                                fontStyle: 'normal',
-                                fontWeight: '700',
-                                lineHeight: '20px',
-                                paddingTop: '8px',
-                            }}
-                        >
-                            {card.description}
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                fontSize: '16px',
-                                fontStyle: 'normal',
-                                fontWeight: '300',
-                                lineHeight: '20px',
-                            }}
-                        >
-                            {card.body}
-                        </Typography>
-                    </CardContent>
-                    <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                width: '138px',
-                                height: '38px',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '11px',
-                                border: '1px solid var(--normal-hover, #5F2BCF)',
-                                whiteSpace: 'nowrap',
-                                color: '#855CDD',
-                                textTransform: 'none',
-                            }}
-                            onClick={handleViewDetails}
-                        >
-                            View Details
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Box>
-        ));
+    const handleViewDetails = (row: { number: number, name: string }) => {
+        console.log('View details for:', row);
+        // Implement your view details logic here
     };
 
     return (
-        <div className="appointments">
+        <div className="sideDoc">
             <SidebarDoc />
-            <div className="appointmentsContainer">
-                <NavbarLu />
-                <div className="mainContent">
-                    View Appointments
-                    <div className="subContent">
-                        View Details of your Appointments
+            <div className="navDoc">
+                <NavbarDoc />
+                <div className="mainContentDocBooking">
+                    Bookings
+                    <div className="subContentDocBooking">
+                        View Details of your Patients Bookings
                     </div>
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
@@ -201,9 +117,9 @@ const DoctorBookings: React.FC = () => {
                                         }
                                     }}
                                 >
+                                    <ToggleButton value="history">History</ToggleButton>
+                                    <ToggleButton value="today">Today</ToggleButton>
                                     <ToggleButton value="upcoming">Upcoming</ToggleButton>
-                                    <ToggleButton value="completed">Previous</ToggleButton>
-                                    <ToggleButton value="missed">Missed</ToggleButton>
                                 </ToggleButtonGroup>
                             </Grid>
                             <Grid item xs />
@@ -227,13 +143,56 @@ const DoctorBookings: React.FC = () => {
                         </Grid>
                     </ThemeProvider>
 
-                    <div className="cardsContainer">
-                        {getCards()}
-                    </div>
+                    <TableContainer component={Paper} sx={{ boxShadow: 'none' }} >
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">Number</TableCell>
+                                    <TableCell align="center">Patient's Name</TableCell>
+                                    <TableCell align="center"></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map((row, index) => (
+                                    <TableRow
+                                        key={row.number}
+                                        sx={{
+                                            '&:last-child td, &:last-child th': { border: 0 },
+                                            backgroundColor: index % 2 === 0 ? '#EEE7FF' : 'inherit',
+                                            boxShadow: index % 2 === 0 ? '0 4px 8px rgba(133, 92, 221, 0.3)' : 'none',
+                                            height: '60px' // Add height to avoid overlapping
+                                        }}
+                                    >
+                                        <TableCell align="center">{row.number}</TableCell>
+                                        <TableCell align="center">{row.name}</TableCell>
+                                        <TableCell align="center">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{
+                                                    width: '138px',
+                                                    height: '38px',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center',
+                                                    borderRadius: '11px',
+                                                    border: '1px solid var(--normal-hover, #5F2BCF)',
+                                                    whiteSpace: 'nowrap',
+                                                    color: '#855CDD',
+                                                    textTransform: 'none',
+                                                }}
+                                                onClick={() => handleViewDetails(row)}
+                                            >
+                                                View Details
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
             </div>
         </div>
     );
-};
+}
 
-export default DoctorBookings;
+export default BookingDoc;
