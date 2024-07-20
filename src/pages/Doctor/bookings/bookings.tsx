@@ -192,6 +192,8 @@ const BookingDoc: React.FC = () => {
                 </div>
             </div>
         </div>
+
+        
     );
 }
 
