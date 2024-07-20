@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/medicalRecords.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/medicalRecords.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/revenueRecords/revenueRecords.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/revenueRecords/revenueRecords.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +51,19 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "ts.external.directory.path": "D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="npm install @mui/x-charts" />
+      <command value="npm install @mui/x-charts " />
+      <command value="npm install @mui/material @emotion/react @emotion/styled react-chartjs-2 chart.js " />
+      <command value="npm install" />
       <command value="npm start" />
     </option>
   </component>
@@ -57,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1721480778903</updated>
-      <workItem from="1721480782097" duration="750000" />
+      <workItem from="1721480782097" duration="13415000" />
     </task>
     <servers />
   </component>
