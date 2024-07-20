@@ -25,6 +25,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -58,6 +59,7 @@ const upcomingRows = [
 const BookingDoc: React.FC = () => {
     const [alignment, setAlignment] = useState('today');
     const [rows, setRows] = useState(todayRows);
+    const navigate = useNavigate();
 
     const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
         if (newAlignment !== null) {
@@ -74,7 +76,7 @@ const BookingDoc: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        // Implement your view details logic here
+        navigate("/doctor/bookings/view_bookings");
     };
 
     return (
