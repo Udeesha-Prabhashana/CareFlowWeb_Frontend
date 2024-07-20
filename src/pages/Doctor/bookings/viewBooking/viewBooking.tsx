@@ -69,8 +69,6 @@ const DoctorViewBooking: React.FC = () => {
                         >
                             View Medical History
                         </Button>
-
-
                     </div>
                 </div>
             </div>
