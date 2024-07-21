@@ -130,7 +130,7 @@ const Channeling: React.FC = () => {
             <div className="image">
           <img src="/images/locations/image.png" alt="" className="askquraImage" />
           <div className="text1">
-            Can’t find the suitable doctor for your symptoms?
+            Can’t find the suitable doctor for your ?
         </div>
           <div className="text2">
             Cura is a AI Powered chatbot that can help you find your doctor and book doctor's appointment

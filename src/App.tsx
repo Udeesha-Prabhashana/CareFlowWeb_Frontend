@@ -30,6 +30,11 @@ import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
 
+import Chatbot from "./pages/cura/chatbot/chatbot";
+import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
+import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
+import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
+
 interface ProtectedRouteProps {
     children: ReactNode;
 }
@@ -196,10 +201,16 @@ function App() {
           </Route>
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+          <Route path="chatbot" element={<Chatbot />} />
+          <Route path="chatbotN" element={<ChatbotNext/>} />
+          <Route path="chatbotL" element={<ChatbotLast/>} />
+          <Route path="chatbotthird" element={<ChatbotThird/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
 
 export default App;
