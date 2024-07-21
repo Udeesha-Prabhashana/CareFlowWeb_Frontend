@@ -33,6 +33,8 @@ import Chatbot from "./pages/cura/chatbot/chatbot";
 import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
 import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
 import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
+import ProfileLu from "./pages/profileLu/ProfileLu";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -211,6 +213,12 @@ function App() {
 
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+
+          <Route path="chatbot" element={<Chatbot/>}/>
+          <Route path="chatbotN" element={<ChatbotNext/>}/>
+          <Route path="chatbotL" element={<ChatbotLast/>}/>
+          <Route path="chatbotThird" element={<ChatbotThird/>}/>
         </Routes>
 
  
