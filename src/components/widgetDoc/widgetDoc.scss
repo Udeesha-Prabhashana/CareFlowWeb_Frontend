@@ -1,0 +1,39 @@
+.widgetDoc{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;     //use to divide similary given boxs
+  padding: 10px;
+  // -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);   //give the box boder useing Box-Shadow CSS Generator
+  // box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  border-radius: 10px;
+  height: 160px;  //give height
+  background-color: #EEE7FF;
+
+  .left, .right{
+    display: flex;
+    flex-direction: column;  //use to get vetical line given content
+    padding-top: 5px;
+
+    .title{
+      font-weight: 500;
+      font-size: 20px;
+      color: rgb(0, 0, 0);
+      padding-left: 5px;
+
+    }
+
+    .counter{
+      font-size: 50px;
+      font-weight: 600;
+      color: #855CDD;
+      padding-right: 10px;
+
+    }
+
+    .icon{
+      font-size: 50px;
+      margin: 20px 2px;
+      border-radius: 5px;
+    }
+  }
+}

@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b049c02-d294-43d9-a984-0a0be20a6dc8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBoking.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebarLu/SidebarLu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarLu/SidebarLu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/appointments/appointments.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/appointments/appointments.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/appointments/bookingSummary/bookingSummary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/appointments/bookingSummary/bookingSummary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/bookings/bookings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/bookings.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +45,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -52,6 +56,7 @@
     <option name="myCommands">
       <command value="npm install @fontsource/roboto" />
       <command value="npm install" />
+      <command value="npm install @mui/material @emotion/react @emotion/styled " />
       <command value="npm start" />
     </option>
   </component>
@@ -79,7 +84,21 @@
       <workItem from="1720832054722" duration="7041000" />
       <workItem from="1720846046000" duration="1400000" />
       <workItem from="1720847480224" duration="603000" />
-      <workItem from="1720867748376" duration="2634000" />
+      <workItem from="1720867748376" duration="13027000" />
+      <workItem from="1720960403349" duration="198000" />
+      <workItem from="1721086896477" duration="1347000" />
+      <workItem from="1721117138587" duration="1425000" />
+      <workItem from="1721126609066" duration="202000" />
+      <workItem from="1721127582035" duration="236000" />
+      <workItem from="1721136754643" duration="653000" />
+      <workItem from="1721186212405" duration="183000" />
+      <workItem from="1721192828496" duration="820000" />
+      <workItem from="1721232225071" duration="5987000" />
+      <workItem from="1721265298194" duration="4738000" />
+      <workItem from="1721369206401" duration="1688000" />
+      <workItem from="1721439594441" duration="3775000" />
+      <workItem from="1721443425525" duration="1038000" />
+      <workItem from="1721447897726" duration="4568000" />
     </task>
     <servers />
   </component>

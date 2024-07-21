@@ -29,7 +29,6 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
-
 import Chatbot from "./pages/cura/chatbot/chatbot";
 import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
 import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
@@ -121,6 +120,16 @@ function App() {
             /> */}
           </Route>
 
+          <Route
+            path="profileLu"
+            index
+            element={
+              // <ProtectedRoute>
+                <ProfileLu />
+              // </ProtectedRoute>
+            }
+          />
+
           <Route path="users">
             <Route
               index
@@ -199,14 +208,14 @@ function App() {
               }
             />
           </Route>
+
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
-          <Route path="chatbot" element={<Chatbot />} />
-          <Route path="chatbotN" element={<ChatbotNext/>} />
-          <Route path="chatbotL" element={<ChatbotLast/>} />
-          <Route path="chatbotthird" element={<ChatbotThird/>} />
-
         </Routes>
+
+ 
+
+
       </BrowserRouter>
     </div>
   );

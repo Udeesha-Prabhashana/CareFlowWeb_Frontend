@@ -1,5 +1,5 @@
 import React from "react";
-import "./widgetLu.scss";
+import "./widgetDoc.scss";
 
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
@@ -10,7 +10,7 @@ type WidgetProps = {
     type: "ong_appointments" | "upcom_appointments" | "miss_appointments" ;
 };
 
-const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
+const WidgetDoc: React.FC<WidgetProps> = ({ type }) => {
     let data: {
         title: string;
         isMoney: boolean;
@@ -26,9 +26,9 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
                 title: "Ongoing Appointments",
                 isMoney: false,
                 icon: <MedicalServicesOutlinedIcon className="icon"
-                    style={{
-                        color: "black",
-                    }}
+                                                   style={{
+                                                       color: "black",
+                                                   }}
                 />,
             };
             break;
@@ -37,10 +37,10 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
                 title: "Upcoming Appointments",
                 isMoney: false,
                 icon: <RestoreOutlinedIcon className="icon"
-                style={{
-                    color: "black",
-                    }}
-                />, 
+                                           style={{
+                                               color: "black",
+                                           }}
+                />,
             };
             break;
         case "miss_appointments":
@@ -48,9 +48,9 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
                 title: "Missed Appointments",
                 isMoney: true,
                 icon: <CancelOutlinedIcon className="icon"
-                    style={{
-                        color: "black"
-                    }}
+                                          style={{
+                                              color: "black"
+                                          }}
                 />,
             };
             break;
@@ -59,7 +59,7 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
     }
 
     return (
-        <div className="widgetLu">
+        <div className="widgetDoc">
             <div className="left">
                 <span className="title"> {data.title.split(' ')[0]} </span>
                 <span className="title"> {data.title.split(' ')[1]} </span>
@@ -74,4 +74,4 @@ const WidgetLu: React.FC<WidgetProps> = ({ type }) => {
     );
 };
 
-export default WidgetLu;
+export default WidgetDoc;
