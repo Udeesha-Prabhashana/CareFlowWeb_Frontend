@@ -43,12 +43,6 @@ const SidebarDoctor: React.FC = () => {
                             <span> My Bookings </span>
                         </li>
                     </Link>
-                    <Link to="/doctor/revenue_records" style={{ textDecoration: "none" }}>
-                        <li>
-                            <Person2OutlinedIcon className="iconDoc" />
-                            <span> Revenue Records </span>
-                        </li>
-                    </Link>
                     <Link to="/doctor/medical_records" style={{ textDecoration: "none" }}>
                         <li>
                             <Person2OutlinedIcon className="iconDoc" />
@@ -61,6 +55,14 @@ const SidebarDoctor: React.FC = () => {
                             <span> Patients </span>
                         </li>
                     </Link>
+                    <Link to="/doctor/revenue_records" style={{ textDecoration: "none" }}>
+                        <li>
+                            <Person2OutlinedIcon className="iconDoc" />
+                            <span> Revenue Records </span>
+                        </li>
+                    </Link>
+
+
                     {/*<Link to="" style={{ textDecoration: "none" }}>*/}
                     {/*    <li>*/}
                     {/*        <CreditCardIcon className="iconDoc" />*/}
