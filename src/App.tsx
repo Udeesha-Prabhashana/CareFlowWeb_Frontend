@@ -42,6 +42,9 @@ import Notifications from "./pages/notifications/notifications";
 import HomeDoc from "./pages/Doctor/home/homeDoc";
 import DoctorBookings from "./pages/Doctor/bookings/bookings";
 import DoctorViewBooking from "./pages/Doctor/bookings/viewBooking/viewBooking";
+import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
+import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
+import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -232,9 +235,9 @@ function App() {
           <Route path="doctor/home" element={<HomeDoc/>}/>
             <Route path="doctor/bookings" element={<DoctorBookings/>}/>
             <Route path="doctor/bookings/view_bookings" element={<DoctorViewBooking/>}/>
-            {/*<Route path="doctor/revenue_records" element={<DoctorRevenueRecords/>}/>*/}
-            {/*<Route path="doctor/medical_records" element={<MedicalRecords/>}/>*/}
-            {/*<Route path="doctor/patients" element={<Patients/>}/>*/}
+            <Route path="doctor/medical_records" element={<DoctorMedicalRecords/>}/>
+            <Route path="doctor/view_medicalRecords" element={<ViewMedicalRecords/>}/>
+            <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
 
 
         </Routes>
