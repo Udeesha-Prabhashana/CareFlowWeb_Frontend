@@ -29,19 +29,12 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
-
-import HistoryCards from "./pages/medical_history/medical_history";
-import Details from "./pages/medical_history/details/details";
-
+import Chatbot from "./pages/cura/chatbot/chatbot";
+import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
+import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
+import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 import ProfileLu from "./pages/profileLu/ProfileLu";
 
-import Settings from "./pages/settings/settings";
-
-import Notifications from "./pages/notifications/notifications";
-
-import HomeDoc from "./pages/Doctor/home/homeDoc";
-import DoctorBookings from "./pages/Doctor/bookings/bookings";
-import DoctorViewBooking from "./pages/Doctor/bookings/viewBooking/viewBooking";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -221,22 +214,11 @@ function App() {
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
 
-          <Route path="medical_history" element={<HistoryCards />} />
-          <Route path="medical_history/details" element={<Details />} />
 
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="settings" element={<Settings />} />
-
-
-
-          <Route path="doctor/home" element={<HomeDoc/>}/>
-            <Route path="doctor/bookings" element={<DoctorBookings/>}/>
-            <Route path="doctor/bookings/view_bookings" element={<DoctorViewBooking/>}/>
-            {/*<Route path="doctor/revenue_records" element={<DoctorRevenueRecords/>}/>*/}
-            {/*<Route path="doctor/medical_records" element={<MedicalRecords/>}/>*/}
-            {/*<Route path="doctor/patients" element={<Patients/>}/>*/}
-
-
+          <Route path="chatbot" element={<Chatbot/>}/>
+          <Route path="chatbotN" element={<ChatbotNext/>}/>
+          <Route path="chatbotL" element={<ChatbotLast/>}/>
+          <Route path="chatbotThird" element={<ChatbotThird/>}/>
         </Routes>
 
  
@@ -246,5 +228,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
