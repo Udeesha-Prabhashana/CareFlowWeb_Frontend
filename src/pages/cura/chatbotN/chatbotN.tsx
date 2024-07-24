@@ -27,9 +27,9 @@ const ChatbotN = () => {
               <button className="yes-button" onClick={handleButtonClick}>Yes</button>
               <button className="no-button">No</button>
             </div>
-            <div className="paragraphn">
+            <div className="paragraph">
               This AI medical bot is designed to provide information and support regarding general health and medical conditions. 
-              <br />It is not a substitute for professional medical advice, diagnosis, or treatment.
+              It is not a substitute for professional medical advice, diagnosis, or treatment.
             </div>
           </div>
         </div>

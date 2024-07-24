@@ -1,28 +1,37 @@
+.chatbotL {
+  display: flex;
+  height: 100vh;
+}
+
+.chatbotContainerL {
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+}
+
 .vector-imagein {
-  position: absolute; 
-  top: 170px; 
-  right: 1500px;
-  width: 40px; 
+  //position: absolute;
+  top: 170px;
+  right: 1520px;
+  width: 40px;
   height: auto;
+  margin-bottom: 20px;
 }
 
 .text-containerl {
-  position: absolute;
-  top: 250px; 
-  right: 650px; 
-  width: auto; 
-  font-size: 50px;
-  color: #5F2BCF;
-  line-height: 1.0;
-}
+  //position: absolute;
+  top: 250px;
+  right: 650px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 34px; /* 113.333% */
+  margin-bottom: 50px;
+  width: 525px;
+  height: 97px;
+  flex-shrink: 0;
+  color: var(--normal-hover, #5F2BCF);
+  font-size: 30px;
 
-.doctor-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; 
-  position: absolute;
-  top: 430px;
-  right: 1100px;
 }
 
 .doctor-card {
@@ -30,13 +39,19 @@
   align-items: center;
   justify-content: center;
   background-color: #855CDD;
-  border-radius: 10px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 5px;
-  width: 400px; 
-  cursor: pointer; 
+  cursor: pointer;
   color: #fff; 
-  text-align: center; 
+  //text-align: center;
+  top: 430px;
+  right: 1100px;
+  width: 453px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: var(--Spacing-sm, 10px);
+  background: var(--Normal-Normal, #855CDD);
+  margin-bottom: 20px;
 }
 
 .doctor-card:hover {
@@ -44,15 +59,17 @@
 }
 
 .paragraphl {
-  position: absolute;
-  top: 840px;
-  right: 200px;
-  font-size: 16px;
+  //position: absolute;
+  font-style: normal;
+  font-weight: 300;
+  margin: -52px 15% 10% 25% ;
   color: #000;
+  font-size: 20px;
+  line-height: 20px; /* 125% */
 }
 
 .select-container {
-  position: absolute;
+  //position: absolute;
   top: 765px; 
   right:  1100px; 
   width: auto; 
