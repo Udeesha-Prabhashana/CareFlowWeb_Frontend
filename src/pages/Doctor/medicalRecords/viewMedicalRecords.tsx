@@ -7,6 +7,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
+import recordImage from "../../../components/images/doctor/record2.png";
 
 interface MedicalRecords {
     date: string;
@@ -16,7 +18,6 @@ interface MedicalRecords {
 
 const medicalRecords: MedicalRecords[] = [
     { date: "23/05/2024", name: "Dr. Pradeep Rangana", title: "MBBS, Gastroenterologist" },
-
 ];
 
 const ViewMedicalRecords: React.FC = () => {
@@ -69,10 +70,13 @@ const ViewMedicalRecords: React.FC = () => {
                 </Box>
                 {index === 0 && (
                     <Box sx={{ mb: 2 }}>
-                        <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD', alignItems: 'center', height: '400px' }}>
-                            <CardContent sx={{ flex: 1 }}>
-                                Upload Medical Record
-                            </CardContent>
+                        <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD', alignItems: 'center', justifyContent: 'center' }}>
+                            <CardMedia
+                                component="img"
+                                alt="Upload Medical Record"
+                                image={recordImage}
+                                sx={{ width: '70%', height: 'auto' }}
+                            />
                         </Card>
                     </Box>
                 )}
