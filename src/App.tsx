@@ -9,7 +9,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { appointmentColumns, doctorColumns, hotelColumns, nurseColumns, patientColumns, receptionistColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
@@ -78,15 +78,59 @@ function App() {
           <Route path="/hotel" element={<List />} />
           <Route path="/hotels/:id" element={<Hotel />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="adminhome"
-            index
-            element={
-              // <ProtectedRoute>
+
+          <Route path="adminhome">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
                 <Home2 />
-              // </ProtectedRoute>
-            }
-          />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Doctors"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={doctorColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Nurses"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={nurseColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Appointments"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={appointmentColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Patients"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={patientColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Receptionists"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={receptionistColumns} />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
+          
+
           <Route
             path="userloginhome"
             index
