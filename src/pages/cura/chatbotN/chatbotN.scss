@@ -1,3 +1,14 @@
+.chatbot {
+  display: flex;
+  height: 100vh;
+}
+
+.chatbotContainer {
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+}
+
 .background-image {
   position: absolute;
   top: 0;
@@ -8,30 +19,31 @@
 }
 
 .vector-image {
-    position: absolute; 
-    top: 170px; 
-    right: 1500px;
+    //position: absolute;
+    top: 150px;
+    right: 72%;
     width: 40px; 
     height: auto;
   }
   
   .textn-container {
-    position: absolute;
-    top: 250px; 
-    right: 900px; 
-    width: auto; 
-    font-size: 50px;
+    //position: absolute;
+    margin: 14% 19% 0 2%;
+    width: auto;
     color:#5F2BCF;
-    line-height: 1.0;
+    line-height: 45px; /* 112.5% */
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
   }
 
   .button-container {
     display: flex;
     justify-content: space-around; 
-    position: absolute;
-    top: 550px;
-    right: 1290px; 
-    width: 300px; 
+    //position: absolute;
+    margin-top: 6% ;
+    margin-left: 0;
+    width: 230px;
   }
   
 .yes-button,
@@ -53,11 +65,12 @@
   color: #fff;
 }
   
-  .paragraphn {
+  .paragraph {
     font-family: roboto;
     font-size: 20px;
     position: absolute;
-    top: 620px;
-    right: 520px;
+    font-style: normal;
+    font-weight: 300;
+    margin: 11% 10% 4% 0 ;
   }
 

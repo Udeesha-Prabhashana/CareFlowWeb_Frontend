@@ -55,7 +55,7 @@ const SidebarLu: React.FC = () => {
               <span> Doctors </span>
             </li>
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/chatbot" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="iconLu" />
               <span> Chat with Cura </span>
