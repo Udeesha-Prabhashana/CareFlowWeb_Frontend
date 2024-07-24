@@ -1,7 +1,6 @@
 import React from "react";
 import NavbarLu from "../../components/navbarA/NavbarA";
 import "./ProfileLu.scss";
-import "../../tailwind.css";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";

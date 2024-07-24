@@ -9,7 +9,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { appointmentColumns, doctorColumns, hotelColumns, nurseColumns, patientColumns, receptionistColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
@@ -33,7 +33,22 @@ import Chatbot from "./pages/cura/chatbot/chatbot";
 import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
 import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
 import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
+
+import HistoryCards from "./pages/medical_history/medical_history";
+import Details from "./pages/medical_history/details/details";
 import ProfileLu from "./pages/profileLu/ProfileLu";
+
+
+import Settings from "./pages/settings/settings";
+
+import Notifications from "./pages/notifications/notifications";
+
+import HomeDoc from "./pages/Doctor/home/homeDoc";
+import DoctorBookings from "./pages/Doctor/bookings/bookings";
+import DoctorViewBooking from "./pages/Doctor/bookings/viewBooking/viewBooking";
+import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
+import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
+import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 
 
 interface ProtectedRouteProps {
@@ -68,15 +83,59 @@ function App() {
           <Route path="/hotel" element={<List />} />
           <Route path="/hotels/:id" element={<Hotel />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="adminhome"
-            index
-            element={
-              // <ProtectedRoute>
+
+          <Route path="adminhome">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
                 <Home2 />
-              // </ProtectedRoute>
-            }
-          />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Doctors"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={doctorColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Nurses"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={nurseColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Appointments"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={appointmentColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Patients"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={patientColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Receptionists"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={receptionistColumns} />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
+          
+
           <Route
             path="userloginhome"
             index
@@ -213,6 +272,21 @@ function App() {
 
           <Route path="appointments" element={<Appointments />} />
           <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+
+          <Route path="medical_history" element={<HistoryCards />} />
+          <Route path="medical_history/details" element={<Details />} />
+
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
+
+
+
+          <Route path="doctor/home" element={<HomeDoc/>}/>
+            <Route path="doctor/bookings" element={<DoctorBookings/>}/>
+            <Route path="doctor/bookings/view_bookings" element={<DoctorViewBooking/>}/>
+            <Route path="doctor/medical_records" element={<DoctorMedicalRecords/>}/>
+            <Route path="doctor/view_medicalRecords" element={<ViewMedicalRecords/>}/>
+            <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
 
 
           <Route path="chatbot" element={<Chatbot/>}/>

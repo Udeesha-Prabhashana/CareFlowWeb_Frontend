@@ -5,7 +5,6 @@ import React from "react";
 import WidgetDoc from "../../../components/widgetDoc/widgetDoc";
 // import List from "../../components/table/Table";
 import "./homeDoc.scss"
-// import "../../tailwind.css"
 import SidebarDoc from "../../../../src/components/sidebarDoctor/sidebarDoc";
 
 import Button from '@mui/material/Button';
