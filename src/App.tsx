@@ -29,11 +29,15 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
+import Chatbot from "./pages/cura/chatbot/chatbot";
+import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
+import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
+import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
-
 import ProfileLu from "./pages/profileLu/ProfileLu";
+
 
 import Settings from "./pages/settings/settings";
 
@@ -45,6 +49,7 @@ import DoctorViewBooking from "./pages/Doctor/bookings/viewBooking/viewBooking";
 import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
 import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -284,6 +289,10 @@ function App() {
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
 
 
+          <Route path="chatbot" element={<Chatbot/>}/>
+          <Route path="chatbotN" element={<ChatbotNext/>}/>
+          <Route path="chatbotL" element={<ChatbotLast/>}/>
+          <Route path="chatbotThird" element={<ChatbotThird/>}/>
         </Routes>
 
  
@@ -293,5 +302,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
