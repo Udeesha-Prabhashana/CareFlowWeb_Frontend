@@ -1,0 +1,69 @@
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
+
+.vector-image {
+  position: absolute; 
+  top: 170px; 
+  right: 1700px;
+  width: 40px; 
+  height: auto;
+}
+
+.text-container {
+  position: absolute;
+  top: 250px; /* Adjust top position */
+  right: 990px; /* Adjust right position */
+  width: auto; /* Adjust width as needed */
+  font-size: 60px;
+  color:#5F2BCF;
+  line-height: 1.0;
+}
+
+.search-bar {
+  position: absolute;
+  top: 58%; /* Adjust top position */
+  left: 40%; /* Adjust left position */
+  transform: translate(-50%, -50%); /* Centering trick */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 50px; /* Rounded corners */
+  width: 570px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  border: none;
+  background-color: #5F2BCF;
+  color: #fff;
+  padding: 8px 20px;
+  margin-left: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.paragraph {
+  font-family: roboto;
+  font-size: 20px;
+  position: absolute;
+  top: 600px;
+  right: 500px;
+}
+
