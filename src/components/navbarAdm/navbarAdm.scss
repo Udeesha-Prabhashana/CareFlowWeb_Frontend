@@ -1,4 +1,4 @@
-.navbar2{
+.navbar2ad{
     height: 60px;
     width: 1300px;
     border-bottom: 0.5px solid rgb(231, 228, 228);
@@ -9,18 +9,16 @@
     position: fixed;
     z-index: 1000;
     top: 0;
-    margin-left: 250px;
-    background-color: #fff;
+    margin-left: 230px;
 
-
-    .wrapper2{    
+    .wrapper2ad{    
         width: 1300px;
         display: flex; //use get vertical bar
         padding: 20px;
         align-items: center;
         justify-content: space-between;    //used to get space between items and search class.
 
-        .search2{
+        .search2ad{
             display: flex;
             align-items: center;
             border: 0.5px solid lightgray;
@@ -38,11 +36,11 @@
 
         }
 
-        .items2 {
+        .items2ad {
             display: flex;
             align-items: center;
 
-            .item2{
+            .item2ad{
                 display: flex;
                 align-items: center;
                 margin-right: 20px; //give right margin

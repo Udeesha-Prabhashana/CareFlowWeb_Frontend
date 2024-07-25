@@ -1,17 +1,18 @@
-.Sidebar{
-    flex: 3;
-    border-right: 0.5px solid rgb(230, 227, 227);    //use give side bar boder to the right
+.Sidebarad{
+    flex: 2;
+    border-right: 0.5px solid rgb(230, 227, 227);    //use give side bar boder to the right 
     min-height: 100vh;
     background-color: white;
     position: fixed;
     width: 250px;
-    .top{
+
+    .topad{
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
 
-        .logo{
+        .logoad{
             font-size: 20px;
             font-weight: bold;
             color: #6439ff;
@@ -23,7 +24,7 @@
         border: 0.5px solid rgb(230, 227, 227);
     }
 
-    .center{
+    .centerad{
         padding-left: 10px;
 
         ul{
@@ -31,8 +32,8 @@
             margin: 0;
             padding: 0;
 
-            .title {
-                font-size: 10px;
+            .titlead {
+                font-size: 12px;
                 font-weight: bold;
                 color: #999;
                 margin-top: 15px;
@@ -42,19 +43,20 @@
                 display: flex;
                 align-items: center;
                 padding: 5px;
+                margin-bottom: 8px;
                 cursor: pointer;
 
                 &:hover {
                     background-color: #ece8ff;    //when move the cusor ,then change the color
                 }
 
-                .icon {
-                    font-size: 18px;
+                .iconad {
+                    font-size: 20px;
                     color: #7451f8;
                 }
 
                 span {
-                    font-size: 13px;
+                    font-size: 15px;
                     font-weight: 600;
                     color: #888;
                     margin-left: 10px;
@@ -63,12 +65,12 @@
         }
     }
 
-    .bottom{
+    .bottomad{
         display: flex;
         align-items: center;
         margin: 10px;
 
-        .colorOption{
+        .colorOptionad{
             width: 20px;
             height: 20px;
             border-radius: 5px;
@@ -89,6 +91,4 @@
             }
         }
     }
-
-
 }

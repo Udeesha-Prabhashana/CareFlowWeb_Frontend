@@ -4,12 +4,15 @@
     .homeContainerA{ //homeContainer class is navbar 
 
         flex: 6;     //used to divide both sidebar and navbar 
+        margin-left: 250px;
     }
 
     .widgetsA , .chartsA{
         display: flex;    //use to get horizontal given datas
         padding: 20px;
         gap: 20px;   //get the space
+        margin-top: 60px;
+            z-index: 1; //used to get the top of the page
     }
 
     .chartsA{

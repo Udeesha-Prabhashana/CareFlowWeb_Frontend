@@ -9,7 +9,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { appointmentColumns, doctorColumns, hotelColumns, nurseColumns, patientColumns, receptionistColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
@@ -29,11 +29,15 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
+import Chatbot from "./pages/cura/chatbot/chatbot";
+import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
+import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
+import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
-
 import ProfileLu from "./pages/profileLu/ProfileLu";
+
 
 import Settings from "./pages/settings/settings";
 
@@ -47,6 +51,7 @@ import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 import ProfileDoc from "./pages/Doctor/profile/profileDoc";
 import PatientList from "./pages/Doctor/patients/patientlist";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -80,15 +85,59 @@ function App() {
           <Route path="/hotel" element={<List />} />
           <Route path="/hotels/:id" element={<Hotel />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="adminhome"
-            index
-            element={
-              // <ProtectedRoute>
+
+          <Route path="adminhome">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
                 <Home2 />
-              // </ProtectedRoute>
-            }
-          />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Doctors"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={doctorColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Nurses"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={nurseColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Appointments"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={appointmentColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Patients"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={patientColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Receptionists"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={receptionistColumns} />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
+          
+
           <Route
             path="userloginhome"
             index
@@ -245,6 +294,10 @@ function App() {
 
 
 
+          <Route path="chatbot" element={<Chatbot/>}/>
+          <Route path="chatbotN" element={<ChatbotNext/>}/>
+          <Route path="chatbotL" element={<ChatbotLast/>}/>
+          <Route path="chatbotThird" element={<ChatbotThird/>}/>
         </Routes>
 
  
@@ -254,5 +307,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

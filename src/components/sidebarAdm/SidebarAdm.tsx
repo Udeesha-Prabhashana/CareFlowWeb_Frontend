@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./sidebarLu.scss";
+import "./sidebarAdm.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard"; // SvgIcon components. It depends on @mui/material, which requires Emotion packages
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
@@ -15,104 +15,104 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 
-const SidebarLu: React.FC = () => {
+const SidebarAdm: React.FC = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(DarkModeContext)!;
 
   return (
-    <div className="SidebarLu">
-      <div className="topLu">
-        <Link to="/userloginhome" style={{ textDecoration: "none" }}>
+    <div className="Sidebarad">
+      <div className="topad">
+        <Link to="/adminhome" style={{ textDecoration: "none" }}>
           <span className="logoLu">Care Flow</span>
         </Link>
       </div>
       <hr /> {/* hr use to get line */}
-      <div className="centerLu">
+      <div className="centerad">
         <ul>
-          <p className="titleLu">MAIN</p>
-          <Link to="/userloginhome" style={{ textDecoration: "none" }}>
+          <p className="titlead">MAIN</p>
+          <Link to="/adminhome" style={{ textDecoration: "none" }}>
             <li>
-              <DashboardIcon className="iconLu" />
+              <DashboardIcon className="iconad" />
               <span> Home</span>
             </li>
           </Link>
-          <p className="titleLu">LIST</p>
-          <Link to="/channeling" style={{ textDecoration: "none" }}>
+          <p className="titlead">LIST</p>
+          <Link to="/adminhome/Appointments" style={{ textDecoration: "none" }}>
             <li>
-              <Person2OutlinedIcon className="iconLu" />
-              <span> New Booking </span>
-            </li>
-          </Link>
-          <Link to="/appointments/" style={{ textDecoration: "none" }}>
-            <li>
-              <Person2OutlinedIcon className="iconLu" />
+              <Person2OutlinedIcon className="iconad" />
               <span> Appointment </span>
             </li>
           </Link>
-          <Link to="/hotels" style={{ textDecoration: "none" }}>
+          <Link to="/adminhome/Patients" style={{ textDecoration: "none" }}>
             <li>
-              <Person2OutlinedIcon className="iconLu" />
+              <Person2OutlinedIcon className="iconad" />
+              <span> Patients </span>
+            </li>
+          </Link>
+          <Link to="/adminhome/Doctors" style={{ textDecoration: "none" }}>
+            <li>
+              <Person2OutlinedIcon className="iconad" />
               <span> Doctors </span>
             </li>
           </Link>
-          <Link to="/chatbot" style={{ textDecoration: "none" }}>
+          <Link to="/adminhome/Nurses" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="iconLu" />
-              <span> Chat with Cura </span>
+              <Person2OutlinedIcon className="iconad" />
+              <span> Nurse </span>
             </li>
           </Link>
-          <Link to="/medical_history" style={{ textDecoration: "none" }}>
+          <Link to="/adminhome/Receptionists " style={{ textDecoration: "none" }}>
             <li>
-              <CreditCardIcon className="iconLu" />
-              <span> Medical History</span>
+              <Person2OutlinedIcon className="iconad" />
+              <span> Receptionists </span>
             </li>
           </Link>
-          <p className="titleLu">USEFUL</p>
-          <Link to="/notifications" style={{ textDecoration: "none" }}>
+          <p className="titlead">USEFUL</p>
+          <Link to="/adminhome" style={{ textDecoration: "none" }}>
           <li>
-            <NotificationsNoneIcon className="iconLu" />
+            <NotificationsNoneIcon className="iconad" />
             <span> Notification</span>
           </li>
           </Link>
           <li>
-            <InsertChartIcon className="iconLu" />
+            <InsertChartIcon className="iconad" />
             <span> Stats</span>
           </li>
-          <p className="titleLu">SERVICE</p>
+          <p className="titlead">SERVICE</p>
           <li>
-            <SettingsSystemDaydreamOutlinedIcon className="iconLu" />
+            <SettingsSystemDaydreamOutlinedIcon className="iconad" />
             <span> System Health</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="iconLu" />
+            <PsychologyOutlinedIcon className="iconad" />
             <span> Logs</span>
           </li>
-          <Link to="/settings" style={{ textDecoration: "none" }}>
+          <Link to="/adminhome" style={{ textDecoration: "none" }}>
           <li>
-            <SettingsApplicationsIcon className="iconLu" />
+            <SettingsApplicationsIcon className="iconad" />
             <span> Setting</span>
           </li>
           </Link>
-          <p className="titleLu">USER</p>
-          <Link to="/profileLu" style={{ textDecoration: "none" }}>
+          <p className="titlead">USER</p>
+          <Link to="/adminhome" style={{ textDecoration: "none" }}>
           <li>
-            <AccountCircleOutlinedIcon className="iconLu" />
+            <AccountCircleOutlinedIcon className="iconad" />
             <span> Profile</span>
             </li>
             </Link>
           <li>
-            <ExitToAppIcon className="iconLu" />
+            <ExitToAppIcon className="iconad" />
             <span onClick={() => navigate("/login")}> Logout</span>
           </li>
         </ul>
       </div>
-      <div className="bottomLu"> {/*give choose color options in dashboard*/}
+      <div className="bottomad"> {/*give choose color options in dashboard*/}
         <div
-          className="colorOptionLu"
+          className="colorOptionad"
           onClick={() => dispatch({ type: "LIGHT" })}
         ></div>
         <div
-          className="colorOptionLu"
+          className="colorOptionad"
           onClick={() => dispatch({ type: "DARK" })}
         ></div>
       </div>
@@ -120,4 +120,4 @@ const SidebarLu: React.FC = () => {
   );
 };
 
-export default SidebarLu;
+export default SidebarAdm;
