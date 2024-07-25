@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/images/doctor/record1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/images/doctor/record2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/declarations.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/profile/profileDoc.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/profile/profileDoc.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +22,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="curaedits" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">

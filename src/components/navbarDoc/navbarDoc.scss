@@ -1,4 +1,4 @@
-.navbarDoc{
+.navbarDoc {
   height: 50px;
   width: 1300px;
   border-bottom: 0.5px solid rgb(231, 228, 228);
@@ -9,54 +9,53 @@
   position: fixed;
   z-index: 1000;
   top: 0;
-  //margin-left: 250px;
+  background-color: #fff; // Add this line to make the background white
 
-  .wrapperDoc{
+  .wrapperDoc {
     width: 1300px;
     display: flex; //use get vertical bar
     padding: 50px;
     align-items: center;
     justify-content: space-between;    //used to get space between items and search class
 
-    .searchDoc{
+    .searchDoc {
       display: flex;
       align-items: center;
       border: 0.5px solid lightgray;
       padding: 3px;
 
-      input{
+      input {
         border: none;
         outline: none;
         background: transparent;
 
-        &::placeholder{
+        &::placeholder {
           font-size: 12px;
         }
       }
-
     }
 
     .itemsDoc {
       display: flex;
       align-items: center;
 
-      .itemDoc{
+      .itemDoc {
         display: flex;
         align-items: center;
         margin-right: 20px; //give right margin
         position: relative;
 
-        .iconDoc{
+        .iconDoc {
           font-size: 20px;
         }
 
-        .avatarDoc{
+        .avatarDoc {
           width: 30px;
           height: 30px;
           border-radius: 50px;
         }
 
-        .counterDoc{
+        .counterDoc {
           width: 15px;
           height: 15px;
           background-color: red;
@@ -73,6 +72,5 @@
         }
       }
     }
-
   }
 }

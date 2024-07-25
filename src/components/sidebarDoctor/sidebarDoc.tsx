@@ -51,12 +51,12 @@ const SidebarDoctor: React.FC = () => {
                             <span>Revenue Records</span>
                         </li>
                     </Link>
-                    {/*<Link to="/doctor/medical_records" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/doctor/medical_records")}>*/}
-                    {/*    <li className={activeLink === "/doctor/medical_records" ? "activeDoc" : ""}>*/}
-                    {/*        <InsertChartIcon className="iconDoc" />*/}
-                    {/*        <span>Medical Records</span>*/}
-                    {/*    </li>*/}
-                    {/*</Link>*/}
+                    <Link to="/doctor/patients" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/doctor/patients")}>
+                        <li className={activeLink === "/doctor/patients" ? "activeDoc" : ""}>
+                            <InsertChartIcon className="iconDoc" />
+                            <span>Patients</span>
+                        </li>
+                    </Link>
                     <Link to="/doctor/profile" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/doctor/profile")}>
                         <li className={activeLink === "/doctor/profile" ? "activeDoc" : ""}>
                             <AccountCircleOutlinedIcon className="iconDoc" />
