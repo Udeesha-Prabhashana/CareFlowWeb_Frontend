@@ -95,14 +95,24 @@ function App() {
                 // </ProtectedRoute>
               }
             />
-            <Route
-              path="Doctors"
-              element={
+            <Route path="Doctors">
+              <Route
+                index
+                element={
                 // <ProtectedRoute>
                 <List2 columns={doctorColumns} />
                 // </ProtectedRoute>
               }
-            />
+              />
+              <Route
+                path="new"
+                element={
+                  // <ProtectedRoute>
+                  <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                  // </ProtectedRoute>
+                }
+                />
+            </Route>
             <Route
               path="Nurses"
               element={

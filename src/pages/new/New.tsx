@@ -5,7 +5,8 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { Input } from "../../formSource";
-
+import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
+import { toast } from "react-toastify";
 
 interface NewProps {
   inputs: Input[];
@@ -27,38 +28,64 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
       data.append("file", file);
     }
     data.append("upload_preset", "upload");
+    
     try {
-      const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/dromuhnud/image/upload",
-        data
-      );
+      // Retrieve token from local storage
+      const user = localStorage.getItem("user");
+      let token = null;
+      if (user) {
+        try {
+          const parsedUser = JSON.parse(user);
+          token = parsedUser.access_token;
+        } catch (err) {
+          console.error("Failed to parse user from local storage", err);
+        }
+      }
 
-      const { url } = uploadRes.data;
+      // Create headers with authorization if token is available
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+      // Optional: If you need to upload a file, uncomment this section
+      // const uploadRes = await axios.post(
+      //   "https://api.cloudinary.com/v1_1/dromuhnud/image/upload",
+      //   data
+      // );
+      // const { url } = uploadRes.data;
 
       const newUser = {
         ...info,
-        img: url,
+        userPassword: "12345",
+        userRole: "ROLE_DOCTOR",
       };
 
       console.log("AAA", newUser);
 
-      await axios.post("/auth/register", newUser);
-    } catch (err) {
-      console.log(err);
-    }
+      await axios.post("http://localhost:8080/sign-up", newUser);
+      // Show success toast
+    toast.success("Doctor added successfully!");
+  } catch (err: any) {
+    // Log the error to the console
+    console.error(err);
+
+    // Extract the error message from the response
+    const errorMessage = err.response?.data?.error || "An unexpected error occurred";
+
+    // Show error toast with the extracted message
+    toast.error(errorMessage);
+  }
   };
 
   console.log(info);
   return (
-    <div className="new">
-      <Sidebar />
-      <div className="newContainer">
+    <div className="newD">
+      <SidebarAdm />
+      <div className="newContainerD">
         <Navbar />
-        <div className="top">
+        <div className="topD">
           <h1>{title}</h1>
         </div>
-        <div className="bottom">
-          <div className="left">
+        <div className="bottomD">
+          {/* <div className="leftD">
             <img
               src={
                 file
@@ -67,12 +94,12 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
               }
               alt=""
             />
-          </div>
-          <div className="right">
+          </div> */}
+          <div className="rightD">
             <form>
-              <div className="formInput">
+              {/* <div className="formInputD">
                 <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
+                  Image: <DriveFolderUploadOutlinedIcon className="iconD" />
                 </label>
                 <input
                   type="file"
@@ -80,21 +107,21 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
                   onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
                   style={{ display: "none" }}
                 />
-              </div>
+              </div> */}
 
               {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
+                <div className="formInputD" key={input.id}>
                   <label>{input.label}</label>
                   <input
                     onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
                     id={input.id ? String(input.id) : undefined} // Ensure id is string or undefined
-                    />
+                  />
                 </div>
               ))}
-              <button onClick={handleClick}>Send</button>
             </form>
+            <button className="buttonD" onClick={handleClick}>Send</button>
           </div>
         </div>
       </div>
