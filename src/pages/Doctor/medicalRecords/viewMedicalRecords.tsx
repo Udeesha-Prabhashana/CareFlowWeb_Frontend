@@ -7,16 +7,31 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
+import CardMedia from '@mui/material/CardMedia';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import recordImage from '../../../components/images/doctor/record1.png';
 
 interface MedicalRecords {
-    date: string;
-    name: string;
-    title: string;
+    patientName: string;
+    age: number;
+    gender: string;
+    knownIllnesses: string;
+    knownAllergies: string;
 }
 
 const medicalRecords: MedicalRecords[] = [
-    { date: "23/05/2024", name: "Dr. Pradeep Rangana", title: "MBBS, Gastroenterologist" },
-
+    {
+        patientName: "Ravinda Alahakoon",
+        age: 35,
+        gender: "male",
+        knownIllnesses: "Asthma, cancer",
+        knownAllergies: "none"
+    },
 ];
 
 const ViewMedicalRecords: React.FC = () => {
@@ -25,57 +40,27 @@ const ViewMedicalRecords: React.FC = () => {
         return medicalRecords.map((record, index) => (
             <React.Fragment key={index}>
                 <Box sx={{ mb: 2 }}>
-                    <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD', alignItems: 'center', height: '80px' }}>
-                        <CardContent sx={{ flex: 1 }}>
-                            <Typography
-                                variant="h5"
-                                component="div"
-                                sx={{
-                                    color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
-                                    fontSize: '30px',
-                                    fontStyle: 'normal',
-                                    fontWeight: '700',
-                                    lineHeight: '20px',
-                                }}
-                            >
-                                {record.date}
-                            </Typography>
+                    <Card variant="outlined" sx={{ border: '1px solid #855CDD' }}>
+                        <CardContent>
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <Typography className="line">Patient's Name :</Typography>
+                                    <Typography className="line">Age :</Typography>
+                                    <Typography className="line">Gender :</Typography>
+                                    <Typography className="line">Known Illnesses :</Typography>
+                                    <Typography className="line">Known Allergies :</Typography>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Typography className="line"><b>{record.patientName}</b></Typography>
+                                    <Typography className="line"><b>{record.age} Years</b></Typography>
+                                    <Typography className="line"><b>{record.gender}</b></Typography>
+                                    <Typography className="line"><b>{record.knownIllnesses}</b></Typography>
+                                    <Typography className="line"><b>{record.knownAllergies}</b></Typography>
+                                </Grid>
+                            </Grid>
                         </CardContent>
-                        <CardActions sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', mr: 2 }}>
-                            <Typography
-                                sx={{
-                                    color: '#000',
-                                    fontSize: '20px',
-                                    fontStyle: 'normal',
-                                    fontWeight: '700',
-                                    lineHeight: '20px',
-                                }}
-                            >
-                                {record.name}
-                            </Typography>
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    fontSize: '16px',
-                                    fontStyle: 'normal',
-                                    fontWeight: '300',
-                                    lineHeight: '20px',
-                                }}
-                            >
-                                {record.title}
-                            </Typography>
-                        </CardActions>
                     </Card>
                 </Box>
-                {index === 0 && (
-                    <Box sx={{ mb: 2 }}>
-                        <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD', alignItems: 'center', height: '400px' }}>
-                            <CardContent sx={{ flex: 1 }}>
-                                Upload Medical Record
-                            </CardContent>
-                        </Card>
-                    </Box>
-                )}
             </React.Fragment>
         ));
     };
@@ -90,9 +75,76 @@ const ViewMedicalRecords: React.FC = () => {
                     <div className="subContentDocMRview">
                         Select a Previous Appointment to See History
                     </div>
-
                     <div className="cardsContainer">
                         {getCards()}
+                    </div>
+                    <div>
+                        <Box sx={{ mb: 2 }}>
+                            <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1-content"
+                                    id="panel1-header"
+                                >
+                                    2024/04/08
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        Medical Record
+                                    </Typography>
+                                    <CardMedia
+                                        component="img"
+                                        sx={{ width: '50%', height: 'auto' }}
+                                        image={recordImage}
+                                        alt="Medical Record 1"
+                                    />
+                                </AccordionDetails>
+                            </Accordion>
+                        </Box>
+                        <Box sx={{ mb: 2 }}>
+                            <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel2-content"
+                                    id="panel2-header"
+                                >
+                                    2023/12/09
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        Medical Record 2
+                                    </Typography>
+                                    <CardMedia
+                                        component="img"
+                                        sx={{ width: '50%', height: 'auto' }}
+                                        image={recordImage}
+                                        alt="Medical Record 2"
+                                    />
+                                </AccordionDetails>
+                            </Accordion>
+                        </Box>
+                        <Box sx={{ mb: 2 }}>
+                            <Accordion  sx={{ border: '1px solid #855CDD' }}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel3-content"
+                                    id="panel3-header"
+                                >
+                                    2023/09/23
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        Medical record 3
+                                    </Typography>
+                                    <CardMedia
+                                        component="img"
+                                        sx={{ width: '50%', height: 'auto' }}
+                                        image={recordImage}
+                                        alt="Medical Record 3"
+                                    />
+                                </AccordionDetails>
+                            </Accordion>
+                        </Box>
                     </div>
                 </div>
             </div>
