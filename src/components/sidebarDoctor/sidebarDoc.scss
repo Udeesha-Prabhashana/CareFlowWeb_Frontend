@@ -1,53 +1,47 @@
-.SidebarDoc{
+.SidebarDoc {
   flex: 2;
-  border-right: 0.5px solid rgb(230, 227, 227);    //use give side bar boder to the right
+  border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
   background-color: white;
   position: fixed;
   width: 250px;
 
-  .topDoc{
+  .topDoc {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .logoDoc{
+    .logoDoc {
       font-size: 20px;
       font-weight: bold;
       color: #6439ff;
     }
   }
 
-  .hr{
+  hr {
     height: 0;
     border: 0.5px solid rgb(230, 227, 227);
   }
 
-  .centerDoc{
+  .centerDoc {
     padding-left: 10px;
 
-    ul{
+    ul {
       list-style: none;
       margin: 0;
       padding: 0;
 
-      .titleDoc {
-        font-size: 12px;
-        font-weight: bold;
-        color: #999;
-        margin-top: 15px;
-        margin-bottom: 5px;
-      }
       li {
         display: flex;
         align-items: center;
-        padding: 5px;
+        padding: 10px;
         margin-bottom: 8px;
         cursor: pointer;
+        transition: background-color 0.3s;
 
-        &:hover {
-          background-color: #ece8ff;    //when move the cusor ,then change the color
+        &.activeDoc, &:hover {
+          background-color: #ece8ff;
         }
 
         .iconDoc {
@@ -61,33 +55,45 @@
           color: #888;
           margin-left: 10px;
         }
+
+        .notificationBadge {
+          background-color: red;
+          color: white;
+          border-radius: 50%;
+          padding: 2px 6px;
+          font-size: 12px;
+          margin-left: auto;
+        }
       }
     }
   }
 
-  .bottomDoc{
+  .bottomDoc {
     display: flex;
     align-items: center;
-    margin: 10px;
+    padding: 10px;
 
-    .colorOptionDoc{
-      width: 20px;
-      height: 20px;
-      border-radius: 5px;
-      border: 1px solid #7451f8;
-      cursor: pointer;
-      margin: 5px;
+    .profileDoc {
+      display: flex;
+      align-items: center;
 
-      &:nth-child(1) {
-        background-color: whitesmoke;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
       }
 
-      &:nth-child(2) {
-        background-color: #333;
-      }
+      .detailsDoc {
+        .nameDoc {
+          font-size: 14px;
+          font-weight: 600;
+        }
 
-      &:nth-child(3) {
-        background-color: darkblue;
+        .emailDoc {
+          font-size: 12px;
+          color: #888;
+        }
       }
     }
   }
