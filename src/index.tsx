@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from './context/AuthContext';
 import { DarkModeContextProvider } from './context/darkModeContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const rootElement = document.getElementById('root');
 
@@ -16,6 +19,7 @@ if (rootElement) {
       <AuthContextProvider>
         <DarkModeContextProvider>
           <SearchContextProvider>
+            <ToastContainer />
             <App />
           </SearchContextProvider>
         </DarkModeContextProvider>
