@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SidebarLu from "../../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../../components/navbarA/NavbarA";
-import "./chatbot.scss";
+import "../chatbot/chatbot.scss"
 
 const Chatbot = () => {
   const navigate = useNavigate();
@@ -28,10 +28,10 @@ const Chatbot = () => {
             <input type="text" placeholder="I have a Back Pain for 7 Days. Which Doctor is good for me?" />
             <button onClick={handleButtonClick}>Ask Cura</button>
           </div>
-          <div className="paragraph">
-            This AI medical bot is designed to provide information and support regarding general health and medical conditions.
-            <br />It is not a substitute for professional medical advice, diagnosis, or treatment.
-          </div>
+          {/*<div className="paragraph">*/}
+          {/*  This AI medical bot is designed to provide information and support regarding general health and medical conditions.*/}
+          {/*  It is not a substitute for professional medical advice, diagnosis, or treatment.*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>

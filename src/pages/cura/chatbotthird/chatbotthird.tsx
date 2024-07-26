@@ -14,20 +14,24 @@ const ChatbotThird = () => {
         <img src="/images/bg.png" alt="Background" className="background-image" />
         <img src="/images/Vector.png" alt="Vector" className="vector-image" />
           <div className="text-containerth">
-            Are you sure you want to make an appointment <br /> with Dr.Kasun Senanayake?
+            Are you sure you want to make an appointment with Dr.Kasun Senanayake?
           </div>
           <div className="booking-cards">
             <div className="booking-card">
               <div className="yes">
-                <h3>yes</h3>
+                <h3>Yes</h3>
               </div>
             </div>
             <div className="booking-card">
               <div className="no">
-                <h3>no</h3>
+                <h3>No</h3>
               </div>
             </div>
           </div>
+          <div className="paragraph">
+          This AI medical bot is designed to provide information and support regarding general health and medical conditions.
+          It is not a substitute for professional medical advice, diagnosis, or treatment.
+        </div>
         </div>
       </div>
     </div>

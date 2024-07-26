@@ -11,7 +11,7 @@ const DoctorViewBooking: React.FC = () => {
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
-        navigate("/doctor/medical_records");
+        navigate("/doctor/view_medicalRecords");
     };
 
     return (

@@ -13,24 +13,43 @@ const useFetch = <T = unknown>(url: string): FetchResult<T> => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+  const getTokenFromLocalStorage = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
       try {
-        const res = await axios.get<T>(url);
-        setData(res.data);
-      } catch (err: any) {
-        setError(err.message || "Unknown error");
+        const parsedUser = JSON.parse(user);
+        return parsedUser.access_token;
+      } catch (e) {
+        console.error("Failed to parse user from local storage", e);
+        return null;
       }
-      setLoading(false);
-    };
+    }
+    return null;
+  };
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const token = getTokenFromLocalStorage();
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      const res = await axios.get<T>(url, { headers });
+      setData(res.data);
+    } catch (err: any) {
+      setError(err.message || "Unknown error");
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
     fetchData();
   }, [url]);
 
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get<T>(url);
+      const token = getTokenFromLocalStorage();
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      const res = await axios.get<T>(url, { headers });
       setData(res.data);
     } catch (err: any) {
       setError(err.message || "Unknown error");

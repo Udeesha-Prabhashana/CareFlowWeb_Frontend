@@ -7,39 +7,40 @@ export interface Input {
 
 export const userInputs: Input[] = [
   {
-    id: "username",
+    id: "name",
+    label: "Full Name",
+    type: "text",
+    placeholder: "john_doe",
+  },
+  {
+    id: "userName",
     label: "Username",
     type: "text",
     placeholder: "john_doe",
   },
   {
-    id: "email",
+    id: "userEmail",
     label: "Email",
     type: "email",
     placeholder: "john_doe@gmail.com",
   },
   {
-    id: "phone",
+    id: "userMobileNo",
     label: "Phone",
     type: "text",
     placeholder: "+1 234 567 89",
   },
   {
-    id: "password",
-    label: "Password",
-    type: "password",
-  },
-  {
-    id: "country",
-    label: "Country",
+    id: "userSpecialization",
+    label: "Specialization",
     type: "text",
     placeholder: "USA",
   },
   {
-    id: "city",
-    label: "City",
+    id: "userAddress",
+    label: "Address",
     type: "text",
-    placeholder: "USA",
+    placeholder: "Amar streat, colombo 7.",
   },
 ];
 

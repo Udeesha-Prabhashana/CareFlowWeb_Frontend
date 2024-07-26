@@ -59,6 +59,8 @@ const Login = () => {
 
       if (res.data.user_role === "ROLE_MANAGER") {
         navigate("/");
+      } else if (res.data.user_role === "ROLE_ADMIN") {
+        navigate("/adminhome");
       } else if (res.data.res.user_role === 2) {
         navigate("/adminhome");
       }

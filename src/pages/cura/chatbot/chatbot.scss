@@ -1,3 +1,14 @@
+.chatbot {
+  display: flex;
+  height: 100vh;
+}
+
+.chatbotContainer {
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+}
+
 .background-image {
   position: absolute;
   top: 0;
@@ -16,9 +27,8 @@
 }
 
 .text-container {
-  position: absolute;
-  top: 250px; /* Adjust top position */
-  right: 990px; /* Adjust right position */
+  //position: fixed;
+  margin: 10% 2%;
   width: auto; /* Adjust width as needed */
   font-size: 60px;
   color:#5F2BCF;
@@ -26,17 +36,16 @@
 }
 
 .search-bar {
-  position: absolute;
-  top: 58%; /* Adjust top position */
-  left: 40%; /* Adjust left position */
+  //position: absolute;
+  margin: 12% 54%;
   transform: translate(-50%, -50%); /* Centering trick */
   display: flex;
-  align-items: center;
+  //align-items: end;
   justify-content: center;
   padding: 20px;
   background-color: #fff;
   border-radius: 50px; /* Rounded corners */
-  width: 570px;
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
 }
 
@@ -45,7 +54,9 @@
   border: none;
   outline: none;
   padding: 8px;
-  font-size: 16px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 .search-bar button {
@@ -60,10 +71,15 @@
 }
 
 .paragraph {
-  font-family: roboto;
+
   font-size: 20px;
   position: absolute;
-  top: 600px;
-  right: 500px;
+  font-style: normal;
+  font-weight: 300;
+  //margin: 1% 20% 40% 10% ;
+
+
+
+
 }
 
