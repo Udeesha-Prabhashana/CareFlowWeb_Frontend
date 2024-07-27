@@ -51,6 +51,7 @@ import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 import ProfileDoc from "./pages/Doctor/profile/profileDoc";
 import PatientList from "./pages/Doctor/patients/patientlist";
+import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
 
 interface ProtectedRouteProps {
@@ -82,8 +83,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/hotel" element={<List />} />
-          <Route path="/hotels/:id" element={<Hotel />} />
+          <Route path="/doctorlistNlu" element={<List />} />
+          <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
           <Route path="/login" element={<Login />} />
 
           <Route path="adminhome">
