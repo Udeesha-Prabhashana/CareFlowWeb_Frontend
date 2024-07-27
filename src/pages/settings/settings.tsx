@@ -70,6 +70,20 @@ function Settings(){
 
                     <Box sx={{width: "100%", display:"flex" , flexDirection:"row", justifyContent:"space-between", pt: 3}}>
                         <Box sx={{width:"40%", marginBottom: 2}}>
+                            <Typography variant="h3" sx={{fontSize:18 }}>Password</Typography>
+                            <Typography variant="h3" sx={{fontSize:11, my: 0.5 ,color:"#808080"}}>Change your password</Typography>
+                        </Box>
+
+                        <Box sx={{width:"30%", display:"flex" , flexDirection:"row"}}>
+                        <Typography variant="h3" sx={{fontSize:30, alignContent:"center" }}>............</Typography>
+                            
+                            
+                        </Box>
+                    </Box>
+                    <Divider sx={{width:"600px"}} variant="fullWidth"/>
+
+                    <Box sx={{width: "100%", display:"flex" , flexDirection:"row", justifyContent:"space-between", pt: 3}}>
+                        <Box sx={{width:"40%", marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Privacy Policy</Typography>
                         </Box>
                     </Box>
