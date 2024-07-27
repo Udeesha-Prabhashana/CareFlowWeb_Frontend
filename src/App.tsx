@@ -54,9 +54,27 @@ import PatientList from "./pages/Doctor/patients/patientlist";
 import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
 
+
 import HomeNurse from "./pages/Nurse/home/homeNurse";
 import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
+
+import HomeRec from "./pages/Receptionist/homeRec/HomeRec";
+import RBookings from "./pages/Receptionist/RBookings/RBookings";
+import PaidList from "./pages/Receptionist/RBookingsPaidList/RBookingsPaidList";
+import PaidSummary from "./pages/Receptionist/RBookingsPaidSummary/RBookingsPaidSummary";
+import UnpaidList from "./pages/Receptionist/RBookingsUnpaidList/RBookingsUnpaidList";
+import UnpaidSummary from "./pages/Receptionist/RBookingsUnpaidSummary/RBookingsUnpaidSummary";
+
+import RBookingsAdd from "./pages/Receptionist/RBookingsAdd/RBookingsAdd";
+
+import RDoctors from "./pages/Receptionist/RDoctors/RDoctors";
+import RDoctorsView from "./pages/Receptionist/RDoctorsView/RDoctorsView";
+import RProfile from "./pages/Receptionist/RProfile/RProfile";
+import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
+import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
+import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -318,6 +336,26 @@ function App() {
           <Route path="chatbotN" element={<ChatbotNext/>}/>
           <Route path="chatbotL" element={<ChatbotLast/>}/>
           <Route path="chatbotThird" element={<ChatbotThird/>}/>
+
+          
+          <Route path="receptionist/home" element={<HomeRec/>}/>          
+          <Route path="receptionist/bookings" element={<RBookings/>}/>
+          <Route path="receptionist/bookings/paidlist" element={<PaidList/>}/>
+          <Route path="receptionist/bookings/paidsummary" element={<PaidSummary/>}/>
+          <Route path="receptionist/bookings/unpaidlist" element={<UnpaidList/>}/>
+          <Route path="receptionist/bookings/unpaidsummary" element={<UnpaidSummary/>}/>
+          <Route path="receptionist/bookings/addnewbooking" element={<RBookingsAdd/>}/>
+          <Route path="receptionist/doctors">
+            <Route index element={<RDoctors />} />
+            <Route path=":doctorId" element={<RDoctorsView />} />
+          </Route>
+
+          <Route path="receptionist/bookings/addnewbooking/doctors" element={<RBookingsDoctors/>}/>
+          <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
+          <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
+
+
+          <Route path="receptionist/profile" element={<RProfile/>}/>
         </Routes>
 
  
