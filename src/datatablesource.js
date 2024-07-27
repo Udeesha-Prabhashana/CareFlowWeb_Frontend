@@ -90,7 +90,7 @@ export const roomColumns = [
 ];
 
 export const doctorColumns = [
-  { field: "doctor_id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 70 },
   {
     field: "name",
     headerName: "Name",
@@ -102,12 +102,12 @@ export const doctorColumns = [
     width: 150,
   },
   {
-    field: "phone",
+    field: "mobileNumber",
     headerName: "Phone",
     width: 150,
   },
   {
-    field: "email",
+    field: "emailId",
     headerName: "Email",
     width: 200,
   },

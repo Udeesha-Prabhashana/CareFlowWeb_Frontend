@@ -49,7 +49,7 @@ const SidebarLu: React.FC = () => {
               <span> Appointment </span>
             </li>
           </Link>
-          <Link to="/hotels" style={{ textDecoration: "none" }}>
+          <Link to="/userloginhome" style={{ textDecoration: "none" }}>
             <li>
               <Person2OutlinedIcon className="iconLu" />
               <span> Doctors </span>

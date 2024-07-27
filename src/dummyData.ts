@@ -31,19 +31,19 @@ export const dummyData = [
 
 export const doctorDummyData = [
   {
-    doctor_id: 1,
+    id: 1,
     name: "Dr. John Doe",
     specialization: "Cardiology",
-    phone: "123-456-7890",
-    email: "johndoe@example.com",
+    mobileNumber: "123-456-7890",
+    emailId: "johndoe@example.com",
     address: "123 Main St, Springfield",
   },
   {
     doctor_id: 2,
     name: "Dr. Jane Smith",
     specialization: "Dermatology",
-    phone: "987-654-3210",
-    email: "janesmith@example.com",
+    mobileNumber: "987-654-3210",
+    emailId: "janesmith@example.com",
     address: "456 Elm St, Shelbyville",
   },
   // Add more dummy data as needed

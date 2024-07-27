@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
 
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { city: destination, dates, options } });
-    navigate("/hotel", { state: { destination, dates, options } });
+    navigate("/doctorlistNlu", { state: { destination, dates, options } });
   };
 
   const handleSpecializationChange = (e: ChangeEvent<HTMLSelectElement>) => {

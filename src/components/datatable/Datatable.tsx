@@ -40,7 +40,7 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
   const path2 = location.pathname.split("/")[2];
 
   const [list, setList] = useState<DataItem[]>([]);
-  const { data, loading, error } = useFetch<DataItem[]>(`http://127.0.0.1:5000/${path2}`);
+  const { data, loading, error } = useFetch<DataItem[]>(`http://localhost:8080/api/${path2}`);
 
   useEffect(() => {
     console.log("Fetched Data:", data); // Debugging: Check fetched data

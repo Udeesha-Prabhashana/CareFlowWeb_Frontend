@@ -1,5 +1,5 @@
 .searchItem {
-    border: 1px solid rgb(186, 108, 231);
+    border: 1px solid #855CDD;
     padding: 10px;
     border-radius: 5px;
     display: flex;
@@ -101,7 +101,7 @@
  
 
 .siCheckButton {
-    background-color: rgb(186, 108, 231);
+    background-color: #855CDD;
     color: white;                
     font-weight: bold;
     padding: 10px 5px;

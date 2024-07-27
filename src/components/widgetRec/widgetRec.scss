@@ -1,0 +1,62 @@
+.widgetRec{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;     //use to divide similary given boxs  
+    padding: 10px;
+    // -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);   //give the box boder useing Box-Shadow CSS Generator
+    // box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    border-radius: 10px;
+    height: 140px;  //give height
+    background-color: #EEE7FF;
+
+    .right-all{
+        display: flex;
+        align-items: center;
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center items vertically */
+        height: 100%; /* Ensure the container takes the full height of its parent */
+
+        .title{
+            font-weight: 500;
+            font-size: 20px;
+            color: rgb(0, 0, 0); 
+            padding-left: 5px;
+ 
+         }
+ 
+         .subtitle{
+             font-weight: lighter;
+             font-size: 16px;
+             padding-left: 5px;
+         }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center items vertically */
+        align-items: center;
+        height: 100%; /* Ensure the container takes the full height of its parent */
+
+        .curr_No, .room_No{
+            font-size: 25px;
+            font-weight: 600;
+            color: #855CDD;
+
+        }
+        .text {
+            font-size: 12px;
+            margin-top: -3px; /* Adjust as needed */
+          }
+
+        .vertical-line {
+            width: 2px;
+            height: 100%;
+            background-color: black;
+            margin: 0 16px; /* Add padding around the line */
+          }
+    }
+}
