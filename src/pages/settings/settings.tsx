@@ -148,7 +148,7 @@ function Settings(){
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Language</Typography>
-                            <Typography variant="h3" sx={{fontSize:11, my: 0.5 ,color:"#808080"}}>Select your preffered language</Typography>
+                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your preffered language</Typography>
                         </Box>
 
                         <Box sx={{width:"20%", marginTop: 2}}>
@@ -163,7 +163,7 @@ function Settings(){
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Theme</Typography>
-                            <Typography variant="h3" sx={{fontSize:11, my: 0.5 ,color:"#808080"}}>Select your preffered Theme</Typography>
+                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your preffered Theme</Typography>
                         </Box>
 
                         <Box sx={{width:"20%", marginTop: 2}}>
@@ -178,12 +178,17 @@ function Settings(){
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Password</Typography>
-                            <Typography variant="h3" sx={{fontSize:11, my: 0.5 ,color:"#808080"}}>.....................</Typography>
+                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>.....................</Typography>
                         </Box>
 
                         <Box sx={{width:"20%", marginTop: 2}}>
-                            <Button variant="outlined">Change</Button>
+                            <Button sx={{ borderRadius:"11px" , color:"#855CDD", borderColor:"#855CDD" }} variant="outlined">Change</Button>
                         </Box>
+                    </Box>
+
+                    <Box sx={{width:"60%", marginTop:7, marginBottom: 2}}>
+                            <Typography variant="h3" sx={{fontSize:18, color:"#855CDD" }}>Privacy Policy</Typography>
+                            <Typography variant="h3" sx={{fontSize:18, color:"#855CDD", mt:4 }}>Terms of Use</Typography>
                     </Box>
 
                 </Box>
