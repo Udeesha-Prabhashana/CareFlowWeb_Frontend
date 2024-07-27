@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import useFetch from "../../hooks/useFetch";
-import SearchItem from "../../components/searchItem/searchItem";
+import SearchItemnlu from "../../components/searchItemnlu/searchItemnlu";
 
 interface Hotel {
   _id: string;
@@ -165,7 +165,7 @@ const List: React.FC = () => {
             {loading ? (
               "loading"
             ) : (
-              (data || dummyData)?.map((item) => <SearchItem item={item} key={item._id} />)
+              (data || dummyData)?.map((item) => <SearchItemnlu item={item} key={item._id} />)
             )}
           </div>
         </div>
