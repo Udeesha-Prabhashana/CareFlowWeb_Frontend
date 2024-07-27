@@ -4,6 +4,7 @@
   .navDocRR { //homeContainer class is navbar
 
     flex: 2; //used to divide both sidebar and navbar
+    margin-left: 300px;
     //margin-left: 1px; //used to get the space between sidebar and navbar
   }
 }
@@ -16,7 +17,7 @@
   line-height: 20px; /* 80% */
   padding-top: 10px;
   max-width: 2000px;
-  margin: 6% 10% 10% 25%;
+  margin:7% 3% 6% 6%;
 }
 .subContentDocRR{
   color: #000;

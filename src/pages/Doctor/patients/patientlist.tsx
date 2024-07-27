@@ -51,7 +51,7 @@ const PatientList: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        navigate("/doctor/bookings/view_bookings");
+        navigate("/doctor/view_medicalRecords");
     };
 
     return (
@@ -60,9 +60,9 @@ const PatientList: React.FC = () => {
             <div className="navDoc">
                 <NavbarDoc />
                 <div className="mainContentDocBooking">
-                    Bookings
+                    Patients
                     <div className="subContentDocBooking">
-                        View Details of your Patients Bookings
+                        View Details of your Patients
                     </div>
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>

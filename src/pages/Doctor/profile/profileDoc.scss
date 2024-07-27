@@ -1,3 +1,13 @@
+.sideDoc {
+  display: flex; //home class is sidebar
+
+  .navDoc { //homeContainer class is navbar
+
+    flex: 2; //used to divide both sidebar and navbar
+    margin-left: 300px; //used to get the space between sidebar and navbar
+  }
+}
+
 
 .profilelu{
   display: flex;    //home class is sidebar

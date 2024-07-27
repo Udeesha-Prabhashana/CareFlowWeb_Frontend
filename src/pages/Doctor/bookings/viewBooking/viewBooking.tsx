@@ -15,15 +15,15 @@ const DoctorViewBooking: React.FC = () => {
     };
 
     return (
-        <div className="appointments">
+        <div className="sideDoc">
             <SidebarDoc />
-            <div className="appointmentsContainer">
+            <div className="navDoc">
                 <NavbarDoc />
-                <div className="mainContent">
+                <div className="mainView">
                     View Booking
-                    <div className="subContent">
+                    <div className="subView">
                         View Details of your Patients Bookings
-                        <Box className="content">
+                        <Box className="contentView">
                             <Grid container spacing={2}>
                                 <Grid item xs={3}>
                                     <div className="line">Patient's Name :</div>

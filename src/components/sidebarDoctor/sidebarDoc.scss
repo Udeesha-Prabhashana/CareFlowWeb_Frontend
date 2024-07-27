@@ -1,21 +1,24 @@
 .SidebarDoc {
   flex: 2;
   border-right: 0.5px solid rgb(230, 227, 227);
-  min-height: 100vh;
+  min-height: 95vh;
   background-color: white;
   position: fixed;
-  width: 250px;
+  width: 300px; // Increase the width to make the sidebar wider
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
 
   .topDoc {
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .logoDoc {
-      font-size: 20px;
-      font-weight: bold;
-      color: #6439ff;
+    .logoImageDoc {
+      width: 150px; // Adjust width to fit your design
+      height: auto;
     }
   }
 
@@ -25,7 +28,8 @@
   }
 
   .centerDoc {
-    padding-left: 10px;
+    flex: 1;
+    padding: 0 30px; // Increase padding to give more space from both sides
 
     ul {
       list-style: none;
@@ -35,10 +39,11 @@
       li {
         display: flex;
         align-items: center;
-        padding: 10px;
-        margin-bottom: 8px;
+        padding: 12px 15px; // Increase padding for more space inside each item
+        margin-bottom: 10px;
         cursor: pointer;
         transition: background-color 0.3s;
+        border-radius: 10px;
 
         &.activeDoc, &:hover {
           background-color: #ece8ff;
@@ -50,10 +55,46 @@
         }
 
         span {
-          font-size: 15px;
+          font-size: 16px;
           font-weight: 600;
-          color: #888;
-          margin-left: 10px;
+          color: #444;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+
+  .bottomContainerDoc {
+    padding: 0 30px; // Increase padding to give more space from both sides
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px; // Increase padding for more space inside each item
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border-radius: 10px;
+
+        &.activeDoc, &:hover {
+          background-color: #ece8ff;
+        }
+
+        .iconDoc {
+          font-size: 20px;
+          color: #7451f8;
+        }
+
+        span {
+          font-size: 16px;
+          font-weight: 600;
+          color: #444;
+          margin-left: 15px;
         }
 
         .notificationBadge {
@@ -63,19 +104,18 @@
           padding: 2px 6px;
           font-size: 12px;
           margin-left: auto;
+          position: absolute;
+          right: 65px;
         }
       }
     }
-  }
-
-  .bottomDoc {
-    display: flex;
-    align-items: center;
-    padding: 10px;
 
     .profileDoc {
       display: flex;
       align-items: center;
+      padding: 10px 0;
+      //border-top: 1px solid rgb(230, 227, 227);
+      margin-top: 20px;
 
       img {
         width: 40px;
@@ -86,13 +126,22 @@
 
       .detailsDoc {
         .nameDoc {
-          font-size: 14px;
-          font-weight: 600;
+          align-self: stretch;
+          color: var(--skyethemes-com-mine-shaft, #363636);
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 14px; /* 116.667% */
+
         }
 
         .emailDoc {
+          align-self: stretch;
+          color: var(--skyethemes-com-mine-shaft, #363636);
           font-size: 12px;
-          color: #888;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 14px; /* 116.667% */
         }
       }
     }
