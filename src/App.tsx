@@ -54,6 +54,11 @@ import PatientList from "./pages/Doctor/patients/patientlist";
 import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
 
+
+import HomeNurse from "./pages/Nurse/home/homeNurse";
+import Patients from "./pages/Nurse/patients/patients";
+import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
+
 import HomeRec from "./pages/Receptionist/homeRec/HomeRec";
 import RBookings from "./pages/Receptionist/RBookings/RBookings";
 import PaidList from "./pages/Receptionist/RBookingsPaidList/RBookingsPaidList";
@@ -319,6 +324,11 @@ function App() {
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
             <Route path="doctor/profile" element={<ProfileDoc/>}/>
+
+          <Route path="nurse/home" element={<HomeNurse/>}/>
+            <Route path="nurse/patients" element={<Patients/>}/>
+            <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
+
 
 
 

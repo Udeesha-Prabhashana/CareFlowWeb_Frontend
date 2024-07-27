@@ -1,0 +1,79 @@
+.patientUpdate {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 160px;
+    // border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+    background-color: #EEE7FF;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+
+.counter {
+    font-size: 50px;
+    font-weight: 600;
+    color: #855CDD;
+    padding-right: 10px;
+
+}
+
+.buttons {
+   display: flex;
+   gap:10px;
+   margin-top: 20px;
+    
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #d5c1ff;
+    border-radius: 5px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; 
+}
+
+.updateButton {
+    padding: 5px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #d5c1ff;
+    border-radius: 5px;
+
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; 
+}
+
+
+.right {
+    margin-left: 100px;
+    display: flex;
+    align-items: right;
+
+.title {
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+}
+
+.icon {
+    font-size: 2em;
+}
