@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import List from "./pages/list/List";
@@ -78,18 +79,18 @@ import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSum
 
 
 interface ProtectedRouteProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 function App() {
-    const context = useContext(DarkModeContext);
+  const context = useContext(DarkModeContext);
 
-    if (!context) {
-        throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
-    }
+  if (!context) {
+    throw new Error("DarkModeContext must be used within a DarkModeContextProvider");
+  }
 
   const { darkMode } = context;
-  
+
   // const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   //   const { user } = useContext(AuthContext);
 
@@ -99,116 +100,116 @@ function App() {
   //     return <>{children}</>;
   //   }
   // };
-  
-  return (
-    <div className={darkMode ? "app dark" : "app"}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/doctorlistNlu" element={<List />} />
-          <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
-          <Route path="/login" element={<Login />} />
-          <Route path="/homelusin" element={<LoginSinhala/>} />
 
-          <Route path="adminhome">
-            <Route
-              index
-              element={
-                // <ProtectedRoute>
-                <Home2 />
-                // </ProtectedRoute>
-              }
-            />
-            <Route path="Doctors">
+  return (
+      <div className={darkMode ? "app dark" : "app"}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/doctorlistNlu" element={<List />} />
+            <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/homelusin" element={<LoginSinhala/>} />
+
+            <Route path="adminhome">
               <Route
-                index
-                element={
-                // <ProtectedRoute>
-                <List2 columns={doctorColumns} />
-                // </ProtectedRoute>
-              }
+                  index
+                  element={
+                    // <ProtectedRoute>
+                    <Home2 />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route path="Doctors">
+                <Route
+                    index
+                    element={
+                      // <ProtectedRoute>
+                      <List2 columns={doctorColumns} />
+                      // </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="new"
+                    element={
+                      // <ProtectedRoute>
+                      <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                      // </ProtectedRoute>
+                    }
+                />
+              </Route>
+              <Route
+                  path="Nurses"
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={nurseColumns} />
+                    // </ProtectedRoute>
+                  }
               />
               <Route
-                path="new"
+                  path="Appointments"
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={appointmentColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path="Patients"
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={patientColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path="Receptionists"
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={receptionistColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+            </Route>
+
+
+            <Route
+                path="userloginhome"
+                index
                 element={
                   // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                  <HomeLu />
                   // </ProtectedRoute>
                 }
-                />
-            </Route>
-            <Route
-              path="Nurses"
-              element={
-                // <ProtectedRoute>
-                <List2 columns={nurseColumns} />
-                // </ProtectedRoute>
-              }
             />
             <Route
-              path="Appointments"
-              element={
-                // <ProtectedRoute>
-                <List2 columns={appointmentColumns} />
-                // </ProtectedRoute>
-              }
+                path="channeling"
+                index
+                element={
+                  // <ProtectedRoute>
+                  <Channeling />
+                  // </ProtectedRoute>
+                }
             />
-            <Route
-              path="Patients"
-              element={
-                // <ProtectedRoute>
-                <List2 columns={patientColumns} />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path="Receptionists"
-              element={
-                // <ProtectedRoute>
-                <List2 columns={receptionistColumns} />
-                // </ProtectedRoute>
-              }
-            />
-          </Route>
-          
-
-          <Route
-            path="userloginhome"
-            index
-            element={
-              // <ProtectedRoute>
-                <HomeLu />
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path="channeling"
-            index
-            element={
-              // <ProtectedRoute>
-                <Channeling />
-              // </ProtectedRoute>
-            }
-          />
-          <Route path="doclist">
-            <Route
-              index
-              element={
-                // <ProtectedRoute>
-                  <DoctorListLu />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path=":doctorId"
-              element={
-                // <ProtectedRoute>
-                  <Doctor />
-                // </ProtectedRoute>
-              }
-            />
-            {/* <Route
+            <Route path="doclist">
+              <Route
+                  index
+                  element={
+                    // <ProtectedRoute>
+                    <DoctorListLu />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path=":doctorId"
+                  element={
+                    // <ProtectedRoute>
+                    <Doctor />
+                    // </ProtectedRoute>
+                  }
+              />
+              {/* <Route
               path="new"
               element={
                 // <ProtectedRoute>
@@ -216,109 +217,109 @@ function App() {
                 // </ProtectedRoute>
               }
             /> */}
-          </Route>
+            </Route>
 
-          <Route
-            path="profileLu"
-            index
-            element={
-              // <ProtectedRoute>
-                <ProfileLu />
-              // </ProtectedRoute>
-            }
-          />
+            <Route
+                path="profileLu"
+                index
+                element={
+                  // <ProtectedRoute>
+                  <ProfileLu />
+                  // </ProtectedRoute>
+                }
+            />
 
-          <Route path="users">
-            <Route
-              index
-              element={
-                // <ProtectedRoute>
-                  <List2 columns={userColumns} />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path=":userId"
-              element={
-                // <ProtectedRoute>
-                  <Single />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path="new"
-              element={
-                // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New User" />
-                // </ProtectedRoute>
-              }
-            />
-          </Route>
-          <Route path="hotels">
-            <Route
-              index
-              element={
-                // <ProtectedRoute>
-                  <List2 columns={hotelColumns} />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path=":productId"
-              element={
-                // <ProtectedRoute>
-                  <Single />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path="new"
-              element={
-                // <ProtectedRoute>
-                  <NewHotel inputs={ hotelInputs} title="Add New Hotel" />
-                // </ProtectedRoute>
-              }
-            />
-          </Route>
-          <Route path="rooms">
-            <Route
-              index
-              element={
-                // <ProtectedRoute>
-                  <Listroom columns={roomColumns} />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path=":productId"
-              element={
-                // <ProtectedRoute>
-                  <Single />
-                // </ProtectedRoute>
-              }
-            />
-            <Route
-              path="new"
-              element={
-                // <ProtectedRoute>
-                  <NewRoom inputs={roomInputs} title="Add New Room" />
-                // </ProtectedRoute>
-              }
-            />
-          </Route>
+            <Route path="users">
+              <Route
+                  index
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={userColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path=":userId"
+                  element={
+                    // <ProtectedRoute>
+                    <Single />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path="new"
+                  element={
+                    // <ProtectedRoute>
+                    <New inputs={userInputs as Input[]} title="Add New User" />
+                    // </ProtectedRoute>
+                  }
+              />
+            </Route>
+            <Route path="hotels">
+              <Route
+                  index
+                  element={
+                    // <ProtectedRoute>
+                    <List2 columns={hotelColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path=":productId"
+                  element={
+                    // <ProtectedRoute>
+                    <Single />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path="new"
+                  element={
+                    // <ProtectedRoute>
+                    <NewHotel inputs={ hotelInputs} title="Add New Hotel" />
+                    // </ProtectedRoute>
+                  }
+              />
+            </Route>
+            <Route path="rooms">
+              <Route
+                  index
+                  element={
+                    // <ProtectedRoute>
+                    <Listroom columns={roomColumns} />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path=":productId"
+                  element={
+                    // <ProtectedRoute>
+                    <Single />
+                    // </ProtectedRoute>
+                  }
+              />
+              <Route
+                  path="new"
+                  element={
+                    // <ProtectedRoute>
+                    <NewRoom inputs={roomInputs} title="Add New Room" />
+                    // </ProtectedRoute>
+                  }
+              />
+            </Route>
 
-          <Route path="appointments" element={<Appointments />} />
-          <Route path="appointments/bookingSummary" element={<BookingSummary />} />
+            <Route path="appointments" element={<Appointments />} />
+            <Route path="appointments/bookingSummary" element={<BookingSummary />} />
 
-          <Route path="medical_history" element={<HistoryCards />} />
-          <Route path="medical_history/details" element={<Details />} />
+            <Route path="medical_history" element={<HistoryCards />} />
+            <Route path="medical_history/details" element={<Details />} />
 
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="settings" element={<Settings />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="settings" element={<Settings />} />
 
 
 
-          <Route path="doctor/home" element={<HomeDoc/>}/>
+            <Route path="doctor/home" element={<HomeDoc/>}/>
             <Route path="doctor/bookings" element={<DoctorBookings/>}/>
             <Route path="doctor/bookings/view_bookings" element={<DoctorViewBooking/>}/>
             <Route path="doctor/medical_records" element={<DoctorMedicalRecords/>}/>
@@ -327,44 +328,45 @@ function App() {
             <Route path="doctor/patients" element={<PatientList/>}/>
             <Route path="doctor/profile" element={<ProfileDoc/>}/>
 
-          <Route path="nurse/home" element={<HomeNurse/>}/>
+
+            <Route path="nurse/home" element={<HomeNurse/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
 
 
 
 
-          <Route path="chatbot" element={<Chatbot/>}/>
-          <Route path="chatbotN" element={<ChatbotNext/>}/>
-          <Route path="chatbotL" element={<ChatbotLast/>}/>
-          <Route path="chatbotThird" element={<ChatbotThird/>}/>
-
-          
-          <Route path="receptionist/home" element={<HomeRec/>}/>          
-          <Route path="receptionist/bookings" element={<RBookings/>}/>
-          <Route path="receptionist/bookings/paidlist" element={<PaidList/>}/>
-          <Route path="receptionist/bookings/paidsummary" element={<PaidSummary/>}/>
-          <Route path="receptionist/bookings/unpaidlist" element={<UnpaidList/>}/>
-          <Route path="receptionist/bookings/unpaidsummary" element={<UnpaidSummary/>}/>
-          <Route path="receptionist/bookings/addnewbooking" element={<RBookingsAdd/>}/>
-          <Route path="receptionist/doctors">
-            <Route index element={<RDoctors />} />
-            <Route path=":doctorId" element={<RDoctorsView />} />
-          </Route>
-
-          <Route path="receptionist/bookings/addnewbooking/doctors" element={<RBookingsDoctors/>}/>
-          <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
-          <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
+            <Route path="chatbot" element={<Chatbot/>}/>
+            <Route path="chatbotN" element={<ChatbotNext/>}/>
+            <Route path="chatbotL" element={<ChatbotLast/>}/>
+            <Route path="chatbotThird" element={<ChatbotThird/>}/>
 
 
-          <Route path="receptionist/profile" element={<RProfile/>}/>
-        </Routes>
+            <Route path="receptionist/home" element={<HomeRec/>}/>
+            <Route path="receptionist/bookings" element={<RBookings/>}/>
+            <Route path="receptionist/bookings/paidlist" element={<PaidList/>}/>
+            <Route path="receptionist/bookings/paidsummary" element={<PaidSummary/>}/>
+            <Route path="receptionist/bookings/unpaidlist" element={<UnpaidList/>}/>
+            <Route path="receptionist/bookings/unpaidsummary" element={<UnpaidSummary/>}/>
+            <Route path="receptionist/bookings/addnewbooking" element={<RBookingsAdd/>}/>
+            <Route path="receptionist/doctors">
+              <Route index element={<RDoctors />} />
+              <Route path=":doctorId" element={<RDoctorsView />} />
+            </Route>
 
- 
+            <Route path="receptionist/bookings/addnewbooking/doctors" element={<RBookingsDoctors/>}/>
+            <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
+            <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
 
-      </BrowserRouter>
-    </div>
+            <Route path="receptionist/profile" element={<RProfile/>}/>
+          </Routes>
+
+
+
+
+        </BrowserRouter>
+      </div>
   );
 }
 

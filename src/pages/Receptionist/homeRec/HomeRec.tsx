@@ -21,7 +21,7 @@ const HomeRec: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
- type WidgetType = "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
+  type WidgetType = "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
 
   const filteredWidgets = (filter: string): WidgetType[] => {
     switch (filter) {
@@ -35,7 +35,7 @@ const HomeRec: React.FC = () => {
         return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6"];
     }
   };
-  
+
 
   const widgets = filteredWidgets(filter);
 
@@ -55,90 +55,90 @@ const HomeRec: React.FC = () => {
   });
 
   return (
-    <div className="homerec">
-      <SidebarRec />
-      <NavbarLu />
+      <div className="homerec">
+        <SidebarRec />
+        <NavbarLu />
 
-      <div className="homeContainer2rec">
-        <div className="bodyContainerrec">
-          <div className="mainTopic ml-5">
-            Good Morning, <span className="purpleText">Micheal</span>
-          </div>
-          <div className="subTopic ml-5">Welcome to your Dashboard</div>
-          <div className="flex justify-between items-center my-4 mx-5">
-            <div className="flex space-x-2">
-              <Button
-                variant="outlined"
-                sx={buttonStyles(filter === "type1")}
-                onClick={() => handleFilterChange("type1")}
-              >
-                Arrived
-              </Button>
-              <Button
-                variant="outlined"
-                sx={buttonStyles(filter === "type2")}
-                onClick={() => handleFilterChange("type2")}
-              >
-                Not Arrived
-              </Button>
-              <Button
-                variant="outlined"
-                sx={buttonStyles(filter === "type3")}
-                onClick={() => handleFilterChange("type3")}
-              >
-                All
-              </Button>
+        <div className="homeContainer2rec">
+          <div className="bodyContainerrec">
+            <div className="mainTopic ml-5">
+              Good Morning, <span className="purpleText">Micheal</span>
             </div>
-            <div className="ml-4 flex items-center space-x-2">
-              <span style={{ color: "#000000" }}>Search by Name</span>
-              <TextField
-                variant="outlined"
-                size="small"
-                placeholder="Amal Perera"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <SearchIcon style={{ color: '#CCCCCC' }} />
-                    </InputAdornment>
-                  ),
-                  style: {
-                    color: '#CCCCCC',
-                    padding: '5px 14px',
-                  },
-                }}
-                style={{
-                  borderRadius: '11px',
-                  borderColor: '#CCCCCC',
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
+            <div className="subTopic ml-5">Welcome to your Dashboard</div>
+            <div className="flex justify-between items-center my-4 mx-5">
+              <div className="flex space-x-2">
+                <Button
+                    variant="outlined"
+                    sx={buttonStyles(filter === "type1")}
+                    onClick={() => handleFilterChange("type1")}
+                >
+                  Arrived
+                </Button>
+                <Button
+                    variant="outlined"
+                    sx={buttonStyles(filter === "type2")}
+                    onClick={() => handleFilterChange("type2")}
+                >
+                  Not Arrived
+                </Button>
+                <Button
+                    variant="outlined"
+                    sx={buttonStyles(filter === "type3")}
+                    onClick={() => handleFilterChange("type3")}
+                >
+                  All
+                </Button>
+              </div>
+              <div className="ml-4 flex items-center space-x-2">
+                <span style={{ color: "#000000" }}>Search by Name</span>
+                <TextField
+                    variant="outlined"
+                    size="small"
+                    placeholder="Amal Perera"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    InputProps={{
+                      endAdornment: (
+                          <InputAdornment position="end">
+                            <SearchIcon style={{ color: '#CCCCCC' }} />
+                          </InputAdornment>
+                      ),
+                      style: {
+                        color: '#CCCCCC',
+                        padding: '5px 14px',
+                      },
+                    }}
+                    style={{
+                      borderRadius: '11px',
                       borderColor: '#CCCCCC',
-                    },
-                    "&:hover fieldset": {
-                      borderColor: '#CCCCCC',
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: '#CCCCCC',
-                    },
-                    "& input::placeholder": {
-                      color: '#000000',
-                    },
-                  },
-                }}
-              />
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: '#CCCCCC',
+                        },
+                        "&:hover fieldset": {
+                          borderColor: '#CCCCCC',
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: '#CCCCCC',
+                        },
+                        "& input::placeholder": {
+                          color: '#000000',
+                        },
+                      },
+                    }}
+                />
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-5">
-            {widgets.map((type) => (
-              <WidgetRec key={type} type={type} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-5">
+              {widgets.map((type) => (
+                  <WidgetRec key={type} type={type} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

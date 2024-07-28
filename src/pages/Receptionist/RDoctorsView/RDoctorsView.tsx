@@ -98,75 +98,75 @@ const RDoctorsView: React.FC = () => {
   };
 
   return (
-    <div className="RDoctorsView flex flex-col p-6">
-      <SidebarRec />
-      <NavbarLu />
-      <div className="homeContainer2lu">
-        <div className="bodyContainerLu">
-          <div className="flex items-center mb-4 text-purple-600 pl-14">
-            <Link to="/receptionist/doctors" className="flex items-center">
-              <FontAwesomeIcon icon={faCircleArrowLeft} />
-              <span className="ml-2 font-roboto text-lg cursor-pointer">Go back</span>
-            </Link>
-          </div>
+      <div className="RDoctorsView flex flex-col p-6">
+        <SidebarRec />
+        <NavbarLu />
+        <div className="homeContainer2lu">
+          <div className="bodyContainerLu">
+            <div className="flex items-center mb-4 text-purple-600 pl-14">
+              <Link to="/receptionist/doctors" className="flex items-center">
+                <FontAwesomeIcon icon={faCircleArrowLeft} />
+                <span className="ml-2 font-roboto text-lg cursor-pointer">Go back</span>
+              </Link>
+            </div>
 
-          <div className="flex flex-row ml-14">
-            <div className="flex flex-col items-center mr-6 w-1/3">
-              <img
-                src={data.photos[0]}
-                alt={data.title}
-                className="w-full h-80 object-cover rounded-lg mb-4"
-              />
-              <div className="p-4 bg-white rounded-lg shadow-md w-full flex flex-col items-center mx-auto">
-                <h2 className="text-lg font-bold mb-4">Availability</h2>
-                <div className="flex flex-row mb-2 w-full justify-center">
-                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Monday - Friday:</span>
-                  <span className="text-gray-600 flex-grow text-center">08.00 - 14.00</span>
+            <div className="flex flex-row ml-14">
+              <div className="flex flex-col items-center mr-6 w-1/3">
+                <img
+                    src={data.photos[0]}
+                    alt={data.title}
+                    className="w-full h-80 object-cover rounded-lg mb-4"
+                />
+                <div className="p-4 bg-white rounded-lg shadow-md w-full flex flex-col items-center mx-auto">
+                  <h2 className="text-lg font-bold mb-4">Availability</h2>
+                  <div className="flex flex-row mb-2 w-full justify-center">
+                    <span className="text-gray-600 font-bold w-32 flex-shrink-0">Monday - Friday:</span>
+                    <span className="text-gray-600 flex-grow text-center">08.00 - 14.00</span>
+                  </div>
+                  <div className="flex flex-row mb-2 w-full justify-center">
+                    <span className="text-gray-600 font-bold w-32 flex-shrink-0">Saturday:</span>
+                    <span className=" flex-grow text-center">12.00 - 18.00</span>
+                  </div>
                 </div>
-                <div className="flex flex-row mb-2 w-full justify-center">
-                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Saturday:</span>
-                  <span className=" flex-grow text-center">12.00 - 18.00</span>
+              </div>
+              <div className="flex flex-col w-2/3 ml-14">
+                <h1 className="text-black text-3xl font-semibold leading-none mb-2">
+                  {data.name}
+                </h1>
+                <h2 className="text-purple-600 text-xl mb-4">
+                  {data.title}
+                </h2>
+                <p className="text-gray-600 text-base mb-4">
+                  {data.desc}
+                </p>
+                <div className="flex flex-row mb-2">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Speciality:</span>
+                  <span className="text-gray-600 flex-grow">{data.specialty}</span>
                 </div>
+                <div className="flex flex-row mb-2">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Experience:</span>
+                  <span className="text-gray-600 flex-grow">{data.experience}</span>
+                </div>
+                <div className="flex flex-row mb-4">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Fee:</span>
+                  <span className="text-gray-600 flex-grow">{data.fee}</span>
+                </div>
+                <div className="flex flex-row mb-4">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
+                  <span className="text-gray-600 flex-grow">{data.email}</span>
+                </div>
+                <button
+                    className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
+                    onClick={handleClick}
+                >
+                  Book Doctor
+                </button>
               </div>
             </div>
-            <div className="flex flex-col w-2/3 ml-14">
-              <h1 className="text-black text-3xl font-semibold leading-none mb-2">
-                {data.name}
-              </h1>
-              <h2 className="text-purple-600 text-xl mb-4">
-                {data.title}
-              </h2>
-              <p className="text-gray-600 text-base mb-4">
-                {data.desc}
-              </p>
-              <div className="flex flex-row mb-2">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Speciality:</span>
-                <span className="text-gray-600 flex-grow">{data.specialty}</span>
-              </div>
-              <div className="flex flex-row mb-2">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Experience:</span>
-                <span className="text-gray-600 flex-grow">{data.experience}</span>
-              </div>
-              <div className="flex flex-row mb-4">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Fee:</span>
-                <span className="text-gray-600 flex-grow">{data.fee}</span>
-              </div>
-              <div className="flex flex-row mb-4">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
-                <span className="text-gray-600 flex-grow">{data.email}</span>
-              </div>
-              <button
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
-                onClick={handleClick}
-              >
-                Book Doctor
-              </button>
-            </div>
+            {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
           </div>
-          {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
         </div>
       </div>
-    </div>
   );
 };
 
