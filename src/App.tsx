@@ -387,8 +387,7 @@ function App() {
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
-          <Route path="receptionist/notifications" element={<RNotifications/>}/>
-          <Route path="receptionist/settings" element={<RecSettings/>}/>
+          
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
