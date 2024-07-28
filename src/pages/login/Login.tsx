@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 interface Credentials {
   username: string;
@@ -51,6 +52,7 @@ const Login = () => {
       // const userRole = decodedToken.user_role;
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      toast.success("Login successfully!");
 
       if (res.data.user_role === "ROLE_MANAGER") {
         navigate("/");
@@ -61,6 +63,7 @@ const Login = () => {
       }
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      toast.error("Login unsuccessfully!");
     }
   };
 
