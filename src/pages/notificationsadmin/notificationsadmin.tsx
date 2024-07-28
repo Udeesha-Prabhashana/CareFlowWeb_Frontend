@@ -29,6 +29,7 @@ import { useState } from 'react';
 import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
 import Navbar from "../../components/navbar/Navbar";
 import NavbarAd from "../../components/navbarAdm/NavbarAdm";
+import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
 
 interface Notification {
   title: string;
@@ -156,9 +157,9 @@ const Notificationsadm: React.FC = () => {
 
   return (
     <div className="notificationsadm">
-      <SidebarAdm />
+      <SidebarAdmin />
       <div className="notificationsContaineradm">
-      <NavbarAd />
+      {/* <NavbarAd /> */}
         <div className="mainContentadm" style={{ position: 'absolute', top: 0 }}>
           Notifications
           <div className="subContentadm">View upcoming updates</div>
