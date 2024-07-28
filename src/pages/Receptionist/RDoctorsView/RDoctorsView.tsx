@@ -76,18 +76,18 @@ const dummyData = [
 
 const RDoctorsView: React.FC = () => {
   const location = useLocation();
-  const id = parseInt(location.pathname.split("/").pop()!, 10); // Correctly extract the last segment for the ID
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const [openModel, setOpenModel] = useState(false);
+
+  const id = parseInt(location.pathname.split("/").pop()!, 10); // Extract ID from the URL
 
   // Ensure the ID is within the bounds of dummyData
   if (isNaN(id) || id < 1 || id > dummyData.length) {
     return <div>Doctor not found</div>;
   }
 
-  const data = dummyData[id - 1]; // Get the dummy data by id
-  const [openModel, setOpenModel] = useState(false);
-
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const data = dummyData[id - 1]; // Get the dummy data by ID
 
   const handleClick = () => {
     if (user) {
@@ -128,7 +128,6 @@ const RDoctorsView: React.FC = () => {
                   <span className=" flex-grow text-center">12.00 - 18.00</span>
                 </div>
               </div>
-
             </div>
             <div className="flex flex-col w-2/3 ml-14">
               <h1 className="text-black text-3xl font-semibold leading-none mb-2">
@@ -162,10 +161,9 @@ const RDoctorsView: React.FC = () => {
               >
                 Book Doctor
               </button>
-
             </div>
           </div>
-          {openModel && <Reserve setOpen={setOpenModel} doctorId={id} />}
+          {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
         </div>
       </div>
     </div>

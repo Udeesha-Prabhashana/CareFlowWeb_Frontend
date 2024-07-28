@@ -10,41 +10,44 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 
 const HomeRec: React.FC = () => {
-  const [filter, setFilter] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const handleFilterChange = (newFilter) => {
+  const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredWidgets = (filter) => {
+ type WidgetType = "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
+
+  const filteredWidgets = (filter: string): WidgetType[] => {
     switch (filter) {
       case "type1":
         return ["d_1", "d_2", "d_3"];
       case "type2":
         return ["d_4", "d_5", "d_6"];
       case "type3":
-        return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6", "d_2", "d_3", "d_4", "d_5", "d_6",  "d_1"];
+        return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6", "d_2", "d_3", "d_4", "d_5", "d_6", "d_1"];
       default:
         return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6"];
     }
   };
+  
 
   const widgets = filteredWidgets(filter);
 
-  const buttonStyles = (isActive) => ({
+  const buttonStyles = (isActive: boolean) => ({
     backgroundColor: isActive ? '#855CDD' : '#FFFFFF',
     color: isActive ? '#FFFFFF' : '#855CDD',
     border: '1px solid #855CDD',
     borderRadius: '9px',
     textTransform: 'capitalize',
     fontSize: '16px',
-    width: '150px', // Adjusted width for better visual representation
-    height: '40px', // Adjusted height for better visual representation
+    width: '150px',
+    height: '40px',
     '&:hover': {
       backgroundColor: isActive ? '#9D7CE5' : '#FFFFFF',
       color: '#855CDD',
@@ -101,8 +104,8 @@ const HomeRec: React.FC = () => {
                     </InputAdornment>
                   ),
                   style: {
-                    color: '#CCCCCC', // Text color inside the input box
-                    padding: '5px 14px', // Adjust padding to reduce height
+                    color: '#CCCCCC',
+                    padding: '5px 14px',
                   },
                 }}
                 style={{
