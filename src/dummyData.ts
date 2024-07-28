@@ -39,7 +39,7 @@ export const doctorDummyData = [
     address: "123 Main St, Springfield",
   },
   {
-    doctor_id: 2,
+    id: 2,
     name: "Dr. Jane Smith",
     specialization: "Dermatology",
     mobileNumber: "987-654-3210",
