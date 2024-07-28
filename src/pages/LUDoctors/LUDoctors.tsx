@@ -9,6 +9,7 @@ import SidebarRec from "../../components/sidebarRec/SidebarRec";
 import NavbarLu from "../../components/navbarA/NavbarA";
 import Button from "@mui/material/Button";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import SearchItemnlu from "../../components/searchItemLUNEW/searchItemLUN";
 
 interface Doctor {
   _id: string;
@@ -193,7 +194,7 @@ const LUDoctors: React.FC = () => {
             ) : (
               (data || dummyData)?.map((item) => (
                 <div key={item._id} className="p-4">
-                  <SearchItemR item={item} />
+                  <SearchItemnlu item={item} />
                 </div>
               ))
             )}

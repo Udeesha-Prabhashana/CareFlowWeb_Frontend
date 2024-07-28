@@ -88,10 +88,6 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 
-import LUDoctors from "./pages/LUDoctors/LUDoctors";
-import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
-
-
 interface ProtectedRouteProps {
     children: ReactNode;
 }
