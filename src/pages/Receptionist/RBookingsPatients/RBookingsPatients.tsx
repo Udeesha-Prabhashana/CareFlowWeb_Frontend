@@ -49,7 +49,7 @@ const RBookingsPatients: React.FC = () => {
   return (
     <div className="rbookingpatients">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">
           <div className="mainTopic">Patient Details</div>

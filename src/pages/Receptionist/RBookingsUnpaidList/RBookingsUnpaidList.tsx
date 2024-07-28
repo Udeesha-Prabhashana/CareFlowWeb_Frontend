@@ -83,7 +83,7 @@ const RBookingsUnpaidList: React.FC = () => {
         <div className="Rbookingunpaid">
             <SidebarRec />
             <div className="navRec">
-                <NavbarRec />
+                {/*<NavbarRec />*/}
                 <div className="mainContentRecBooking">
                     Bookings
                     <div className="subContentRecBooking">

@@ -11,7 +11,7 @@ const RProfile: React.FC = () => {
   return (
     <div className="RProfile">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
 
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">

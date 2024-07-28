@@ -82,6 +82,8 @@ import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 
 import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
 import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
+import RecSettings from "./pages/Receptionist/RSettings/RSettings";
+import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
 
 interface ProtectedRouteProps {
@@ -383,7 +385,8 @@ function App() {
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
-
+          <Route path="receptionist/notifications" element={<RNotifications/>}/>
+          <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
         </Routes>
 
