@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SidebarLu from "../../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../../components/navbarA/NavbarA";
 import "./chatbotthird.scss";
+import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 
 const ChatbotThird = () => {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const ChatbotThird = () => {
 
   return (
     <div className="chatbot">
-      <SidebarLu />
+      <SidebarPatient />
       <div className="chatbotContainer">
-        <NavbarLu />
+        {/*<NavbarLu />*/}
         <div className="main">
           <img src="/images/bg.png" alt="Background" className="background-image" />
           <img src="/images/Vector.png" alt="Vector" className="vector-image" />
