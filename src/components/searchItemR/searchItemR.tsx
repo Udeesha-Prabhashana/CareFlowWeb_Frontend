@@ -46,7 +46,7 @@ const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
           )}
           <div className="text-right">
             <Link
-              to={`/receptionist/doctors/${item._id}`}
+              to={`/doclist/${item._id}`}
             >
               <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
