@@ -47,12 +47,17 @@ const Login = () => {
       console.log("Token", res.data.access_token);
       setCookie('JWT', "Bearer " + res.data.access_token, res.data.access_token_expiry);
 
+      // const decodedToken: JwtPayload = jwt_decode(token);
+      // const userRole = decodedToken.user_role;
+
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
 
       if (res.data.user_role === "ROLE_MANAGER") {
         navigate("/");
-      } else if (res.data.res.user_role === 2) {
+      } else if (res.data.user_role === "ROLE_ADMIN") {
         navigate("/adminhome");
+      } else if (res.data.user_role === "ROLE_USER") {
+        navigate("/userloginhome");
       }
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
