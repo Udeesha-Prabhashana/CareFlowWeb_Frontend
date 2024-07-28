@@ -97,7 +97,8 @@ const LUDoctorsView: React.FC = () => {
       toast.success("Doctor booked successfully!"); // Show success toast
       navigate("/appointments")
     } else {
-      navigate("/receptionist/bookings/addnewbooking/patients");
+      toast.success("Doctor booked successfully!"); 
+      navigate("/appointments")
     }
   };
 
