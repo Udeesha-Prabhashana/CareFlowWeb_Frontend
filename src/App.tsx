@@ -75,8 +75,6 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
-import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
-import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
