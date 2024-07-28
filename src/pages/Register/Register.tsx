@@ -3,6 +3,7 @@ import { useContext, useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
+import { toast } from "react-toastify";
 
 interface Credentials {
   userName: string;
@@ -36,9 +37,13 @@ const Register = () => {
     try {
       const res = await axios.post<{ res: any }>("http://localhost:8080/sign-up", credentials);
       console.log("Response:", res.data.res);
+      toast.success("Doctor added successfully!");
       navigate("/login");
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response?.data });
+      // Extract the error message from the response
+    const errorMessage = err.response?.data?.error || "An unexpected error occurred";
+    toast.error(errorMessage);
     }
   };
 
