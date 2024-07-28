@@ -49,7 +49,7 @@ const RevenueRecords: React.FC = () => {
         <div className="sideDocRR">
             <SidebarDoc />
             <div className="navDocRR">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContentDocRR">
                     Revenue Records
                     <div className="subContentDocRR">

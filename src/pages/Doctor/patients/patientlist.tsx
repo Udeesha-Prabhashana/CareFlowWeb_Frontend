@@ -58,7 +58,7 @@ const PatientList: React.FC = () => {
         <div className="sideDoc">
             <SidebarDoc />
             <div className="navDoc">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContentDocBooking">
                     Patients
                     <div className="subContentDocBooking">

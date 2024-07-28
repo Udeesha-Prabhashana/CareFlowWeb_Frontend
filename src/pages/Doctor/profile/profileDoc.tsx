@@ -11,7 +11,7 @@ const ProfileDoc: React.FC = () => {
         <div className="sideDoc">
             <SidebarDoc />
             <div className="navDoc">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="profilelu">
                 <div className="mainContentDocBooking">
                     <h1>Bookings</h1>
