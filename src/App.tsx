@@ -84,7 +84,6 @@ import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
 import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
 
 
-
 interface ProtectedRouteProps {
     children: ReactNode;
 }
