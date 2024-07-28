@@ -17,7 +17,7 @@ const RBookingsSummary: React.FC = () => {
   return (
     <div className="RBookingsSummary">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
 
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">

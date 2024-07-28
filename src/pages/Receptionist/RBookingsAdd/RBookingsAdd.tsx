@@ -67,7 +67,7 @@ const RBookingsAdd: React.FC = () => {
   return (
     <div className="rbookingadd">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">
           <div className="mainTopic">Book a New Doctor’s Appointment</div>

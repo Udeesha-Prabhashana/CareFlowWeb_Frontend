@@ -25,6 +25,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 
 
@@ -162,9 +163,9 @@ const Appointments: React.FC = () => {
 
     return (
         <div className="appointments">
-            <SidebarLu />
+            <SidebarPatient />
             <div className="appointmentsContainer">
-                <NavbarLu />
+                {/*<NavbarLu />*/}
                 <div className="mainContent">
                     View Appointments
                     <div className="subContent">

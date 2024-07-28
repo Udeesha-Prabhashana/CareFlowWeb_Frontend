@@ -25,6 +25,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface HistoryCard {
   doctor_name: string;
@@ -126,9 +127,9 @@ const HistoryCards: React.FC = () => {
 
   return (
     <div className="medical_history">
-      <SidebarLu />
+      <SidebarPatient />
       <div className="medical_historyContainer">
-        <NavbarLu />
+        {/*<NavbarLu />*/}
         <div className="mainContent">
           View Medical History
           <div className="subContent">

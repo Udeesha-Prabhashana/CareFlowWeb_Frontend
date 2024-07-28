@@ -57,7 +57,7 @@ const HomeRec: React.FC = () => {
   return (
     <div className="homerec">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
 
       <div className="homeContainer2rec">
         <div className="bodyContainerrec">

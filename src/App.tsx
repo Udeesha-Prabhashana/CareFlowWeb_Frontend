@@ -76,6 +76,17 @@ import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoc
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
 
+import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
+import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
+
+
+import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
+import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
+import RecSettings from "./pages/Receptionist/RSettings/RSettings";
+import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
+
+import LUDoctors from "./pages/LUDoctors/LUDoctors";
+import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -112,6 +123,22 @@ function App() {
           <Route path="/homelusin" element={<LoginSinhala/>} />
 
           <Route path="adminhome">
+            <Route
+              path="notification"
+              element={
+                // <ProtectedRoute>
+                <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                // <ProtectedRoute>
+                <SettingsAdm/>
+                // </ProtectedRoute>
+              }
+            />
             <Route
               index
               element={
@@ -196,7 +223,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <DoctorListLu />
+                  <LUDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -204,7 +231,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Doctor />
+                  <LUDoctorsView />
                 // </ProtectedRoute>
               }
             />
@@ -326,6 +353,10 @@ function App() {
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
             <Route path="doctor/profile" element={<ProfileDoc/>}/>
+          <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
+          <Route path="doctor/settings" element={<SettingsDoc/>}/>
+
+
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>
@@ -356,7 +387,8 @@ function App() {
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
-
+          <Route path="receptionist/notifications" element={<RNotifications/>}/>
+          <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
         </Routes>
 

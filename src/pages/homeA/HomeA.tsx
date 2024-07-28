@@ -6,12 +6,13 @@ import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
 import Widget from "../../components/widget/Widget";
 import List from "../../components/table/Table";
 import "./home.scss";
+import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
 
 const Home: React.FC = () => {
     return (
         <div className="homeA">
-            <SidebarAdm/>
-            <NavbarAd />
+            <SidebarAdmin/>
+            {/* <NavbarAd /> */}
             <div className="homeContainerA">
                 <div className="widgetsA">
                     <Widget type="user"/>
