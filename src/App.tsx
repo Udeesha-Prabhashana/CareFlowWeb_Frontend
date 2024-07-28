@@ -81,6 +81,7 @@ import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 
 
 import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
+import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
 
 
 interface ProtectedRouteProps {
@@ -123,6 +124,14 @@ function App() {
               element={
                 // <ProtectedRoute>
                 <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                // <ProtectedRoute>
+                <SettingsAdm/>
                 // </ProtectedRoute>
               }
             />
