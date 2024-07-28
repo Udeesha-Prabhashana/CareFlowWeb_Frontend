@@ -1,7 +1,7 @@
 import React from "react";
 import Button from '@mui/material/Button';
 import NavbarLu from "../../components/navbarA/NavbarA";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import "../appointments/appointments.scss";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -162,12 +162,12 @@ const Appointments: React.FC = () => {
 
     return (
         <div className="appointments">
-            <SidebarLu />
+            <SidebarPatient />
             <div className="appointmentsContainer">
-                <NavbarLu />
-                <div className="mainContent">
+            {/*    <NavbarLu />*/}
+                <div className="mainContentapp">
                     View Appointments
-                    <div className="subContent">
+                    <div className="subContentapp">
                         View Details of your Appointments
                     </div>
                     <ThemeProvider theme={theme}>

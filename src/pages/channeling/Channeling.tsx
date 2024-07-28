@@ -17,6 +17,7 @@ import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import "./channeling.scss";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface DateRangeType {
   startDate: Date;
@@ -62,8 +63,8 @@ const Channeling: React.FC = () => {
 
   return (
     <div className="homelu">
-      <SidebarLu />
-      <NavbarLu />
+      <SidebarPatient />
+      {/*<NavbarLu />*/}
           <div className="homeContainer2lu">
               <div className="finddoctore2">
                 Book an appointment with the best doctors

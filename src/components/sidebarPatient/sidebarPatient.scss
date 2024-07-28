@@ -1,4 +1,4 @@
-.SidebarDoc {
+.SidebarPatient {
   flex: 2;
   border-right: 1px solid #9D7CE5;
   min-height: 95vh;
@@ -10,13 +10,13 @@
   justify-content: space-between;
   padding: 20px 0;
 
-  .topDoc {
+  .topPatient {
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .logoImageDoc {
+    .logoImagePatient {
       width: 150px; // Adjust width to fit your design
       height: auto;
     }
@@ -27,7 +27,7 @@
     border: 0.5px solid rgb(230, 227, 227);
   }
 
-  .centerDoc {
+  .centerPatient {
     flex: 1;
     padding: 0 30px; // Increase padding to give more space from both sides
 
@@ -45,11 +45,11 @@
         transition: background-color 0.3s;
         border-radius: 10px;
 
-        &.activeDoc, &:hover {
+        &.activePatient, &:hover {
           background-color: #ece8ff;
         }
 
-        .iconDoc {
+        .iconPatient {
           font-size: 20px;
           color: #7451f8;
         }
@@ -64,7 +64,7 @@
     }
   }
 
-  .bottomContainerDoc {
+  .bottomContainerPatient {
     padding: 0 30px; // Increase padding to give more space from both sides
 
     ul {
@@ -81,11 +81,11 @@
         transition: background-color 0.3s;
         border-radius: 10px;
 
-        &.activeDoc, &:hover {
+        &.activePatient, &:hover {
           background-color: #ece8ff;
         }
 
-        .iconDoc {
+        .iconPatient {
           font-size: 20px;
           color: #7451f8;
         }
@@ -110,7 +110,7 @@
       }
     }
 
-    .profileDoc {
+    .profilePatient {
       display: flex;
       align-items: center;
       padding: 10px 0;
@@ -124,8 +124,8 @@
         margin-right: 10px;
       }
 
-      .detailsDoc {
-        .nameDoc {
+      .detailsPatient {
+        .namePatient {
           align-self: stretch;
           color: var(--skyethemes-com-mine-shaft, #363636);
           font-size: 12px;
@@ -135,7 +135,7 @@
 
         }
 
-        .emailDoc {
+        .emailPatient {
           align-self: stretch;
           color: var(--skyethemes-com-mine-shaft, #363636);
           font-size: 12px;

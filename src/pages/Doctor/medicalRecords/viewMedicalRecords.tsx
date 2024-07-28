@@ -113,7 +113,7 @@ const ViewMedicalRecords: React.FC = () => {
                                                     color="secondary"
                                                     onClick={() => handleAddDetails(index)}
                                                 >
-                                                    OK
+                                                    Add
                                                 </Button>
                                             </Box>
                                         </Box>
@@ -137,7 +137,7 @@ const ViewMedicalRecords: React.FC = () => {
             <div className="sideDocMRview">
                 <SidebarDoc />
                 <div className="navDocMRview">
-                    <NavbarDoc />
+                    {/*<NavbarDoc />*/}
                     <div className="mainContentDocMRview">
                         View Medical History
                         <div className="subContentDocMRview">

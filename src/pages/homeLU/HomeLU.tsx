@@ -8,14 +8,15 @@ import "./homelu.scss";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import { Link } from 'react-router-dom'; // Import Link for routing
 
 const HomeLu: React.FC = () => {
     return (
         <div className="homelu">
-                <SidebarLu />
-                <NavbarLu />
-                
+            <SidebarPatient />
+            {/*<NavbarLu />*/}
+
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
@@ -36,31 +37,33 @@ const HomeLu: React.FC = () => {
                                 Ready to make your first appointment?
                             </div>
                             <div className="subTopic mt-1">
-                                Cura is a AI Powered chatbot that can help you 
-                            </div>                    
+                                Cura is a AI Powered chatbot that can help you
+                            </div>
                             <div className="subTopic">
                                 find your doctor and book doctor's appointment
                             </div>
                             <div className="ml-5 mt-10">
-                            <Button 
-                                variant="contained" 
-                                startIcon={<AutoAwesomeIcon />}
-                                sx={{ 
-                                    textTransform: 'none', 
-                                    backgroundColor: '#855CDD', 
-                                    color: 'white', 
-                                    fontFamily: 'Roboto',
-                                    fontSize: '20px',
-                                    width: '200px',
-                                    height: '44px',
-                                    borderRadius: '65px',
-                                    '&:hover': {
-                                    backgroundColor: '#5F2BCF', // Change to your desired hover color
-                                },
-                            }}
-                            >
-                                Ask Cura
-                            </Button>
+                                <Link to="/chatbot">
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<AutoAwesomeIcon />}
+                                        sx={{
+                                            textTransform: 'none',
+                                            backgroundColor: '#855CDD',
+                                            color: 'white',
+                                            fontFamily: 'Roboto',
+                                            fontSize: '20px',
+                                            width: '200px',
+                                            height: '44px',
+                                            borderRadius: '65px',
+                                            '&:hover': {
+                                                backgroundColor: '#5F2BCF', // Change to your desired hover color
+                                            },
+                                        }}
+                                    >
+                                        Ask Cura
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                         <div className="hero_image">
