@@ -2,7 +2,6 @@ import React from 'react';
 import "./RBookingsUnpaidSummary.scss";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Grid, Box } from '@mui/material';
-import NavbarLu from "../../../components/navbarA/NavbarA";
 import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import Button from "@mui/material/Button";
 
@@ -16,7 +15,7 @@ const RBookingsUnpaidSummmary: React.FC = () => {
 
     return (
         <div className="RBookingsUnpaidSummmary">
-            <NavbarLu />
+            {/*<NavbarLu />*/}
             <div className="RBookingsUnpaidSummmarysContainer">
                 <SidebarRec />
                 <div className="mainContent">
