@@ -75,6 +75,8 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
+import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 
 
 interface ProtectedRouteProps {
@@ -326,6 +328,10 @@ function App() {
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
             <Route path="doctor/profile" element={<ProfileDoc/>}/>
+          <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
+          <Route path="doctor/settings" element={<SettingsDoc/>}/>
+
+
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>

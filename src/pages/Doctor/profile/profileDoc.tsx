@@ -14,7 +14,7 @@ const ProfileDoc: React.FC = () => {
     return (
         <div className="profilelu">
             <SidebarDoc />
-            <NavbarDoc />
+            {/*<NavbarDoc />*/}
 
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
