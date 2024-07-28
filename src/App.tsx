@@ -75,8 +75,12 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
+
+
+import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
 
 
 interface ProtectedRouteProps {
@@ -114,6 +118,14 @@ function App() {
           <Route path="/homelusin" element={<LoginSinhala/>} />
 
           <Route path="adminhome">
+            <Route
+              path="notification"
+              element={
+                // <ProtectedRoute>
+                <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
             <Route
               index
               element={
