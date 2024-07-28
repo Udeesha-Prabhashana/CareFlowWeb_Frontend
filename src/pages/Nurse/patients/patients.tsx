@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import NavbarNurse from "../../../components/navbarNurse/navbarNurse";
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
 import "../patients/patients.scss";
 import { ThemeProvider } from "@emotion/react";
@@ -83,7 +82,6 @@ const BookingNurse: React.FC = () => {
         <div className="sideNurse">
             <SidebarNurse />
             <div className="navNurse">
-                <NavbarNurse />
                 <div className="mainContentNurseBooking">
                     Bookings
                     <div className="subContentNurseBooking">

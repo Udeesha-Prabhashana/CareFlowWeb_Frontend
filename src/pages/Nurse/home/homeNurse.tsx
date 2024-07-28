@@ -10,7 +10,6 @@ import SidebarNurse from "../../../../src/components/sidebarNurse/sidebarNurse";
 
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import NavbarNurse from "../../../components/navbarNurse/navbarNurse";
 import PatientUpdate from "../../../components/widgetNurse/patient_update";
 
 
@@ -19,7 +18,7 @@ const HomeNurse: React.FC = () => {
         <div className="sideNurse">
             <SidebarNurse />
             <div className="navNurse">
-                <NavbarNurse />
+
                 <div className="bodyContainerNurseHome">
                     <div className="mainTopicNurseHome">
                         Good Morning, <span className="purpleTextNurse">Nurse Pushpa Ramyani De Zoysa</span>
