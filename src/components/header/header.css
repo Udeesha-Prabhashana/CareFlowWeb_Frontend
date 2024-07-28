@@ -1,5 +1,5 @@
 .header{
-    background-color: rgb(186, 108, 231);
+    background-color: #855CDD;
     color: white;
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@
 }
 
 .headerBtn{
-    background-color: rgb(186, 108, 231);
+    background-color: #855CDD;
     color: white;
     font-weight: 500;
     border: none;
@@ -60,7 +60,7 @@
 .headerSerch{
     height: 50px;
     background-color: white;
-    border: 3px solid rgb(186, 108, 231);
+    border: 3px solid #855CDD;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -82,7 +82,7 @@
     margin-top: 150px;
     margin-bottom:-130px;
     margin-left: 220px;
-    color: rgb(186, 108, 231);
+    color: #855CDD;
     align-items: center;
     justify-content: center;
 }

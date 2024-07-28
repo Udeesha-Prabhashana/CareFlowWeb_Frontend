@@ -1,10 +1,14 @@
+@tailwind components;
+@tailwind utilities;
+
+
 .homelu{
     display: flex;    //home class is sidebar 
 
     .homeContainer2lu{ //homeContainer class is navbar 
 
         flex: 6;     //used to divide both sidebar and navbar 
-        margin-left: 250px;    //used to get the space between sidebar and navbar
+        margin-left: 300px;    //used to get the space between sidebar and navbar
     }
 
     .widgetslu , .chartslu{
@@ -57,5 +61,11 @@
 
     .hero_image{
         width: 500px;
+
+        img {
+                height: 400px; // Apply height to the img tag
+                object-fit: cover; // Ensures the image covers the specified height while maintaining aspect ratio
+            }
     }
 }
+

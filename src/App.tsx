@@ -6,10 +6,11 @@ import Login from "./pages/login/Login";
 import { useContext, ReactNode } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
+import LoginSinhala from "./pages/homeLU/HomeLUsin";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { appointmentColumns, doctorColumns, hotelColumns, nurseColumns, patientColumns, receptionistColumns, roomColumns, userColumns } from "./datatablesource";
 import List2 from "./pages/listA/ListA";
 import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
@@ -29,11 +30,15 @@ import DoctorListLu from "./pages/doctorListLU/DoctorListLu";
 import Appointments from "./pages/appointments/appointments";
 import BookingSummary from "./pages/appointments/bookingSummary/bookingSummary"; // Import the new Appointments page
 import Doctor from "./pages/doctorLU/Doctor";
+import Chatbot from "./pages/cura/chatbot/chatbot";
+import ChatbotNext from "./pages/cura/chatbotN/chatbotN";
+import ChatbotLast from "./pages/cura/chatbotL/chatbotL";
+import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
-
 import ProfileLu from "./pages/profileLu/ProfileLu";
+
 
 import Settings from "./pages/settings/settings";
 
@@ -45,10 +50,43 @@ import DoctorViewBooking from "./pages/Doctor/bookings/viewBooking/viewBooking";
 import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
 import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
+import ProfileDoc from "./pages/Doctor/profile/profileDoc";
+import PatientList from "./pages/Doctor/patients/patientlist";
+import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
+
+
 
 import HomeNurse from "./pages/Nurse/home/homeNurse";
 import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
+
+import HomeRec from "./pages/Receptionist/homeRec/HomeRec";
+import RBookings from "./pages/Receptionist/RBookings/RBookings";
+import PaidList from "./pages/Receptionist/RBookingsPaidList/RBookingsPaidList";
+import PaidSummary from "./pages/Receptionist/RBookingsPaidSummary/RBookingsPaidSummary";
+import UnpaidList from "./pages/Receptionist/RBookingsUnpaidList/RBookingsUnpaidList";
+import UnpaidSummary from "./pages/Receptionist/RBookingsUnpaidSummary/RBookingsUnpaidSummary";
+
+import RBookingsAdd from "./pages/Receptionist/RBookingsAdd/RBookingsAdd";
+
+import RDoctors from "./pages/Receptionist/RDoctors/RDoctors";
+import RDoctorsView from "./pages/Receptionist/RDoctorsView/RDoctorsView";
+import RProfile from "./pages/Receptionist/RProfile/RProfile";
+import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
+import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
+import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+
+import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
+import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
+
+
+import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
+import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
+import RecSettings from "./pages/Receptionist/RSettings/RSettings";
+import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
+
+import LUDoctors from "./pages/LUDoctors/LUDoctors";
+import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -79,18 +117,89 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/hotel" element={<List />} />
-          <Route path="/hotels/:id" element={<Hotel />} />
+          <Route path="/doctorlistNlu" element={<List />} />
+          <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="adminhome"
-            index
-            element={
-              // <ProtectedRoute>
+          <Route path="/homelusin" element={<LoginSinhala/>} />
+
+          <Route path="adminhome">
+            <Route
+              path="notification"
+              element={
+                // <ProtectedRoute>
+                <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                // <ProtectedRoute>
+                <SettingsAdm/>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
                 <Home2 />
-              // </ProtectedRoute>
-            }
-          />
+                // </ProtectedRoute>
+              }
+            />
+            <Route path="Doctors">
+              <Route
+                index
+                element={
+                // <ProtectedRoute>
+                <List2 columns={doctorColumns} />
+                // </ProtectedRoute>
+              }
+              />
+              <Route
+                path="new"
+                element={
+                  // <ProtectedRoute>
+                  <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                  // </ProtectedRoute>
+                }
+                />
+            </Route>
+            <Route
+              path="Nurses"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={nurseColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Appointments"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={appointmentColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Patients"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={patientColumns} />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Receptionists"
+              element={
+                // <ProtectedRoute>
+                <List2 columns={receptionistColumns} />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
+          
+
           <Route
             path="userloginhome"
             index
@@ -114,7 +223,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <DoctorListLu />
+                  <LUDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -122,7 +231,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Doctor />
+                  <LUDoctorsView />
                 // </ProtectedRoute>
               }
             />
@@ -242,6 +351,12 @@ function App() {
             <Route path="doctor/medical_records" element={<DoctorMedicalRecords/>}/>
             <Route path="doctor/view_medicalRecords" element={<ViewMedicalRecords/>}/>
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
+            <Route path="doctor/patients" element={<PatientList/>}/>
+            <Route path="doctor/profile" element={<ProfileDoc/>}/>
+          <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
+          <Route path="doctor/settings" element={<SettingsDoc/>}/>
+
+
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>
@@ -249,6 +364,32 @@ function App() {
 
 
 
+
+          <Route path="chatbot" element={<Chatbot/>}/>
+          <Route path="chatbotN" element={<ChatbotNext/>}/>
+          <Route path="chatbotL" element={<ChatbotLast/>}/>
+          <Route path="chatbotThird" element={<ChatbotThird/>}/>
+
+          
+          <Route path="receptionist/home" element={<HomeRec/>}/>          
+          <Route path="receptionist/bookings" element={<RBookings/>}/>
+          <Route path="receptionist/bookings/paidlist" element={<PaidList/>}/>
+          <Route path="receptionist/bookings/paidsummary" element={<PaidSummary/>}/>
+          <Route path="receptionist/bookings/unpaidlist" element={<UnpaidList/>}/>
+          <Route path="receptionist/bookings/unpaidsummary" element={<UnpaidSummary/>}/>
+          <Route path="receptionist/bookings/addnewbooking" element={<RBookingsAdd/>}/>
+          <Route path="receptionist/doctors">
+            <Route index element={<RDoctors />} />
+            <Route path=":doctorId" element={<RDoctorsView />} />
+          </Route>
+
+          <Route path="receptionist/bookings/addnewbooking/doctors" element={<RBookingsDoctors/>}/>
+          <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
+          <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
+
+          <Route path="receptionist/notifications" element={<RNotifications/>}/>
+          <Route path="receptionist/settings" element={<RecSettings/>}/>
+          <Route path="receptionist/profile" element={<RProfile/>}/>
         </Routes>
 
  
@@ -258,5 +399,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

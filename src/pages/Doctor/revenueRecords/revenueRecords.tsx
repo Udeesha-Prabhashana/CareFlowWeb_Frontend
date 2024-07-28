@@ -49,12 +49,13 @@ const RevenueRecords: React.FC = () => {
         <div className="sideDocRR">
             <SidebarDoc />
             <div className="navDocRR">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContentDocRR">
                     Revenue Records
                     <div className="subContentDocRR">
                         View Details of your Revenues
                     </div>
+                    <br/><br/>
                     <Grid container spacing={3}>
                         <Grid item xs={12} md={6}>
                             <div className="chartContainer">

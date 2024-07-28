@@ -17,6 +17,7 @@ import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import "./channeling.scss";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface DateRangeType {
   startDate: Date;
@@ -62,8 +63,8 @@ const Channeling: React.FC = () => {
 
   return (
     <div className="homelu">
-      <SidebarLu />
-      <NavbarLu />
+      <SidebarPatient />
+      {/*<NavbarLu />*/}
           <div className="homeContainer2lu">
               <div className="finddoctore2">
                 Book an appointment with the best doctors
@@ -130,7 +131,7 @@ const Channeling: React.FC = () => {
             <div className="image">
           <img src="/images/locations/image.png" alt="" className="askquraImage" />
           <div className="text1">
-            Can’t find the suitable doctor for your symptoms?
+            Can’t find the suitable doctor for your ?
         </div>
           <div className="text2">
             Cura is a AI Powered chatbot that can help you find your doctor and book doctor's appointment

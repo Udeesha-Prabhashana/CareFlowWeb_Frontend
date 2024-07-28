@@ -7,6 +7,7 @@ import useFetch from "../../hooks/useFetch";
 import SearchItem from "../../components/searchItem/searchItem";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../components/navbarA/NavbarA";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface Doctor {
   _id: string;
@@ -105,8 +106,8 @@ const DoctorListLu: React.FC = () => {
 
   return (
     <div className="homeDL">
-      <SidebarLu />
-      <NavbarLu />
+      <SidebarPatient />
+      {/*<NavbarLu />*/}
       <div className="listContainerDL">
         <div className="listWrapperDL">
           <div className="topic">

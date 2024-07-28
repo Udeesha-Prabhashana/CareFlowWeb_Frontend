@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/medicalRecords.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/medicalRecords.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/revenueRecords/revenueRecords.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/revenueRecords/revenueRecords.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +22,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="curaedits" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2jVmlyU4iK8fdnXDPSFHoeQrbdx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,30 +43,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "liviru-dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;liviru-dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="npm install @mui/x-charts" />
       <command value="npm install @mui/x-charts " />
       <command value="npm install @mui/material @emotion/react @emotion/styled react-chartjs-2 chart.js " />
       <command value="npm install" />
+      <command value="npm install @material-ui/core @material-ui/icons" />
+      <command value="npm install @material-ui/core @material-ui/icons @emotion/react @emotion/styled " />
+      <command value="npm install @material-ui/core @material-ui/icons @emotion/react @emotion/styled --legacy-peer-deps " />
+      <command value="npm uninstall @material-ui/core @material-ui/icons " />
+      <command value="npm install @mui/material @mui/icons-material @emotion/react @emotion/styled " />
+      <command value="npm install @mui/styles " />
+      <command value="npm install @mui/styles --legacy-peer-deps " />
+      <command value="npm install @mui/styles --force " />
       <command value="npm start" />
     </option>
   </component>
@@ -75,7 +87,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1721480778903</updated>
-      <workItem from="1721480782097" duration="13415000" />
+      <workItem from="1721480782097" duration="13698000" />
+      <workItem from="1721562278756" duration="23000" />
+      <workItem from="1721577240466" duration="799000" />
+      <workItem from="1721726564839" duration="228000" />
+      <workItem from="1721727640703" duration="3843000" />
+      <workItem from="1721740546656" duration="4462000" />
+      <workItem from="1721781634770" duration="14000" />
+      <workItem from="1721782177756" duration="4000" />
+      <workItem from="1721789378757" duration="2895000" />
+      <workItem from="1721792329121" duration="940000" />
+      <workItem from="1721798752871" duration="4054000" />
     </task>
     <servers />
   </component>
@@ -86,5 +108,8 @@
         <option value="$PROJECT_DIR$/src/pages/list/List.jsx" />
       </list>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

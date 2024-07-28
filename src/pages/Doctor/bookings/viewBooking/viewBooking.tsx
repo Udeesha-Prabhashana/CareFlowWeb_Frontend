@@ -11,14 +11,14 @@ const DoctorViewBooking: React.FC = () => {
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
-        navigate("/doctor/medical_records");
+        navigate("/doctor/view_medicalRecords");
     };
 
     return (
         <div className="appointments">
             <SidebarDoc />
             <div className="appointmentsContainer">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContent">
                     View Booking
                     <div className="subContent">

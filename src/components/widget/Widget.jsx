@@ -28,9 +28,9 @@ const WidgetA = ({ type }) => {
             break;
         case "order":
             data = {
-                title: "BOOKINGS",
+                title: "APPOINMNETS",
                 isMoney: false,
-                link: "View all booking",
+                link: "View all appoinments",
                 icon: <ShoppingCartOutlinedIcon className="icon"
                 style={{
                     backgroundColor: "rgba(218, 165, 32, 0.2)",

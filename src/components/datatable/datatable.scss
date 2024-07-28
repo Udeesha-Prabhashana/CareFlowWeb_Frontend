@@ -1,12 +1,13 @@
-.datatable{
+.datatableadm{
     height: 600px;
     padding: 20px;
-    margin-left: 250px;
+    margin-left: 320px;
 
-    .datatableTitle {
+    .datatableTitleadm {
             width: 100%;
             font-size: 24px;
-            color: gray;
+            font-weight: bold;
+            color: black;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -14,21 +15,21 @@
     
             .link {
                 text-decoration: none;
-                color: green;
+                color: #7451f8;
                 font-size: 16px;
                 font-weight: 400;
-                border: 1px solid green;
+                border: 1px solid #7451f8;
                 padding: 5px;
                 border-radius: 5px;
                 cursor: pointer;
             }
         }
 
-    .cellWithImg {
+    .cellWithImgadm {
             display: flex;
             align-items: center;
     
-            .cellImg {
+            .cellImgadm {
                 width: 32px;
                 height: 32px;
                 border-radius: 50%;
@@ -36,7 +37,7 @@
                 margin-right: 20px;
             }
         }
-    .cellWithStatus {
+    .cellWithStatusadm {
         padding: 5px;
         border-radius: 5px;
 
@@ -56,20 +57,20 @@
         }
     }
 
-    .cellAction {
+    .cellActionadm {
         display: flex;
         align-items: center;
         gap: 15px;
 
-        .viewButton {
+        .viewButtonadm {
             padding: 2px 5px;
             border-radius: 5px;
-            color: darkblue;
-            border: 1px dotted rgba(0, 0, 139, 0.596);
+            color: #7451f8;
+            border: 1px dotted #7451f8;
             cursor: pointer;
         }
 
-        .deleteButton {
+        .deleteButtonadm {
             padding: 2px 5px;
             border-radius: 5px;
             color: crimson;
