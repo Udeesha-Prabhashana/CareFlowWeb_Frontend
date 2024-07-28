@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import { useContext, ReactNode } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
+import LoginSinhala from "./pages/homeLU/HomeLUsin";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
@@ -108,6 +109,7 @@ function App() {
           <Route path="/doctorlistNlu" element={<List />} />
           <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
           <Route path="/login" element={<Login />} />
+          <Route path="/homelusin" element={<LoginSinhala/>} />
 
           <Route path="adminhome">
             <Route
