@@ -5,12 +5,13 @@ import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 const ProfileLu: React.FC = () => {
   return (
     <div className="profilelu">
-      <SidebarLu />
-      <NavbarLu />
+      <SidebarPatient />
+      {/*<NavbarLu />*/}
 
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">

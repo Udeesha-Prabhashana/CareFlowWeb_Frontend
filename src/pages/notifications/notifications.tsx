@@ -26,6 +26,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { useState } from 'react';
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface Notification {
   title: string;
@@ -153,9 +154,9 @@ const Notifications: React.FC = () => {
 
   return (
     <div className="notifications">
-      <SidebarLu />
+      <SidebarPatient />
       <div className="notificationsContainer">
-        <NavbarLu />
+        {/*<NavbarLu />*/}
         <div className="mainContent" style={{ position: 'absolute', top: 0 }}>
           Notifications
           <div className="subContent">View upcoming updates</div>
