@@ -78,6 +78,12 @@ import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSum
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 
+import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
+import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
+
+
+import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -114,6 +120,14 @@ function App() {
           <Route path="/homelusin" element={<LoginSinhala/>} />
 
           <Route path="adminhome">
+            <Route
+              path="notification"
+              element={
+                // <ProtectedRoute>
+                <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
             <Route
               index
               element={

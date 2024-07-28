@@ -68,7 +68,7 @@ const SidebarAdm: React.FC = () => {
             </li>
           </Link>
           <p className="titlead">USEFUL</p>
-          <Link to="/adminhome" style={{ textDecoration: "none" }}>
+          <Link to="/adminhome/notification" style={{ textDecoration: "none" }}>
           <li>
             <NotificationsNoneIcon className="iconad" />
             <span> Notification</span>
