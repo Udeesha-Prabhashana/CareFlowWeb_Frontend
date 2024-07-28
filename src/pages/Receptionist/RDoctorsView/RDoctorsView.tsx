@@ -100,7 +100,7 @@ const RDoctorsView: React.FC = () => {
   return (
     <div className="RDoctorsView flex flex-col p-6">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">
           <div className="flex items-center mb-4 text-purple-600 pl-14">

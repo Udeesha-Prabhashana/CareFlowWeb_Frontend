@@ -158,7 +158,7 @@ const RBookings: React.FC = () => {
         <div className="appointments">
             <SidebarRec />
             <div className="appointmentsContainer">
-                <NavbarLu />
+                {/*<NavbarLu />*/}
                 <div className="mainContent">
                     Bookings
                     <div className="subContent">

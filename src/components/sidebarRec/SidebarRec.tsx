@@ -1,104 +1,89 @@
-import React, { useContext } from "react";
-import "./SidebarRec.scss";
-import DashboardIcon from "@mui/icons-material/Dashboard"; // SvgIcon components. It depends on @mui/material, which requires Emotion packages
+import React, { useState, useContext, useEffect } from "react";
+import "../sidebarRec/SidebarRec.scss";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import StoreIcon from "@mui/icons-material/Store";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
+import logo from "../../components/images/logo.png";
+// import vector from "../../components/images/doctorVector.jpg";
+import vector from "../images/rec.jpg";
 
 const SidebarRec: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { dispatch } = useContext(DarkModeContext)!;
+  const [activeLink, setActiveLink] = useState<string>(location.pathname);
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
+
+  const handleLinkClick = (link: string) => {
+    setActiveLink(link);
+    if (link === "/login") {
+      navigate("/login");
+    } else {
+      navigate(link);
+    }
+  };
 
   return (
-    <div className="SidebarRec">
-      <div className="topRec">
-        <Link to="/userloginhome" style={{ textDecoration: "none" }}>
-          <span className="logoRec">Care Flow</span>
-        </Link>
-      </div>
-      <hr /> {/* hr use to get line */}
-      <div className="centerRec">
-        <ul>
-          <p className="titleRec">MAIN</p>
-          <Link to="/receptionist/home" style={{ textDecoration: "none" }}>
-            <li>
+      <div className="SidebarRec">
+        <div className="topRec">
+          <Link to="/receptionist/home" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/receptionist/home")}>
+            <img src={logo} alt="CareFlow Logo" className="logoImageRec" />
+          </Link>
+        </div>
+        <hr />
+        <div className="centerRec">
+          <ul>
+            <li className={activeLink === "/receptionist/home" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/home")}>
               <DashboardIcon className="iconRec" />
-              <span> Home</span>
+              <span>Home</span>
             </li>
-          </Link>
-          <p className="titleRec">LIST</p>
-          <Link to="/receptionist/bookings" style={{ textDecoration: "none" }}>
-            <li>
+            <li className={activeLink === "/receptionist/bookings" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/bookings")}>
               <Person2OutlinedIcon className="iconRec" />
-              <span> Bookings </span>
+              <span>Bookings</span>
             </li>
-          </Link>
-          <Link to="/receptionist/doctors" style={{ textDecoration: "none" }}>
-            <li>
-              <Person2OutlinedIcon className="iconRec" />
-              <span> Doctors </span>
+            <li className={activeLink === "/receptionist/doctors" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/doctors")}>
+              <CreditCardIcon className="iconRec" />
+              <span>Doctors</span>
             </li>
-          </Link>
-          <p className="titleRec">USEFUL</p>
-          <Link to="/notifications" style={{ textDecoration: "none" }}>
-          <li>
-            <NotificationsNoneIcon className="iconRec" />
-            <span> Notification</span>
-          </li>
-          </Link>
-          <li>
-            <InsertChartIcon className="iconRec" />
-            <span> Stats</span>
-          </li>
-          <p className="titleRec">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="iconRec" />
-            <span> System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="iconRec" />
-            <span> Logs</span>
-          </li>
-          <Link to="/settings" style={{ textDecoration: "none" }}>
-          <li>
-            <SettingsApplicationsIcon className="iconRec" />
-            <span> Setting</span>
-          </li>
-          </Link>
-          <p className="titleRec">USER</p>
-          <Link to="/receptionist/profile" style={{ textDecoration: "none" }}>
-          <li>
-            <AccountCircleOutlinedIcon className="iconRec" />
-            <span> Profile</span>
+          </ul>
+        </div>
+        <div className="bottomContainerRec">
+          <ul>
+            <li className={activeLink === "/receptionist/notifications" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/notifications")}>
+              <NotificationsNoneIcon className="iconRec" />
+              <span>Notifications</span>
+              <span className="notificationBadge">2</span>
             </li>
-            </Link>
-          <li>
-            <ExitToAppIcon className="iconRec" />
-            <span onClick={() => navigate("/login")}> Logout</span>
-          </li>
-        </ul>
+            <li className={activeLink === "/receptionist/settings" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/settings")}>
+              <SettingsApplicationsIcon className="iconRec" />
+              <span>Settings</span>
+            </li>
+            <li onClick={() => handleLinkClick("/login")}>
+              <ExitToAppIcon className="iconRec" />
+              <span>Logout</span>
+            </li>
+          </ul>
+          <Link to="/receptionist/profile" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/receptionist/profile")}>
+            <div className="profileRec">
+              <img src={vector} alt="Profile"/>
+              <div className="detailsRec">
+                <span className="nameRec">Kamala </span>
+                <span className="emailRec">michaelsmith12@gmail.com</span>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
-      <div className="bottomRec"> {/*give choose color options in dashboard*/}
-        <div
-          className="colorOptionRec"
-          onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
-        <div
-          className="colorOptionRec"
-          onClick={() => dispatch({ type: "DARK" })}
-        ></div>
-      </div>
-    </div>
   );
 };
 

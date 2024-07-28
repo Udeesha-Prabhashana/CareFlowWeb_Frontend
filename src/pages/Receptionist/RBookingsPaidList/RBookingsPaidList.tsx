@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import NavbarRec from "../../../components/navbarA/NavbarA";
 import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import "./RBookingsPaidList.scss";
 import { ThemeProvider } from "@emotion/react";
@@ -83,7 +82,7 @@ const RBookingsPaidList: React.FC = () => {
         <div className="Rbookingpaid">
             <SidebarRec />
             <div className="navRec">
-                <NavbarRec />
+                {/*<NavbarRec />*/}
                 <div className="mainContentRecBooking">
                     Bookings
                     <div className="subContentRecBooking">
