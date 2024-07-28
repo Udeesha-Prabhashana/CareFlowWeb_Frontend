@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./searchItemR.css";
+import "./searchItemLUN.css";
 
 // Define the types for the item prop
 interface Item {
@@ -15,7 +15,7 @@ interface SearchItemProps {
   item: Item;
 }
 
-const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
+const searchItemLUN: React.FC<SearchItemProps> = ({ item }) => {
   return (
     <div
       className="flex flex-col md:flex-row bg-white rounded-lg shadow-md p-4 mb-4"
@@ -46,7 +46,7 @@ const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
           )}
           <div className="text-right">
             <Link
-              to={`/receptionist/doctors/${item._id}`}
+              to={`/doclist/${item._id}`}
             >
               <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
@@ -62,4 +62,4 @@ const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
   );
 };
 
-export default searchItemR;
+export default searchItemLUN;
