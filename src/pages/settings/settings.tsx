@@ -27,6 +27,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Divider, styled, Switch } from "@mui/material";
 import { red } from "@mui/material/colors";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 
 const MaterialUISwitch1 = styled(Switch)(({ theme }) => ({
@@ -133,9 +134,9 @@ function Settings(){
 
     return (
         <div className="settings">
-          <SidebarLu />
+          <SidebarPatient />
           <div className="settingContainer">
-            <NavbarLu />
+            {/*<NavbarLu />*/}
             <div className="mainContent" style={{ position: 'absolute', top: 0 }}>
               Settings
               <div className="subContent">Customize your settings</div>

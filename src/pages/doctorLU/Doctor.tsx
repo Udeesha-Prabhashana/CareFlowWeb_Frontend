@@ -13,6 +13,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 import NavbarLu from "../../components/navbarA/NavbarA";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface DoctorData {
   photos: string[];
@@ -120,8 +121,8 @@ const Doctor: React.FC = () => {
 
   return (
     <div className="homelu">
-      <SidebarLu />
-      <NavbarLu />
+      <SidebarPatient />
+      {/*<NavbarLu />*/}
       <>
         <div className="hotelContainerLU">
           {open && (
