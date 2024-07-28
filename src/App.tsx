@@ -83,6 +83,9 @@ import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
 import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
 import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
 
+import LUDoctors from "./pages/LUDoctors/LUDoctors";
+import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -219,7 +222,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <DoctorListLu />
+                  <LUDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -227,7 +230,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Doctor />
+                  <LUDoctorsView />
                 // </ProtectedRoute>
               }
             />
