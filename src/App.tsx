@@ -87,6 +87,7 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import CuraUI from "./pages/cura/chatui";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -369,6 +370,8 @@ function App() {
           <Route path="chatbotN" element={<ChatbotNext/>}/>
           <Route path="chatbotL" element={<ChatbotLast/>}/>
           <Route path="chatbotThird" element={<ChatbotThird/>}/>
+          <Route path="curachat" element={<CuraUI/>}/>
+
 
           
           <Route path="receptionist/home" element={<HomeRec/>}/>          

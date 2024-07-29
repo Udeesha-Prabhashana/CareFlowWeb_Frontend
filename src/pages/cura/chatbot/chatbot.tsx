@@ -9,7 +9,7 @@ const Chatbot = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/chatbotN');
+    navigate('/curachat');
   };
 
   return (
