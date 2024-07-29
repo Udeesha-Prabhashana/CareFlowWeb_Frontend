@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span onClick={() => setOpenDate(!openDate)} className="headerSearchtext">
-                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")}`}
                 </span>
                 {openDate && (
                   <DateRange
