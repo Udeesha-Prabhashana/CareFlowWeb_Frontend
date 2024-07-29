@@ -1,4 +1,4 @@
-import "./LUDoctors.scss";
+import "./LUBookingsDoctors.scss";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
@@ -9,7 +9,7 @@ import SidebarRec from "../../components/sidebarRec/SidebarRec";
 import NavbarLu from "../../components/navbarA/NavbarA";
 import Button from "@mui/material/Button";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
-import SearchItemnlu2 from "../../components/searchItemLUNEW2/searchItemLUN2";
+import SearchItemnlu from "../../components/searchItemLUNEW/searchItemLUN";
 
 interface Doctor {
   _id: string;
@@ -84,7 +84,7 @@ const dummyData: Doctor[] = [
     featured: true,
   },
 ];
-const LUDoctors: React.FC = () => {
+const LUBookingDoctors: React.FC = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(
     location.state?.destination || ""
@@ -194,7 +194,7 @@ const LUDoctors: React.FC = () => {
             ) : (
               (data || dummyData)?.map((item) => (
                 <div key={item._id} className="p-4">
-                  <SearchItemnlu2 item={item} />
+                  <SearchItemnlu item={item} />
                 </div>
               ))
             )}
@@ -203,4 +203,4 @@ const LUDoctors: React.FC = () => {
     </div>
   );
 };
-export default LUDoctors;
+export default LUBookingDoctors;

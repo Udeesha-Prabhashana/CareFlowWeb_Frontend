@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SidebarLu from "../../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../../components/navbarA/NavbarA";
@@ -7,7 +7,7 @@ import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 
 const Chatbot = () => {
   const navigate = useNavigate();
-
+  
   const handleButtonClick = () => {
     navigate('/curachat');
   };

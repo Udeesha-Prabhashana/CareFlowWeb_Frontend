@@ -1,5 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../../components/sidebarPatient/sidebarPatient.scss";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { DarkModeContext } from "../../context/darkModeContext";
+import logo from "../../components/images/logo.png";
+import patient from "../../components/images/patient.jpg";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -7,11 +10,7 @@ import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { DarkModeContext } from "../../context/darkModeContext";
-import logo from "../../components/images/logo.png";
-import patient from "../../components/images/patient.jpg";
+import "../../components/sidebarPatient/sidebarPatient.scss";
 
 const SidebarPatient: React.FC = () => {
     const navigate = useNavigate();
@@ -25,11 +24,7 @@ const SidebarPatient: React.FC = () => {
 
     const handleLinkClick = (link: string) => {
         setActiveLink(link);
-        if (link === "/login") {
-            navigate("/login");
-        } else {
-            navigate(link);
-        }
+        navigate(link);
     };
 
     return (
@@ -54,7 +49,7 @@ const SidebarPatient: React.FC = () => {
                         <CreditCardIcon className="iconPatient" />
                         <span>Appointments</span>
                     </li>
-                    <li className={activeLink === "/" ? "activePatient" : ""} onClick={() => handleLinkClick("/")}>
+                    <li className={activeLink === "/doclist2" ? "activePatient" : ""} onClick={() => handleLinkClick("/doclist2")}>
                         <InsertChartIcon className="iconPatient" />
                         <span>Doctors</span>
                     </li>
@@ -88,7 +83,7 @@ const SidebarPatient: React.FC = () => {
                     <div className="profilePatient">
                         <img src={patient} alt="Profile"/>
                         <div className="detailsPatient">
-                            <span className="namePatient">Mr. Saman </span>
+                            <span className="namePatient">Mr. Saman</span>
                             <span className="emailPatient">samanjaya12@gmail.com</span>
                         </div>
                     </div>
