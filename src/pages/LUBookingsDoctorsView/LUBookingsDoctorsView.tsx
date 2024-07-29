@@ -1,4 +1,4 @@
-import "./LUDoctorsView.scss";
+import "./LUBookingsDoctorsView.scss";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -76,7 +76,7 @@ const dummyData = [
 ];
 
 
-const LUDoctorsView: React.FC = () => {
+const LUBookingsDoctorsView: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -108,7 +108,7 @@ const LUDoctorsView: React.FC = () => {
       <div className="LUDVhomeContainer2lu">
         <div className="LUDVbodyContainerLu">
           <div className="flex items-center mb-4 text-purple-600 pl-14">
-            <Link to="/doclist2" className="flex items-center">
+            <Link to="/doclist" className="flex items-center">
               <FontAwesomeIcon icon={faCircleArrowLeft} />
               <span className="ml-2 font-roboto text-lg cursor-pointer">Go back</span>
             </Link>
@@ -159,6 +159,12 @@ const LUDoctorsView: React.FC = () => {
                 <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
                 <span className="text-gray-600 flex-grow">{data.email}</span>
               </div>
+              <button
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
+                onClick={handleClick}
+              >
+                Book Doctor
+              </button>
             </div>
           </div>
           {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
@@ -168,4 +174,4 @@ const LUDoctorsView: React.FC = () => {
   );
 };
 
-export default LUDoctorsView;
+export default LUBookingsDoctorsView;
