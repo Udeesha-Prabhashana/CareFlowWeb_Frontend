@@ -39,7 +39,7 @@
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    filter: blur(4px);
+    /* filter: blur(4px); */
 }
 
 .hotelTitlenLU {
@@ -127,7 +127,7 @@
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-    filter: blur(2px);
+    /* filter: blur(2px); */
 }
 
 .slidernLU {

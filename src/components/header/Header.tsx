@@ -99,9 +99,13 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
             <h3 className="headerDesc">
               Streamline Your Health with Careflow
             </h3>
-            <h2 className="finddoctore">
+            {/* <h2 className="finddoctore">
               Book an appointment with the best doctors
-            </h2>
+            </h2> */}
+            <div className="search">
+            <input type="text" placeholder="I have a Back Pain for 7 Days. Which Doctor is good for me?" />
+            <button> Ask Cura</button>
+          </div>
             <div className="headerSerch">
               <div className="headerSearchItem">
                 <Icon path={mdiDoctor} size={1}  className="headerIcon" />
@@ -129,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span onClick={() => setOpenDate(!openDate)} className="headerSearchtext">
-                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")}`}
                 </span>
                 {openDate && (
                   <DateRange
