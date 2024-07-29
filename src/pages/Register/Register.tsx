@@ -3,22 +3,25 @@ import { useContext, useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
+import { toast } from "react-toastify";
 
 interface Credentials {
-  username: string;
-  password: string;
-  email: string;
+  userName: string;
+  userPassword: string;
+  userEmail: string;
   name: string;
-  contact_no: string;
+  userMobileNo: string;
+  userRole: string;
 }
 
 const Register = () => {
   const [credentials, setCredentials] = useState<Credentials>({
-    username: "",
-    password: "",
-    email: "",
+    userName: "",
+    userPassword: "",
+    userEmail: "",
     name: "",
-    contact_no: "",
+    userMobileNo: "",
+    userRole: "ROLE_USER",
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -32,11 +35,15 @@ const Register = () => {
   const handleClick = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post<{ res: any }>("http://127.0.0.1:5000/addCustomer", credentials);
+      const res = await axios.post<{ res: any }>("http://localhost:8080/sign-up", credentials);
       console.log("Response:", res.data.res);
+      toast.success("Doctor added successfully!");
       navigate("/login");
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response?.data });
+      // Extract the error message from the response
+    const errorMessage = err.response?.data?.error || "An unexpected error occurred";
+    toast.error(errorMessage);
     }
   };
 
@@ -68,7 +75,7 @@ const Register = () => {
             Username
           </label>
           <input
-            id="username"
+            id="userName"
             type="text"
             onChange={handleChange}
             placeholder="Enter your username"
@@ -83,7 +90,7 @@ const Register = () => {
             Password
           </label>
           <input
-            id="password"
+            id="userPassword"
             type="password"
             onChange={handleChange}
             placeholder="Enter your password"
@@ -98,7 +105,7 @@ const Register = () => {
             Email Address
           </label>
           <input
-            id="email"
+            id="userEmail"
             type="email"
             onChange={handleChange}
             placeholder="Enter your email address"
@@ -113,7 +120,7 @@ const Register = () => {
             Phone Number
           </label>
           <input
-            id="contact_no"
+            id="userMobileNo"
             type="tel"
             onChange={handleChange}
             placeholder="+94 -  XXX XXX XX"

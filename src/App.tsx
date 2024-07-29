@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import { useContext, ReactNode } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
+import LoginSinhala from "./pages/homeLU/HomeLUsin";
 
 import Home2 from "./pages/homeA/HomeA";
 import HomeP from "./pages/homeP/HomeP";
@@ -58,6 +59,8 @@ import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 import HomeNurse from "./pages/Nurse/home/homeNurse";
 import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
+import SettingsNurse from "./pages/Nurse/settings/settingsNurse";
+import ProfileNurse from "./pages/Nurse/profile/profileNurse";
 
 import HomeRec from "./pages/Receptionist/homeRec/HomeRec";
 import RBookings from "./pages/Receptionist/RBookings/RBookings";
@@ -76,6 +79,19 @@ import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsP
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
 import Landing from "./pages/LandingPage/LandingPage";
 
+import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
+import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
+
+
+import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
+import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
+import RecSettings from "./pages/Receptionist/RSettings/RSettings";
+import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
+
+import LUDoctors from "./pages/LUDoctors/LUDoctors";
+import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import CuraUI from "./pages/cura/chatui";
+import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -109,8 +125,25 @@ function App() {
           <Route path="/doctorlistNlu" element={<List />} />
           <Route path="/doctorlistNlu/:id" element={<DoctorNLU /> } />
           <Route path="/login" element={<Login />} />
+          <Route path="/homelusin" element={<LoginSinhala/>} />
 
           <Route path="adminhome">
+            <Route
+              path="notification"
+              element={
+                // <ProtectedRoute>
+                <Notificationsadm/>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                // <ProtectedRoute>
+                <SettingsAdm/>
+                // </ProtectedRoute>
+              }
+            />
             <Route
               index
               element={
@@ -195,7 +228,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <DoctorListLu />
+                  <LUDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -203,7 +236,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <Doctor />
+                  <LUDoctorsView />
                 // </ProtectedRoute>
               }
             />
@@ -314,6 +347,7 @@ function App() {
 
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="bookingSummaryPay" element={<BookingSummaryPay />} />
 
 
 
@@ -325,10 +359,16 @@ function App() {
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
             <Route path="doctor/profile" element={<ProfileDoc/>}/>
+          <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
+          <Route path="doctor/settings" element={<SettingsDoc/>}/>
+
+
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
+            <Route path="nurse/settings" element={<SettingsNurse/>}/>
+            <Route path="nurse/profile" element={<ProfileNurse/>}/>
 
 
 
@@ -337,6 +377,8 @@ function App() {
           <Route path="chatbotN" element={<ChatbotNext/>}/>
           <Route path="chatbotL" element={<ChatbotLast/>}/>
           <Route path="chatbotThird" element={<ChatbotThird/>}/>
+          <Route path="curachat" element={<CuraUI/>}/>
+
 
           
           <Route path="receptionist/home" element={<HomeRec/>}/>          
@@ -355,7 +397,9 @@ function App() {
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
-
+          
+          <Route path="receptionist/notifications" element={<RNotifications/>}/>
+          <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
           <Route path="landingpage" element={<Landing/>}/>
         </Routes>

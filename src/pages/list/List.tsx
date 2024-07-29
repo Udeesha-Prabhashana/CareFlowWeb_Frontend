@@ -112,9 +112,9 @@ const List: React.FC = () => {
               <input placeholder={destination} type="text" />
             </div>
             <div className="lsItem">
-              <label>Check-in Date</label>
+              <label>Booking Date</label>
               <span onClick={() => setOpenDate(!openDate)}>
-                {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
+                {`${format(dates[0].startDate, "MM/dd/yyyy")}`}
               </span>
               {openDate && (
                 <DateRange

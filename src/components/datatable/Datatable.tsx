@@ -94,11 +94,11 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
       renderCell: (params) => {
         const id = params.row.doctor_id || params.row.nurse_id || params.row.appointment_id || params.row.patient_id || params.row.receptionist_id || params.row.id; // Use doctor_id, nurse_id, or id as the unique identifier
         return (
-          <div className="cellAction">
+          <div className="cellActionadm">
             <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButtonadm">View</div>
             </Link>
-            <div className="deleteButton" onClick={() => handleDelete(id)}>
+            <div className="deleteButtonadm" onClick={() => handleDelete(id)}>
               Delete
             </div>
           </div>
@@ -110,15 +110,15 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
+    <div className="datatableadm">
+      <div className="datatableTitleadm">
         {path2}
         <Link to={`/${path1}/${path2}/new`} className="link">
           Add New
         </Link>
       </div>
       <DataGrid
-        className="datagrid"
+        className="datagridadm"
         rows={list}
         columns={columns.concat(actionColumn)}
         pageSizeOptions={[9]} // Updated prop according to the latest MUI DataGrid API

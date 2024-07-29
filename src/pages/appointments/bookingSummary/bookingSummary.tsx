@@ -4,15 +4,16 @@ import NavbarLu from "../../../components/navbarA/NavbarA";
 import "../bookingSummary/bookingSummary.scss";
 import { useParams } from 'react-router-dom';
 import { Grid, Box } from '@mui/material';
+import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 
 const BookingSummary: React.FC = () => {
     const { id } = useParams<{ id: string }>();
 
     return (
         <div className="appointments">
-            <SidebarLu />
+            <SidebarPatient />
             <div className="appointmentsContainer">
-                <NavbarLu />
+                {/*<NavbarLu />*/}
                 <div className="mainContent">
                     Booking Summary
                     <div className="subContent">

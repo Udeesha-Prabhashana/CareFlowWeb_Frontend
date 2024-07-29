@@ -31,15 +31,15 @@ const RBookingsPatients: React.FC = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(SearchContext);
 
-  const handleSearch = () => {
-    dispatch({
-      type: "NEW_SEARCH",
-      payload: { patientName, age, sex, phoneNumber, dates },
-    });
-    navigate("/receptionist/bookings/addnewbooking/summary", {
-      state: { patientName, age, sex, phoneNumber, dates },
-    });
-  };
+  // const handleSearch = () => {
+  //   dispatch({
+  //     type: "NEW_SEARCH",
+  //     payload: { patientName, age, sex, phoneNumber, dates },
+  //   });
+  //   navigate("/receptionist/bookings/addnewbooking/summary", {
+  //     state: { patientName, age, sex, phoneNumber, dates },
+  //   });
+  // };
 
   const handleDateChange = (ranges: RangeKeyDict) => {
     const { selection } = ranges;
@@ -49,7 +49,7 @@ const RBookingsPatients: React.FC = () => {
   return (
     <div className="rbookingpatients">
       <SidebarRec />
-      <NavbarLu />
+      {/*<NavbarLu />*/}
       <div className="homeContainer2lu">
         <div className="bodyContainerLu">
           <div className="mainTopic">Patient Details</div>
@@ -168,7 +168,7 @@ const RBookingsPatients: React.FC = () => {
                 backgroundColor: "#5F2BCF", // Change to your desired hover color
               },
             }}
-            onClick={handleSearch}
+            // onClick={handleSearch}
           >
             Proceed
           </Button>

@@ -2,9 +2,15 @@ import React from "react";
 import "./widgetRec.scss";
 
 
+// type WidgetProps = {
+//     type: "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
+// };
+
+type WidgetType = "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
+
 type WidgetProps = {
-    type: "d_1" | "d_2" | "d_3" | "d_4" | "d_5" | "d_6";
-};
+    type: WidgetType;
+  };
 
 const WidgetRec: React.FC<WidgetProps> = ({ type }) => {
     let data: {

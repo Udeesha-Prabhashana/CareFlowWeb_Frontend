@@ -1,53 +1,52 @@
-.SidebarRec{
+.SidebarRec {
     flex: 2;
-    border-right: 0.5px solid rgb(230, 227, 227);    //use give side bar boder to the right 
-    min-height: 100vh;
+    border-right: 1px solid #9D7CE5;
+    min-height: 95vh;
     background-color: white;
     position: fixed;
-    width: 250px;
+    width: 300px; // Increase the width to make the sidebar wider
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
 
-    .topRec{
-        height: 50px;
+    .topRec {
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
 
-        .logoRec{
-            font-size: 20px;
-            font-weight: bold;
-            color: #6439ff;
+        .logoImageRec {
+            width: 150px; // Adjust width to fit your design
+            height: auto;
         }
     }
 
-    .hr{
+    hr {
         height: 0;
         border: 0.5px solid rgb(230, 227, 227);
     }
 
-    .centerRec{
-        padding-left: 10px;
+    .centerRec {
+        flex: 1;
+        padding: 0 30px; // Increase padding to give more space from both sides
 
-        ul{
+        ul {
             list-style: none;
             margin: 0;
             padding: 0;
 
-            .titleRec {
-                font-size: 12px;
-                font-weight: bold;
-                color: #999;
-                margin-top: 15px;
-                margin-bottom: 5px;
-            }
             li {
                 display: flex;
                 align-items: center;
-                padding: 5px;
-                margin-bottom: 8px;
+                padding: 12px 15px; // Increase padding for more space inside each item
+                margin-bottom: 10px;
                 cursor: pointer;
+                transition: background-color 0.3s;
+                border-radius: 10px;
 
-                &:hover {
-                    background-color: #ece8ff;    //when move the cusor ,then change the color
+                &.activeRec, &:hover {
+                    background-color: #ece8ff;
                 }
 
                 .iconRec {
@@ -56,38 +55,94 @@
                 }
 
                 span {
-                    font-size: 15px;
+                    font-size: 16px;
                     font-weight: 600;
-                    color: #888;
-                    margin-left: 10px;
+                    color: #444;
+                    margin-left: 15px;
                 }
             }
         }
     }
 
-    .bottomRec{
-        display: flex;
-        align-items: center;
-        margin: 10px;
+    .bottomContainerRec {
+        padding: 0 30px; // Increase padding to give more space from both sides
 
-        .colorOptionRec{
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            border: 1px solid #7451f8;
-            cursor: pointer;
-            margin: 5px;
-        
-            &:nth-child(1) {
-                background-color: whitesmoke;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: flex;
+                align-items: center;
+                padding: 12px 15px; // Increase padding for more space inside each item
+                margin-bottom: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                border-radius: 10px;
+
+                &.activeRec, &:hover {
+                    background-color: #ece8ff;
+                }
+
+                .iconRec {
+                    font-size: 20px;
+                    color: #7451f8;
+                }
+
+                span {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #444;
+                    margin-left: 15px;
+                }
+
+                .notificationBadge {
+                    background-color: red;
+                    color: white;
+                    border-radius: 50%;
+                    padding: 2px 6px;
+                    font-size: 12px;
+                    margin-left: auto;
+                    position: absolute;
+                    right: 65px;
+                }
             }
-        
-            &:nth-child(2) {
-                background-color: #333;
+        }
+
+        .profileRec {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            //border-top: 1px solid rgb(230, 227, 227);
+            margin-top: 20px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
             }
-        
-            &:nth-child(3) {
-                background-color: darkbRece;
+
+            .detailsRec {
+                .nameRec {
+                    align-self: stretch;
+                    color: var(--skyethemes-com-mine-shaft, #363636);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 14px; /* 116.667% */
+
+                }
+
+                .emailRec {
+                    align-self: stretch;
+                    color: var(--skyethemes-com-mine-shaft, #363636);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 14px; /* 116.667% */
+                }
             }
         }
     }
