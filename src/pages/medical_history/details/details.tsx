@@ -1,175 +1,197 @@
-import React from "react";
-import SidebarLu from "../../../components/sidebarLu/SidebarLu";
-import NavbarLu from "../../../components/navbarA/NavbarA";
-import "../details/details.scss";
-import { useParams } from "react-router-dom";
-import Button from "@mui/material/Button";
+import React, { useState } from 'react';
+import "../../medical_history/details/details.scss";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material/styles";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Grid from "@mui/material/Grid";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import dayjs from "dayjs";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import CardMedia from '@mui/material/CardMedia';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import recordImage from '../../../components/images/doctor/record1.png';
 import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 
-const past_history = {
-  doctor_name: "Dr. Saman Kumara",
-  date: "12/05/2024",
-  diagnostics: `John Doe presents with a 2-week history of epigastric pain, which he describes as a burning sensation.
-The pain is often worse after meals and sometimes at night. He reports nausea and has vomited
-twice in the past week. He also experiences bloating and early satiety. There is no history of
-melena or hematemesis.`,
-  investigations: [
-    "Complete Blood Count (CBC)",
-    "Helicobacter pylori stool antigen test or urea breath test",
-    "Liver function tests (LFTs)",
-    "Serum amylase and lipase",
-  ],
-  assessment: `Based on the patient's symptoms and history, gastritis is the most likely diagnosis. The epigastric pain,
-nausea, and bloating are consistent with this condition. Further investigation for H. pylori infection
-is warranted.`,
-};
-// add more medical_history as needed;
+interface MedicalRecords {
+    patientName: string;
+    age: number;
+    gender: string;
+    knownIllnesses: string;
+    knownAllergies: string;
+}
 
-const Details: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+const medicalRecords: MedicalRecords[] = [
+    {
+        patientName: "Dr. Namal Jayasinghe",
+        age: 35,
+        gender: "male",
+        knownIllnesses: "Asthma, cancer",
+        knownAllergies: "none",
+    },
+];
 
-  return (
-    <div className="appointments">
-      <SidebarPatient />
-      <div className="appointmentsContainer">
-        {/*<NavbarLu />*/}
-        <div className="main">
-          View Medical History
-          <div className="sub">
-            Select a Previous Appointment to See History
-            <div className="content">
-              <Box key={past_history.date} sx={{ mb: 2 }}>
-                <Card
-                  variant="outlined"
-                  sx={{ display: "flex", border: "1px solid #855CDD" }}
-                >
-                  <CardContent sx={{ flex: 1 }}>
-                    <Typography
-                      variant="h5"
-                      component="div"
-                      sx={{
-                        color: "var(--Normal, var(--Normal-Normal, #855CDD))",
-                        fontSize: "30px",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        lineHeight: "20px",
-                      }}
-                    >
-                      {past_history.doctor_name}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        mb: 1.5,
-                        color: "#000",
-                        fontSize: "20px",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        lineHeight: "20px",
-                        paddingTop: "8px",
-                      }}
-                    >
-                      {past_history.date}
-                    </Typography>
-                  </CardContent>
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#855CDD',
+        },
+        secondary: {
+            main: '#855CDD',
+        },
+    },
+});
+
+const ViewMedicalRecordsPatient: React.FC = () => {
+    const [records, setRecords] = useState(medicalRecords);
+    const [showInput, setShowInput] = useState<{ [key: number]: boolean }>({});
+    const [inputValue, setInputValue] = useState<{ [key: number]: string }>({});
+
+    const handleShowInput = (index: number) => {
+        setShowInput(prevState => ({ ...prevState, [index]: !prevState[index] }));
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
+        setInputValue(prevState => ({ ...prevState, [index]: event.target.value }));
+    };
+
+    const getCards = () => {
+        return records.map((record, index) => (
+            <Box sx={{ mb: 2 }} key={index}>
+                <Card variant="outlined" sx={{ border: '1px solid #855CDD' }}>
+                    <CardContent>
+                        <Grid container spacing={2}>
+                            <Grid item xs={3}>
+                                <Typography className="line">Doctor's Name :</Typography>
+                                <Typography className="line">Age :</Typography>
+                                <Typography className="line">Gender :</Typography>
+                                <Typography className="line">Known Illnesses :</Typography>
+                                <Typography className="line">Known Allergies :</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Typography className="line"><b>{record.patientName}</b></Typography>
+                                <Typography className="line"><b>{record.age} Years</b></Typography>
+                                <Typography className="line"><b>{record.gender}</b></Typography>
+                                <Typography className="line"><b>{record.knownIllnesses}</b></Typography>
+                                <Typography className="line"><b>{record.knownAllergies}</b></Typography>
+                            </Grid>
+                            <Grid item xs={3}>
+                                {showInput[index] && (
+                                    <Box mt={2} display="flex" flexDirection="column" alignItems="flex-start">
+                                        <TextField
+                                            fullWidth
+                                            label="Other Details"
+                                            value={inputValue[index] || ''}
+                                            onChange={(e) => handleInputChange(e, index)}
+                                        />
+                                        <Box mt={1} display="flex" gap={1}>
+                                            <Button
+                                                variant="contained"
+                                                style={{ backgroundColor: '#D2172C', color: '#fff' }}
+                                                onClick={() => handleShowInput(index)}
+                                            >
+                                                Cancel
+                                            </Button>
+                                        </Box>
+                                    </Box>
+                                )}
+                            </Grid>
+                        </Grid>
+                    </CardContent>
                 </Card>
-              </Box>
+            </Box>
+        ));
+    };
 
-              <Box key={past_history.date} sx={{ mb: 2 }}>
-                <Card
-                  variant="outlined"
-                  sx={{ display: "flex", border: "1px solid #855CDD" }}
-                >
-                  <CardContent sx={{ flex: 1 }}>
-                    <div>
-                      <h3>Diagnostics</h3>
-                      <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{
-                          color: "#000000",
-                          fontSize: "15px",
-                          fontStyle: "normal",
-                          fontWeight: "100",
-                          lineHeight: "20px",
-                        }}
-                      >
-                        {past_history.diagnostics}
-                      </Typography>
+    return (
+        <ThemeProvider theme={theme}>
+            <div className="sideMRview">
+                <SidebarPatient />
+                <div className="navMRview">
+                    <div className="mainContentMRview">
+                        View Medical History
+                        <div className="subContentMRview">
+                            Select a Previous Appointment to See History
+                        </div>
+                        <div className="cardsContainer">
+                            {getCards()}
+                        </div>
+                        <div>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1-content"
+                                        id="panel1-header"
+                                    >
+                                        2024/04/08
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical Record
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 1"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel2-content"
+                                        id="panel2-header"
+                                    >
+                                        2023/12/09
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical Record 2
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 2"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel3-content"
+                                        id="panel3-header"
+                                    >
+                                        2023/09/23
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical record 3
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 3"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                        </div>
                     </div>
-
-                    <div>
-                      <h3>Investigations</h3>
-                      <ul>
-                        {Array.isArray(past_history.investigations) &&
-                          past_history.investigations.map(
-                            (investigation, index) => (
-                              <li key={index}>
-                                <Typography
-                                  variant="h6"
-                                  component="div"
-                                  sx={{
-                                    color: "#000000",
-                                    fontSize: "15px",
-                                    fontStyle: "normal",
-                                    fontWeight: "100",
-                                    lineHeight: "20px",
-                                  }}
-                                >
-                                  {investigation}
-                                </Typography>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h3>Assessment</h3>
-                      <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{
-                          color: "#000000",
-                          fontSize: "15px",
-                          fontStyle: "normal",
-                          fontWeight: "100",
-                          lineHeight: "20px",
-                        }}
-                      >
-                        {past_history.assessment}
-                      </Typography>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Box>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+        </ThemeProvider>
+    );
 };
 
-export default Details;
+export default ViewMedicalRecordsPatient;
