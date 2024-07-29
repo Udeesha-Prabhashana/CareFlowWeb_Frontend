@@ -75,7 +75,7 @@ const BookingNurse: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        navigate("/nurse/patients/view_patients");
+        navigate("../nurse/patients/view_patients");
     };
 
     return (

@@ -62,6 +62,7 @@ import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
 import SettingsNurse from "./pages/Nurse/settings/settingsNurse";
 import ProfileNurse from "./pages/Nurse/profile/profileNurse";
+import UploadMedicalRecords from "./pages/Nurse/patients/viewPatient/uploadPatientRecords";
 
 import HomeRec from "./pages/Receptionist/homeRec/HomeRec";
 import RBookings from "./pages/Receptionist/RBookings/RBookings";
@@ -91,7 +92,7 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
 import LUBookingsDoctors from "./pages/LUBookingsDoctors/LUBookingsDoctors";
 import LUBookingsDoctorsView from "./pages/LUBookingsDoctorsView/LUBookingsDoctorsView";
-import CuraUI from "./pages/cura/chatui";
+import ChatUI from "./pages/cura/chatUI";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
@@ -400,6 +401,8 @@ function App() {
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
             <Route path="nurse/settings" element={<SettingsNurse/>}/>
             <Route path="nurse/profile" element={<ProfileNurse/>}/>
+            <Route path="nurse/patient/uploadPatientRecords" element={<UploadMedicalRecords/>}/>
+            
 
 
 
@@ -408,7 +411,7 @@ function App() {
           <Route path="chatbotN" element={<ChatbotNext/>}/>
           <Route path="chatbotL" element={<ChatbotLast/>}/>
           <Route path="chatbotThird" element={<ChatbotThird/>}/>
-          <Route path="curachat" element={<CuraUI/>}/>
+          <Route path="curachat" element={<ChatUI/>}/>
 
 
           
