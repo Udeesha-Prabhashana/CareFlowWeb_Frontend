@@ -94,11 +94,11 @@ const LUDoctorsView: React.FC = () => {
   const handleClick = () => {
     if (user) {
       // setOpenModel(true);
-      toast.success("Doctor booked successfully!"); // Show success toast
-      navigate("/appointments")
+      // toast.success("Doctor booked successfully!"); // Show success toast
+      navigate("/bookingSummaryPay")
     } else {
-      toast.success("Doctor booked successfully!"); 
-      navigate("/appointments")
+      // toast.success("Doctor booked successfully!"); 
+      navigate("/bookingSummaryPay")
     }
   };
 
