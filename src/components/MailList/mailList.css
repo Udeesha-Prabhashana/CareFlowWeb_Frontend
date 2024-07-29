@@ -13,7 +13,7 @@
     width: 300px;
     height: 30px;
     padding: 10px;
-    border: rgb(186, 108, 231) 1px solid;
+    border: #855CDD 1px solid;
     margin-right: 10px;
     border-radius: 5px;
 }
@@ -21,7 +21,7 @@
 .mailInputContainer>button {
     height: 50px;
     width: 100px;
-    background-color: rgb(186, 108, 231);
+    background-color: #855CDD;
     color: white;
     font-weight: bold;
     border: none;
