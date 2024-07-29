@@ -19,7 +19,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from "dayjs";
-import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -27,18 +26,17 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
-
-
 interface Appointment {
     title: string;
     description: string;
     body: string;
+    paid?: boolean;
 }
 
 const upcomingAppointments: Appointment[] = [
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
+    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist", paid: false },
+    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist", paid: true },
+    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist", paid: false },
     // add more appointments as needed
 ];
 
@@ -73,6 +71,10 @@ const Appointments: React.FC = () => {
         if (newAlignment !== null) {
             setAlignment(newAlignment);
         }
+    };
+
+    const handlePayNow = () => {
+        navigate("/bookingSummaryPay");
     };
 
     const handleViewDetails = () => {
@@ -138,23 +140,44 @@ const Appointments: React.FC = () => {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                width: '138px',
-                                height: '38px',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '11px',
-                                border: '1px solid var(--normal-hover, #5F2BCF)',
-                                whiteSpace: 'nowrap',
-                                color: '#855CDD',
-                                textTransform: 'none',
-                            }}
-                            onClick={handleViewDetails}
-                        >
-                            View Details
-                        </Button>
+                        {alignment === 'upcoming' ? (
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    width: '138px',
+                                    height: '38px',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: '11px',
+                                    border: '1px solid var(--normal-hover, #5F2BCF)',
+                                    whiteSpace: 'nowrap',
+                                    color: '#855CDD',
+                                    textTransform: 'none',
+                                }}
+                                onClick={card.paid ? handleViewDetails : handlePayNow}
+                                disabled={card.paid}
+                            >
+                                {card.paid ? "Pay Now" : "Pay Now"}
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    width: '138px',
+                                    height: '38px',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: '11px',
+                                    border: '1px solid var(--normal-hover, #5F2BCF)',
+                                    whiteSpace: 'nowrap',
+                                    color: '#855CDD',
+                                    textTransform: 'none',
+                                }}
+                                onClick={handleViewDetails}
+                            >
+                                View Details
+                            </Button>
+                        )}
                     </CardActions>
                 </Card>
             </Box>
@@ -165,7 +188,6 @@ const Appointments: React.FC = () => {
         <div className="appointments">
             <SidebarPatient />
             <div className="appointmentsContainer">
-                {/*<NavbarLu />*/}
                 <div className="mainContent">
                     View Appointments
                     <div className="subContent">
