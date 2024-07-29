@@ -1,14 +1,13 @@
-.medical_history {
-  display: flex;
-  height: 100vh;
+.sideDocMRview{
+  display: flex; //home class is sidebar
+}
+.navDocMRview { //homeContainer class is navbar
+
+  flex: 2; //used to divide both sidebar and navbar
+  margin-left: 10px; //used to get the space between sidebar and navbar
 }
 
-.medical_historyContainer {
-  display: flex;
-  flex: 8;
-  flex-direction: column;
-}
-.mainContent{
+.mainContentDocMRview{
   display: grid;
   color: #000;
   font-size: 25px;
@@ -16,10 +15,10 @@
   font-weight: 500;
   line-height: 20px; /* 80% */
   padding-top: 10px;
-  max-width: 1000px;
-  margin: 6% 20%;
+  max-width: 2000px;
+  margin: 6% 10% 10% 25%;
 }
-.subContent{
+.subContentDocMRview{
   color: #000;
   font-size: 18px;
   font-style: normal;
@@ -46,3 +45,6 @@
   font-size: 25px;
 }
 
+.line {
+  margin-bottom: 16px; /* Adjust the value as needed */
+}

@@ -47,9 +47,9 @@ const SidebarNurse: React.FC = () => {
                         <DashboardIcon className="iconNurse" />
                         <span>Home</span>
                     </li>
-                    <li className={activeLink === "/nurse/patients" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/patients")}>
+                    <li className={activeLink === "/nurse/doctors" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/doctors")}>
                         <Person2OutlinedIcon className="iconNurse" />
-                        <span>Patients</span>
+                        <span>Doctors</span>
                     </li>
                 </ul>
             </div>

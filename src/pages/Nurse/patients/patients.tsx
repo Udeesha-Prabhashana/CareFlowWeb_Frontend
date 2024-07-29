@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
-import "../patients/patients.scss";
+import "./patients.scss";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
