@@ -93,6 +93,7 @@ import CuraUI from "./pages/cura/chatui";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -203,6 +204,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
+            <Route
+            path="revenuadmin"
+            element={
+              // <ProtectedRoute>
+                <RevenueRecordsAdmin />
+              // </ProtectedRoute>
+            }
+          />
           </Route>
           
 

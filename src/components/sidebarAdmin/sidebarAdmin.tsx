@@ -67,6 +67,10 @@ const SidebarAdmin: React.FC = () => {
                         <InsertChartIcon className="iconAdm" />
                         <span>Receptionists</span>
                     </li>
+                    <li className={activeLink === "/adminhome/revenuadmin" ? "activeDoc" : ""} onClick={() => handleLinkClick("/adminhome/revenuadmin")}>
+                        <InsertChartIcon className="iconAdm" />
+                        <span>Revenu Recodes</span>
+                    </li>
                 </ul>
             </div>
             <div className="bottomContainerAdm">
@@ -95,7 +99,7 @@ const SidebarAdmin: React.FC = () => {
                     onClick={() => dispatch({ type: "DARK" })}
                     ></div>
                 </div>
-                <Link to="/adminhome" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/adminhome")}>
+                {/* <Link to="/adminhome" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/adminhome")}>
                     <div className="profileAdm">
                         <img src={vector} alt="Profile"/>
                         <div className="detailsAdm">
@@ -103,7 +107,7 @@ const SidebarAdmin: React.FC = () => {
                             <span className="emailAdm">michaelsmith12@gmail.com</span>
                         </div>
                     </div>
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
