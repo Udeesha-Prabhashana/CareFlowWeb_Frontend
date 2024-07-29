@@ -1,0 +1,14 @@
+.setting{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid red;
+}
+.setting-name{
+  width: 25%;
+}
+
+.setting-value{
+  margin-top: 40px;
+  margin-left: 40px;
+}

@@ -51,14 +51,14 @@ const PatientList: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        navigate("/doctor/bookings/view_bookings");
+        navigate("/doctor/view_medicalRecords");
     };
 
     return (
         <div className="sideDoc">
             <SidebarDoc />
             <div className="navDoc">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContentDocBooking">
                     Bookings
                     <div className="subContentDocBooking">

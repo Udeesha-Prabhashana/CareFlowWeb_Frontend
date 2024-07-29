@@ -18,7 +18,7 @@ const DoctorViewBooking: React.FC = () => {
         <div className="appointments">
             <SidebarDoc />
             <div className="appointmentsContainer">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContent">
                     View Booking
                     <div className="subContent">

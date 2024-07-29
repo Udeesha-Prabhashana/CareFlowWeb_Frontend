@@ -83,7 +83,7 @@ const BookingDoc: React.FC = () => {
         <div className="sideDoc">
             <SidebarDoc />
             <div className="navDoc">
-                <NavbarDoc />
+                {/*<NavbarDoc />*/}
                 <div className="mainContentDocBooking">
                     Bookings
                     <div className="subContentDocBooking">
