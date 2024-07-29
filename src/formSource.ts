@@ -28,13 +28,13 @@ export const userInputs: Input[] = [
     id: "userMobileNo",
     label: "Phone",
     type: "text",
-    placeholder: "+1 234 567 89",
+    placeholder: "+94 776 750 158",
   },
   {
     id: "userSpecialization",
     label: "Specialization",
     type: "text",
-    placeholder: "USA",
+    placeholder: "Cardiology",
   },
   {
     id: "userAddress",

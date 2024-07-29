@@ -1,108 +1,87 @@
-import React, { useContext } from "react";
-import "./sidebarNurse.scss";
+import React, { useState, useContext, useEffect } from "react";
+import "../sidebarNurse/sidebarNurse.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import StoreIcon from "@mui/icons-material/Store";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
+import logo from "../../components/images/logo.png";
+// import vector from "../../components/images/nurseVector.jpg";
+import vector from "../images/nurseVector.jpg";
 
-const SidebarNursetor: React.FC = () => {
+const SidebarNurse: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { dispatch } = useContext(DarkModeContext)!;
+    const [activeLink, setActiveLink] = useState<string>(location.pathname);
+
+    useEffect(() => {
+        setActiveLink(location.pathname);
+    }, [location]);
+
+    const handleLinkClick = (link: string) => {
+        setActiveLink(link);
+        if (link === "/login") {
+            navigate("/login");
+        } else {
+            navigate(link);
+        }
+    };
 
     return (
         <div className="SidebarNurse">
             <div className="topNurse">
-                <Link to="/nurse/home" style={{ textDecoration: "none" }}>
-                    <span className="logoNurse">Care Flow</span>
+                <Link to="/nurse/home" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/nurse/home")}>
+                    <img src={logo} alt="CareFlow Logo" className="logoImageNurse" />
                 </Link>
             </div>
-            <hr /> {/* hr use to get line */}
+            <hr />
             <div className="centerNurse">
                 <ul>
-                    <p className="titleNurse">MAIN</p>
-                    <Link to="/nurse/home" style={{ textDecoration: "none" }}>
-                        <li>
-                            <DashboardIcon className="iconNurse" />
-                            <span> Home</span>
-                        </li>
-                    </Link>
-                    {/*<p className="titleNurse">LIST</p>*/}
-                    <Link to="/nurse/patients" style={{ textDecoration: "none" }}>
-                        <li>
-                            <Person2OutlinedIcon className="iconNurse" />
-                            <span> Patients </span>
-                        </li>
-                    </Link>
-                    
-
-
-                    {/*<Link to="" style={{ textDecoration: "none" }}>*/}
-                    {/*    <li>*/}
-                    {/*        <CreditCardIcon className="iconNurse" />*/}
-                    {/*        <span> Medical History</span>*/}
-                    {/*    </li>*/}
-                    {/*</Link>*/}
-                    <p className="titleNurse">USEFUL</p>
-                    <Link to="/Nursetor/notifications" style={{ textDecoration: "none" }}>
-                        <li>
-                            <NotificationsNoneIcon className="iconNurse" />
-                            <span> Notification</span>
-                        </li>
-                    </Link>
-                    {/*<li>*/}
-                    {/*    <InsertChartIcon className="iconNurse" />*/}
-                    {/*    <span> Stats</span>*/}
-                    {/*</li>*/}
-                    {/*/!*<p className="titleNurse">SERVICE</p>*!/*/}
-                    {/*<li>*/}
-                    {/*    <SettingsSystemDaydreamOutlinedIcon className="iconNurse" />*/}
-                    {/*    <span> System Health</span>*/}
-                    {/*</li>*/}
-                    {/*<li>*/}
-                    {/*    <PsychologyOutlinedIcon className="iconNurse" />*/}
-                    {/*    <span> Logs</span>*/}
-                    {/*</li>*/}
-                    <Link to="/Nursetor/settings" style={{ textDecoration: "none" }}>
-                        <li>
-                            <SettingsApplicationsIcon className="iconNurse" />
-                            <span> Settings</span>
-                        </li>
-                    </Link>
-                    <p className="titleNurse">USER</p>
-                    <Link to="/Nursetor/profile" style={{ textDecoration: "none" }}>
-                        <li>
-                            <AccountCircleOutlinedIcon className="iconNurse" />
-                            <span> Profile</span>
-                        </li>
-                    </Link>
-                    <li>
-                        <ExitToAppIcon className="iconNurse" />
-                        <span onClick={() => navigate("/login")}> Logout</span>
+                    <li className={activeLink === "/nurse/home" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/home")}>
+                        <DashboardIcon className="iconNurse" />
+                        <span>Home</span>
+                    </li>
+                    <li className={activeLink === "/nurse/patients" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/patients")}>
+                        <Person2OutlinedIcon className="iconNurse" />
+                        <span>Patients</span>
                     </li>
                 </ul>
             </div>
-            <div className="bottomNurse"> {/*give choose color options in dashboard*/}
-                <div
-                    className="colorOptionNurse"
-                    onClick={() => dispatch({ type: "LIGHT" })}
-                ></div>
-                <div
-                    className="colorOptionNurse"
-                    onClick={() => dispatch({ type: "DARK" })}
-                ></div>
+            <div className="bottomContainerNurse">
+                <ul>
+                    {/* <li className={activeLink === "/nurse/notifications" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/notifications")}>
+                        <NotificationsNoneIcon className="iconNurse" />
+                        <span>Notifications</span>
+                        <span className="notificationBadge">2</span>
+                    </li> */}
+                    <li className={activeLink === "/nurse/settings" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/settings")}>
+                        <SettingsIcon className="iconNurse" />
+                        <span>Settings</span>
+                    </li>
+                    <li onClick={() => handleLinkClick("/login")}>
+                        <ExitToAppIcon className="iconNurse" />
+                        <span>Logout</span>
+                    </li>
+                </ul>
+                <Link to="/nurse/profile" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/nurse/profile")}>
+                    <div className="profileNurse">
+                        <img src={vector} alt="Profile"/>
+                        <div className="detailsNurse">
+                            <span className="nameNurse">Nurse Jane</span>
+                            <br></br>
+                            <span className="emailNurse">jane@gmail.com</span>
+                        </div>
+                    </div>
+                </Link>
             </div>
         </div>
     );
 };
 
-export default SidebarNursetor;
+export default SidebarNurse;
