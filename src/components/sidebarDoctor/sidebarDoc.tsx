@@ -12,7 +12,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import logo from "../../components/images/logo.png";
 // import vector from "../../components/images/doctorVector.jpg";
-import vector from "../images/doctorVector.jpg";
+import vector from "../images/doctorVector.jpg"
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const SidebarDoctor: React.FC = () => {
     const navigate = useNavigate();
@@ -52,7 +53,7 @@ const SidebarDoctor: React.FC = () => {
                         <span>My Booking</span>
                     </li>
                     <li className={activeLink === "/doctor/patients" ? "activeDoc" : ""} onClick={() => handleLinkClick("/doctor/patients")}>
-                        <CreditCardIcon className="iconDoc" />
+                        <AccountBoxIcon className="iconDoc" />
                         <span>Patients</span>
                     </li>
                     <li className={activeLink === "/doctor/revenue_records" ? "activeDoc" : ""} onClick={() => handleLinkClick("/doctor/revenue_records")}>

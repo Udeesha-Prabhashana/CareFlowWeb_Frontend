@@ -13,6 +13,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 import NavbarLu from "../../components/navbarA/NavbarA";
 import SidebarLu from "../../components/sidebarLu/SidebarLu";
+import { toast } from "react-toastify";
 
 interface DoctorData {
   photos: string[];
@@ -108,9 +109,11 @@ const DoctorNLU: React.FC = () => {
 
   const handleClick = () => {
     if (user) {
-      setOpenModel(true);
+      // setOpenModel(true);
+      toast.error("Can't Book now. You have to logging first");
     } else {
-      navigate("/login");
+      toast.error("Can't Book now. You have to logging first");
+      // navigate("/login");
     }
   }
 
@@ -137,7 +140,7 @@ const DoctorNLU: React.FC = () => {
           )}
           <div className="hotelWrappernLU">
             <button className="bookNownLU" onClick={handleClick}>
-              Reserve or Book Now!
+              Book Now!
             </button>
             <h1 className="hotelTitlenLU">{data.title}</h1>
             <div className="hotelAddressnLU">
@@ -164,7 +167,7 @@ const DoctorNLU: React.FC = () => {
                 <h2>
                   <b>Rs. {data.fee}</b> per consultation
                 </h2>
-                <button className="recevebutton" onClick={handleClick}>Reserve or Book Now!</button>
+                <button className="recevebutton" onClick={handleClick}>Book Now!</button>
               </div>
             </div>
           </div>

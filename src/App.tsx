@@ -78,6 +78,7 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+import Landing from "./pages/LandingPage/LandingPage";
 
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
@@ -88,8 +89,13 @@ import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
 import RecSettings from "./pages/Receptionist/RSettings/RSettings";
 import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
+import LUBookingsDoctors from "./pages/LUBookingsDoctors/LUBookingsDoctors";
+import LUBookingsDoctorsView from "./pages/LUBookingsDoctorsView/LUBookingsDoctorsView";
+import CuraUI from "./pages/cura/chatui";
+import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -200,6 +206,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
+            <Route
+            path="revenuadmin"
+            element={
+              // <ProtectedRoute>
+                <RevenueRecordsAdmin />
+              // </ProtectedRoute>
+            }
+          />
           </Route>
           
 
@@ -226,7 +240,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <LUDoctors />
+                  <LUBookingsDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -234,7 +248,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <LUDoctorsView />
+                  <LUBookingsDoctorsView />
                 // </ProtectedRoute>
               }
             />
@@ -257,6 +271,24 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route path="doclist2">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
+                  <LUDoctors />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path=":doctorId"
+              element={
+                // <ProtectedRoute>
+                  <LUDoctorsView />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
 
           <Route path="users">
             <Route
@@ -345,6 +377,7 @@ function App() {
 
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="bookingSummaryPay" element={<BookingSummaryPay />} />
 
 
 
@@ -375,6 +408,8 @@ function App() {
           <Route path="chatbotN" element={<ChatbotNext/>}/>
           <Route path="chatbotL" element={<ChatbotLast/>}/>
           <Route path="chatbotThird" element={<ChatbotThird/>}/>
+          <Route path="curachat" element={<CuraUI/>}/>
+
 
           
           <Route path="receptionist/home" element={<HomeRec/>}/>          
@@ -393,9 +428,11 @@ function App() {
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
 
+          
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
+          <Route path="landingpage" element={<Landing/>}/>
         </Routes>
 
  

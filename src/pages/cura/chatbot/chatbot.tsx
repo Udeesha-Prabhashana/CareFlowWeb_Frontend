@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SidebarLu from "../../../components/sidebarLu/SidebarLu";
 import NavbarLu from "../../../components/navbarA/NavbarA";
@@ -7,9 +7,9 @@ import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 
 const Chatbot = () => {
   const navigate = useNavigate();
-
+  
   const handleButtonClick = () => {
-    navigate('/chatbotN');
+    navigate('/curachat');
   };
 
   return (
@@ -17,9 +17,9 @@ const Chatbot = () => {
       <SidebarPatient />
       <div className="chatbotContainer">
         {/*<NavbarLu />*/}
-        <div className="main">
+        <div className="mainchat">
           <img src="/images/bg.png" alt="Background" className="background-image" />
-          <img src="/images/Vector.png" alt="Vector" className="vector-image" />
+          <img src="/images/Vector.png" alt="Vector" className="vector-imagechat" />
           <div className="text-container">
             Hello, <br />
             I’m Cura.<br />
@@ -29,10 +29,10 @@ const Chatbot = () => {
             <input type="text" placeholder="I have a Back Pain for 7 Days. Which Doctor is good for me?" />
             <button onClick={handleButtonClick}>Ask Cura</button>
           </div>
-          {/*<div className="paragraph">*/}
-          {/*  This AI medical bot is designed to provide information and support regarding general health and medical conditions.*/}
-          {/*  It is not a substitute for professional medical advice, diagnosis, or treatment.*/}
-          {/*</div>*/}
+          <div className="paragraphchat">
+            This AI medical bot is designed to provide information and support regarding general health and medical conditions.
+            It is not a substitute for professional medical advice, diagnosis, or treatment.
+          </div>
         </div>
       </div>
     </div>
