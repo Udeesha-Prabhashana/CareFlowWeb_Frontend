@@ -1,77 +1,144 @@
-import React from 'react';
-import "../viewPatient/viewPatient.scss"
-import { useParams, useNavigate } from 'react-router-dom';
-import { Grid, Box } from '@mui/material';
-import NavbarNurse from "../../../../components/navbarNurse/navbarNurse";
+import React, { useState } from 'react';
+import "./viewPatient.scss";
 import SidebarNurse from "../../../../components/sidebarNurse/sidebarNurse";
-import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardMedia from '@mui/material/CardMedia';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import recordImage from '../../../../components/images/doctor/record1.png';
 
-const NurseViewBooking: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
+interface MedicalRecords {
+    patientName: string;
+    age: number;
+    gender: string;
+    knownIllnesses: string;
+    knownAllergies: string;
+    otherDetails?: string;
+    uploadedFile: File | null;
+}
 
-    const handleViewDetails = () => {
-        navigate("/nurse/medical_records");
+const medicalRecords: MedicalRecords[] = [
+    {
+        patientName: "Ravinda Alahakoon",
+        age: 35,
+        gender: "male",
+        knownIllnesses: "Asthma, cancer",
+        knownAllergies: "none",
+        uploadedFile: null, // Initialize as null
+    },
+];
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#855CDD',
+        },
+        secondary: {
+            main: '#855CDD',
+        },
+    },
+});
+
+const ViewMedicalRecords: React.FC = () => {
+    
+    const [showInput, setShowInput] = useState<{ [key: number]: boolean }>({});
+    const [inputValue, setInputValue] = useState<{ [key: number]: string }>({});
+    const [records, setRecords] = useState(medicalRecords);
+    const [uploadedFiles, setUploadedFiles] = useState<{ [key: number]: File | null }>({});
+
+    
+
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+        const file = event.target.files?.[0] || null;
+        setUploadedFiles(prevState => ({ ...prevState, [index]: file }));
+    };
+
+    const handleAddDetails = (index: number) => {
+        const updatedRecords = [...records];
+        updatedRecords[index].uploadedFile = uploadedFiles[index];
+        setRecords(updatedRecords);
+        setUploadedFiles(prevState => ({ ...prevState, [index]: null }));
+    };
+
+
+    const getCards = () => {
+        return records.map((record, index) => (
+            <React.Fragment key={index}>
+                <Box sx={{ mb: 2 }}>
+                    <Card variant="outlined" sx={{ border: '1px solid #855CDD' }}>
+                        <CardContent>
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <Typography className="line">Patient's Name :</Typography>
+                                    <Typography className="line">Age :</Typography>
+                                    <Typography className="line">Gender :</Typography>
+                                    <Typography className="line">Known Illnesses :</Typography>
+                                    <Typography className="line">Known Allergies :</Typography>
+                                    {record.otherDetails && <Typography className="line">Other Details :</Typography>}
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Typography className="line"><b>{record.patientName}</b></Typography>
+                                    <Typography className="line"><b>{record.age} Years</b></Typography>
+                                    <Typography className="line"><b>{record.gender}</b></Typography>
+                                    <Typography className="line"><b>{record.knownIllnesses}</b></Typography>
+                                    <Typography className="line"><b>{record.knownAllergies}</b></Typography>
+                                    {record.otherDetails && <Typography className="line"><b>{record.otherDetails}</b></Typography>}
+                                </Grid>
+                                
+                                    <Box mt={1} display="flex" marginLeft="10px" marginTop='30px' gap={1}>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            
+                                            onClick={() => handleAddDetails(index)}
+                                        >
+                                        
+                                            <input
+                                        type="file"
+                                        
+                                        onChange={(e) => handleFileUpload(e, index)}
+                                        style={{ marginTop: '0px' }}
+                                    />
+                                        </Button>
+                                    </Box>
+                            </Grid>
+                        </CardContent>
+                    </Card>
+                </Box>
+            </React.Fragment>
+        ));
     };
 
     return (
-        <div className="appointments">
-            <SidebarNurse />
-            <div className="appointmentsContainer">
-                <NavbarNurse />
-                <div className="mainContent">
-                    View Patient
-                    <div className="subContent">
-                        View Details of the Patient
-                        <Box className="content">
-                            <Grid container spacing={2}>
-                                <Grid item xs={3}>
-                                    <div className="line">Patient's Name :</div>
-                                    <div className="line">Date :</div>
-                                    <div className="line">Appointment Number :</div>
-                                    <div className="line">Age :</div>
-                                    <div className="line">Gender :</div>
-                                    
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <div className="line"><b>Mr. Namal Rajapakshe</b></div>
-                                    <div className="line"><b>2022/04/04</b></div>
-                                    <div className="line"><b>04</b></div>
-                                    <div className="line"><b>45 Years</b></div>
-                                    <div className="line"><b>Male</b></div>
-                                    
-                                </Grid>
-                            </Grid>
-                        </Box>
-                        <Button
-                            className="button"
-                            variant="outlined"
-                            sx={{
-                                marginTop: '40px',
-                                width: '180px',
-                                height: '40px',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '11px',
-                                border: '1px solid var(--normal-hover, #855CDD)',
-                                whiteSpace: 'nowrap',
-                                backgroundColor: '#855CDD', // Default button color
-                                color: 'white', // Text color for default state
-                                textTransform: 'none',
-                                '&:hover': {
-                                    backgroundColor: '#5F2BCF', // Dark purple background on hover
-                                    border: '1px solid #5F2BCF', // Dark purple border on hover
-                                }
-                            }}
-                            onClick={handleViewDetails}
-                        >
-                            Upload Medical Records
-                        </Button>
+        <ThemeProvider theme={theme}>
+            <div className="sideDocMRview">
+                <SidebarNurse />
+                <div className="navDocMRview">
+                    <div className="mainContentDocMRview">
+                        View Medical History
+                        <div className="subContentDocMRview">
+                            Select a Previous Appointment to See History
+                        </div>
+                        <div className="cardsContainer">
+                            {getCards()}
+                        </div>
+                        <div>
+           
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 };
 
-export default NurseViewBooking;
+export default ViewMedicalRecords;
