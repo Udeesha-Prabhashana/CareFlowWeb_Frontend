@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Doctor/patients/patientlist.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/searchItemLUNEW/searchItemLUN.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/searchItemLUNEW/searchItemLUN.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarA/navbarLu.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarDoc/navbarDoc.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebarDoctor/sidebarDoc.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/bookings/viewBooking/viewBooking.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Doctor/medicalRecords/viewMedicalRecords.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchItemR/searchItemR.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchItemR/searchItemR.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LUDoctors/LUDoctors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LUDoctors/LUDoctors.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Receptionist/RDoctorsView/RDoctorsView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Receptionist/RDoctorsView/RDoctorsView.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="curaedits" />
+        <entry key="$PROJECT_DIR$" value="liviru-dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,25 +40,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;liviru-dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging liviru__new",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "ts.external.directory.path": "D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CareFlowWeb_Frontend\src\components\images" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="npm install @mui/x-charts" />
@@ -98,6 +100,7 @@
       <workItem from="1721789378757" duration="2895000" />
       <workItem from="1721792329121" duration="940000" />
       <workItem from="1721798752871" duration="4054000" />
+      <workItem from="1722171061393" duration="11352000" />
     </task>
     <servers />
   </component>
@@ -107,6 +110,17 @@
       <list>
         <option value="$PROJECT_DIR$/src/pages/list/List.jsx" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
