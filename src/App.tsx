@@ -88,10 +88,13 @@ import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
 import RecSettings from "./pages/Receptionist/RSettings/RSettings";
 import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
-import LUDoctors from "./pages/LUDoctors/LUDoctors";
-import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import LUBookingsDoctors from "./pages/LUBookingsDoctors/LUBookingsDoctors";
+import LUBookingsDoctorsView from "./pages/LUBookingsDoctorsView/LUBookingsDoctorsView";
 import CuraUI from "./pages/cura/chatui";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
+import LUDoctors from "./pages/LUDoctors/LUDoctors";
+import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -202,6 +205,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
+            <Route
+            path="revenuadmin"
+            element={
+              // <ProtectedRoute>
+                <RevenueRecordsAdmin />
+              // </ProtectedRoute>
+            }
+          />
           </Route>
           
 
@@ -228,7 +239,7 @@ function App() {
               index
               element={
                 // <ProtectedRoute>
-                  <LUDoctors />
+                  <LUBookingsDoctors />
                 // </ProtectedRoute>
               }
             />
@@ -236,7 +247,7 @@ function App() {
               path=":doctorId"
               element={
                 // <ProtectedRoute>
-                  <LUDoctorsView />
+                  <LUBookingsDoctorsView />
                 // </ProtectedRoute>
               }
             />
@@ -259,6 +270,24 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route path="doclist2">
+            <Route
+              index
+              element={
+                // <ProtectedRoute>
+                  <LUDoctors />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path=":doctorId"
+              element={
+                // <ProtectedRoute>
+                  <LUDoctorsView />
+                // </ProtectedRoute>
+              }
+            />
+          </Route>
 
           <Route path="users">
             <Route

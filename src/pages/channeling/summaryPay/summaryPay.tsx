@@ -1,20 +1,52 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "../../channeling/summaryPay/summaryPay.scss";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Grid, Box } from '@mui/material';
 import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 import Button from "@mui/material/Button";
+declare const payhere: any;
 
 const BookingSummaryPay: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
 
-    const handleViewDetails = () => {
-        navigate("/payment");
-    };
-
     const handlePayLater = () => {
         navigate("/appointments");
+    };
+
+    useEffect(() => {
+        const payHereScript = document.createElement('script');
+        payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
+        payHereScript.async = true;
+        document.body.appendChild(payHereScript);
+
+        return () => {
+            document.body.removeChild(payHereScript);
+        };
+    }, []);
+
+    const initiatePayment = () => {
+        const payment = {
+            sandbox: true, // Use false for live payments
+            merchant_id: '1227782',
+            return_url: 'http://localhost:3000/bookingSummaryPay',
+            cancel_url: 'http://localhost:3000/bookingSummaryPay',
+            notify_url: 'http://sample.com/notify',
+            order_id: 'ItemNo12345',
+            items: 'Doctor Appointment',
+            amount: '3000.00',
+            currency: 'LKR',
+            first_name: 'Saman',
+            last_name: 'Perera',
+            email: 'samanp@gmail.com',
+            phone: '0771234567',
+            address: 'No.1, Galle Road',
+            city: 'Colombo',
+            country: 'Sri Lanka',
+        };
+
+        // Trigger the payment
+        payhere.startPayment(payment);
     };
 
     return (
@@ -33,7 +65,7 @@ const BookingSummaryPay: React.FC = () => {
                                     <div className="line">Date :</div>
                                     <div className="line">Appointment Number :</div>
                                     <div className="line">Time :</div>
-                                    <div className="line"> </div>
+                                    <div className="line">Total Amount: </div>
                                     <div className="line">Patient Name :</div>
                                     <div className="line">Age :</div>
                                     <div className="line">Sex :</div>
@@ -44,7 +76,7 @@ const BookingSummaryPay: React.FC = () => {
                                     <div className="line"><b>2022/04/04</b></div>
                                     <div className="line"><b>23</b></div>
                                     <div className="line"><b>06:50</b></div>
-                                    <div className="line"><b> </b></div>
+                                    <div className="line"><b>Rs.3000 </b></div>
                                     <div className="line"><b>Mr. Kamal Sahanandu</b></div>
                                     <div className="line"><b>35 Years</b></div>
                                     <div className="line"><b>Male</b></div>
@@ -92,7 +124,7 @@ const BookingSummaryPay: React.FC = () => {
                                             border: '1px solid #5F2BCF',
                                         }
                                     }}
-                                    onClick={handleViewDetails}
+                                    onClick={initiatePayment}
                                 >
                                     Pay Now
                                 </Button>

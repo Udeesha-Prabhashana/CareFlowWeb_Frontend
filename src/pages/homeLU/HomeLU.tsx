@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "../../components/chart/Chat";
 import Featured from "../../components/featuredA/FeaturedA";
 import NavbarLu from "../../components/navbarA/NavbarA";
@@ -10,13 +10,38 @@ import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 
 const HomeLu: React.FC = () => {
     const navigate = useNavigate();
-
+    const location = useLocation();
+    
     const handleAskCuraClick = () => {
         navigate("/chatbot");
     };
+
+    useEffect(() => {
+        // Check if we are on a page where the chat widget should be loaded
+        if (location.pathname === "/userloginhome") {
+            // Create script elements
+            const script1 = document.createElement('script');
+            script1.src = "https://cdn.botpress.cloud/webchat/v2/inject.js";
+            script1.async = true;
+            document.body.appendChild(script1);
+
+            const script2 = document.createElement('script');
+            script2.src = "https://mediafiles.botpress.cloud/ca64de85-f6f8-4c02-9bde-a7f2e687335c/webchat/v2/config.js";
+            script2.async = true;
+            document.body.appendChild(script2);
+
+            // Cleanup function to remove the scripts when the component unmounts or path changes
+            return () => {
+                document.body.removeChild(script1);
+                document.body.removeChild(script2);
+            };
+        }
+    }, [location.pathname]);
 
     return (
         <div className="homelu">
@@ -31,9 +56,9 @@ const HomeLu: React.FC = () => {
                         Welcome to your Dashboard
                     </div>
                     <div className="widgetslu">
-                        <WidgetLu type="ong_appointments"/>
-                        <WidgetLu type="upcom_appointments"/>
-                        <WidgetLu type="miss_appointments"/>
+                        <WidgetLu type="ong_appointments" />
+                        <WidgetLu type="upcom_appointments" />
+                        <WidgetLu type="miss_appointments" />
                     </div>
 
                     <div className="flex justify-between">
@@ -42,10 +67,10 @@ const HomeLu: React.FC = () => {
                                 Ready to make your first appointment?
                             </div>
                             <div className="subTopic mt-1">
-                                Cura is a AI Powered chatbot that can help you
+                                Cura is an AI Powered chatbot that can help you
                             </div>
                             <div className="subTopic">
-                                find your doctor and book doctor's appointment
+                                find your doctor and book a doctor's appointment
                             </div>
                             <div className="ml-5 mt-10">
                                 <Button
@@ -77,7 +102,7 @@ const HomeLu: React.FC = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default HomeLu;
