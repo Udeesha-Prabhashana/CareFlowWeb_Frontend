@@ -11,6 +11,9 @@ import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import "../../components/sidebarPatient/sidebarPatient.scss";
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import ForumIcon from '@mui/icons-material/Forum';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const SidebarPatient: React.FC = () => {
     const navigate = useNavigate();
@@ -50,15 +53,15 @@ const SidebarPatient: React.FC = () => {
                         <span>Appointments</span>
                     </li>
                     <li className={activeLink === "/doclist2" ? "activePatient" : ""} onClick={() => handleLinkClick("/doclist2")}>
-                        <InsertChartIcon className="iconPatient" />
+                        <AccountBoxIcon className="iconPatient" />
                         <span>Doctors</span>
                     </li>
                     <li className={activeLink === "/chatbot" ? "activePatient" : ""} onClick={() => handleLinkClick("/chatbot")}>
-                        <InsertChartIcon className="iconPatient" />
+                        <ForumIcon className="iconPatient" />
                         <span>Chat with Cura</span>
                     </li>
                     <li className={activeLink === "/medical_history" ? "activePatient" : ""} onClick={() => handleLinkClick("/medical_history")}>
-                        <InsertChartIcon className="iconPatient" />
+                        <FolderSharedIcon className="iconPatient" />
                         <span>Medical History</span>
                     </li>
                 </ul>
@@ -83,8 +86,8 @@ const SidebarPatient: React.FC = () => {
                     <div className="profilePatient">
                         <img src={patient} alt="Profile"/>
                         <div className="detailsPatient">
-                            <span className="namePatient">Mr. Saman</span>
-                            <span className="emailPatient">samanjaya12@gmail.com</span>
+                            <span className="namePatient">Mr.Saman</span>
+                            <span className="emailPatient">jaya12@gmail.com</span>
                         </div>
                     </div>
                 </Link>

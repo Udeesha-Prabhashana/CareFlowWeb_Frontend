@@ -13,6 +13,7 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import logo from "../../components/images/logo.png";
 // import vector from "../../components/images/doctorVector.jpg";
 import vector from "../images/rec.jpg";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const SidebarRec: React.FC = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const SidebarRec: React.FC = () => {
               <span>Bookings</span>
             </li>
             <li className={activeLink === "/receptionist/doctors" ? "activeRec" : ""} onClick={() => handleLinkClick("/receptionist/doctors")}>
-              <CreditCardIcon className="iconRec" />
+              <AccountBoxIcon className="iconRec" />
               <span>Doctors</span>
             </li>
           </ul>

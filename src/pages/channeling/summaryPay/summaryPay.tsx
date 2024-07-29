@@ -88,7 +88,7 @@ const BookingSummaryPay: React.FC = () => {
                                     className="button"
                                     variant="outlined"
                                     sx={{
-                                        width: '180px',
+                                        width: '150px',
                                         height: '40px',
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -110,7 +110,7 @@ const BookingSummaryPay: React.FC = () => {
                                     className="button"
                                     variant="outlined"
                                     sx={{
-                                        width: '180px',
+                                        width: '150px',
                                         height: '40px',
                                         justifyContent: 'center',
                                         alignItems: 'center',
