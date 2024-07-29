@@ -57,6 +57,7 @@ import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
 
 import HomeNurse from "./pages/Nurse/home/homeNurse";
+import Doctors from "./pages/Nurse/doctors/doctors";
 import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
 import SettingsNurse from "./pages/Nurse/settings/settingsNurse";
@@ -361,6 +362,7 @@ function App() {
 
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
+          <Route path="nurse/doctors" element={<Doctors/>}/>
             <Route path="nurse/patients" element={<Patients/>}/>
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
             <Route path="nurse/settings" element={<SettingsNurse/>}/>
