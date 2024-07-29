@@ -74,6 +74,7 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+import Landing from "./pages/LandingPage/LandingPage";
 
 
 interface ProtectedRouteProps {
@@ -356,6 +357,7 @@ function App() {
 
 
           <Route path="receptionist/profile" element={<RProfile/>}/>
+          <Route path="landingpage" element={<Landing/>}/>
         </Routes>
 
  
