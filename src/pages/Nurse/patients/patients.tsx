@@ -181,7 +181,7 @@ const BookingNurse: React.FC = () => {
                                                 }}
                                                 onClick={() => handleViewDetails(row)}
                                             >
-                                                View Details
+                                                Upload Documents
                                             </Button>
                                         </TableCell>
                                     </TableRow>

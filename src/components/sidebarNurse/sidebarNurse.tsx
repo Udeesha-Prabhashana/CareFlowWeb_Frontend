@@ -13,6 +13,7 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import logo from "../../components/images/logo.png";
 // import vector from "../../components/images/nurseVector.jpg";
 import vector from "../images/nurseVector.jpg";
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 const SidebarNurse: React.FC = () => {
     const navigate = useNavigate();
@@ -50,6 +51,11 @@ const SidebarNurse: React.FC = () => {
                     <li className={activeLink === "/nurse/doctors" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/doctors")}>
                         <Person2OutlinedIcon className="iconNurse" />
                         <span>Doctors</span>
+                    </li>
+
+                    <li className={activeLink === "/nurse/updatePatientNumber/selectDoctor" ? "activeNurse" : ""} onClick={() => handleLinkClick("/nurse/updatePatientNumber/selectDoctor")}>
+                        <ImportExportIcon className="iconNurse" />
+                        <span>Patient Queue</span>
                     </li>
                 </ul>
             </div>
