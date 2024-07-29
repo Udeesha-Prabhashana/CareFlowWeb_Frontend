@@ -16,39 +16,42 @@ const PatientUpdate: React.FC = () => {
     };
 
     return (
-        <div className="mypatientUpdate">
-             <div className="leftt">
-                <div className="name">Dr. Samantha Gunawardana</div>
-                <span className="room">Room No: 23</span>
-                <span className="room">Current Patient: 07</span>
-       
-            </div>
-            <div className="middle">
+        <div className="patientUpdate">
+            <div className="left">
                 <span className="title">Ongoing Number</span>
-
-                    <div className="buttons">
+                {/* <span className="counter">{ongoingNumber}</span> */}
+                <div className="buttons">
+                    <div className="button">
                         
-                        <div className="button">       
                             <button onClick={incrementNumber}><ArrowUpwardIcon /></button>
-                        </div>
-
-                        <div className="button">  
-                            <button onClick={decrementNumber}><ArrowDownwardIcon /></button>
-                        </div>
-
-                        <div className="button">
-                            <button className="updateButton" ><b>Update</b></button>
-                        </div>
-
+       
                     </div>
-            </div>
 
-            <div className="rightt">
-                    <span className="counter">{ongoingNumber}</span>
-                {/* <div className="right">
-                    <MedicalServicesOutlinedIcon className="icon" style={{ color: "black" }} />
-                </div> */}
-            </div>
+                    <div className="button">
+                        
+                            <button onClick={decrementNumber}><ArrowDownwardIcon /></button>
+                        
+                    </div>
+
+                    <div className="button">
+                        
+                        <button className="updateButton" ><b>Update</b></button>
+                    
+                </div>
+
+                </div>
+            {/* <div className="right">
+                <MedicalServicesOutlinedIcon className="icon" style={{ color: "black" }} />
+            </div> */}
+        </div>
+        <div className="right">
+                
+                <span className="counter">{ongoingNumber}</span>
+               
+            {/* <div className="right">
+                <MedicalServicesOutlinedIcon className="icon" style={{ color: "black" }} />
+            </div> */}
+        </div>
         </div>
     );
 };
