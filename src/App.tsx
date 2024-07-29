@@ -77,6 +77,7 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+import Landing from "./pages/LandingPage/LandingPage";
 
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
@@ -93,6 +94,7 @@ import CuraUI from "./pages/cura/chatui";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
+import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -203,6 +205,14 @@ function App() {
                 // </ProtectedRoute>
               }
             />
+            <Route
+            path="revenuadmin"
+            element={
+              // <ProtectedRoute>
+                <RevenueRecordsAdmin />
+              // </ProtectedRoute>
+            }
+          />
           </Route>
           
 
@@ -420,6 +430,7 @@ function App() {
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
           <Route path="receptionist/profile" element={<RProfile/>}/>
+          <Route path="landingpage" element={<Landing/>}/>
         </Routes>
 
  
