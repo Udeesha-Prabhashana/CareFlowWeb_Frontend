@@ -88,6 +88,7 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 import CuraUI from "./pages/cura/chatui";
+import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -343,6 +344,7 @@ function App() {
 
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="bookingSummaryPay" element={<BookingSummaryPay />} />
 
 
 
