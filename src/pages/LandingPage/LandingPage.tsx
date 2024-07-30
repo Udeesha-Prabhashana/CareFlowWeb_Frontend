@@ -4,42 +4,43 @@ import "./LandingPage.scss";
 import Footer from "../../components/footer/Footer";
 import { FaRobot } from "react-icons/fa"; // Font Awesome bot icon
 
+
 const LandingPage: React.FC = () => {
   return (
     <div>
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen mt-2 relative">
         <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/locations/Pattern.png')" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/locations/Pattern.png')" }}
         ></div>
         <div className="relative text-center mt-10 z-10">
-            <h1 className="text-[20px] text-[#855CDD] font-normal leading-[25px]">
+          <h1 className="text-[20px] text-[#855CDD] font-normal leading-[25px]">
             Streamline Your Health with Careflow
-            </h1>
-            <h2 className="text-[60px] text-black font-bold leading-[66px] mt-4">
+          </h1>
+          <h2 className="text-[60px] text-black font-bold leading-[66px] mt-4">
             Expert Doctor Appointments <br /> at your Fingertips
-            </h2>
+          </h2>
         </div>
         <div className="relative mt-10 w-full max-w-[731px] flex items-center justify-center z-10">
-            <input
+          <input
             type="text"
             placeholder="Ask Cura about your symptoms"
             className="w-full h-[93px] rounded-full bg-white shadow-lg pl-10 pr-20 text-[20px] text-gray-500 font-normal leading-[25px] placeholder-gray-400 focus:outline-none"
-            />
-            <div className="absolute right-5 inset-y-0 flex items-center justify-center">
+          />
+          <div className="absolute right-5 inset-y-0 flex items-center justify-center">
             <div className="w-16 h-16 bg-[#855CDD] rounded-full flex items-center justify-center">
-                <FaRobot className="w-8 h-8 text-white" />
+              <FaRobot className="w-8 h-8 text-white" />
             </div>
-            </div>
+          </div>
         </div>
         <div className="relative mt-4 z-10">
-            <p className="text-[15px] text-[#855CDD] font-normal leading-[14px] text-center">
+          <p className="text-[15px] text-[#855CDD] font-normal leading-[14px] text-center">
             Cura is an AI Bot powered by Medical Data. It can provide incorrect
             information sometimes.
-            </p>
+          </p>
         </div>
-    </div>
+      </div>
 
       <div className="relative w-full -mt-10">
         <img
@@ -115,51 +116,65 @@ const LandingPage: React.FC = () => {
           <h1 className="text-[20px] text-[#855CDD] font-normal leading-[25px]">
             What is Careflow?
           </h1>
-          <h2 className="text-[60px] text-black font-bold leading-[66px] mt-2">
+          <h2 className="text-[60px] text-black font-bold leading-[66px] mt-1">
             How to use&nbsp;<span style={{ color: "#5F2BCF" }}>CareFlow</span>
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center mt-5">
+
+        <div className="flex flex-wrap justify-center">
           {[
             {
               src: "/images/locations/1.png",
               number: "1",
-              text: "Find Doctors",
+              text: "Find your",
+              subtext: "Doctors",
             },
             {
               src: "/images/locations/2.png",
               number: "2",
-              text: "Manage your Appointments",
+              text: "Manage your",
+              subtext: "Appointments",
             },
             {
               src: "/images/locations/3.png",
               number: "3",
-              text: "Medical History",
+              text: "View Medical",
+              subtext: "History",
             },
             {
               src: "/images/locations/1.png",
               number: "4",
-              text: "Patient Queue",
+              text: "Patient",
+              subtext: "Queue",
             },
             {
               src: "/images/locations/2.png",
               number: "5",
-              text: "Ask AI chatBot",
+              text: "Ask AI",
+              subtext: "ChatBot",
             },
             {
               src: "/images/locations/3.png",
               number: "6",
               text: "Find Doctors",
+              subtext: "Appointments",
             },
           ].map((item, index) => (
-            <div key={index} className="relative m-2">
-              <img src={item.src} alt={item.text} className="w-full" />
-              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center text-center">
-                <h1 className="text-[#855CDD] text-[60px] font-bold">
+            <div key={index} className="relative">
+              <img
+                src={item.src}
+                alt={item.text}
+                className="w-full h-full object-cover rounded-lg"
+              />
+              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start pl-4">
+                <h1 className="text-[#855CDD] text-[60px] font-bold mb-1 ml-14">
                   {item.number}
                 </h1>
-                <h2 className="text-[#424242] text-[30px] font-bold">
+                <h2 className="text-[#424242] text-[30px] font-bold -mb-5 ml-14">
                   {item.text}
+                </h2>
+                <h2 className="text-[#424242] text-[30px] font-bold ml-14">
+                  {item.subtext}
                 </h2>
               </div>
             </div>
@@ -167,81 +182,91 @@ const LandingPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative w-full">
+      <div className="relative w-full flex flex-col items-center">
+  <img
+    src="/images/locations/PRec.png"
+    alt="Rectangle"
+    className="w-full"
+  />
+    <div className="absolute top-10 left-24">
+    <h1 className="text-[60px] text-white font-bold leading-[50px] text-left">
+      Top Specialists
+    </h1>
+  </div>
+  <div className="absolute top-40 flex justify-center items-start mt-10 space-x-10">
+    {[
+      {
+        src: "/images/locations/Doc1.png",
+        title: "Channel a Physician",
+        description:
+          "A Physician is a Medical Practitioner who specializes in general or internal medicine (diagnosing & treatment) other than surgical means.",
+        buttonText: "Channel",
+      },
+      {
+        src: "/images/locations/Doc3.png",
+        title: "Channel a Gynecologist",
+        description:
+          "A gynecologist specializes in women's reproductive systems and health, and care of conditions related to the uterus, ovaries, fallopian tubes, and breasts.",
+        buttonText: "Channel",
+      },
+      {
+        src: "/images/locations/Doc2.png",
+        title: "Channel a Cardiologist",
+        description:
+          "A Cardiologist is a Medical Doctor who specializes in the diagnosis and treatment of heart conditions.",
+        buttonText: "Channel",
+      },
+      {
+        src: "/images/locations/Doc4.png",
+        title: "Channel a Pediatrician",
+        description:
+          "A Pediatrician specializes in the health and medical care of infants, children, and adolescents.",
+        buttonText: "Channel",
+      },
+    ].map((item, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center p-6 rounded-lg shadow-lg"
+        style={{
+          width: "288px",
+          height: "550px",
+          borderRadius: "16px",
+          background: "#FFF",
+          boxShadow: "0px 0px 15px 0px rgba(151, 71, 255, 0.13)",
+        }}
+      >
         <img
-          src="/images/locations/PRec.png"
-          alt="Rectangle"
-          className="w-full"
+          src={item.src}
+          alt={item.title}
+          className="w-full h-auto rounded-lg"
         />
-        <div className="absolute top-14 left-24">
-          <h1 className="text-[60px] text-white font-bold leading-[50px]">
-            Top Specialists
-          </h1>
-        </div>
-        <div className="absolute top-40 left-24 flex justify-center items-start mt-10 space-x-10">
-        {[
-            {
-              src: "/images/locations/Doc1.png",
-              title: "Channel a Physician",
-              description: "A Physician is a Medical Practitioner who specializes in general or internal medicine (diagnosing & treatment) other than surgical means.",
-              buttonText: "Channel",
-            },
-            {
-              src: "/images/locations/Doc1.png",
-              title: "Channel a Gynecologist",
-              description: "A Gynecologist specializes in women's reproductive systems and health.",
-              buttonText: "Channel",
-            },
-            {
-              src: "/images/locations/Doc1.png",
-              title: "Channel a Cardiologist",
-              description: "A Cardiologist is a Medical Doctor who specializes in the diagnosis and treatment of heart conditions.",
-              buttonText: "Channel",
-            },
-            {
-              src: "/images/locations/Doc1.png",
-              title: "Channel a Pediatrician",
-              description: "A Pediatrician specializes in the health and medical care of infants, children, and adolescents.",
-              buttonText: "Channel",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-6 rounded-lg shadow-lg"
-              style={{
-                width: '288px',
-                height: '550px',
-                borderRadius: '16px',
-                background: '#FFF',
-                boxShadow: '0px 0px 15px 0px rgba(151, 71, 255, 0.13)',
-              }}
-            >
-              <img src={item.src} alt={item.title} className="w-full h-auto rounded-lg" />
-              <h1 className="text-black text-center text-[20px] font-semibold leading-[25px] mt-4">
-                {item.title}
-              </h1>
-              <p className="text-[#737373] text-center text-[16px] font-normal leading-[25px] mt-2">
-                {item.description}
-              </p>
-              <button
-                className="mt-4 w-[101px] h-[43px] flex justify-center items-center text-white rounded-[9px]"
-                style={{
-                  background: '#855CDD',
-                }}
-              >
-                {item.buttonText}
-              </button>
-            </div>
-          ))}
-        </div>
+        <h1 className="text-black text-center text-[20px] font-semibold leading-[25px] mt-4">
+          {item.title}
+        </h1>
+        <p className="text-[#737373] text-center text-[16px] font-normal leading-[25px] mt-2">
+          {item.description}
+        </p>
+        <button
+          className="mt-4 w-[101px] h-[43px] flex justify-center items-center text-white rounded-[9px]"
+          style={{
+            background: "#855CDD",
+          }}
+        >
+          {item.buttonText}
+        </button>
       </div>
+    ))}
+  </div>
+</div>
+
+
 
       <div className="flex flex-col items-center bg-white mt-20">
         <div className="text-center">
           <h2 className="text-[60px] text-black font-bold leading-[30px] mt-4">
             Save time,&nbsp;<span style={{ color: "#5F2BCF" }}>Save money</span>
           </h2>
-          <h1 className="text-[20px] text-[#855CDD] font-normal leading-[25px]">
+          <h1 className="text-[20px] text-[#855CDD] font-normal leading-[20px]">
             Sign up and we'll send best deals to you
           </h1>
         </div>
@@ -255,6 +280,9 @@ const LandingPage: React.FC = () => {
             Subscribe
           </button>
         </div>
+      </div>
+      <div className="footerContainer">
+          <Footer />
       </div>
     </div>
   );
