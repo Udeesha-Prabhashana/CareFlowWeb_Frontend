@@ -1,13 +1,13 @@
-.sideMRview{
-  display: flex; //home class is sidebar
-}
-.navMRview { //homeContainer class is navbar
-
-  flex: 2; //used to divide both sidebar and navbar
-  margin-left: 10px; //used to get the space between sidebar and navbar
+.sideMRview {
+  display: flex; // Sidebar and navbar layout
 }
 
-.mainContentMRview{
+.navMRview {
+  flex: 2; // Space allocation between sidebar and navbar
+  margin-left: 10px; // Space between sidebar and navbar
+}
+
+.mainContentMRview {
   display: grid;
   color: #000;
   font-size: 25px;
@@ -18,7 +18,8 @@
   max-width: 2000px;
   margin: 6% 10% 10% 25%;
 }
-.subContentMRview{
+
+.subContentMRview {
   color: #000;
   font-size: 18px;
   font-style: normal;
@@ -27,24 +28,43 @@
   padding-top: 10px;
   margin-bottom: 40px;
 }
-.buttonsContainer{
+
+.buttonsContainer {
   margin-top: 10px;
-
-
-
 }
-.cardsContainer{
+
+.cardsContainer {
   margin-top: 20px;
-
 }
+
 .navbar2 .wrapper2 {
   padding: 0px;
   margin-top: 0px;
 }
-.MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root{
-  font-size: 25px;
-}
+
+//.MuiTypography-root.MuiTypography-body2 {
+//  font-size: 25px;
+//}
 
 .line {
   margin-bottom: 16px; /* Adjust the value as needed */
+}
+
+/* Styles for making only the accordions scrollable */
+.accordionContainer {
+  max-height: 400px; // Adjust height as needed
+  overflow-y: auto; // Enable vertical scrolling
+  //border: 1px solid #855CDD;
+  padding: 10px;
+}
+
+/* Hide scrollbar for WebKit browsers */
+.accordionContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for other browsers */
+.accordionContainer {
+  -ms-overflow-style: none;  // IE and Edge
+  scrollbar-width: none;     // Firefox
 }

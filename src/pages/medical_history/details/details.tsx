@@ -119,9 +119,9 @@ const ViewMedicalRecordsPatient: React.FC = () => {
                         <div className="cardsContainer">
                             {getCards()}
                         </div>
-                        <div>
+                        <div className="accordionContainer">
                             <Box sx={{ mb: 2 }}>
-                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                <Accordion>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1-content"
@@ -143,7 +143,7 @@ const ViewMedicalRecordsPatient: React.FC = () => {
                                 </Accordion>
                             </Box>
                             <Box sx={{ mb: 2 }}>
-                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                <Accordion>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel2-content"
@@ -165,7 +165,7 @@ const ViewMedicalRecordsPatient: React.FC = () => {
                                 </Accordion>
                             </Box>
                             <Box sx={{ mb: 2 }}>
-                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                <Accordion>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel3-content"

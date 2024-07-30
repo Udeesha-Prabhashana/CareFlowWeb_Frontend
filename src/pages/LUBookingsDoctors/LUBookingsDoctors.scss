@@ -1,13 +1,13 @@
 .LUBookingsDoctors {
-        display: flex; 
+        display: flex;
 
     .LUhomeContainer2lu{
-        flex: 6; 
-        margin-left: 350px; 
-        position: fixed;
+        flex: 6;
+        margin-left: 350px;
+        //position: fixed;
         align-items: center;
         font-size: 14px;
-        position: fixed;
+        //position: fixed;
         z-index: 1000;
         background-color: white;
         width: 2000px;
@@ -23,12 +23,22 @@
         margin-left: 20px;
         font-weight: 500;
         font-size: 25px;
+        color: #000;
+        font-style: normal;
+        line-height: 20px; /* 80% */
+        padding-top: 0;
+        padding-bottom: 10px;
       }
 
       .LUsubTopic {
         margin-left: 20px;
         font-size: 18px;
-        font-weight: lighter;
+          color: #000;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 20px; /* 111.111% */
+          margin-top: 8px;
+          padding-bottom: 30px;
       }
 
     .LUlistWrapperDL{
@@ -103,7 +113,7 @@
         justify-content: space-between;
         margin-bottom: 10px;
         color: #555;
-        font-size: 12px;   
+        font-size: 12px;
     }
 
     .LUlsOptionInputDL{
@@ -123,7 +133,12 @@
 }
 
 .searchItamDoctors{
-    margin-left: 350px;
+    margin-left: 400px;
     margin-top: 300px;
     z-index: 0;
+}
+
+.contentdoclist{
+
+
 }

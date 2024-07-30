@@ -1,16 +1,9 @@
-.header{
-    background-color: #855CDD;
-    color: white;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
 .headerTitle{
     justify-content: center;
     margin-left: 150px;
     margin-top: 150px;
 }
+
 
 .search {
     /* position: absolute; */
@@ -52,7 +45,6 @@
 
 .headerContainer{
     width: 100%;
-    max-width: 1024px;
     margin: 20px 0px 100px 0px;
 }
 
@@ -189,4 +181,8 @@
 
 .optionCounterButton:disabled {
     cursor: not-allowed;
+}
+
+.header{
+    z-index: 2;
 }
