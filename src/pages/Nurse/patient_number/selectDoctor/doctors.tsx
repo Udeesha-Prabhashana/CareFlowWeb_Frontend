@@ -1,8 +1,7 @@
 import React from "react";
 import Button from '@mui/material/Button';
-import NavbarLu from "../../components/navbarA/NavbarA";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
-import "../appointments/appointments.scss";
+import SidebarNurse from "../../../../components/sidebarNurse/sidebarNurse";
+import "./doctors.scss";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -24,36 +23,32 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import CheckIcon from '@mui/icons-material/Check';
+import Stack from '@mui/material/Stack';
 
-interface Appointment {
-    title: string;
+interface Doctors {
     description: string;
     body: string;
-    paid?: boolean;
 }
 
-const upcomingAppointments: Appointment[] = [
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist", paid: false },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist", paid: true },
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist", paid: false },
+const Paid: Doctors[] = [
+    { description: "Dr. John Smith", body: "PhD, Neurologist" },
+    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
+    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
     // add more appointments as needed
 ];
 
-const completedAppointments: Appointment[] = [
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
+
+
+const Unpaid: Doctors[] = [
+    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
+    { description: "Dr. John Smith", body: "PhD, Neurologist" },
     // add more appointments as needed
 ];
 
-const missedAppointments: Appointment[] = [
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
-    // add more appointments as needed
-];
-
-const Appointments: React.FC = () => {
-    const [alignment, setAlignment] = React.useState<string>('upcoming');
+const SelectDoctor: React.FC = () => {
+    const [selected, setSelected] = React.useState(false);
+    const [alignment, setAlignment] = React.useState<string>('paid');
     const navigate = useNavigate();
 
     const theme = createTheme({
@@ -73,25 +68,26 @@ const Appointments: React.FC = () => {
         }
     };
 
-    const handlePayNow = () => {
-        navigate("/bookingSummaryPay");
+    const handleViewDetails = () => {
+        if (alignment === 'paid') {
+            navigate('/nurse/updatePatientNumber');
+        } else if (alignment === 'unpaid') {
+            navigate('/nurse/home');
+        }
     };
 
-    const handleViewDetails = () => {
-        navigate("/appointments/bookingSummary");
+    const handleAddBooking = () => {
+        navigate('/nurse/home');
     };
 
     const getCards = () => {
-        let cards: Appointment[] = [];
+        let cards: Doctors[] = [];
         switch (alignment) {
-            case 'upcoming':
-                cards = upcomingAppointments;
+            case 'paid':
+                cards = Paid;
                 break;
-            case 'completed':
-                cards = completedAppointments;
-                break;
-            case 'missed':
-                cards = missedAppointments;
+            case 'unpaid':
+                cards = Unpaid;
                 break;
             default:
                 cards = [];
@@ -112,7 +108,6 @@ const Appointments: React.FC = () => {
                                 lineHeight: '20px',
                             }}
                         >
-                            {card.title}
                         </Typography>
                         <Typography
                             sx={{
@@ -140,44 +135,17 @@ const Appointments: React.FC = () => {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
-                        {alignment === 'upcoming' ? (
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    width: '138px',
-                                    height: '38px',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderRadius: '11px',
-                                    border: '1px solid var(--normal-hover, #5F2BCF)',
-                                    whiteSpace: 'nowrap',
-                                    color: '#855CDD',
-                                    textTransform: 'none',
-                                }}
-                                onClick={card.paid ? handleViewDetails : handlePayNow}
-                                disabled={card.paid}
-                            >
-                                {card.paid ? "Pay Now" : "Pay Now"}
-                            </Button>
-                        ) : (
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    width: '138px',
-                                    height: '38px',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderRadius: '11px',
-                                    border: '1px solid var(--normal-hover, #5F2BCF)',
-                                    whiteSpace: 'nowrap',
-                                    color: '#855CDD',
-                                    textTransform: 'none',
-                                }}
-                                onClick={handleViewDetails}
-                            >
-                                View Details
-                            </Button>
-                        )}
+                    <ThemeProvider theme={theme}>
+                    <ToggleButton
+                    value="check"
+                    selected={selected}
+                    onChange={() => {
+                        setSelected(!selected);
+                    }}
+                    >
+                    <CheckIcon />
+                    </ToggleButton>
+                    </ThemeProvider>
                     </CardActions>
                 </Card>
             </Box>
@@ -185,15 +153,17 @@ const Appointments: React.FC = () => {
     };
 
     return (
+        <ThemeProvider theme={theme}>
         <div className="appointments">
-            <SidebarPatient />
+            <SidebarNurse />
             <div className="appointmentsContainer">
+                {/*<NavbarLu />*/}
                 <div className="mainContent">
-                    View Appointments
+                    Select Doctor
                     <div className="subContent">
-                        View Details of your Appointments
+                     Select your doctor you are assigned to
                     </div>
-                    <ThemeProvider theme={theme}>
+                    
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
                                 <ToggleButtonGroup
@@ -216,46 +186,41 @@ const Appointments: React.FC = () => {
                                                 color: 'white',
                                             },
                                             '&.Mui-selected': {
-                                                background: '#855CDD',
+                                                background: '#ffffff',
                                                 color: 'white',
                                                 border: '1px solid #855CDD',
                                             },
                                         }
                                     }}
                                 >
-                                    <ToggleButton value="upcoming">Upcoming</ToggleButton>
-                                    <ToggleButton value="completed">Previous</ToggleButton>
-                                    <ToggleButton value="missed">Missed</ToggleButton>
+                                  
                                 </ToggleButtonGroup>
                             </Grid>
                             <Grid item xs />
                             <Grid item>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DemoContainer
-                                        components={[
-                                            'DatePicker',
-                                            'MobileDatePicker',
-                                            'DesktopDatePicker',
-                                        ]}
-                                    >
-                                        <DemoItem>
-                                            <DesktopDatePicker
-                                                defaultValue={dayjs('2022-04-17')}
-                                            />
-                                        </DemoItem>
-                                    </DemoContainer>
-                                </LocalizationProvider>
+                           
                             </Grid>
+                       
                         </Grid>
-                    </ThemeProvider>
+                    
 
                     <div className="cardsContainer">
                         {getCards()}
                     </div>
+                    <Stack spacing={2} direction="row">
+
+      <Button variant="contained">Save</Button>
+      
+
+    </Stack>
+
                 </div>
             </div>
         </div>
+        </ThemeProvider>
+       
     );
+    
 };
 
-export default Appointments;
+export default SelectDoctor;

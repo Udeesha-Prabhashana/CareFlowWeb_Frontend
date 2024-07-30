@@ -1,166 +1,223 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import NavbarLu from "../../components/navbarA/NavbarA";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
-import "../medical_history/medical_history.scss";
+import React, { useState } from 'react';
+import "./medical_history.scss";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material/styles";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Grid from "@mui/material/Grid";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import dayjs from "dayjs";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import CardMedia from '@mui/material/CardMedia';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import recordImage from '../../components/images/doctor/record1.png';
 
-interface HistoryCard {
-  doctor_name: string;
-  date: string;
+interface MedicalRecords {
+    patientName: string;
+    age: number;
+    gender: string;
+    knownIllnesses: string;
+    knownAllergies: string;
+    otherDetails?: string;
 }
 
-const past_history: HistoryCard[] = [
-  { doctor_name: "Dr. Saman Kumara", date: "12/05/2024" },
-  { doctor_name: "Prf. Wimalasena Kudaligama", date: "30/03/2023" },
-  { doctor_name: "Dr. Club Wasantha", date: "11/02/2024" },
-  // add more medical_history as needed
+const medicalRecords: MedicalRecords[] = [
+    {
+        patientName: "Ravinda Alahakoon",
+        age: 35,
+        gender: "male",
+        knownIllnesses: "Asthma, cancer",
+        knownAllergies: "none",
+    },
 ];
 
-const HistoryCards: React.FC = () => {
-  const navigate = useNavigate();
-
-  const theme = createTheme({
+const theme = createTheme({
     palette: {
-      primary: {
-        main: "#855CDD",
-      },
-      secondary: {
-        main: "#FFA07A",
-      },
+        primary: {
+            main: '#855CDD',
+        },
+        secondary: {
+            main: '#855CDD',
+        },
     },
-  });
+});
 
-  const handleViewDetails = () => {
-    navigate("/medical_history/details");
-  };
+const ViewMedicalRecords: React.FC = () => {
+    const [records, setRecords] = useState(medicalRecords);
+    const [showInput, setShowInput] = useState<{ [key: number]: boolean }>({});
+    const [inputValue, setInputValue] = useState<{ [key: number]: string }>({});
 
-  const getCards = () => {
-    let cards: HistoryCard[] = [];
-    cards = past_history;
-    return cards.map((card, index) => (
-      <Box key={index} sx={{ mb: 2 }}>
-        <Card
-          variant="outlined"
-          sx={{ display: "flex", border: "1px solid #855CDD" }}
-        >
-          <CardContent sx={{ flex: 1 }}>
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{
-                color: "var(--Normal, var(--Normal-Normal, #855CDD))",
-                fontSize: "30px",
-                fontStyle: "normal",
-                fontWeight: "700",
-                lineHeight: "20px",
-              }}
-            >
-              {card.doctor_name}
-            </Typography>
-            <Typography
-              sx={{
-                mb: 1.5,
-                color: "#000",
-                fontSize: "20px",
-                fontStyle: "normal",
-                fontWeight: "700",
-                lineHeight: "20px",
-                paddingTop: "8px",
-              }}
-            >
-              {card.date}
-            </Typography>
-          </CardContent>
-          <CardActions
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              mr: 2,
-            }}
-          >
-            <Button
-              variant="outlined"
-              sx={{
-                width: "138px",
-                height: "38px",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "11px",
-                border: "1px solid var(--normal-hover, #5F2BCF)",
-                whiteSpace: "nowrap",
-                color: "#855CDD",
-                textTransform: "none",
-              }}
-              onClick={handleViewDetails}
-            >
-              View Details
-            </Button>
-          </CardActions>
-        </Card>
-      </Box>
-    ));
-  };
+    const handleShowInput = (index: number) => {
+        setShowInput(prevState => ({ ...prevState, [index]: !prevState[index] }));
+    };
 
-  return (
-    <div className="medical_history">
-      <SidebarPatient />
-      <div className="medical_historyContainer">
-        {/*<NavbarLu />*/}
-        <div className="mainContent">
-          View Medical History
-          <div className="subContent">
-            Select a Previous Appointment to See History
-          </div>
-          <ThemeProvider theme={theme}>
-            <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
-              <Grid item></Grid>
-              <Grid item xs />
-              <Grid item>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DemoContainer
-                    components={[
-                      "DatePicker",
-                      "MobileDatePicker",
-                      "DesktopDatePicker",
-                    ]}
-                  >
-                    <DemoItem>
-                      <DesktopDatePicker defaultValue={dayjs("2022-04-17")} />
-                    </DemoItem>
-                  </DemoContainer>
-                </LocalizationProvider>
-              </Grid>
-            </Grid>
-          </ThemeProvider>
-          <div className="cardsContainer">{getCards()}</div>
-        </div>
-      </div>
-    </div>
-  );
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
+        setInputValue(prevState => ({ ...prevState, [index]: event.target.value }));
+    };
+
+    const handleAddDetails = (index: number) => {
+        const updatedRecords = [...records];
+        updatedRecords[index].otherDetails = inputValue[index];
+        setRecords(updatedRecords);
+        setShowInput(prevState => ({ ...prevState, [index]: false }));
+        setInputValue(prevState => ({ ...prevState, [index]: '' }));
+    };
+
+    const getCards = () => {
+        return records.map((record, index) => (
+            <React.Fragment key={index}>
+                <Box sx={{ mb: 2 }}>
+                    <Card variant="outlined" sx={{ border: '1px solid #855CDD' }}>
+                        <CardContent>
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <Typography className="line">Patient's Name :</Typography>
+                                    <Typography className="line">Age :</Typography>
+                                    <Typography className="line">Gender :</Typography>
+                                    <Typography className="line">Known Illnesses :</Typography>
+                                    <Typography className="line">Known Allergies :</Typography>
+                                    {record.otherDetails && <Typography className="line">Other Details :</Typography>}
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Typography className="line"><b>{record.patientName}</b></Typography>
+                                    <Typography className="line"><b>{record.age} Years</b></Typography>
+                                    <Typography className="line"><b>{record.gender}</b></Typography>
+                                    <Typography className="line"><b>{record.knownIllnesses}</b></Typography>
+                                    <Typography className="line"><b>{record.knownAllergies}</b></Typography>
+                                    {record.otherDetails && <Typography className="line"><b>{record.otherDetails}</b></Typography>}
+                                </Grid>
+                                <Grid item xs={3}>
+                                    {showInput[index] && (
+                                        <Box mt={2} display="flex" flexDirection="column" alignItems="flex-start">
+                                            <TextField
+                                                fullWidth
+                                                label="Other Details"
+                                                value={inputValue[index] || ''}
+                                                onChange={(e) => handleInputChange(e, index)}
+                                            />
+                                            <Box mt={1} display="flex" gap={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    style={{ backgroundColor: '#D2172C', color: '#fff' }}
+                                                    onClick={() => handleShowInput(index)}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                                <Button
+                                                    variant="contained"
+                                                    color="secondary"
+                                                    onClick={() => handleAddDetails(index)}
+                                                >
+                                                    Add
+                                                </Button>
+                                            </Box>
+                                        </Box>
+                                    )}
+                                    {!showInput[index] && (
+                                        <Button variant="contained" color="primary" onClick={() => handleShowInput(index)}>
+                                            Add Other Details
+                                        </Button>
+                                    )}
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+                    </Card>
+                </Box>
+            </React.Fragment>
+        ));
+    };
+
+    return (
+        <ThemeProvider theme={theme}>
+            <div className="sideDocMRview">
+                <SidebarPatient />
+                <div className="navDocMRview">
+                    {/*<NavbarDoc />*/}
+                    <div className="mainContentDocMRview">
+                        View Medical History
+                        <div className="subContentDocMRview">
+                            Select a Previous Appointment to See History
+                        </div>
+                        <div className="cardsContainer">
+                            {getCards()}
+                        </div>
+                        <div>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1-content"
+                                        id="panel1-header"
+                                    >
+                                        2024/04/08
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical Record
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 1"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel2-content"
+                                        id="panel2-header"
+                                    >
+                                        2023/12/09
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical Record 2
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 2"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                            <Box sx={{ mb: 2 }}>
+                                <Accordion  sx={{ border: '1px solid #855CDD' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel3-content"
+                                        id="panel3-header"
+                                    >
+                                        2023/09/23
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Medical record 3
+                                        </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            sx={{ width: '50%', height: 'auto' }}
+                                            image={recordImage}
+                                            alt="Medical Record 3"
+                                        />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ThemeProvider>
+    );
 };
 
-export default HistoryCards;
+export default ViewMedicalRecords;

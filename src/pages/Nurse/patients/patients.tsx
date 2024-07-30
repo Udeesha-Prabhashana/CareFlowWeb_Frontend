@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
-import "../patients/patients.scss";
+import "./patients.scss";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -75,7 +75,7 @@ const BookingNurse: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        navigate("/nurse/patients/view_patients");
+        navigate("../nurse/patients/view_patients");
     };
 
     return (
@@ -181,7 +181,7 @@ const BookingNurse: React.FC = () => {
                                                 }}
                                                 onClick={() => handleViewDetails(row)}
                                             >
-                                                View Details
+                                                Upload Documents
                                             </Button>
                                         </TableCell>
                                     </TableRow>
