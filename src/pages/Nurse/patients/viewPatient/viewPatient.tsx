@@ -15,6 +15,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import recordImage from '../../../../components/images/doctor/record1.png';
+import { useNavigate } from 'react-router-dom';
 
 interface MedicalRecords {
     patientName: string;
@@ -49,7 +50,7 @@ const theme = createTheme({
 });
 
 const ViewMedicalRecords: React.FC = () => {
-    
+    const navigate = useNavigate();
     const [showInput, setShowInput] = useState<{ [key: number]: boolean }>({});
     const [inputValue, setInputValue] = useState<{ [key: number]: string }>({});
     const [records, setRecords] = useState(medicalRecords);
@@ -58,8 +59,8 @@ const ViewMedicalRecords: React.FC = () => {
     
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-        const file = event.target.files?.[0] || null;
-        setUploadedFiles(prevState => ({ ...prevState, [index]: file }));
+        
+        navigate("./nurse/patient/uploadPatientRecords");
     };
 
     const handleAddDetails = (index: number) => {
@@ -99,15 +100,10 @@ const ViewMedicalRecords: React.FC = () => {
                                             variant="contained"
                                             color="secondary"
                                             
-                                            onClick={() => handleAddDetails(index)}
+                                            onClick={() => navigate("../nurse/patient/uploadPatientRecords")}
                                         >
+                                        Upload Medical Records
                                         
-                                            <input
-                                        type="file"
-                                        
-                                        onChange={(e) => handleFileUpload(e, index)}
-                                        style={{ marginTop: '0px' }}
-                                    />
                                         </Button>
                                     </Box>
                             </Grid>
