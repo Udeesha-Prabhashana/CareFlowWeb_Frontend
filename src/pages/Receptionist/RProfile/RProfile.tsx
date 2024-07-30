@@ -6,8 +6,14 @@ import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const RProfile: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleProfile = () => {
+    navigate("/receptionist/profile");
+  };
   return (
     <div className="RProfile">
       <SidebarRec />
@@ -246,6 +252,7 @@ const RProfile: React.FC = () => {
               backgroundColor: "#5F2BCF", // Change to your desired hover color
             },
           }}
+          onClick={handleProfile}
         >
           Save
         </Button>

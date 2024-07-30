@@ -78,6 +78,7 @@ import RBookingSummaryPay from "./pages/Receptionist/RSummaryPay/RSummaryPay";
 import RDoctors from "./pages/Receptionist/RDoctors/RDoctors";
 import RDoctorsView from "./pages/Receptionist/RDoctorsView/RDoctorsView";
 import RProfile from "./pages/Receptionist/RProfile/RProfile";
+import RProfileMain from "./pages/Receptionist/RProfileMain/RProfileMain";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
@@ -443,7 +444,8 @@ function App() {
           
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
-          <Route path="receptionist/profile" element={<RProfile/>}/>
+          <Route path="receptionist/profile-edit" element={<RProfile/>}/>
+          <Route path="receptionist/profile" element={<RProfileMain/>}/>
           <Route path="landingpage" element={<Landing/>}/>
         </Routes>
 
