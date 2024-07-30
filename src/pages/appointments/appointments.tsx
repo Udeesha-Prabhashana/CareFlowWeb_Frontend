@@ -27,28 +27,29 @@ import '@fontsource/roboto/700.css';
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 interface Appointment {
-    title: string;
+    title?: string; // Make the title optional
     description: string;
     body: string;
+    date: string;
     paid?: boolean;
 }
 
 const upcomingAppointments: Appointment[] = [
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist", paid: false },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist", paid: true },
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist", paid: false },
+    { title: "No. 25", description: "Dr. Amarasiri Perera", body: "PhD, Neurologist", date: "2024-08-01", paid: false },
+    { title: "No. 30", description: "Dr. Sampath Samarasinghe", body: "MD, Cardiologist", date: "2024-08-05", paid: true },
+    { title: "No. 40", description: "Dr. Nimal Jayasinghe", body: "DO, Dermatologist", date: "2024-08-10", paid: false },
     // add more appointments as needed
 ];
 
 const completedAppointments: Appointment[] = [
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
+    { description: "Dr. Sampath Samarasinghe", body: "MD, Cardiologist", date: "2024-07-15" },
+    { description: "Dr. Nimal Jayasinghe", body: "PhD, Neurologist", date: "2024-07-10" },
     // add more appointments as needed
 ];
 
 const missedAppointments: Appointment[] = [
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist" },
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist" },
+    { description: "Dr. Amarasiri Perera", body: "DO, Dermatologist", date: "2024-07-20" },
+    { description: "Dr. John Smith", body: "PhD, Neurologist", date: "2024-07-18" },
     // add more appointments as needed
 ];
 
@@ -101,19 +102,21 @@ const Appointments: React.FC = () => {
             <Box key={index} sx={{ mb: 2 }}>
                 <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
                     <CardContent sx={{ flex: 1 }}>
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            sx={{
-                                color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
-                                fontSize: '30px',
-                                fontStyle: 'normal',
-                                fontWeight: '700',
-                                lineHeight: '20px',
-                            }}
-                        >
-                            {card.title}
-                        </Typography>
+                        {alignment === 'upcoming' && (
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                sx={{
+                                    color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
+                                    fontSize: '30px',
+                                    fontStyle: 'normal',
+                                    fontWeight: '700',
+                                    lineHeight: '20px',
+                                }}
+                            >
+                                {card.title}
+                            </Typography>
+                        )}
                         <Typography
                             sx={{
                                 mb: 1.5,
@@ -137,6 +140,19 @@ const Appointments: React.FC = () => {
                             }}
                         >
                             {card.body}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontSize: '16px',
+                                fontStyle: 'normal',
+                                fontWeight: '300',
+                                lineHeight: '20px',
+                                color: 'grey',
+                                paddingTop: '8px',
+                            }}
+                        >
+                            {card.date}
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
