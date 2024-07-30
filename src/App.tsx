@@ -72,8 +72,8 @@ import PaidList from "./pages/Receptionist/RBookingsPaidList/RBookingsPaidList";
 import PaidSummary from "./pages/Receptionist/RBookingsPaidSummary/RBookingsPaidSummary";
 import UnpaidList from "./pages/Receptionist/RBookingsUnpaidList/RBookingsUnpaidList";
 import UnpaidSummary from "./pages/Receptionist/RBookingsUnpaidSummary/RBookingsUnpaidSummary";
-
 import RBookingsAdd from "./pages/Receptionist/RBookingsAdd/RBookingsAdd";
+import RBookingSummaryPay from "./pages/Receptionist/RSummaryPay/RSummaryPay";
 
 import RDoctors from "./pages/Receptionist/RDoctors/RDoctors";
 import RDoctorsView from "./pages/Receptionist/RDoctorsView/RDoctorsView";
@@ -81,11 +81,11 @@ import RProfile from "./pages/Receptionist/RProfile/RProfile";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
+import RBookingDoctorView from "./pages/Receptionist/RBookingDoctorView/RBookingDoctorView";
 import Landing from "./pages/LandingPage/LandingPage";
 
 import NotificationsDoc from "./pages/Doctor/notifications/notificationsDoc";
 import SettingsDoc from "./pages/Doctor/settings/settingsDoc";
-
 
 import Notificationsadm from "./pages/notificationsadmin/notificationsadmin";
 import SettingsAdm from "./pages/settingsAdmin/settingsAdmin";
@@ -433,10 +433,13 @@ function App() {
             <Route path=":doctorId" element={<RDoctorsView />} />
           </Route>
 
-          <Route path="receptionist/bookings/addnewbooking/doctors" element={<RBookingsDoctors/>}/>
           <Route path="receptionist/bookings/addnewbooking/patients" element={<RBookingsPatients/>}/>
           <Route path="receptionist/bookings/addnewbooking/summary" element={<RBookingsSummary/>}/>
-
+          <Route path="receptionist/bookings/addnewbooking/bookingSummaryPay" element={<RBookingSummaryPay />} />
+          <Route path="receptionist/bookings/addnewbooking/doctors">
+            <Route index element={<RBookingsDoctors />} />
+            <Route path=":doctorId" element={<RBookingDoctorView />} />
+          </Route>
           
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
