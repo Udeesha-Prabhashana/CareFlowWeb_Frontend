@@ -1,0 +1,36 @@
+@tailwind components;
+@tailwind utilities;
+
+.profilelu {
+  display: flex; // home class is sidebar 
+
+  .homeContainer2lu { // homeContainer class is navbar 
+    flex: 6; // used to divide both sidebar and navbar 
+    margin-left: 250px; // used to get the space between sidebar and navbar
+    margin-right: 130px;
+  }
+
+  .bodyContainerLu {
+    margin: 40px;
+    margin-top: 100px;
+    position: relative; // Ensure this element is relatively positioned
+  }
+
+  .mainTopic {
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 25px;
+    position: absolute; // Add this line
+    top: 1000px; // Adjust this value as needed
+  }
+
+  .subTopic {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: lighter;
+  }
+
+  .purpleText {
+    color: #855CDD;
+  }
+}
