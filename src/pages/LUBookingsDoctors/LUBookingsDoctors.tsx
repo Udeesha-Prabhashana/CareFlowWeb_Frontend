@@ -120,8 +120,9 @@ const LUBookingDoctors: React.FC = () => {
         <div className="LUbodyContainerLu">
           <div className="LUmainTopic">Doctors</div>
           <div className="LUsubTopic">
-            Find the Doctor that best matches with patients' requirements
+            Find the Doctor that best matches with your requirements
           </div>
+
           <div className="flex flex-col space-y-4 ml-5 mt-5">
             <div className="flex flex-row space-x-4">
               <div className="flex flex-col">
@@ -183,7 +184,7 @@ const LUBookingDoctors: React.FC = () => {
             Apply filters
           </Button>
             </div>
-            
+
           </div>
         </div>
       </div>
