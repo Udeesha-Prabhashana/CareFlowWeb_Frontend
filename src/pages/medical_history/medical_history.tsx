@@ -27,11 +27,11 @@ interface MedicalRecords {
 
 const medicalRecords: MedicalRecords[] = [
     {
-        patientName: "Ravinda Alahakoon",
-        age: 35,
-        gender: "male",
-        knownIllnesses: "Asthma, cancer",
-        knownAllergies: "none",
+        patientName: "Kasun Jayasinghe",
+        age: 30,
+        gender: "Male",
+        knownIllnesses: "Asthma, Cancer",
+        knownAllergies: "None",
     },
 ];
 
