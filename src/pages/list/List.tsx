@@ -119,9 +119,13 @@ const List: React.FC = () => {
 
   return (
     <div className="navbarnlu">
-      <Navbar />
+      <div className="navebarnlu2">
+          <Navbar />
+      </div>
       <div>
       <div className="List">
+        <div className="navebarlist">
+        </div>
         <div className="NLUhomeContainer2lu">
           <div className="NLUbodyContainerLu">
           <div className="flex flex-col space-y-4 ml-5 mt-5">

@@ -95,17 +95,20 @@ const DoctorNLU: React.FC = () => {
   const handleClick = () => {
     if (user) {
       // setOpenModel(true);
-      // toast.success("Doctor booked successfully!"); // Show success toast
-      navigate("/bookingSummaryPay")
+      toast.error("Unable to book. You have to log in!"); // Show success toast
+      // navigate("/bookingSummaryPay")
     } else {
-      // toast.success("Doctor booked successfully!"); 
-      navigate("/bookingSummaryPay")
+      toast.error("Unable to book. You have to log in!"); 
+      // navigate("/bookingSummaryPay")
     }
   };
 
   return (
+    
     <div className="navbarnlu">
-    <Navbar />
+       <div className="navebarnlu3">
+       <Navbar />
+        </div> 
     <div>
     <div className="DoctorNLU">
       <div className="LUDVhomeContainer2lu">
@@ -157,10 +160,6 @@ const DoctorNLU: React.FC = () => {
               <div className="flex flex-row mb-4">
                 <span className="text-gray-600 font-bold w-32 flex-shrink-0">Fee:</span>
                 <span className="text-gray-600 flex-grow">{data.fee}</span>
-              </div>
-              <div className="flex flex-row mb-4">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
-                <span className="text-gray-600 flex-grow">{data.email}</span>
               </div>
               <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
