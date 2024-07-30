@@ -1,6 +1,34 @@
+.navebarlist{
+    position: fixed;
+    align-items: center;
+    font-size: 14px;
+    position: fixed;
+    z-index: 1000;
+    background-color: white;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.navebarnlu2{
+    position: fixed;
+    margin-top: -60px;
+    z-index: 20;
+    background-color: white;
+}
 .List {
     display: flex; 
+    margin-top: 60px;
 
+    .navebarlist{
+        position: fixed;
+        align-items: center;
+        font-size: 14px;
+        position: fixed;
+        z-index: 1000;
+        background-color: white;
+        width: 200px;
+        justify-content: space-between;
+    }
     .NLUhomeContainer2lu{
         flex: 6; 
         position: fixed;
@@ -15,10 +43,11 @@
     
     .NLUbodyContainerLu{
         margin: 40px;
-        margin-top: 50px;
+        margin-top: 40px;
         width: 1000px;
         justify-content: space-between;
-        margin-left: 400px; 
+        margin-left: 300px; 
+        gap: 10px;
     }
     
     .NLUmainTopic {
@@ -124,8 +153,8 @@
     }
     
     .NLUsearchItamDoctors{
-        margin-left: 400px; 
-    margin-top: 200px;
-    z-index: 0;
+        margin-left: 300px; 
+        margin-top: 150px;
+        z-index: 0;
     }
 }

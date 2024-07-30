@@ -143,13 +143,13 @@ function Settings(){
               <Box>
                 <Box sx={{width:"800px",height:"2000px"}}>
                     <Box sx={{width: "100%", display:"flex" , flexDirection:"row", justifyContent:"space-between", border:1, borderRadius:"11px",borderColor:"#855CDD", padding:"10px", mb:2}}>
-                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px", 
-                            backgroundImage: `url('/images/world1.svg')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}> 
+                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px",
+                            backgroundImage: `url('/images/world1.svg')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                         </Box>
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Language</Typography>
-                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your preffered language</Typography>
+                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your prefered language</Typography>
                         </Box>
 
                         <Box sx={{width:"20%", marginTop: 2}}>
@@ -158,13 +158,13 @@ function Settings(){
                     </Box>
 
                     <Box sx={{width: "100%", display:"flex" , flexDirection:"row", justifyContent:"space-between", border:1, borderRadius:"11px",borderColor:"#855CDD", padding:"10px", mb:2}}>
-                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px", 
-                            backgroundImage: `url('/images/night-mode 1.png')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}> 
+                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px",
+                            backgroundImage: `url('/images/night-mode 1.png')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                         </Box>
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
                             <Typography variant="h3" sx={{fontSize:18 }}>Theme</Typography>
-                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your preffered Theme</Typography>
+                            <Typography variant="h3" sx={{fontSize:12, my: 0.5 ,color:"#808080"}}>Select your prefered Theme</Typography>
                         </Box>
 
                         <Box sx={{width:"20%", marginTop: 2}}>
@@ -173,8 +173,8 @@ function Settings(){
                     </Box>
 
                     <Box sx={{width: "100%", display:"flex" , flexDirection:"row", justifyContent:"space-between", border:1, borderRadius:"11px",borderColor:"#855CDD", padding:"10px", mb:2}}>
-                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px", 
-                            backgroundImage: `url('/images/padlock 1.png')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}> 
+                        <Box sx={{width:"9%", backgroundColor:"#855CDD", borderRadius:"8px",
+                            backgroundImage: `url('/images/padlock 1.png')`,backgroundSize: 'calc(100% - 20px) calc(100% - 20px)',backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                         </Box>
 
                         <Box sx={{width:"60%", marginTop: 2, marginBottom: 2}}>
@@ -194,12 +194,12 @@ function Settings(){
 
                 </Box>
               </Box>
-              
-        
+
+
             </div>
 
-           
-            
+
+
 
           </div>
         </div>
