@@ -7,6 +7,7 @@ import axios from "axios";
 import { Input } from "../../formSource";
 import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
 import { toast } from "react-toastify";
+import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
 
 interface NewProps {
   inputs: Input[];
@@ -78,9 +79,8 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
   console.log(info);
   return (
     <div className="newD">
-      <SidebarAdm />
+      <SidebarAdmin />
       <div className="newContainerD">
-        <Navbar />
         <div className="topD">
           <h1>{title}</h1>
         </div>
