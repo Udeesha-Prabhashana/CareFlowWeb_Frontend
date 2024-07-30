@@ -35,20 +35,20 @@ interface Appointment {
 }
 
 const upcomingAppointments: Appointment[] = [
-    { title: "No. 25", description: "Dr. John Smith", body: "PhD, Neurologist", date: "2024-08-01", paid: false },
-    { title: "No. 30", description: "Dr. Alice Johnson", body: "MD, Cardiologist", date: "2024-08-05", paid: true },
-    { title: "No. 40", description: "Dr. Sam Green", body: "DO, Dermatologist", date: "2024-08-10", paid: false },
+    { title: "No. 25", description: "Dr. Amarasiri Perera", body: "PhD, Neurologist", date: "2024-08-01", paid: false },
+    { title: "No. 30", description: "Dr. Sampath Samarasinghe", body: "MD, Cardiologist", date: "2024-08-05", paid: true },
+    { title: "No. 40", description: "Dr. Nimal Jayasinghe", body: "DO, Dermatologist", date: "2024-08-10", paid: false },
     // add more appointments as needed
 ];
 
 const completedAppointments: Appointment[] = [
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist", date: "2024-07-15" },
-    { description: "Dr. John Smith", body: "PhD, Neurologist", date: "2024-07-10" },
+    { description: "Dr. Sampath Samarasinghe", body: "MD, Cardiologist", date: "2024-07-15" },
+    { description: "Dr. Nimal Jayasinghe", body: "PhD, Neurologist", date: "2024-07-10" },
     // add more appointments as needed
 ];
 
 const missedAppointments: Appointment[] = [
-    { description: "Dr. Sam Green", body: "DO, Dermatologist", date: "2024-07-20" },
+    { description: "Dr. Amarasiri Perera", body: "DO, Dermatologist", date: "2024-07-20" },
     { description: "Dr. John Smith", body: "PhD, Neurologist", date: "2024-07-18" },
     // add more appointments as needed
 ];

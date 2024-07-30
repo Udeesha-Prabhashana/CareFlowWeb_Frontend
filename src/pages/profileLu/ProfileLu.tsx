@@ -102,13 +102,13 @@ const ProfileLu: React.FC = () => {
               className="prof-name mt-1"
               style={{ fontSize: "25px", marginBottom: "0px" }}
             >
-              Micheal Smith
+              Kasun Jayasinghe
             </p>
             <p
               className="prof-email"
               style={{ fontSize: "15px", color: "#808080", marginTop: "0px" }}
             >
-              michaelsmith12@gmail.com
+              kasunjay@gmail.com
             </p>
           </div>
         </div>

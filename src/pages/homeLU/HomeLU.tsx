@@ -50,7 +50,7 @@ const HomeLu: React.FC = () => {
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
-                        Good Morning, <span className="purpleText">Micheal</span>
+                        Good Morning, <span className="purpleText">Kasun</span>
                     </div>
                     <div className="subTopic">
                         Welcome to your Dashboard
