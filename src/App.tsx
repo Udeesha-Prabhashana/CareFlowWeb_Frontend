@@ -94,7 +94,7 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
 import LUBookingsDoctors from "./pages/LUBookingsDoctors/LUBookingsDoctors";
 import LUBookingsDoctorsView from "./pages/LUBookingsDoctorsView/LUBookingsDoctorsView";
-import ChatUI from "./pages/cura/chatUI";
+import ChatUI from "./pages/cura/chatui";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
