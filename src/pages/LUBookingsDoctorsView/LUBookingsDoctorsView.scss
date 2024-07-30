@@ -1,0 +1,18 @@
+.LUDVDoctorsView {
+    display: flex;    //home class is sidebar 
+
+    .LUDVhomeContainer2lu{ //homeContainer class is navbar 
+
+        flex: 6;     //used to divide both sidebar and navbar 
+        margin-left: 320px;    //used to get the space between sidebar and navbar
+        margin-right: 130px;
+    }
+
+    .LUDVbodyContainerLu{
+        margin-top: 50px;
+    }
+
+}
+
+
+

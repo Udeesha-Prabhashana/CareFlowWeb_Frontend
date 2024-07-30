@@ -109,7 +109,7 @@ const DoctorNLU: React.FC = () => {
 
   const handleClick = () => {
     if (user) {
-      setOpenModel(true);
+      // setOpenModel(true);
       toast.error("Can't Book now. You have to logging first");
     } else {
       toast.error("Can't Book now. You have to logging first");
