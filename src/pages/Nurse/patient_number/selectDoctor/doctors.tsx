@@ -23,6 +23,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import CheckIcon from '@mui/icons-material/Check';
+import Stack from '@mui/material/Stack';
 
 interface Doctors {
     description: string;
@@ -36,6 +38,8 @@ const Paid: Doctors[] = [
     // add more appointments as needed
 ];
 
+
+
 const Unpaid: Doctors[] = [
     { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
     { description: "Dr. John Smith", body: "PhD, Neurologist" },
@@ -43,6 +47,7 @@ const Unpaid: Doctors[] = [
 ];
 
 const SelectDoctor: React.FC = () => {
+    const [selected, setSelected] = React.useState(false);
     const [alignment, setAlignment] = React.useState<string>('paid');
     const navigate = useNavigate();
 
@@ -67,12 +72,12 @@ const SelectDoctor: React.FC = () => {
         if (alignment === 'paid') {
             navigate('/nurse/updatePatientNumber');
         } else if (alignment === 'unpaid') {
-            navigate('/nurse/updatePatientNumber');
+            navigate('/nurse/home');
         }
     };
 
     const handleAddBooking = () => {
-        navigate('/receptionist/bookings/addnewbooking');
+        navigate('/nurse/home');
     };
 
     const getCards = () => {
@@ -130,23 +135,17 @@ const SelectDoctor: React.FC = () => {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                width: '138px',
-                                height: '38px',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '11px',
-                                border: '1px solid var(--normal-hover, #5F2BCF)',
-                                whiteSpace: 'nowrap',
-                                color: '#855CDD',
-                                textTransform: 'none',
-                            }}
-                            onClick={handleViewDetails}
-                        >
-                            Update Queue
-                        </Button>
+                    <ThemeProvider theme={theme}>
+                    <ToggleButton
+                    value="check"
+                    selected={selected}
+                    onChange={() => {
+                        setSelected(!selected);
+                    }}
+                    >
+                    <CheckIcon />
+                    </ToggleButton>
+                    </ThemeProvider>
                     </CardActions>
                 </Card>
             </Box>
@@ -154,6 +153,7 @@ const SelectDoctor: React.FC = () => {
     };
 
     return (
+        <ThemeProvider theme={theme}>
         <div className="appointments">
             <SidebarNurse />
             <div className="appointmentsContainer">
@@ -163,7 +163,7 @@ const SelectDoctor: React.FC = () => {
                     <div className="subContent">
                      Select your doctor you are assigned to
                     </div>
-                    <ThemeProvider theme={theme}>
+                    
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
                                 <ToggleButtonGroup
@@ -186,7 +186,7 @@ const SelectDoctor: React.FC = () => {
                                                 color: 'white',
                                             },
                                             '&.Mui-selected': {
-                                                background: '#855CDD',
+                                                background: '#ffffff',
                                                 color: 'white',
                                                 border: '1px solid #855CDD',
                                             },
@@ -202,15 +202,25 @@ const SelectDoctor: React.FC = () => {
                             </Grid>
                        
                         </Grid>
-                    </ThemeProvider>
+                    
 
                     <div className="cardsContainer">
                         {getCards()}
                     </div>
+                    <Stack spacing={2} direction="row">
+
+      <Button variant="contained">Save</Button>
+      
+
+    </Stack>
+
                 </div>
             </div>
         </div>
+        </ThemeProvider>
+       
     );
+    
 };
 
 export default SelectDoctor;
