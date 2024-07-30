@@ -31,15 +31,11 @@ const RBookingsPatients: React.FC = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(SearchContext);
 
-  // const handleSearch = () => {
-  //   dispatch({
-  //     type: "NEW_SEARCH",
-  //     payload: { patientName, age, sex, phoneNumber, dates },
-  //   });
-  //   navigate("/receptionist/bookings/addnewbooking/summary", {
-  //     state: { patientName, age, sex, phoneNumber, dates },
-  //   });
-  // };
+  const handleSearch = () => {
+    navigate("/receptionist/bookings/addnewbooking/bookingSummaryPay", {
+      state: { patientName, age, sex, phoneNumber, dates },
+    });
+  };
 
   const handleDateChange = (ranges: RangeKeyDict) => {
     const { selection } = ranges;
@@ -109,24 +105,32 @@ const RBookingsPatients: React.FC = () => {
             <label htmlFor="sex" style={{ marginBottom: "5px", color: "#555" }}>
               Sex
             </label>
-            <select
-              id="sex"
-              style={{
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-                outline: "none",
-                fontSize: "16px",
-              }}
-              value={sex}
-              onChange={(e) => setSex(e.target.value)}
-            >
-              <option value="">Select Sex</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
+            <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: "5px", color: "#555" }}>
+                <input
+                  type="radio"
+                  name="sex"
+                  value="Male"
+                  checked={sex === "Male"}
+                  onChange={(e) => setSex(e.target.value)}
+                  style={{ marginRight: "5px" }}
+                />
+                Male
+              </label>
+              <label style={{ display: "flex", alignItems: "center", gap: "5px", color: "#555" }}>
+                <input
+                  type="radio"
+                  name="sex"
+                  value="Female"
+                  checked={sex === "Female"}
+                  onChange={(e) => setSex(e.target.value)}
+                  style={{ marginRight: "5px" }}
+                />
+                Female
+              </label>
+            </div>
           </div>
+
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label
               htmlFor="phoneNumber"
@@ -168,7 +172,7 @@ const RBookingsPatients: React.FC = () => {
                 backgroundColor: "#5F2BCF", // Change to your desired hover color
               },
             }}
-            // onClick={handleSearch}
+            onClick={handleSearch}
           >
             Proceed
           </Button>

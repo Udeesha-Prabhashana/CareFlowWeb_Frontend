@@ -57,7 +57,7 @@ const WidgetRec: React.FC<WidgetProps> = ({ type }) => {
                 title: "Dr. Mohommad Hafeez",
                 subtitle: "MBBS, Gastroenterologist",
                 isMoney: false,
-                curr_No: "5",
+                curr_No: "0",
                 room_No: "10",
             };
             break;  
@@ -66,7 +66,7 @@ const WidgetRec: React.FC<WidgetProps> = ({ type }) => {
                 title: "Dr. Nimal Jayasooriya",
                 subtitle: "MBBS, Neurologist",
                 isMoney: false,
-                curr_No: "10",
+                curr_No: "0",
                 room_No: "1",
             };
             break; 
@@ -76,7 +76,7 @@ const WidgetRec: React.FC<WidgetProps> = ({ type }) => {
                 title: "Dr. Rasika Nagitha",
                 subtitle: "MBBS, Physician",
                 isMoney: false,
-                curr_No: "20",
+                curr_No: "0",
                 room_No: "4",
             };
             break; 

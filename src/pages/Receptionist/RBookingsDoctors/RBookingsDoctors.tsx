@@ -23,14 +23,12 @@ interface Doctor {
 const dummyData: Doctor[] = [
   {
     _id: "1",
-    name: "Dr. Amarasiri Perera",
+    name: "Dr. Ajith Kumara",
     address: "123 Sunshine St, Kottawa",
     city: "Kottawa",
-    photo: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU",
-    ],
+    photo: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU"],
     title: "Expert General Practitioner",
-    desc: "Dr. Amarasiri Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
+    desc: "Dr. Ajith Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
     featured: true,
   },
   {
@@ -51,7 +49,7 @@ const dummyData: Doctor[] = [
     address: "789 Ocean Ave, Colombo",
     city: "Colombo",
     photo: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg",
     ],
     title: "Pediatric Specialist",
     desc: "Dr. Nimal Jayasinghe is a dedicated pediatrician with a passion for children's health and development. He provides expert care in a friendly and welcoming environment.",
@@ -63,7 +61,7 @@ const dummyData: Doctor[] = [
     address: "321 Garden St, Kandy",
     city: "Kandy",
     photo: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://www.prepareforcanada.com/wp-content/uploads/1-FeaturedImg.jpg",
     ],
     title: "Leading Dermatologist",
     desc: "Dr. Malini Fernando offers comprehensive dermatological care, including treatment for skin conditions and cosmetic procedures. She is known for her precision and patient care.",
@@ -75,7 +73,7 @@ const dummyData: Doctor[] = [
     address: "654 City St, Galle",
     city: "Galle",
     photo: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://i.pinimg.com/564x/9d/85/ef/9d85ef63db3691882dee8b0d2dd08a4c.jpg",
     ],
     title: "Orthopedic Surgeon",
     desc: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment.",
