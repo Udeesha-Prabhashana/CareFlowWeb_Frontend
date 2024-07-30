@@ -1,34 +1,38 @@
-import "./list.css";
-import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
+import "./list.scss";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
-import { DateRange } from "react-date-range";
+// import { DateRange } from "react-date-range";
 import useFetch from "../../hooks/useFetch";
+import SearchItemR from "../../components/searchItemR/searchItemR";
+import SidebarRec from "../../components/sidebarRec/SidebarRec";
+import NavbarLu from "../../components/navbarA/NavbarA";
+import Button from "@mui/material/Button";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import SearchItemnlu from "../../components/searchItemnlu/searchItemnlu";
+import Navbar from "../../components/navbar/Navbar";
 
-interface Hotel {
+
+interface Doctor {
   _id: string;
   name: string;
   address: string;
   city: string;
-  // distance: number;
   photo: string[];
   title: string;
   desc: string;
-  // cheapestPrice: number;
-  // rating: number;
   featured: boolean;
 }
 
-const dummyData: Hotel[] = [
+const dummyData: Doctor[] = [
   {
     _id: "1",
     name: "Dr. Amarasiri Perera",
     address: "123 Sunshine St, Kottawa",
     city: "Kottawa",
-    photo: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU"],
+    photo: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU",
+    ],
     title: "Expert General Practitioner",
     desc: "Dr. Amarasiri Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
     featured: true,
@@ -38,7 +42,9 @@ const dummyData: Hotel[] = [
     name: "Dr. Sampath Samarasinghe",
     address: "456 Mountain Rd, Colombo",
     city: "Colombo",
-    photo: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    photo: [
+      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+    ],
     title: "Renowned Cardiologist",
     desc: "Dr. Sampath Samarasinghe specializes in cardiology with a focus on preventive care and advanced treatments. His expertise and patient-centered approach have earned him high regard.",
     featured: false,
@@ -48,7 +54,9 @@ const dummyData: Hotel[] = [
     name: "Dr. Nimal Jayasinghe",
     address: "789 Ocean Ave, Colombo",
     city: "Colombo",
-    photo: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    photo: [
+      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+    ],
     title: "Pediatric Specialist",
     desc: "Dr. Nimal Jayasinghe is a dedicated pediatrician with a passion for children's health and development. He provides expert care in a friendly and welcoming environment.",
     featured: true,
@@ -58,7 +66,9 @@ const dummyData: Hotel[] = [
     name: "Dr. Malini Fernando",
     address: "321 Garden St, Kandy",
     city: "Kandy",
-    photo: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    photo: [
+      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+    ],
     title: "Leading Dermatologist",
     desc: "Dr. Malini Fernando offers comprehensive dermatological care, including treatment for skin conditions and cosmetic procedures. She is known for her precision and patient care.",
     featured: false,
@@ -68,25 +78,33 @@ const dummyData: Hotel[] = [
     name: "Dr. Sanjay Perera",
     address: "654 City St, Galle",
     city: "Galle",
-    photo: ["https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"],
+    photo: [
+      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+    ],
     title: "Orthopedic Surgeon",
     desc: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment.",
     featured: true,
   },
 ];
-
-
 const List: React.FC = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state?.destination || "");
-  const [dates, setDates] = useState(location.state?.dates || [{ startDate: new Date(), endDate: new Date(), key: 'selection' }]);
+  const [destination, setDestination] = useState(
+    location.state?.destination || ""
+  );
+  const [date, setDate] = useState<string>(
+    new Date().toISOString().split("T")[0]
+  ); // Initialize with current date
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state?.options || { adult: 1, children: 0, room: 1 });
+  const [options, setOptions] = useState(
+    location.state?.options || { adult: 1, children: 0, room: 1 }
+  );
   const [min, setMin] = useState<number | undefined>(undefined);
   const [max, setMax] = useState<number | undefined>(undefined);
 
-  const { data, loading, error, reFetch } = useFetch<Hotel[]>(
-    `http://127.0.0.1:5000/getAllFilterdHotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  const { data, loading, error, reFetch } = useFetch<Doctor[]>(
+    `http://127.0.0.1:5000/getAllFilteredDoctors?city=${destination}&min=${
+      min || 0
+    }&max=${max || 999}`
   );
 
   useEffect(() => {
@@ -100,78 +118,93 @@ const List: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="navbarnlu">
       <Navbar />
-      {/* <Header type="list" /> */}
-      <div className="listContainer">
-        <div className="listWrapper">
-          <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
-              <label>Doctor Name</label>
-              <input placeholder={destination} type="text" />
-            </div>
-            <div className="lsItem">
-              <label>Booking Date</label>
-              <span onClick={() => setOpenDate(!openDate)}>
-                {`${format(dates[0].startDate, "MM/dd/yyyy")}`}
-              </span>
-              {openDate && (
-                <DateRange
-                  onChange={(item) => setDates([item.selection])}
-                  minDate={new Date()}
-                  ranges={dates}
-                />
-              )}
-            </div>
-            <div className="lsItem">
-              <label>Options</label>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">
-                  Min price
-                </span>
+      <div>
+      <div className="List">
+        <div className="NLUhomeContainer2lu">
+          <div className="NLUbodyContainerLu">
+          <div className="flex flex-col space-y-4 ml-5 mt-5">
+            <div className="flex flex-row space-x-4">
+              <div className="flex flex-col">
+                <label className="text-gray-700 mb-2">Doctor Name</label>
                 <input
-                  type="number"
-                  onChange={(e) => setMin(Number(e.target.value))}
-                  className="lsOptionInput"
+                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white"
+                  placeholder="Enter Doctor Name"
+                  type="text"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">
-                  Max price 
-                </span>
+              <div className="flex flex-col">
+                <label className="text-gray-700 mb-2">Specialty</label>
+                <select
+                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                >
+                  <option value="">Select Specialty</option>
+                  <option value="General Practitioner">
+                    General Practitioner
+                  </option>
+                  <option value="Cardiologist">Cardiologist</option>
+                  <option value="Pediatrician">Pediatrician</option>
+                  {/* Add more options as needed */}
+                </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-gray-700 mb-2">Date</label>
                 <input
-                  type="number"
-                  onChange={(e) => setMax(Number(e.target.value))}
-                  className="lsOptionInput"
+                  type="date"
+                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  min={new Date().toISOString().split("T")[0]} // Minimum date set to today
                 />
               </div>
-              {/* <div className="lsOptionItem">
-                <span className="lsOptionText">Adult</span>
-                <input type="number" min={1} className="lsOptionInput" placeholder={String(options.adult)} />
-              </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Children</span>
-                <input type="number" min={0} className="lsOptionInput" placeholder={String(options.children)} />
-              </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Room</span>
-                <input type="number" min={1} className="lsOptionInput" placeholder={String(options.room)} />
-              </div> */}
+              <Button
+            className="ml-14"
+            variant="contained"
+            sx={{
+              textTransform: "none",
+              backgroundColor: "#855CDD",
+              marginTop: "20px",
+              marginLeft: "20px",
+              color: "white",
+              fontFamily: "Roboto",
+              fontSize: "16px",
+              // width: "90px",
+              height: "42px",
+              borderRadius: "9px",
+              "&:hover": {
+                backgroundColor: "#5F2BCF", // Change to your desired hover color
+              },
+            }}
+            onClick={handleClick}
+          >
+            Apply filters
+          </Button>
             </div>
-            <button onClick={handleClick}>Search</button>
+            
           </div>
-          <div className="listResult">
+        </div>
+      </div>
+      <div className="NLUsearchItamDoctors">
+        <div className="flex flex-col space-y-4 mt-6">
             {loading ? (
-              "loading"
+              <p>Loading...</p>
             ) : (
-              (data || dummyData)?.map((item) => <SearchItemnlu item={item} key={item._id} />)
+              (data || dummyData)?.map((item) => (
+                <div key={item._id} className="p-4">
+                  <SearchItemnlu item={item} />
+                </div>
+              ))
             )}
           </div>
         </div>
       </div>
     </div>
+    </div>
   );
 };
-
 export default List;
