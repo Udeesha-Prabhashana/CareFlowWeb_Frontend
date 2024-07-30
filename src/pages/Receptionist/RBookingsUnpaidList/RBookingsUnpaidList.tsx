@@ -76,7 +76,7 @@ const RBookingsUnpaidList: React.FC = () => {
 
     const handleViewDetails = (row: { number: number, name: string }) => {
         console.log('View details for:', row);
-        navigate("/receptionist/bookings/unpaidsummary");
+        navigate("/receptionist/bookings/addnewbooking/bookingSummaryPay");
     };
 
     return (
@@ -92,7 +92,7 @@ const RBookingsUnpaidList: React.FC = () => {
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
-                                <ToggleButtonGroup
+                                {/* <ToggleButtonGroup
                                     color="primary"
                                     value={alignment}
                                     exclusive
@@ -122,7 +122,7 @@ const RBookingsUnpaidList: React.FC = () => {
                                     <ToggleButton value="ongoing">Ongoing</ToggleButton>
                                     <ToggleButton value="completed">Completed</ToggleButton>
                                     <ToggleButton value="cancelled">Cancelled</ToggleButton>
-                                </ToggleButtonGroup>
+                                </ToggleButtonGroup> */}
                             </Grid>
                             <Grid item xs />
                             <Grid item>

@@ -1,4 +1,4 @@
-import "./RDoctorsView.scss";
+import "./RBookingDoctorView.scss";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,6 @@ import Reserve from "../../../components/reserve/Reserve";
 import NavbarLu from "../../../components/navbarA/NavbarA";
 import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import { Link } from 'react-router-dom';
-
 
 const dummyData = [
   {
@@ -74,33 +73,51 @@ const dummyData = [
   },
 ];
 
+type AppointmentsData = {
+  [date: string]: number;
+};
 
+const appointmentsData: AppointmentsData = {
+  "2023-07-31": 5,
+  "2023-08-01": 3,
+  "2023-08-02": 7,
+};
 
-const RDoctorsView: React.FC = () => {
+const RBookingDoctorView: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [openModel, setOpenModel] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
 
-  const id = parseInt(location.pathname.split("/").pop()!, 10); // Extract ID from the URL
+  const id = parseInt(location.pathname.split("/").pop()!, 10);
 
-  // Ensure the ID is within the bounds of dummyData
   if (isNaN(id) || id < 1 || id > dummyData.length) {
     return <div>Doctor not found</div>;
   }
 
-  const data = dummyData[id - 1]; // Get the dummy data by ID
+  const data = dummyData[id - 1];
 
   const handleClick = () => {
-    if (user) {
-      setOpenModel(true);
+    if (selectedDate) {
+      if (user) {
+        navigate("/receptionist/bookings/addnewbooking/patients");
+      } else {
+        navigate("/receptionist/bookings/addnewbooking/patients");
+      }
     } else {
-      navigate("/receptionist/bookings/addnewbooking/patients");
+      alert("Please select a date.");
     }
   };
 
+  const handleDateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const availableAppointments = selectedDate in appointmentsData ? appointmentsData[selectedDate] : 0;
+
   return (
-    <div className="RDoctorsView">
+    <div className="RBookingDoctorView">
       <SidebarRec />
       {/*<NavbarLu />*/}
       <div className="homeContainer2lu">
@@ -112,64 +129,84 @@ const RDoctorsView: React.FC = () => {
             </Link>
           </div>
 
+
           <div className="flex flex-row ml-14">
-            <div className="flex flex-col items-center mr-6 w-1/3">
-              <img
-                src={data.photos[0]}
-                alt={data.title}
-                className="w-full h-80 object-cover rounded-lg mb-4"
-              />
-              <div className="p-4 bg-white rounded-lg shadow-md w-full flex flex-col items-center mx-auto">
-                <h2 className="text-lg font-bold mb-4">Availability</h2>
-                <div className="flex flex-row mb-2 w-full justify-center">
-                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Monday - Friday:</span>
-                  <span className="text-gray-600 flex-grow text-center">08.00 - 14.00</span>
+              <div className="flex flex-col items-center mr-6 w-1/3">
+                <img
+                    src={data.photos[0]}
+                    alt={data.title}
+                    className="w-full h-80 object-cover rounded-lg mb-4"
+                />
+                <div className="p-4 bg-white rounded-lg shadow-md w-full flex flex-col items-center mx-auto">
+                  <h2 className="text-lg font-bold mb-4">Availability</h2>
+                  <div className="flex flex-row mb-2 w-full justify-center">
+                    <span className="text-gray-600 font-bold w-32 flex-shrink-0">Monday :</span>
+                    <span className="text-gray-600 flex-grow text-center">08.00 - 14.00</span>
+                  </div>
+                  <div className="flex flex-row mb-2 w-full justify-center">
+                    <span className="text-gray-600 font-bold w-32 flex-shrink-0">Saturday:</span>
+                    <span className="flex-grow text-center">12.00 - 18.00</span>
+                  </div>
+                  <div className="flex flex-row mb-2 w-full justify-center">
+                    <span className="text-gray-600 font-bold w-32 flex-shrink-0">Sunday :</span>
+                    <span className="text-gray-600 flex-grow text-center">08.00 - 14.00</span>
+                  </div>
                 </div>
-                <div className="flex flex-row mb-2 w-full justify-center">
-                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Saturday:</span>
-                  <span className=" flex-grow text-center">12.00 - 18.00</span>
+              </div>
+              <div className="flex flex-col w-2/3 ml-14">
+                <h1 className="text-black text-3xl font-semibold leading-none mb-2">
+                  {data.name}
+                </h1>
+                <h2 className="text-violet-600 text-xl mb-4">
+                  {data.title}
+                </h2>
+                <p className="text-gray-600 text-base mb-4">
+                  {data.desc}
+                </p>
+                <div className="flex flex-row mb-2">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Speciality:</span>
+                  <span className="text-gray-600 flex-grow">{data.specialty}</span>
+                </div>
+                <div className="flex flex-row mb-2">
+                  <span className="text-gray-600 font-bold w-32 flex-shrink-0">Experience:</span>
+                  <span className="text-gray-600 flex-grow">{data.experience}</span>
+                </div>
+                <div className="flex flex-row mt-14 ">
+                  <div className="flex flex-col w-full bg-violet-200 text-white p-4 rounded-lg">
+                    <label htmlFor="date" className="text-black font-bold mb-2">Select Date:</label>
+                    <select
+                        id="date"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        className="p-2 border rounded-lg w-full"
+                    >
+                      <option value="">Select Date</option>
+                      <option value="2023-07-31">July 31, 2023</option>
+                      <option value="2023-08-01">August 1, 2023</option>
+                      <option value="2023-08-02">August 2, 2023</option>
+                    </select>
+                    {selectedDate && (
+                        <div className="mt-2">
+                          <p className="text-black font-bold">Available Appointment Number: {availableAppointments}</p>
+                        </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <button
+                      className="bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition w-32"
+                      onClick={handleClick}
+                  >
+                    Book Doctor
+                  </button>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-2/3 ml-14">
-              <h1 className="text-black text-3xl font-semibold leading-none mb-2">
-                {data.name}
-              </h1>
-              <h2 className="text-purple-600 text-xl mb-4">
-                {data.title}
-              </h2>
-              <p className="text-gray-600 text-base mb-4">
-                {data.desc}
-              </p>
-              <div className="flex flex-row mb-2">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Speciality:</span>
-                <span className="text-gray-600 flex-grow">{data.specialty}</span>
-              </div>
-              <div className="flex flex-row mb-2">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Experience:</span>
-                <span className="text-gray-600 flex-grow">{data.experience}</span>
-              </div>
-              <div className="flex flex-row mb-4">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Fee:</span>
-                <span className="text-gray-600 flex-grow">{data.fee}</span>
-              </div>
-              {/* <div className="flex flex-row mb-4">
-                <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
-                <span className="text-gray-600 flex-grow">{data.email}</span>
-              </div> */}
-              {/* <button
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
-                onClick={handleClick}
-              >
-                Book Doctor
-              </button> */}
-            </div>
+            {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
           </div>
-          {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
         </div>
       </div>
-    </div>
   );
 };
-
-export default RDoctorsView;
+export default RBookingDoctorView;
