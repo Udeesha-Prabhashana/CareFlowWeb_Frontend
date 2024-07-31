@@ -6,14 +6,13 @@ import patient from "../../components/images/patient.jpg";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import "../../components/sidebarPatient/sidebarPatient.scss";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import ForumIcon from '@mui/icons-material/Forum';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import "../../components/sidebarPatient/sidebarPatient.scss";
 
 const SidebarPatient: React.FC = () => {
     const navigate = useNavigate();
@@ -86,8 +85,8 @@ const SidebarPatient: React.FC = () => {
                     <div className="profilePatient">
                         <img src={patient} alt="Profile"/>
                         <div className="detailsPatient">
-                            <span className="namePatient">Mr.Saman</span>
-                            <span className="emailPatient">jaya12@gmail.com</span>
+                            <span className="namePatient">Mr. Kasun</span>
+                            <span className="emailPatient">kasunjay@gmail.com</span>
                         </div>
                     </div>
                 </Link>

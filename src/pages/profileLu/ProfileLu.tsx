@@ -6,8 +6,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import { useNavigate } from "react-router-dom";
 
 const ProfileLu: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleProfile = () => {
+    navigate("/profileLu");
+  };
   return (
     <div className="profilelu">
       <SidebarPatient />
@@ -102,13 +108,13 @@ const ProfileLu: React.FC = () => {
               className="prof-name mt-1"
               style={{ fontSize: "25px", marginBottom: "0px" }}
             >
-              Micheal Smith
+              Kasun Jayasinghe
             </p>
             <p
               className="prof-email"
               style={{ fontSize: "15px", color: "#808080", marginTop: "0px" }}
             >
-              michaelsmith12@gmail.com
+              kasunjay@gmail.com
             </p>
           </div>
         </div>
@@ -246,6 +252,7 @@ const ProfileLu: React.FC = () => {
               backgroundColor: "#5F2BCF", // Change to your desired hover color
             },
           }}
+          onClick={handleProfile}
         >
           Save
         </Button>

@@ -27,14 +27,12 @@ interface Doctor {
 const dummyData: Doctor[] = [
   {
     _id: "1",
-    name: "Dr. Amarasiri Perera",
+    name: "Dr. Ajith Kumara",
     address: "123 Sunshine St, Kottawa",
     city: "Kottawa",
-    photo: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU",
-    ],
+    photo: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU"],
     title: "Expert General Practitioner",
-    desc: "Dr. Amarasiri Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
+    desc: "Dr. Ajith Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
     featured: true,
   },
   {
@@ -119,9 +117,13 @@ const List: React.FC = () => {
 
   return (
     <div className="navbarnlu">
-      <Navbar />
+      <div className="navebarnlu2">
+          <Navbar />
+      </div>
       <div>
       <div className="List">
+        <div className="navebarlist">
+        </div>
         <div className="NLUhomeContainer2lu">
           <div className="NLUbodyContainerLu">
           <div className="flex flex-col space-y-4 ml-5 mt-5">

@@ -22,15 +22,15 @@ const LandingPage: React.FC = () => {
             Expert Doctor Appointments <br /> at your Fingertips
           </h2>
         </div>
-        <div className="relative mt-10 w-full max-w-[731px] flex items-center justify-center z-10">
+        <div className="relative mt-10 w-full max-w-[740px] flex items-center justify-center z-10">
           <input
             type="text"
             placeholder="Ask Cura about your symptoms"
-            className="w-full h-[93px] rounded-full bg-white shadow-lg pl-10 pr-20 text-[20px] text-gray-500 font-normal leading-[25px] placeholder-gray-400 focus:outline-none"
+            className="w-full h-[60px] rounded-full bg-white shadow-lg pl-10 pr-20 text-[20px] text-gray-500 font-normal leading-[25px] placeholder-gray-400 focus:outline-none"
           />
           <div className="absolute right-5 inset-y-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-[#855CDD] rounded-full flex items-center justify-center">
-              <FaRobot className="w-8 h-8 text-white" />
+            <div className="w-10 h-10 bg-[#855CDD] rounded-full flex items-center justify-center">
+              <FaRobot className="w-5 h-5 text-white" />
             </div>
           </div>
         </div>

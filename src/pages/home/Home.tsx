@@ -33,8 +33,12 @@ const Home: React.FC = () => {
   
   return (
     <div>
-      <Navbar />
-      <Header type="no-list" />
+      <div className="navebarnlu">
+          <Navbar />
+      </div>
+      <div className="headernlu">
+          <Header type="no-list" />
+      </div>
       <div className="flex flex-col min-h-screen bg-white">
         <div className="text-center mt-10">
           <h1 className="text-[20px] text-[#855CDD] font-normal leading-[25px]">

@@ -86,7 +86,13 @@ const RBookingsAdd: React.FC = () => {
                     id="doctorName"
                     type="text"
                     placeholder="Enter Doctor Name"
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    style={{
+                      padding: "10px",
+                      borderRadius: "8px",
+                      border: "1px solid rgb(204, 204, 204)",
+                      outline: "none",
+                      fontSize: "16px",
+                    }}
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                   />
@@ -99,14 +105,43 @@ const RBookingsAdd: React.FC = () => {
                   </label>
                   <select
                     id="specialty"
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    // className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    style={{
+                      padding: "10px",
+                      borderRadius: "8px",
+                      border: "1px solid rgb(204, 204, 204)",
+                      outline: "none",
+                      fontSize: "16px",
+                      color: "#808080",
+                    }}
                     onChange={handleSpecializationChange}
                     value={destination}
                   >
-                    <option value="">Select Specialty</option>
+                    <option value="" disabled selected hidden>Select Specialty</option>
                     <option value="Neurologist">Neurologist</option>
                     <option value="Physician">Physician</option>
+                    <option value="Gastroenterologist">Gastroenterologist</option>
                     <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Pediatrician">Pediatrician</option>
+                    <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                    <option value="Ophthalmologist">Ophthalmologist</option>
+                    <option value="ENT Specialist">ENT Specialist</option>
+                    <option value="General Surgeon">General Surgeon</option>
+                    <option value="Urologist">Urologist</option>
+                    <option value="Oncologist">Oncologist</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Endocrinologist">Endocrinologist</option>
+                    <option value="Nephrologist">Nephrologist</option>
+                    <option value="Pulmonologist">Pulmonologist</option>
+                    <option value="Rheumatologist">Rheumatologist</option>
+                    <option value="Infectious Disease Specialist">
+                      Infectious Disease Specialist
+                    </option>
+                    <option value="Hematologist">Hematologist</option>
+                    <option value="Allergist">Allergist</option>
+                    <option value="Anesthesiologist">Anesthesiologist</option>
                   </select>
                 </div>
 
@@ -118,26 +153,19 @@ const RBookingsAdd: React.FC = () => {
                   <input
                     id="date"
                     type="date"
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    style={{
+                      padding: "10px",
+                      borderRadius: "8px",
+                      border: "1px solid rgb(204, 204, 204)",
+                      outline: "none",
+                      fontSize: "16px",
+                      color: "#808080",
+                    }}
+                    // className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     value={format(dates[0].startDate, "yyyy-MM-dd")}
                     onChange={(e) =>
                       setDates([{ startDate: new Date(e.target.value), endDate: new Date(e.target.value), key: "selection" }])
                     }
-                  />
-                </div>
-
-                {/* Location Field */}
-                <div className="flex flex-col">
-                  <label htmlFor="location" className="text-gray-700 mb-2">
-                    Location
-                  </label>
-                  <input
-                    id="location"
-                    type="text"
-                    placeholder="Enter Location"
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
                   />
                 </div>
 
@@ -188,7 +216,7 @@ const RBookingsAdd: React.FC = () => {
               
 
               {/* Ask Square */}
-              <div
+              {/* <div
                 style={{
                   width: "33%",
                   border: "1px solid var(--normal-hover, #5F2BCF)",
@@ -248,7 +276,7 @@ const RBookingsAdd: React.FC = () => {
                 >
                   Ask Cura
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

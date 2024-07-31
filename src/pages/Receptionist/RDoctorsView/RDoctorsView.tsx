@@ -10,6 +10,7 @@ import NavbarLu from "../../../components/navbarA/NavbarA";
 import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import { Link } from 'react-router-dom';
 
+
 const dummyData = [
   {
     photos: [
@@ -37,7 +38,7 @@ const dummyData = [
   },
   {
     photos: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg",
     ],
     name: "Dr. Nimal Jayasinghe",
     specialty: "Pediatrician with a passion for children's health.",
@@ -49,7 +50,7 @@ const dummyData = [
   },
   {
     photos: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://www.prepareforcanada.com/wp-content/uploads/1-FeaturedImg.jpg",
     ],
     name: "Dr. Malini Fernando",
     specialty: "Dermatologist specializing in skin conditions and cosmetic procedures.",
@@ -61,7 +62,7 @@ const dummyData = [
   },
   {
     photos: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+      "https://i.pinimg.com/564x/9d/85/ef/9d85ef63db3691882dee8b0d2dd08a4c.jpg",
     ],
     name: "Dr. Sanjay Perera",
     specialty: "Orthopedic Surgeon specializing in joint replacements and sports injuries.",
@@ -72,6 +73,7 @@ const dummyData = [
     desc: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment.",
   },
 ];
+
 
 
 const RDoctorsView: React.FC = () => {
@@ -151,16 +153,16 @@ const RDoctorsView: React.FC = () => {
                 <span className="text-gray-600 font-bold w-32 flex-shrink-0">Fee:</span>
                 <span className="text-gray-600 flex-grow">{data.fee}</span>
               </div>
-              <div className="flex flex-row mb-4">
+              {/* <div className="flex flex-row mb-4">
                 <span className="text-gray-600 font-bold w-32 flex-shrink-0">Email:</span>
                 <span className="text-gray-600 flex-grow">{data.email}</span>
-              </div>
-              <button
+              </div> */}
+              {/* <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition w-32"
                 onClick={handleClick}
               >
                 Book Doctor
-              </button>
+              </button> */}
             </div>
           </div>
           {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}

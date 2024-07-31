@@ -72,15 +72,15 @@ const BookingSummaryPay: React.FC = () => {
                                     <div className="line">Address :</div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div className="line"><b>Dr. Ravindra Alahakoon</b></div>
+                                    <div className="line"><b>Dr. Amarasiri Perera </b></div>
                                     <div className="line"><b>2022/04/04</b></div>
                                     <div className="line"><b>23</b></div>
                                     <div className="line"><b>06:50</b></div>
                                     <div className="line"><b>Rs.3000 </b></div>
-                                    <div className="line"><b>Mr. Kamal Sahanandu</b></div>
-                                    <div className="line"><b>35 Years</b></div>
+                                    <div className="line"><b>Mr. Kasun Jayasinghe</b></div>
+                                    <div className="line"><b>30 Years</b></div>
                                     <div className="line"><b>Male</b></div>
-                                    <div className="line"><b>No.25, Havelock Rd, Nugegoda</b></div>
+                                    <div className="line"><b>No.25, Havelock Rd, Colombo 5</b></div>
                                 </Grid>
                             </Grid>
                             <Box sx={{ marginTop: '40px', display: 'flex', gap: '16px' }}>

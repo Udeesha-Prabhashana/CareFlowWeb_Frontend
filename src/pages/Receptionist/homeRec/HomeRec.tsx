@@ -29,8 +29,6 @@ const HomeRec: React.FC = () => {
         return ["d_1", "d_2", "d_3"];
       case "type2":
         return ["d_4", "d_5", "d_6"];
-      case "type3":
-        return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6", "d_2", "d_3", "d_4", "d_5", "d_6", "d_1"];
       default:
         return ["d_1", "d_2", "d_3", "d_4", "d_5", "d_6"];
     }
@@ -83,13 +81,13 @@ const HomeRec: React.FC = () => {
               </Button>
               <Button
                 variant="outlined"
-                sx={buttonStyles(filter === "type3")}
-                onClick={() => handleFilterChange("type3")}
+                sx={buttonStyles(filter === "default")}
+                onClick={() => handleFilterChange("default")}
               >
                 All
               </Button>
             </div>
-            <div className="ml-4 flex items-center space-x-2">
+            <div className="ml-4 flex items-center space-x-2 mr-12">
               <span style={{ color: "#000000" }}>Search by Name</span>
               <TextField
                 variant="outlined"
@@ -131,7 +129,7 @@ const HomeRec: React.FC = () => {
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-5 mr-14">
             {widgets.map((type) => (
               <WidgetRec key={type} type={type} />
             ))}

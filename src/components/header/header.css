@@ -1,10 +1,9 @@
-
-
 .headerTitle{
     justify-content: center;
     margin-left: 150px;
     margin-top: 150px;
 }
+
 
 .search {
     /* position: absolute; */
@@ -182,4 +181,8 @@
 
 .optionCounterButton:disabled {
     cursor: not-allowed;
+}
+
+.header{
+    z-index: 2;
 }

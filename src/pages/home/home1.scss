@@ -2,6 +2,17 @@
     display: flex; //home class is sidebar 
 }
 
+.navebarnlu{
+    position: fixed;
+    margin-top: -60px;
+    z-index: 20;
+    background-color: white;
+}
+
+.headernlu{
+    margin-top: 60px;
+    z-index: 2;
+}
 .homeContainer {
     display: flex;
     flex: 6;

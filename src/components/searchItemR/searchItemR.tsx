@@ -19,7 +19,7 @@ const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
   return (
     <div
       className="flex flex-col md:flex-row bg-white rounded-lg shadow-md p-4 mb-4"
-      style={{ width: "800px", height: "250px" }}
+      style={{ width: "800px", height: "200px" }}
     >
       <img
         src={item.photo[0]}
@@ -30,9 +30,9 @@ const searchItemR: React.FC<SearchItemProps> = ({ item }) => {
       <div className="flex flex-col justify-between ml-4 md:ml-6 w-full">
         <div>
           <h1 className="text-xl font-bold">{item.name}</h1>
-          <span className="text-gray-500">
+          {/* <span className="text-gray-500">
             Studio Apartment with Air conditioning
-          </span>
+          </span> */}
           <span className="block mt-2 text-gray-600">{item.desc}</span>
         </div>
         <div className="flex flex-row justify-between items-center mt-4 md:mt-0">

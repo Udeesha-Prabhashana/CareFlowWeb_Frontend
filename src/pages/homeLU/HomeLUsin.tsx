@@ -1,28 +1,26 @@
 import React from "react";
 import Chart from "../../components/chart/Chat";
 import Featured from "../../components/featuredA/FeaturedA";
-import NavbarLu from "../../components/navbarA/NavbarA";
 import WidgetLu from "../../components/widgetLU/WidgetLU";
 import List from "../../components/table/Table";
 import "./homelu.scss";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
 
 const LoginSinhala: React.FC = () => {
     return (
         <div className="homelu">
-                <SidebarLu />
-                <NavbarLu />
-                
+                <SidebarPatient />
+
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
                     සුභ උදෑසනක්, <span className="purpleText">කසුන්</span>
                     </div>
                     <div className="subTopic">
-                    CareFlow වෙත සාදරයෙන් පිළිගනිමු  
+                    CareFlow වෙත සාදරයෙන් පිළිගනිමු!
                     </div>
                     <div className="widgetslu">
                         <WidgetLu type="ong_appointments"/>
