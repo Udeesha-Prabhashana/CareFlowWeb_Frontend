@@ -33,7 +33,7 @@ const WidgetNurse: React.FC<WidgetProps> = ({ type }) => {
             break;
         case "today_appointments":
             data = {
-                title: "Today's Appointments",
+                title: "Assigned Appointments",
                 isMoney: false,
                 icon: <RestoreOutlinedIcon className="icon"
                                            style={{
@@ -71,6 +71,8 @@ const WidgetNurse: React.FC<WidgetProps> = ({ type }) => {
             </div>
         </div>
     );
+
+    
 };
 
 export default WidgetNurse;
