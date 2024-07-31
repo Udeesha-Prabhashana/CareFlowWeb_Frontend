@@ -221,7 +221,7 @@ const RProfile: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex mb-4">
+          {/* <div className="flex mb-4">
             <div className="flex flex-col flex-grow">
               <label htmlFor="medicines" className="text-gray-700 mb-2">
                 Medicines
@@ -235,7 +235,7 @@ const RProfile: React.FC = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <Button className="ml-14"
           variant="contained"

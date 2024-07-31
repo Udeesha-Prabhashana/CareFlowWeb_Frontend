@@ -71,7 +71,7 @@ const RProfileMain: React.FC = () => {
             { label: "Phone Number", value: "123-456-7890" },
             { label: "Height", value: "175 cm" },
             { label: "Weight", value: "60 kg" },
-            { label: "Medicines", value: "None" },
+            // { label: "Medicines", value: "None" },
           ].map((item, index) => (
             <div key={index} className="flex justify-between mb-4 px-4 w-full">
               <div className="text-gray-700 font-semibold w-1/2">{item.label}:</div>
