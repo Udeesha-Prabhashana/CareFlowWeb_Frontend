@@ -5,6 +5,8 @@ import "../../../tailwind.css";
 import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import vector from "../../../components/images/rec.jpg";
+
 
 const RProfileMain: React.FC = () => {
     const navigate = useNavigate();
@@ -47,11 +49,7 @@ const RProfileMain: React.FC = () => {
 
         <div className="flex items-start -mt-20 ml-24">
           <div className="relative inline-block">
-            <img
-              src="/images/locations/Profile2.png"
-              className="w-40 border-4 border-white rounded-full"
-              alt="Profile"
-            />
+          <img src={vector} className="w-40 border-4 border-white rounded-full" alt="Profile"/>
           </div>
           <div className="flex flex-col mt-20 ml-3">
             <p className="prof-name mt-1" style={{ fontSize: "25px", marginBottom: "0px" }}>
