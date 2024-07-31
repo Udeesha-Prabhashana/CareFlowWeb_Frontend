@@ -35,7 +35,7 @@ const RSummaryPay: React.FC = () => {
             toast.error("Error Occurred while booking!"); // Show error toast
         } else {
             toast.success("Successfully Booked!"); // Show success toast
-            navigate("/receptionist/bookings/addnewbooking");
+            navigate("/receptionist/bookings");
         }
     };
 
