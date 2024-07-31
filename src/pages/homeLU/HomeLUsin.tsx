@@ -19,7 +19,7 @@ const LoginSinhala: React.FC = () => {
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
-                    සුභ උදෑසනක්, <span className="purpleText">මිචෙල්</span>
+                    සුභ උදෑසනක්, <span className="purpleText">කසුන්</span>
                     </div>
                     <div className="subTopic">
                     CareFlow වෙත සාදරයෙන් පිළිගනිමු  
