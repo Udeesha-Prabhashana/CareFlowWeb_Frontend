@@ -51,6 +51,7 @@ import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
 import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 import ProfileDoc from "./pages/Doctor/profile/profileDoc";
+import ProfileDocMain from "./pages/Doctor/profileMain/profileDocMain";
 import PatientList from "./pages/Doctor/patients/patientlist";
 import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
@@ -393,7 +394,8 @@ function App() {
             <Route path="doctor/view_medicalRecords" element={<ViewMedicalRecords/>}/>
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
-            <Route path="doctor/profile" element={<ProfileDoc/>}/>
+            <Route path="doctor/profile" element={<ProfileDocMain/>}/>
+            <Route path="doctor/profile-edit" element={<ProfileDoc/>}/>
           <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
           <Route path="doctor/settings" element={<SettingsDoc/>}/>
 
