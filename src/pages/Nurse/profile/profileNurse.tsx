@@ -7,9 +7,15 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
 import { Line } from "react-chartjs-2";
+import { useNavigate } from "react-router-dom";
 
 
 const ProfileNurse: React.FC = () => {
+    const navigate = useNavigate();
+
+    const handleProfile = () => {
+      navigate("/nurse/profile");
+    };
     return (
         <div className="profilelu">
             <SidebarNurse />
@@ -233,6 +239,8 @@ const ProfileNurse: React.FC = () => {
                                     backgroundColor: "#5F2BCF", // Change to your desired hover color
                                 },
                             }}
+                            onClick={handleProfile}
+
                     >
                         Save
                     </Button>

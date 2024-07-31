@@ -169,28 +169,6 @@ const RBookingsAdd: React.FC = () => {
                   />
                 </div>
 
-                {/* Location Field */}
-                <div className="flex flex-col">
-                  <label htmlFor="location" className="text-gray-700 mb-2">
-                    Location
-                  </label>
-                  <input
-                    id="location"
-                    type="text"
-                    placeholder="Enter Location"
-                    style={{
-                      padding: "10px",
-                      borderRadius: "8px",
-                      border: "1px solid rgb(204, 204, 204)",
-                      outline: "none",
-                      fontSize: "16px",
-                    }}
-                    // className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                  />
-                </div>
-
                 <div className="flex flex-row space-x-4">
               <Button
                 className="ml-14"

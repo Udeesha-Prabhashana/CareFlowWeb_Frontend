@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import "./RSummaryPay.scss";
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Grid, Box, Checkbox, FormControlLabel } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import SidebarRec from '../../../components/sidebarRec/SidebarRec';
+import Checkbox from "@mui/material/Checkbox";
+import { AuthContext } from "../../../context/AuthContext";
 import Button from "@mui/material/Button";
+import { toast } from 'react-toastify'; // Import toast for notifications
+
 declare const payhere: any;
 
 const RSummaryPay: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const [paymentConfirmed, setPaymentConfirmed] = useState(false);
-    const [checked, setChecked] = useState(false);
-
-    const handlePayLater = () => {
-        navigate("/appointments");
-    };
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const payHereScript = document.createElement('script');
@@ -28,11 +27,15 @@ const RSummaryPay: React.FC = () => {
     }, []);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked(event.target.checked);
-        if (event.target.checked) {
-            setPaymentConfirmed(true);
+        setPaymentConfirmed(event.target.checked);
+    };
+
+    const handleComplete = () => {
+        if (user) {
+            toast.error("Error Occurred while booking!"); // Show error toast
         } else {
-            setPaymentConfirmed(false);
+            toast.success("Successfully Booked!"); // Show success toast
+            navigate("/receptionist/bookings/addnewbooking");
         }
     };
 
@@ -70,39 +73,40 @@ const RSummaryPay: React.FC = () => {
                                 </Grid>
                             </Grid>
                             <Box sx={{ marginTop: '40px', display: 'flex', gap: '16px' }}>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleCheckboxChange}
-                                            sx={{
-                                                color: '#855CDD',
-                                                '&.Mui-checked': {
-                                                    color: '#855CDD',
-                                                },
-                                                '&:hover': {
-                                                    borderColor: '#855CDD',
-                                                    borderRadius: '5px',
-                                                    outline: '1px solid #855CDD',
-                                                },
-                                            }}
-                                        />
-                                    }
-                                    label="Paid"
+                                <Checkbox
+                                    checked={paymentConfirmed}
+                                    onChange={handleCheckboxChange}
                                     sx={{
-                                        '.MuiFormControlLabel-label': {
+                                        color: '#855CDD',
+                                        '&.Mui-checked': {
                                             color: '#855CDD',
-                                            fontSize: '16px',
-                                            fontWeight: 'bold',
-                                        }
+                                        },
                                     }}
                                 />
+                                <span style={{ color: '#855CDD', fontWeight: 'bold', marginTop:'10px' }}>Paid</span>
+                                {paymentConfirmed && (
+                                    <Button
+                                        variant="contained"
+                                        sx={{
+                                            width: '150px',
+                                            height: '40px',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderRadius: '11px',
+                                            backgroundColor: '#855CDD',
+                                            color: 'white',
+                                            textTransform: 'none',
+                                            '&:hover': {
+                                                backgroundColor: '#5F2BCF',
+                                            },
+                                            marginLeft:'20px'
+                                        }}
+                                        onClick={handleComplete}
+                                    >
+                                        Completed
+                                    </Button>
+                                )}
                             </Box>
-                            {paymentConfirmed && (
-                                <Box sx={{ marginTop: '20px', color: 'green' }}>
-                                    Payment confirmed! Thank you for your payment.
-                                </Box>
-                            )}
                         </Box>
                     </div>
                 </div>
