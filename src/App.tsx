@@ -38,6 +38,7 @@ import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
 import ProfileLu from "./pages/profileLu/ProfileLu";
+import ProfileMain from "./pages/profileMain/profileMain";
 
 
 
@@ -52,6 +53,7 @@ import DoctorMedicalRecords from "./pages/Doctor/medicalRecords/medicalRecords";
 import ViewMedicalRecords from "./pages/Doctor/medicalRecords/viewMedicalRecords";
 import RevenueRecords from "./pages/Doctor/revenueRecords/revenueRecords";
 import ProfileDoc from "./pages/Doctor/profile/profileDoc";
+import ProfileDocMain from "./pages/Doctor/profileMain/profileDocMain";
 import PatientList from "./pages/Doctor/patients/patientlist";
 import DoctorNLU from "./pages/doctorNLU/DoctorNLU";
 
@@ -63,6 +65,7 @@ import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
 import SettingsNurse from "./pages/Nurse/settings/settingsNurse";
 import ProfileNurse from "./pages/Nurse/profile/profileNurse";
+import ProfileNurseMain from "./pages/Nurse/profileMain/profileNurseMain";
 import UploadMedicalRecords from "./pages/Nurse/patients/viewPatient/uploadPatientRecords";
 import UpdatePatientNumber from "./pages/Nurse/patient_number/UpdatePatientNumber";
 import SelectDoctor from "./pages/Nurse/patient_number/selectDoctor/doctors";
@@ -79,6 +82,7 @@ import RBookingSummaryPay from "./pages/Receptionist/RSummaryPay/RSummaryPay";
 import RDoctors from "./pages/Receptionist/RDoctors/RDoctors";
 import RDoctorsView from "./pages/Receptionist/RDoctorsView/RDoctorsView";
 import RProfile from "./pages/Receptionist/RProfile/RProfile";
+import RProfileMain from "./pages/Receptionist/RProfileMain/RProfileMain";
 import RBookingsDoctors from "./pages/Receptionist/RBookingsDoctors/RBookingsDoctors";
 import RBookingsPatients from "./pages/Receptionist/RBookingsPatients/RBookingsPatients";
 import RBookingsSummary from "./pages/Receptionist/RBookingsSummary/RBookingsSummary";
@@ -272,10 +276,20 @@ function App() {
             index
             element={
               // <ProtectedRoute>
+                <ProfileMain />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile-edit"
+            index
+            element={
+              // <ProtectedRoute>
                 <ProfileLu />
               // </ProtectedRoute>
             }
           />
+
           <Route path="doclist2">
             <Route
               index
@@ -393,7 +407,8 @@ function App() {
             <Route path="doctor/view_medicalRecords" element={<ViewMedicalRecords/>}/>
             <Route path="doctor/revenue_records" element={<RevenueRecords/>}/>
             <Route path="doctor/patients" element={<PatientList/>}/>
-            <Route path="doctor/profile" element={<ProfileDoc/>}/>
+            <Route path="doctor/profile" element={<ProfileDocMain/>}/>
+            <Route path="doctor/profile-edit" element={<ProfileDoc/>}/>
           <Route path="doctor/notifications" element={<NotificationsDoc/>}/>
           <Route path="doctor/settings" element={<SettingsDoc/>}/>
 
@@ -404,7 +419,8 @@ function App() {
             <Route path="nurse/patients" element={<Patients/>}/>
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
             <Route path="nurse/settings" element={<SettingsNurse/>}/>
-            <Route path="nurse/profile" element={<ProfileNurse/>}/>
+            <Route path="nurse/profile" element={<ProfileNurseMain/>}/>
+            <Route path="nurse/profile-edit" element={<ProfileNurse/>}/>
             <Route path="nurse/patient/uploadPatientRecords" element={<UploadMedicalRecords/>}/>
             <Route path="nurse/updatePatientNumber" element={<UpdatePatientNumber/>}/>
             <Route path="nurse/updatePatientNumber/selectDoctor" element={<SelectDoctor/>}/>
@@ -449,7 +465,8 @@ function App() {
           
           <Route path="receptionist/notifications" element={<RNotifications/>}/>
           <Route path="receptionist/settings" element={<RecSettings/>}/>
-          <Route path="receptionist/profile" element={<RProfile/>}/>
+          <Route path="receptionist/profile-edit" element={<RProfile/>}/>
+          <Route path="receptionist/profile" element={<RProfileMain/>}/>
           <Route path="landingpage" element={<Landing/>}/>
         </Routes>
 
