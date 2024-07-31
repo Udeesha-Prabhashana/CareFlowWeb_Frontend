@@ -62,6 +62,7 @@ import Patients from "./pages/Nurse/patients/patients";
 import ViewPatient from "./pages/Nurse/patients/viewPatient/viewPatient";
 import SettingsNurse from "./pages/Nurse/settings/settingsNurse";
 import ProfileNurse from "./pages/Nurse/profile/profileNurse";
+import ProfileNurseMain from "./pages/Nurse/profileMain/profileNurseMain";
 import UploadMedicalRecords from "./pages/Nurse/patients/viewPatient/uploadPatientRecords";
 import UpdatePatientNumber from "./pages/Nurse/patient_number/UpdatePatientNumber";
 import SelectDoctor from "./pages/Nurse/patient_number/selectDoctor/doctors";
@@ -403,7 +404,8 @@ function App() {
             <Route path="nurse/patients" element={<Patients/>}/>
             <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
             <Route path="nurse/settings" element={<SettingsNurse/>}/>
-            <Route path="nurse/profile" element={<ProfileNurse/>}/>
+            <Route path="nurse/profile" element={<ProfileNurseMain/>}/>
+            <Route path="nurse/profile-edit" element={<ProfileNurse/>}/>
             <Route path="nurse/patient/uploadPatientRecords" element={<UploadMedicalRecords/>}/>
             <Route path="nurse/updatePatientNumber" element={<UpdatePatientNumber/>}/>
             <Route path="nurse/updatePatientNumber/selectDoctor" element={<SelectDoctor/>}/>
