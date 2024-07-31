@@ -10,9 +10,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import recordImage from '../../components/images/doctor/record1.png';
 
@@ -41,19 +39,19 @@ const medicalRecords: MedicalRecords = {
     knownAllergies: "None",
     appointments: [
         {
-            doctorName: "Dr. John Doe",
+            doctorName: "Dr. Ajith Kumara",
             doctorPosition: "Cardiologist",
             appointmentDate: "2024/04/08",
             recordImage: recordImage,
         },
         {
-            doctorName: "Dr. Jane Smith",
+            doctorName: "Dr. Jayani Samarasinghe",
             doctorPosition: "Oncologist",
             appointmentDate: "2023/12/09",
             recordImage: recordImage,
         },
         {
-            doctorName: "Dr. Emily Brown",
+            doctorName: "Prof. Namal Jayaisnghe",
             doctorPosition: "Pulmonologist",
             appointmentDate: "2023/09/23",
             recordImage: recordImage,
@@ -73,26 +71,7 @@ const theme = createTheme({
 });
 
 const ViewMedicalRecords: React.FC = () => {
-    const [record, setRecord] = useState(medicalRecords);
-    const [showInput, setShowInput] = useState(false);
-    const [inputValue, setInputValue] = useState('');
-
-    const handleShowInput = () => {
-        setShowInput(!showInput);
-    };
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setInputValue(event.target.value);
-    };
-
-    const handleAddDetails = () => {
-        setRecord(prevRecord => ({
-            ...prevRecord,
-            otherDetails: inputValue,
-        }));
-        setShowInput(false);
-        setInputValue('');
-    };
+    const [record] = useState(medicalRecords);
 
     const getAccordions = () => {
         return record.appointments.map((appointment, index) => (
@@ -103,7 +82,11 @@ const ViewMedicalRecords: React.FC = () => {
                         aria-controls={`panel${index + 1}-content`}
                         id={`panel${index + 1}-header`}
                     >
-                        <Typography>{appointment.appointmentDate} - {appointment.doctorName}, {appointment.doctorPosition}</Typography>
+                        <Box>
+                            <Typography sx={{ color: '#855CDD', fontSize: '1.2rem' }}>{appointment.doctorName}</Typography>
+                            <Typography>{appointment.doctorPosition}</Typography>
+                            <Typography>{appointment.appointmentDate}</Typography>
+                        </Box>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -130,7 +113,7 @@ const ViewMedicalRecords: React.FC = () => {
                     <div className="mainContentDocMRview">
                         <Typography variant="h4">View Medical History</Typography>
                         <div className="subContentDocMRview">
-                            <Typography variant="h6">Patient Details</Typography>
+                            {/*<Typography variant="h6">Patient Details</Typography>*/}
                             <Card variant="outlined" sx={{ mb: 2, border: '1px solid #855CDD' }}>
                                 <CardContent>
                                     <Grid container spacing={2}>
@@ -150,43 +133,10 @@ const ViewMedicalRecords: React.FC = () => {
                                             <Typography className="line"><b>{record.knownAllergies}</b></Typography>
                                             {record.otherDetails && <Typography className="line"><b>{record.otherDetails}</b></Typography>}
                                         </Grid>
-                                        <Grid item xs={3}>
-                                            {showInput && (
-                                                <Box mt={2} display="flex" flexDirection="column" alignItems="flex-start">
-                                                    <TextField
-                                                        fullWidth
-                                                        label="Other Details"
-                                                        value={inputValue}
-                                                        onChange={handleInputChange}
-                                                    />
-                                                    <Box mt={1} display="flex" gap={1}>
-                                                        <Button
-                                                            variant="contained"
-                                                            style={{ backgroundColor: '#D2172C', color: '#fff' }}
-                                                            onClick={handleShowInput}
-                                                        >
-                                                            Cancel
-                                                        </Button>
-                                                        <Button
-                                                            variant="contained"
-                                                            color="secondary"
-                                                            onClick={handleAddDetails}
-                                                        >
-                                                            Add
-                                                        </Button>
-                                                    </Box>
-                                                </Box>
-                                            )}
-                                            {!showInput && (
-                                                <Button variant="contained" color="primary" onClick={handleShowInput}>
-                                                    Add Other Details
-                                                </Button>
-                                            )}
-                                        </Grid>
                                     </Grid>
                                 </CardContent>
                             </Card>
-                            <Typography variant="h6">Previous Appointments</Typography>
+                            {/*<Typography variant="h6">Previous Appointments</Typography>*/}
                             <div className="cardsContainer">
                                 {getAccordions()}
                             </div>
