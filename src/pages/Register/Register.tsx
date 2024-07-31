@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState, ChangeEvent, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
 import { toast } from "react-toastify";
@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <div className="flex h-screen">
       {/* Left Half with Form Fields */}
-      <div className="w-3/5 p-8 flex flex-col justify-center mx-auto ml-24">
+      <div className="w-3/5 p-8 flex flex-col justify-center mx-auto ml-[150px]">
       <h1 className="text-black text-left text-3xl font-semibold mb-6">Register</h1>
         <div className="mb-4">
           <label
@@ -64,7 +64,7 @@ const Register = () => {
             type="text"
             onChange={handleChange}
             placeholder="Enter your name"
-            className="w-4/5 px-4 py-2 border border-gray-300 rounded-lg shadow-md"
+            className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <div className="mb-4">
@@ -79,7 +79,7 @@ const Register = () => {
             type="text"
             onChange={handleChange}
             placeholder="Enter your username"
-            className="w-4/5 px-4 py-2 border border-gray-300 rounded-lg shadow-md"
+            className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <div className="mb-4">
@@ -94,7 +94,7 @@ const Register = () => {
             type="password"
             onChange={handleChange}
             placeholder="Enter your password"
-            className="w-4/5 px-4 py-2 border border-gray-300 rounded-lg shadow-md"
+            className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <div className="mb-4">
@@ -109,7 +109,7 @@ const Register = () => {
             type="email"
             onChange={handleChange}
             placeholder="Enter your email address"
-            className="w-4/5 px-4 py-2 border border-gray-300 rounded-lg shadow-md"
+            className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <div className="mb-4">
@@ -124,13 +124,13 @@ const Register = () => {
             type="tel"
             onChange={handleChange}
             placeholder="+94 -  XXX XXX XX"
-            className="w-4/5 px-4 py-2 border border-gray-300 rounded-lg shadow-md"
+            className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <button
           disabled={loading}
           onClick={handleClick}
-          className="bg-purple-600 text-white px-4 py-2 mt-8 rounded-lg w-4/5"
+          className="bg-violet-600 text-white px-4 py-2 mt-8 rounded-lg w-[380px]"
         >
           Register
         </button>
@@ -139,7 +139,7 @@ const Register = () => {
 
       {/* Right Section with Background Image */}
       <div
-        className="w-2/5 flex flex-col items-center p-8"
+        className="w-[1000px] flex flex-col items-center p-8"
         style={{
           backgroundImage: 'url(/images/locations/reg.png)',
           backgroundSize: 'cover',
@@ -153,7 +153,9 @@ const Register = () => {
         />
         <p className="text-center text-gray-700">
           Already have an account?{" "}
-          <span className="text-purple-600 cursor-pointer">Login to your account</span>
+          {/*<span className="text-purple-600 cursor-pointer">Login to your account</span>*/}
+          <Link to="/login" className="text-violet-600 cursor-pointer">Login to your account</Link>
+
         </p>
       </div>
     </div>

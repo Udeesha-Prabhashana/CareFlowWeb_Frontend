@@ -17,16 +17,16 @@ const Navbar: React.FC = () => {
                 <Link to="/" style={{ textDecoration: "none" }} >
                     <img src={logo} alt="CareFlow Logo" className="logo" />
                 </Link>
-                    {user ? (
-                        <div className="newItem">
-                            <button className="navButton" onClick={() => navigate("/login")}>Logout</button>
-                        </div>
-                    ) : (
-                        <div className="newItem">
-                            <button className="navButton" onClick={() => navigate("/register")}>Register</button>
-                            <button className="navButton" onClick={() => navigate("/login")}>Login</button>
-                        </div>
-                    )}
+                {user ? (
+                    <div className="newItem">
+                        <button className="navButton " onClick={() => navigate("/login")}>Logout</button>
+                    </div>
+                ) : (
+                    <div className="newItem">
+                        <button className="navButton filled" onClick={() => navigate("/register")}>Register</button>
+                        <button className="navButton outlined" onClick={() => navigate("/login")}>Login</button>
+                    </div>
+                )}
             </div>
         </div>
     );

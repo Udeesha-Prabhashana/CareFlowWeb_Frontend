@@ -35,10 +35,10 @@ const DoctorViewBooking: React.FC = () => {
                                     <div className="line">Known Allergies :</div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div className="line"><b>Mr. Namal Rajapakshe</b></div>
+                                    <div className="line"><b>Mr. Kasun Jayasinghe</b></div>
                                     <div className="line"><b>2022/04/04</b></div>
                                     <div className="line"><b>04</b></div>
-                                    <div className="line"><b>45 Years</b></div>
+                                    <div className="line"><b>30 Years</b></div>
                                     <div className="line"><b>Male</b></div>
                                     <div className="line"><b>Asthma, Cancer</b></div>
                                     <div className="line"><b>None</b></div>
