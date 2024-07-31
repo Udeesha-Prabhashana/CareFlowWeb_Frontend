@@ -41,6 +41,7 @@ import ProfileLu from "./pages/profileLu/ProfileLu";
 import ProfileMain from "./pages/profileMain/profileMain";
 
 
+
 import Settings from "./pages/settings/settings";
 
 import Notifications from "./pages/notifications/notifications";
@@ -103,6 +104,7 @@ import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
+import Profile1 from "./pages/profileLu/profile";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -422,6 +424,10 @@ function App() {
             <Route path="nurse/patient/uploadPatientRecords" element={<UploadMedicalRecords/>}/>
             <Route path="nurse/updatePatientNumber" element={<UpdatePatientNumber/>}/>
             <Route path="nurse/updatePatientNumber/selectDoctor" element={<SelectDoctor/>}/>
+
+
+
+            <Route path="profile" element={<Profile1/>}/>
 
 
             
