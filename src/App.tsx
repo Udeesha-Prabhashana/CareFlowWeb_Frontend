@@ -38,6 +38,7 @@ import ChatbotThird from "./pages/cura/chatbotthird/chatbotthird";
 import HistoryCards from "./pages/medical_history/medical_history";
 import Details from "./pages/medical_history/details/details";
 import ProfileLu from "./pages/profileLu/ProfileLu";
+import ProfileMain from "./pages/profileMain/profileMain";
 
 
 import Settings from "./pages/settings/settings";
@@ -273,10 +274,20 @@ function App() {
             index
             element={
               // <ProtectedRoute>
+                <ProfileMain />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile-edit"
+            index
+            element={
+              // <ProtectedRoute>
                 <ProfileLu />
               // </ProtectedRoute>
             }
           />
+
           <Route path="doclist2">
             <Route
               index
