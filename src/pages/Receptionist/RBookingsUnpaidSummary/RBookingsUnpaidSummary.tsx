@@ -10,7 +10,7 @@ const RBookingsUnpaidSummmary: React.FC = () => {
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
-        navigate("/receptionist/home");
+        navigate("/receptionist/bookings/addnewbooking/bookingSummaryPay");
     };
 
     return (
