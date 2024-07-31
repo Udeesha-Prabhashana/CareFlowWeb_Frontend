@@ -37,7 +37,7 @@ const Register = () => {
     try {
       const res = await axios.post<{ res: any }>("http://localhost:8080/sign-up", credentials);
       console.log("Response:", res.data.res);
-      toast.success("Doctor added successfully!");
+      toast.success("You were added successfully!");
       navigate("/login");
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response?.data });

@@ -32,10 +32,11 @@ const RSummaryPay: React.FC = () => {
 
     const handleComplete = () => {
         if (user) {
-            toast.error("Error Occurred while booking!"); // Show error toast
+            navigate("/receptionist/bookings");
+            toast.success("Successfully Booked!"); // Show error toast
         } else {
             toast.success("Successfully Booked!"); // Show success toast
-            navigate("/receptionist/bookings/addnewbooking");
+            navigate("/receptionist/bookings");
         }
     };
 

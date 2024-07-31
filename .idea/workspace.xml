@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/searchItemLUNEW/searchItemLUN.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/searchItemLUNEW/searchItemLUN.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchItemR/searchItemR.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchItemR/searchItemR.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LUDoctors/LUDoctors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LUDoctors/LUDoctors.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Receptionist/RDoctorsView/RDoctorsView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Receptionist/RDoctorsView/RDoctorsView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Receptionist/RSummaryPay/RSummaryPay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Receptionist/RSummaryPay/RSummaryPay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,25 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging liviru__new",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;liviru__new&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CareFlow_Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\CareFlowWeb_Frontend\src\components\images" />
@@ -78,6 +75,11 @@
       <command value="npm install @mui/styles " />
       <command value="npm install @mui/styles --legacy-peer-deps " />
       <command value="npm install @mui/styles --force " />
+      <command value="npm install @mui/material @emotion/react @emotion/styled " />
+      <command value="npm install payhere-embed-sdk --save" />
+      <command value="npm install payhere-embed-sdk --save --legacy-peer-deps " />
+      <command value="npm install crypto-browserify " />
+      <command value="npm install crypto-browserify --legacy-peer-deps " />
       <command value="npm start" />
     </option>
   </component>
@@ -101,6 +103,18 @@
       <workItem from="1721792329121" duration="940000" />
       <workItem from="1721798752871" duration="4054000" />
       <workItem from="1722171061393" duration="11352000" />
+      <workItem from="1722194971024" duration="1065000" />
+      <workItem from="1722196512212" duration="673000" />
+      <workItem from="1722197372152" duration="1661000" />
+      <workItem from="1722214207088" duration="1627000" />
+      <workItem from="1722221115091" duration="17182000" />
+      <workItem from="1722257663607" duration="4771000" />
+      <workItem from="1722272473178" duration="603000" />
+      <workItem from="1722297762374" duration="15676000" />
+      <workItem from="1722332320322" duration="6056000" />
+      <workItem from="1722345502114" duration="1843000" />
+      <workItem from="1722381102983" duration="8464000" />
+      <workItem from="1722394835659" duration="5500000" />
     </task>
     <servers />
   </component>
