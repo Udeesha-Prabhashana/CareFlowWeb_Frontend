@@ -34,13 +34,6 @@ const theme = createTheme({
     },
 });
 
-const historyRows = [
-    { number: 1, name: 'Namal Rajapakshe' },
-    { number: 2, name: 'Dasuni Gamage' },
-    { number: 3, name: 'Chris Evan' },
-    { number: 4, name: 'Gayan Perera' },
-];
-
 const todayRows = [
     { number: 1, name: 'Sandani Gamage' },
     { number: 2, name: 'Piyath Rajapakshe' },
@@ -49,11 +42,6 @@ const todayRows = [
     { number: 5, name: 'Abdulla Naseem' },
 ];
 
-const upcomingRows = [
-    { number: 1, name: 'Abdulla Afar' },
-    { number: 2, name: 'Piyath Rajapakshe' },
-    { number: 3, name: 'Kasuni Wedege' },
-];
 
 const BookingNurse: React.FC = () => {
     const [alignment, setAlignment] = useState('today');
@@ -63,13 +51,10 @@ const BookingNurse: React.FC = () => {
     const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
         if (newAlignment !== null) {
             setAlignment(newAlignment);
-            if (newAlignment === 'history') {
-                setRows(historyRows);
-            } else if (newAlignment === 'today') {
-                setRows(todayRows);
-            } else {
-                setRows(upcomingRows);
-            }
+            
+            
+            setRows(todayRows);
+           
         }
     };
 
@@ -90,55 +75,14 @@ const BookingNurse: React.FC = () => {
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
-                                <ToggleButtonGroup
-                                    color="primary"
-                                    value={alignment}
-                                    exclusive
-                                    onChange={handleChange}
-                                    aria-label="Appointments"
-                                    sx={{
-                                        '& .MuiToggleButton-root': {
-                                            width: '153px',
-                                            height: '42px',
-                                            borderRadius: '9px',
-                                            border: '1px solid #855CDD',
-                                            fontSize: '18px',
-                                            mr: 2,
-                                            textTransform: 'none',
-                                            '&:hover': {
-                                                background: '#855CDD',
-                                                color: 'white',
-                                            },
-                                            '&.Mui-selected': {
-                                                background: '#855CDD',
-                                                color: 'white',
-                                                border: '1px solid #855CDD',
-                                            },
-                                        }
-                                    }}
-                                >
-                                    <ToggleButton value="history">History</ToggleButton>
-                                    <ToggleButton value="today">Today</ToggleButton>
-                                    <ToggleButton value="upcoming">Upcoming</ToggleButton>
-                                </ToggleButtonGroup>
+                                
+                                   
+                                    
+                                
                             </Grid>
                             <Grid item xs />
                             <Grid item>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DemoContainer
-                                        components={[
-                                            'DatePicker',
-                                            'MobileDatePicker',
-                                            'DesktopDatePicker',
-                                        ]}
-                                    >
-                                        <DemoItem>
-                                            <DesktopDatePicker
-                                                defaultValue={dayjs('2022-04-17')}
-                                            />
-                                        </DemoItem>
-                                    </DemoContainer>
-                                </LocalizationProvider>
+                                
                             </Grid>
                         </Grid>
                     </ThemeProvider>
