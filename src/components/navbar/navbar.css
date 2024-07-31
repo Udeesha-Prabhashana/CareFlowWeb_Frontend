@@ -1,17 +1,15 @@
 .navbar {
     height: 60px;
-    background-color: transparent;
+    background-color: white;
     display: flex;
     justify-content: center;
     z-index: 1000;
     width: 100%;
     margin-right: 150px;
-    position: fixed;
 }
 
-
 .navContainer {
-    background-color: transparent;
+    background-color: white;
     margin-top: 10px;
     width: 100%;
     color: #855CDD;
@@ -20,12 +18,10 @@
     justify-content: space-between;
     margin-left: 100px;
 }
-
-.navButtons {
-    display: flex;
-    gap: 20px;
+.newItem{
+    margin-left: 800px;
+    margin-right: 100px;
 }
-
 .logo {
     font-weight: 100;
     font-size: 20px;
@@ -33,30 +29,33 @@
     height: auto;
 }
 
+.navleft{
+    margin-left: 50px;
+}
+
 .navButton {
+    margin-left: 20px;
     border: none;
     border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    width: 100px;
-    text-align: center;
-    display: flex;
-    padding: 17px 56px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-}
-
-.filledButton {
     color: white;
     background-color: #855CDD;
+    gap: 10px;
+    margin-bottom: 6px;
+
 }
 
-.outlinedButton {
-    color: #855CDD;
+.filled{
+    color: white;
+    background-color: #855CDD;
+    width: 100px;
+}
+
+.outlined{
+    color:#855CDD;
     background-color: transparent;
     border: 2px solid #855CDD;
     margin-right: 50px;
+    width: 100px;
 }
