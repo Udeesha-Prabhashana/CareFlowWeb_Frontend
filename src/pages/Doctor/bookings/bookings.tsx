@@ -8,12 +8,7 @@ import { createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Grid from '@mui/material/Grid';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import dayjs from "dayjs";
+import TextField from '@mui/material/TextField';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -59,6 +54,7 @@ const upcomingRows = [
 const BookingDoc: React.FC = () => {
     const [alignment, setAlignment] = useState('today');
     const [rows, setRows] = useState(todayRows);
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
@@ -78,6 +74,12 @@ const BookingDoc: React.FC = () => {
         console.log('View details for:', row);
         navigate("/doctor/bookings/view_bookings");
     };
+
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredRows = rows.filter(row => row.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <div className="sideDoc">
@@ -126,21 +128,13 @@ const BookingDoc: React.FC = () => {
                             </Grid>
                             <Grid item xs />
                             <Grid item>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DemoContainer
-                                        components={[
-                                            'DatePicker',
-                                            'MobileDatePicker',
-                                            'DesktopDatePicker',
-                                        ]}
-                                    >
-                                        <DemoItem>
-                                            <DesktopDatePicker
-                                                defaultValue={dayjs('2022-04-17')}
-                                            />
-                                        </DemoItem>
-                                    </DemoContainer>
-                                </LocalizationProvider>
+                                <TextField
+                                    label="Search by Name"
+                                    variant="outlined"
+                                    value={searchTerm}
+                                    onChange={handleSearch}
+                                    sx={{ width: '300px' }}
+                                />
                             </Grid>
                         </Grid>
                     </ThemeProvider>
@@ -155,7 +149,7 @@ const BookingDoc: React.FC = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row, index) => (
+                                {filteredRows.map((row, index) => (
                                     <TableRow
                                         key={row.number}
                                         sx={{
