@@ -6,8 +6,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import { useNavigate } from "react-router-dom";
 
 const ProfileLu: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleProfile = () => {
+    navigate("/profileLu");
+  };
   return (
     <div className="profilelu">
       <SidebarPatient />
@@ -246,6 +252,7 @@ const ProfileLu: React.FC = () => {
               backgroundColor: "#5F2BCF", // Change to your desired hover color
             },
           }}
+          onClick={handleProfile}
         >
           Save
         </Button>
