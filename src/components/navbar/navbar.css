@@ -1,15 +1,17 @@
 .navbar {
     height: 60px;
-    background-color: white;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     z-index: 1000;
     width: 100%;
     margin-right: 150px;
+    position: fixed;
 }
 
+
 .navContainer {
-    background-color: white;
+    background-color: transparent;
     margin-top: 10px;
     width: 100%;
     color: #855CDD;
@@ -18,10 +20,12 @@
     justify-content: space-between;
     margin-left: 100px;
 }
-.newItem{
-    margin-left: 800px;
-    margin-right: 100px;
+
+.navButtons {
+    display: flex;
+    gap: 20px;
 }
+
 .logo {
     font-weight: 100;
     font-size: 20px;
@@ -29,16 +33,30 @@
     height: auto;
 }
 
-.navleft{
-    margin-left: 100px;
-}
-
 .navButton {
-    margin-left: 20px;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    padding: 17px 56px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.filledButton {
     color: white;
     background-color: #855CDD;
+}
+
+.outlinedButton {
+    color: #855CDD;
+    background-color: transparent;
+    border: 2px solid #855CDD;
+    margin-right: 50px;
 }

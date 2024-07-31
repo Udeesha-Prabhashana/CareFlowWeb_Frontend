@@ -11,22 +11,19 @@ const Navbar: React.FC = () => {
     return (
         <div className="navbar">
             <div className="navContainer">
-                {/* <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-                    <img className="logo" src={logo} alt="CareFlow Logo">Care Flow</img>
-                </Link> */}
                 <Link to="/" style={{ textDecoration: "none" }} >
                     <img src={logo} alt="CareFlow Logo" className="logo" />
                 </Link>
-                    {user ? (
-                        <div className="newItem">
-                            <button className="navButton" onClick={() => navigate("/login")}>Logout</button>
-                        </div>
-                    ) : (
-                        <div className="newItem">
-                            <button className="navButton" onClick={() => navigate("/register")}>Register</button>
-                            <button className="navButton" onClick={() => navigate("/login")}>Login</button>
-                        </div>
-                    )}
+                {user ? (
+                    <div className="navButtons">
+                        <button className="navButton" onClick={() => navigate("/login")}>Logout</button>
+                    </div>
+                ) : (
+                    <div className="navButtons">
+                        <button className="navButton filledButton" onClick={() => navigate("/login")}>Login</button>
+                        <button className="navButton outlinedButton" onClick={() => navigate("/register")}>Signup</button>
+                    </div>
+                )}
             </div>
         </div>
     );
