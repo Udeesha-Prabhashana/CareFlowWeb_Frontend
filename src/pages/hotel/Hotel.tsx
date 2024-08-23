@@ -73,7 +73,7 @@ const Hotel: React.FC = () => {
   const [openModel, setOpenModel] = useState(false);
 
   const data = dummyData[id - 1]; // Get the dummy data by id
-  const { dates, options } = useContext(SearchContext);
+  const { date, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -84,8 +84,8 @@ const Hotel: React.FC = () => {
     return diffDays;
   }
 
-  const days =  dayDifference(dates[0].endDate, dates[0].startDate);
-  console.log("Days", days)
+  // const days =  dayDifference(dates[0].endDate, dates[0].startDate);
+  // console.log("Days", days)
 
   const handleOpen = (i: number) => {
     setSlideNumber(i);

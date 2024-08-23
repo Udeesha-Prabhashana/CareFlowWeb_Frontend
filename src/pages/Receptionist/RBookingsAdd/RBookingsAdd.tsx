@@ -17,7 +17,9 @@ interface DateRangeType {
 
 const RBookingsAdd: React.FC = () => {
   const [openDate, setOpenDate] = useState(false);
-  const [destination, setDestination] = useState<string>("");
+  const [doctorName, setDoctorName] = useState<string>("");
+  const [specialization, setSpecialization] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date()); // Handle single date
   const [dates, setDates] = useState<DateRangeType[]>([
     {
       startDate: new Date(),
@@ -48,20 +50,20 @@ const RBookingsAdd: React.FC = () => {
   const handleSearch = () => {
     dispatch({
       type: "NEW_SEARCH",
-      payload: { city: destination, dates, options },
+      payload: { doctor: doctorName,specialization,date: selectedDate, options },
     });
     navigate("/receptionist/bookings/addnewbooking/doctors", {
-      state: { destination, dates, options },
+      state: { doctorName, dates, options },
     });
   };
 
   const handleClear = () => {
-    setDestination("");
+    setDoctorName("");
     setDates([{ startDate: new Date(), endDate: new Date(), key: "selection" }]);
   };
 
   const handleSpecializationChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setDestination(e.target.value);
+    setSpecialization(e.target.value);
   };
 
   return (
@@ -93,8 +95,8 @@ const RBookingsAdd: React.FC = () => {
                       outline: "none",
                       fontSize: "16px",
                     }}
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
+                    value={doctorName}
+                    onChange={(e) => setDoctorName(e.target.value)}
                   />
                 </div>
 
@@ -115,7 +117,7 @@ const RBookingsAdd: React.FC = () => {
                       color: "#808080",
                     }}
                     onChange={handleSpecializationChange}
-                    value={destination}
+                    value={doctorName}
                   >
                     <option value="" disabled selected hidden>Select Specialty</option>
                     <option value="Neurologist">Neurologist</option>
