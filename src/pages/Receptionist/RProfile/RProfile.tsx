@@ -6,8 +6,14 @@ import SidebarRec from "../../../components/sidebarRec/SidebarRec";
 import { AiOutlineSearch } from "react-icons/ai";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const RProfile: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleProfile = () => {
+    navigate("/receptionist/profile");
+  };
   return (
     <div className="RProfile">
       <SidebarRec />
@@ -215,7 +221,7 @@ const RProfile: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex mb-4">
+          {/* <div className="flex mb-4">
             <div className="flex flex-col flex-grow">
               <label htmlFor="medicines" className="text-gray-700 mb-2">
                 Medicines
@@ -229,7 +235,7 @@ const RProfile: React.FC = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <Button className="ml-14"
           variant="contained"
@@ -246,6 +252,7 @@ const RProfile: React.FC = () => {
               backgroundColor: "#5F2BCF", // Change to your desired hover color
             },
           }}
+          onClick={handleProfile}
         >
           Save
         </Button>
