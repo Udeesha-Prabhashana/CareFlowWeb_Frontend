@@ -8,12 +8,6 @@ import Reserve from "../../components/reserve/Reserve";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import { toast } from "react-toastify";
 
-const appointmentsData = {
-  "2023-07-31": 5,
-  "2023-08-01": 3,
-  "2023-08-02": 7,
-};
-
 export interface AvailabilitySlot {
   availableDate: string;
   bookedSlots: number;
@@ -63,7 +57,7 @@ const LUBookingsDoctorsView: React.FC = () => {
         } = {
             doctor: item,
             selectedDate,
-            availableAppointments: availableAppointments || 0
+            availableAppointments: availableAppointments + 1|| 0
         };
 
         // Add user details if available
@@ -120,7 +114,7 @@ const LUBookingsDoctorsView: React.FC = () => {
                 {item.availability.map((slot, index) => (
                   <div key={index} className="flex flex-row mb-2 w-full justify-center">
                     <span className="text-gray-600 font-bold w-32 flex-shrink-0">{new Date(slot.availableDate).toLocaleDateString()} :</span>
-                    <span className="text-gray-600 flex-grow text-center">{slot.bookedSlots} slots available</span>
+                    <span className="text-gray-600 flex-grow text-center">No  {slot.bookedSlots + 1} available</span>
                   </div>
                 ))}
               </div>
@@ -161,7 +155,7 @@ const LUBookingsDoctorsView: React.FC = () => {
                   </select>
                   {selectedDate && (
                     <div className="mt-2">
-                      <p className="text-black font-bold">Available Appointment Number: {availableAppointments}</p>
+                      <p className="text-black font-bold">Available Appointment Number: {availableAppointments + 1}</p>
                     </div>
                   )}
                 </div>
