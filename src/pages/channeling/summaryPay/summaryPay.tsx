@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Grid, Box } from '@mui/material';
 import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 import Button from "@mui/material/Button";
+import { toast } from "react-toastify";
 
 const BookingSummaryPay: React.FC = () => {
     const navigate = useNavigate();
@@ -13,7 +14,9 @@ const BookingSummaryPay: React.FC = () => {
     const state = location.state as {
         doctor?: any;
         selectedDate: string;
+        time: string;
         availableAppointments: number;
+
         patientName?: string;
         patientAge?: string;
         patientSex?: string;
@@ -24,6 +27,7 @@ const BookingSummaryPay: React.FC = () => {
     const {
         doctor,
         selectedDate,
+        time,
         availableAppointments,
         patientName,
         patientAge,
@@ -32,21 +36,65 @@ const BookingSummaryPay: React.FC = () => {
     } = state || {};
 
     // Handle payment later
-    const handlePayLater = () => {
-        navigate("/appointments");
+    const handlePayLater = async () => {
+        try {
+            // Retrieve the access_token from localStorage
+            const user = localStorage.getItem('user');
+            let token = null;
+
+            if (user) {
+                    const parsedUser = JSON.parse(user);
+                    token = parsedUser.access_token;
+
+            // Prepare the request body
+            const requestBody = {
+                doctorId: doctor?.id || 0, // Ensure doctor ID is set
+                appointmentDate: selectedDate,
+                slotNumber: availableAppointments, // Example slot number calculation
+                status: 0, // Assuming status is 0 for a pending appointment
+                reasonForVisit: "Routine check-up",
+                payment: 0 // Payment is 0 for 'Pay Later'
+            };
+
+            // Make the API call
+            const response = await fetch('http://localhost:8080/api/add_appointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (response.ok) {
+                // Handle success response
+                toast.success('Appointment has been added successfully.');
+                navigate("/appointments");
+            } else {
+                // Handle error response
+                const errorData = await response.json();
+                alert(`Error: ${errorData.message}`);
+            }
+        } else {
+            toast.error("Field Authentication");
+        }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while adding the appointment.');
+        }
     };
 
     // Initialize payment on component mount
-    useEffect(() => {
-        const payHereScript = document.createElement('script');
-        payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
-        payHereScript.async = true;
-        document.body.appendChild(payHereScript);
+    // useEffect(() => {
+    //     const payHereScript = document.createElement('script');
+    //     // payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
+    //     payHereScript.async = true;
+    //     document.body.appendChild(payHereScript);
 
-        return () => {
-            document.body.removeChild(payHereScript);
-        };
-    }, []);
+    //     return () => {
+    //         document.body.removeChild(payHereScript);
+    //     };
+    // }, []);
 
     // Start payment process
     const initiatePayment = () => {
@@ -91,23 +139,17 @@ const BookingSummaryPay: React.FC = () => {
                                     <div className="line">Doctor Name :</div>
                                     <div className="line">Date :</div>
                                     <div className="line">Appointment Number :</div>
-                                    <div className="line">Time :</div>
+                                    <div className="line">Scheduled Time :</div>
                                     <div className="line">Total Amount: </div>
                                     <div className="line">Patient Name :</div>
-                                    <div className="line">Age :</div>
-                                    <div className="line">Sex :</div>
-                                    <div className="line">Address :</div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div className="line"><b>{doctor.name}</b></div>
                                     <div className="line"><b>{selectedDate}</b></div>
                                     <div className="line"><b>{availableAppointments}</b></div>
-                                    <div className="line"><b>06:50</b></div> {/* Replace with actual time if available */}
-                                    <div className="line"><b>Rs.3000</b></div> {/* Replace with actual amount if different */}
+                                    <div className="line"><b>{time || ""}</b></div> {/* Replace with actual time if available */}
+                                    <div className="line"><b>{doctor.docCharge + 1000}</b></div> {/* Replace with actual amount if different */}
                                     <div className="line"><b>{patientName}</b></div>
-                                    <div className="line"><b>{patientAge}</b></div>
-                                    <div className="line"><b>{patientSex}</b></div>
-                                    <div className="line"><b>{patientAddress}</b></div>
                                 </Grid>
                             </Grid>
                             <Box sx={{ marginTop: '40px', display: 'flex', gap: '16px' }}>
