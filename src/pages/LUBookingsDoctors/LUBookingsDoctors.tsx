@@ -24,6 +24,7 @@ const LUBookingDoctors: React.FC = () => {
   const [specialization, setSpecialization] = useState(location.state?.specialization || "");
   const [date, setDate] = useState<string>(location.state?.date || "");
   const [options, setOptions] = useState(location.state?.options || { adult: 1, children: 0, room: 1 });
+  const [docCharge , setDocCharge ] = useState(location.state?.docCharge || "")
 
   const { dispatch } = useContext(SearchContext);
 
@@ -33,7 +34,7 @@ const LUBookingDoctors: React.FC = () => {
 
   // useEffect(() => {
   //   if (location.state) {
-  //     setDoctorName(location.state.doctorName || "");
+  //     setDocCharge(location.state.doctorName || "");
   //     setSpecialization(location.state.specialization || "");
   //     setDate(location.state.date || "");
   //   }
