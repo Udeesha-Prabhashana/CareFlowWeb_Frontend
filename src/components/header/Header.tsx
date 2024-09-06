@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
   const { user } = useContext(AuthContext);
   const [doctorName, setDoctorName] = useState<string>("");
   const [specialization, setSpecialization] = useState<string>("");
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date()); // Handle single date
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Handle single date
   const [openOption, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
@@ -87,12 +87,14 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
                     />
                   </div>
                   <div className="mb-4">
-                    <select
-                      id="speciality"
-                      className="w-full border-b border-[#9D7CE5] focus:outline-none text-[20px] font-light pb-2 bg-transparent border-none"
-                      value={specialization}
-                      onChange={handleSpecializationChange}
-                    >
+                  <select
+                        id="speciality"
+                        className={`w-full border-b border-[#9D7CE5] focus:outline-none text-[20px] font-light pb-2 bg-transparent border-none ${
+                          !specialization ? 'text-[#6c757d]' : 'text-black'
+                        }`}
+                        value={specialization}
+                        onChange={handleSpecializationChange}
+                      >
                       <option value="" disabled hidden>Select Specialization</option>
                       <option value="Neurologist">Neurologist</option>
                       <option value="Physician">Physician</option>
@@ -120,11 +122,12 @@ const Header: React.FC<HeaderProps> = ({ type }) => {
                   </div>
                   <div className="mb-4">
                     <DatePicker
+                      placeholderText="Select the date"
                       selected={selectedDate}
                       onChange={(date: Date | null) => setSelectedDate(date ?? undefined)}
                       dateFormat="MM/dd/yyyy"
                       className="w-full border-b border-[#9D7CE5] focus:outline-none text-[20px] font-light pb-2 bg-transparent border-none"
-                      minDate={new Date()}
+                      // minDate={new Date()}
                     />
                   </div>
                   <div className="flex justify-start mt-6">

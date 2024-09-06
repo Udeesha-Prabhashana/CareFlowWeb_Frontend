@@ -126,6 +126,7 @@ const Channeling: React.FC = () => {
                     <div className="lableschan">Date</div>
                     <div className="headerSearchItem2">
                         <DatePicker
+                        placeholderText="Select the date"
                             selected={selectedDate}
                             onChange={(date: Date | null) => setSelectedDate(date ?? undefined)}
                             dateFormat="MM/dd/yyyy"
