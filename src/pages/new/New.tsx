@@ -8,6 +8,7 @@ import { Input } from "../../formSource";
 import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
 import { toast } from "react-toastify";
 import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
+import {useNavigate} from "react-router-dom";
 
 interface NewProps {
   inputs: Input[];
@@ -17,6 +18,7 @@ interface NewProps {
 const New: React.FC<NewProps> = ({ inputs, title }) => {
   const [file, setFile] = useState<File | null>(null);
   const [info, setInfo] = useState<Record<string, string>>({});
+  const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -64,6 +66,7 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
       await axios.post("http://localhost:8080/sign-up", newUser);
       // Show success toast
     toast.success("Doctor added successfully!");
+      navigate("/adminhome/Doctors");
   } catch (err: any) {
     // Log the error to the console
     console.error(err);

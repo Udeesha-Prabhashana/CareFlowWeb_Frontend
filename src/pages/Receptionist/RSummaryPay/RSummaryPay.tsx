@@ -29,7 +29,6 @@ const RSummaryPay: React.FC = () => {
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPaymentConfirmed(event.target.checked);
     };
-
     const handleComplete = () => {
         if (user) {
             navigate("/receptionist/bookings");
@@ -38,6 +37,10 @@ const RSummaryPay: React.FC = () => {
             toast.success("Successfully Booked!"); // Show success toast
             navigate("/receptionist/bookings");
         }
+    };
+
+    const handlePayLater = () => {
+        navigate("/receptionist/bookings");
     };
 
     return (
@@ -74,6 +77,28 @@ const RSummaryPay: React.FC = () => {
                                 </Grid>
                             </Grid>
                             <Box sx={{ marginTop: '40px', display: 'flex', gap: '16px' }}>
+                                <Button
+                                    className="button"
+                                    variant="outlined"
+                                    sx={{
+                                        width: '150px',
+                                        height: '40px',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderRadius: '11px',
+                                        border: '1px solid #B0B0B0',
+                                        backgroundColor: '#B0B0B0', // Grey color
+                                        color: 'white',
+                                        textTransform: 'none',
+                                        '&:hover': {
+                                            backgroundColor: '#8C8C8C',
+                                            border: '1px solid #8C8C8C',
+                                        }
+                                    }}
+                                    onClick={handlePayLater}
+                                >
+                                    Pay Later
+                                </Button>
                                 <Checkbox
                                     checked={paymentConfirmed}
                                     onChange={handleCheckboxChange}
