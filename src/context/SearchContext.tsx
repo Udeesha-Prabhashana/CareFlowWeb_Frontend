@@ -2,8 +2,9 @@ import { createContext, useReducer, ReactNode, Dispatch } from "react";
 
 // Define types for state and actions
 interface SearchState {
-  city: string | undefined;
-  dates: Array<{ startDate: Date; endDate: Date; key: string }>;
+  doctor: string | undefined;
+  specialization: string | undefined;
+  date: Date | undefined;
   options: {
     adult: number | undefined;
     children: number | undefined;
@@ -17,8 +18,9 @@ type SearchAction =
 
 // Define the initial state
 const INITIAL_STATE: SearchState = {
-  city: undefined,
-  dates: [],
+  doctor: undefined,
+  specialization: undefined,
+  date: undefined,
   options: {
     adult: undefined,
     children: undefined,
