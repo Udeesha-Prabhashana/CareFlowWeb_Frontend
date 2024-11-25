@@ -149,7 +149,7 @@ const Register = () => {
             id="userMobileNo"
             type="tel"
             onChange={handleChange}
-            placeholder="+94 -  XXX XXX XX"
+            placeholder="07 -  XXX XXX XX"
             className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
