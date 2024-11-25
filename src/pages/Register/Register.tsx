@@ -75,7 +75,7 @@ const Register = () => {
   // Resend OTP function
   const handleResendOtp = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/resend-otp", {
+      const res = await axios.post("http://localhost:8080/resend-otp2", {
         mobileNumber: credentials.userMobileNo,
       });
       if (res.status === 200 && res.data.includes("OTP resent successfully")) {
@@ -149,14 +149,14 @@ const Register = () => {
             id="userMobileNo"
             type="tel"
             onChange={handleChange}
-            placeholder="+94 -  XXX XXX XX"
+            placeholder="07 -  XXX XXX XX"
             className="w-[350px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg shadow-md"
           />
         </div>
         <button
           disabled={loading}
           onClick={handleRegister}
-          className="bg-violet-600 text-white px-4 py-2 mt-8 rounded-lg w-[380px]"
+          className="bg-violet-600 text-white px-4 py-2 rounded-lg w-[380px] border rounded-lg mb-4"
         >
           Register
         </button>
@@ -192,7 +192,7 @@ const Register = () => {
               value={otp}
               onChange={handleOtpChange}
               placeholder="Enter OTP"
-              className="w-full h-[30px] px-4 py-2 border border-gray-300 rounded-lg mb-4"
+              className="w-[365px] h-[30px] px-4 py-2 border border-gray-300 rounded-lg mb-4"
             />
             <button
               onClick={handleVerifyOtp}
