@@ -62,7 +62,7 @@ const Appointments: React.FC = () => {
                     const parsedUser = JSON.parse(user);
                     token = parsedUser.access_token;
 
-                    const response = await axios.get("http://localhost:8080/api/get_allAppointment", {
+                    const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/get_allAppointment`, {
                         headers: {
                             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
                         },
