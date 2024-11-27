@@ -57,7 +57,7 @@ const BookingSummaryPay: React.FC = () => {
             };
 
             // Make the API call
-            const response = await fetch('http://localhost:8080/api/add_appointment', {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/add_appointment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

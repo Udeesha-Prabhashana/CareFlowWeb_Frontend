@@ -40,7 +40,7 @@ const Register = () => {
   const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post<{ res: any }>("http://localhost:8080/sign-up", credentials);
+      const res = await axios.post<{ res: any }>(`${process.env.REACT_APP_API_BASE_URL}/sign-up`, credentials);
       console.log("Response:", res.data.res);
       toast.success("Registration successful! Please verify OTP.");
       setShowOtpModal(true); // Show OTP modal after registration success
@@ -55,7 +55,7 @@ const Register = () => {
     e.preventDefault();
     try {
       // Send OTP and mobile number to the server for verification
-      const res = await axios.post("http://localhost:8080/verify-otp", {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/verify-otp`, {
         mobileNumber: credentials.userMobileNo,
         otp: otp,
       });
@@ -75,7 +75,7 @@ const Register = () => {
   // Resend OTP function
   const handleResendOtp = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/resend-otp2", {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/resend-otp2`, {
         mobileNumber: credentials.userMobileNo,
       });
       if (res.status === 200 && res.data.includes("OTP resent successfully")) {
