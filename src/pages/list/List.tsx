@@ -87,7 +87,7 @@ const List: React.FC = () => {
   const [date, setDate] = useState<string>(location.state?.date || "");
 
   const { data, loading, error, reFetch } = useFetch<Doctor[]>(
-    `http://localhost:8080/getAllFilteredDoctors?roles=ROLE_DOCTOR&name=${doctorName}&specialization=${specialization}&date=${date}`
+    `${process.env.REACT_APP_API_BASE_URL}/getAllFilteredDoctors?roles=ROLE_DOCTOR&name=${doctorName}&specialization=${specialization}&date=${date}`
   );
 
   // useEffect(() => {

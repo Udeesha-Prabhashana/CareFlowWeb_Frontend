@@ -61,7 +61,7 @@ const New: React.FC<NewProps> = ({ inputs, title }) => {
 
       console.log("AAA", newUser);
 
-      await axios.post("http://localhost:8080/sign-up", newUser);
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-up`, newUser);
       // Show success toast
     toast.success("Doctor added successfully!");
   } catch (err: any) {
