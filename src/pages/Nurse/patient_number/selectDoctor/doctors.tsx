@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
-import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButton, { toggleButtonClasses } from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Grid from '@mui/material/Grid';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -25,30 +25,40 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
 
 interface Doctors {
     description: string;
     body: string;
+    selected: boolean;
 }
 
-const Paid: Doctors[] = [
-    { description: "Dr. John Smith", body: "PhD, Neurologist" },
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
+var Paid: Doctors[] = [
+    { description: "Dr. John Smith", body: "PhD, Neurologist", selected: true },
+    { description: "Dr. Alice Johnson", body: "MD, Cardiologist", selected: false },
+    { description: "Dr. Alice Johnson", body: "MD, Cardiologist", selected: true },
     // add more appointments as needed
 ];
 
 
 
-const Unpaid: Doctors[] = [
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { description: "Dr. John Smith", body: "PhD, Neurologist" },
-    // add more appointments as needed
-];
 
 const SelectDoctor: React.FC = () => {
-    const [selected, setSelected] = React.useState(false);
-    const [alignment, setAlignment] = React.useState<string>('paid');
+    const [checked1, setChecked1] = React.useState(false);
+    const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked1(event.target.checked);
+      };
+
+    const [checked2, setChecked2] = React.useState(false);
+    const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+          setChecked2(event.target.checked);
+    };
+
+
+    const [checked3, setChecked3] = React.useState(false);
+    const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked3(event.target.checked);
+      };
     const navigate = useNavigate();
 
     const theme = createTheme({
@@ -62,37 +72,17 @@ const SelectDoctor: React.FC = () => {
         },
     });
 
-    const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
-        if (newAlignment !== null) {
-            setAlignment(newAlignment);
-        }
-    };
+    
 
-    const handleViewDetails = () => {
-        if (alignment === 'paid') {
-            navigate('/nurse/updatePatientNumber');
-        } else if (alignment === 'unpaid') {
-            navigate('/nurse/home');
-        }
-    };
-
+    
     const handleAddBooking = () => {
         navigate('/nurse/home');
     };
 
     const getCards = () => {
         let cards: Doctors[] = [];
-        switch (alignment) {
-            case 'paid':
-                cards = Paid;
-                break;
-            case 'unpaid':
-                cards = Unpaid;
-                break;
-            default:
-                cards = [];
-                break;
-        }
+        cards = Paid;
+        
         return cards.map((card, index) => (
             <Box key={index} sx={{ mb: 2 }}>
                 <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
@@ -138,10 +128,15 @@ const SelectDoctor: React.FC = () => {
                     <ThemeProvider theme={theme}>
                     <ToggleButton
                     value="check"
-                    selected={selected}
+                    selected={card.selected}
                     onChange={() => {
-                        setSelected(!selected);
+                        card.selected = !card.selected;
                     }}
+                    onClick={() => {
+                        card.selected = false;
+                        console.log(card)
+                    }}
+                    
                     >
                     <CheckIcon />
                     </ToggleButton>
@@ -166,35 +161,7 @@ const SelectDoctor: React.FC = () => {
                     
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
                             <Grid item>
-                                <ToggleButtonGroup
-                                    color="primary"
-                                    value={alignment}
-                                    exclusive
-                                    onChange={handleChange}
-                                    aria-label="Appointments"
-                                    sx={{
-                                        '& .MuiToggleButton-root': {
-                                            width: '153px',
-                                            height: '42px',
-                                            borderRadius: '9px',
-                                            border: '1px solid #855CDD',
-                                            fontSize: '18px',
-                                            mr: 2,
-                                            textTransform: 'none',
-                                            '&:hover': {
-                                                background: '#855CDD',
-                                                color: 'white',
-                                            },
-                                            '&.Mui-selected': {
-                                                background: '#ffffff',
-                                                color: 'white',
-                                                border: '1px solid #855CDD',
-                                            },
-                                        }
-                                    }}
-                                >
-                                  
-                                </ToggleButtonGroup>
+                                
                             </Grid>
                             <Grid item xs />
                             <Grid item>
@@ -205,7 +172,168 @@ const SelectDoctor: React.FC = () => {
                     
 
                     <div className="cardsContainer">
-                        {getCards()}
+                    <Box key={1} sx={{ mb: 2 }}>
+                <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
+                    <CardContent sx={{ flex: 1 }}>
+                        <Typography
+                            variant="h5"
+                            component="div"
+                            sx={{
+                                color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
+                                fontSize: '30px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                            }}
+                        >
+                        </Typography>
+                        <Typography
+                            sx={{
+                                mb: 1.5,
+                                color: '#000',
+                                fontSize: '20px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                                paddingTop: '8px',
+                            }}
+                        >
+                            {"Dr. Samantha Gunawardana"}
+
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontSize: '16px',
+                                fontStyle: 'normal',
+                                fontWeight: '300',
+                                lineHeight: '20px',
+                            }}
+                        >
+                            {"MD, Cardiologist"}
+                        </Typography>
+                    </CardContent>
+                    <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
+                    <ThemeProvider theme={theme}>
+                    <Switch
+                    checked={checked1}
+                    onChange={handleChange1}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                    </ThemeProvider>
+                    </CardActions>
+                </Card>
+                    </Box>
+
+                    <Box key={1} sx={{ mb: 2 }}>
+                <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
+                    <CardContent sx={{ flex: 1 }}>
+                        <Typography
+                            variant="h5"
+                            component="div"
+                            sx={{
+                                color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
+                                fontSize: '30px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                            }}
+                        >
+                        </Typography>
+                        <Typography
+                            sx={{
+                                mb: 1.5,
+                                color: '#000',
+                                fontSize: '20px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                                paddingTop: '8px',
+                            }}
+                        >
+                            {"Dr. Kamal Gunasinghe"}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontSize: '16px',
+                                fontStyle: 'normal',
+                                fontWeight: '300',
+                                lineHeight: '20px',
+                            }}
+                        >
+                            {"MD, Physician"}
+                        </Typography>
+                    </CardContent>
+                    <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
+                    <ThemeProvider theme={theme}>
+                    <Switch
+                    checked={checked2}
+                    onChange={handleChange2}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                    </ThemeProvider>
+                    </CardActions>
+                </Card>
+                    </Box>
+
+
+
+                    <Box key={1} sx={{ mb: 2 }}>
+                <Card variant="outlined" sx={{ display: 'flex', border: '1px solid #855CDD' }}>
+                    <CardContent sx={{ flex: 1 }}>
+                        <Typography
+                            variant="h5"
+                            component="div"
+                            sx={{
+                                color: 'var(--Normal, var(--Normal-Normal, #855CDD))',
+                                fontSize: '30px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                            }}
+                        >
+                        </Typography>
+                        <Typography
+                            sx={{
+                                mb: 1.5,
+                                color: '#000',
+                                fontSize: '20px',
+                                fontStyle: 'normal',
+                                fontWeight: '700',
+                                lineHeight: '20px',
+                                paddingTop: '8px',
+                            }}
+                        >
+                            {"Dr. Amavi Atapattu"}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontSize: '16px',
+                                fontStyle: 'normal',
+                                fontWeight: '300',
+                                lineHeight: '20px',
+                            }}
+                        >
+                            {"MD, Gastroenterology"}
+                        </Typography>
+                    </CardContent>
+                    <CardActions sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mr: 2 }}>
+                    <ThemeProvider theme={theme}>
+                    <Switch
+                    checked={checked3}
+                    onChange={handleChange3}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                    </ThemeProvider>
+                    </CardActions>
+                </Card>
+                    </Box>
+
+
+
+
                     </div>
                     <Stack spacing={2} direction="row">
 
