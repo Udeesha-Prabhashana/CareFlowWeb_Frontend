@@ -1,14 +1,10 @@
-@tailwind components;
-@tailwind utilities;
-
-
-.profilelu{
+.profileLu{
     display: flex;    //home class is sidebar 
 
     .homeContainer2lu{ //homeContainer class is navbar 
 
         flex: 6;     //used to divide both sidebar and navbar 
-        margin-left: 250px;    //used to get the space between sidebar and navbar
+        margin-left: 300px;    //used to get the space between sidebar and navbar
         margin-right: 130px;
     }
 

@@ -1,263 +1,243 @@
-import React from "react";
-import NavbarLu from "../../components/navbarA/NavbarA";
-import "./ProfileLu.scss";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
-import { AiOutlineSearch } from "react-icons/ai";
-import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
-import Button from "@mui/material/Button";
+import React, { useEffect, useState } from "react";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify"; // Toast for better notifications
+import "./ProfileLu.scss";
 
 const ProfileLu: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleProfile = () => {
-    navigate("/profileLu");
+  // State to hold form data and loading/error states
+  const [formData, setFormData] = useState({
+    name: "",
+    emailId: "",
+    mobileNumber: "",
+    photoUrl: "",
+  });
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
+
+  // Fetch user profile data
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const user = localStorage.getItem("user");
+        if (!user) {
+          toast.error("User not authenticated");
+          setError(true);
+          setLoading(false);
+          return;
+        }
+
+        const parsedUser = JSON.parse(user);
+        const token = parsedUser.access_token;
+
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/api/getUserById`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json", // Ensure this is set
+            },
+          }
+        );
+
+        setFormData(response.data); // Populate form with existing data
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching profile details:", err);
+        toast.error("Failed to fetch profile details.");
+        setError(true);
+        setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  // Handle form field changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  return (
-    <div className="profilelu">
-      <SidebarPatient />
-      {/*<NavbarLu />*/}
 
-      <div className="homeContainer2lu">
-        <div className="bodyContainerLu">
-          <div className="mainTopic">Your Profile</div>
-          <div className="subTopic">Edit your Profile Details</div>
-        </div>
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      const user = localStorage.getItem("user");
+      if (!user) {
+        toast.error("User not authenticated");
+        return;
+      }
 
-        <div className="w-full ml-14 mr-14 relative">
-            <img src= "/images/locations/Profile1.png" alt="Cover" className="w-full rounded-lg" />
-            <div className="absolute bottom-0 right-0 mb-4 mr-4">
-                <button
-                className="flex items-center justify-center p-2 border-2 rounded-lg"
-                style={{
-                    borderColor: "#5F2BCF",
-                    borderRadius: "11px",
-                    borderWidth: "1px",
-                    backgroundColor: "#FFFFFF90",
-                    color: "#000000",
-                    fontSize: "10px",
-                }}
-                >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                >
-                    <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 7a1 1 0 011-1h3l2-2h8l2 2h3a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"
-                    />
-                    <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8 21h8M12 17a4 4 0 110-8 4 4 0 010 8z"
-                    />
-                </svg>
-                Change Background
-                </button>
+      const parsedUser = JSON.parse(user);
+      const token = parsedUser.access_token;
+
+      // Send updated data to the server using POST
+      await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/api/updateUserProfile`, // Ensure the endpoint accepts POST requests
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json", // Ensure this is set
+          },
+        }
+      );
+
+      toast.success("Profile updated successfully!");
+      navigate("/profileLu"); // Navigate back to the profile page
+    } catch (err) {
+      console.error("Error updating profile:", err);
+      toast.error("Failed to update profile.");
+    }
+  };
+
+  // Show loading spinner while data is being fetched
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // Show error message if there is an error
+  if (error) {
+    return (
+      <div className="profileLu">
+        <SidebarPatient />
+        <div className="homeContainer2lu">
+          <div className="bodyContainerLu flex justify-between items-center">
+            <div>
+              <div className="mainTopic">Your Profile</div>
+              <div className="subTopic">Unable to load profile data</div>
             </div>
+          </div>
+          <div style={{ padding: "20px", color: "red" }}>
+            An error occurred while fetching your profile data. Please try again
+            later.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="profileLu">
+      <SidebarPatient />
+      <div className="homeContainer2lu">
+        <div className="bodyContainerLu flex justify-between items-center">
+          <div>
+            <div className="mainTopic">Edit Your Profile</div>
+            <div className="subTopic">Update your profile details below</div>
+          </div>
         </div>
 
+        <div className="w-full ml-14 mr-14 relative mt-6">
+          <img
+            src="/images/locations/Profile1.png"
+            alt="Cover"
+            className="w-full rounded-lg"
+          />
+          <div className="absolute bottom-0 right-0 mb-4 mr-4">
+            <button
+              className="flex items-center justify-center p-2 border-2 rounded-lg"
+              style={{
+                borderColor: "#5F2BCF",
+                borderRadius: "11px",
+                borderWidth: "1px",
+                backgroundColor: "#FFFFFF90",
+                color: "#000000",
+                fontSize: "10px",
+              }}
+            >
+              Change Background
+            </button>
+          </div>
+        </div>
 
         <div className="flex items-start -mt-20 ml-24">
           <div className="relative inline-block">
             <img
-              src="/images/locations/Profile2.png" 
-              className="w-40 border-4 border-white rounded-full"
+              src={formData.photoUrl || "/images/defaultProfile.png"}
+              className="w-40 h-40 border-4 border-white rounded-full object-cover"
               alt="Profile"
             />
-            <div className="bg-purple-500/90 rounded-full w-8 h-8 text-center absolute bottom-0 right-0 mb-2 mr-2 flex items-center justify-center">
-              <input
-                type="file"
-                name="profile"
-                id="upload_profile"
-                hidden
-                required
-              />
-              <label htmlFor="upload_profile" className="cursor-pointer">
-                <svg
-                  className="w-5 h-5 text-blue-700"
-                  fill="none"
-                  strokeWidth="1.5"
-                  stroke="#FFFFFF" // Set stroke color to white
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
-                  />
-                </svg>
-              </label>
-            </div>
-          </div>
-          <div className="flex flex-col mt-20 ml-3">
-            <p
-              className="prof-name mt-1"
-              style={{ fontSize: "25px", marginBottom: "0px" }}
-            >
-              Kasun Jayasinghe
-            </p>
-            <p
-              className="prof-email"
-              style={{ fontSize: "15px", color: "#808080", marginTop: "0px" }}
-            >
-              kasunjay@gmail.com
-            </p>
           </div>
         </div>
-        <div className="flex flex-col w-full ml-14 mr-14">
-          <div className="flex mb-4">
-            <div className="flex flex-col flex-grow mr-4">
-              <label htmlFor="fname" className="text-gray-700 mb-2">
-                First Name
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="fname"
-                  type="text"
-                  placeholder="Michael"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col flex-grow">
-              <label htmlFor="lname" className="text-gray-700 mb-2">
-                Last Name
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="lname"
-                  type="text"
-                  placeholder="Smith"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex mb-4">
-            <div className="flex flex-col flex-grow mr-4">
-              <label htmlFor="dob" className="text-gray-700 mb-2">
-                Date of Birth
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="dob"
-                  type="text"
-                  placeholder="YYYY-MM-DD"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col flex-grow">
-              <label htmlFor="pno" className="text-gray-700 mb-2">
-                Phone Number
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="pno"
-                  type="text"
-                  placeholder="123-456-7890"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex mb-4">
-            <div className="flex flex-col flex-grow mr-4">
-              <label htmlFor="height" className="text-gray-700 mb-2">
-                Height
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="height"
-                  type="text"
-                  placeholder="175 cm"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col flex-grow">
-              <label htmlFor="weight" className="text-gray-700 mb-2">
-                Weight
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <input
-                  id="weight"
-                  type="text"
-                  placeholder="60 kg"
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                />
-                <div className="p-2">
-                  <EditNoteOutlinedIcon style={{ color: "#737373" }} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex mb-4">
-            <div className="flex flex-col flex-grow">
-              <label htmlFor="medicines" className="text-gray-700 mb-2">
-                Medicines
-              </label>
-              <div className="flex items-center border border-purple-500/90 rounded-lg">
-                <textarea
-                  id="medicines"
-                  placeholder="Enter your medicines..."
-                  className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-l-lg"
-                  rows={4}
-                />
-              </div>
-            </div>
-          </div>
 
-          <Button className="ml-14"
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            backgroundColor: "#855CDD",
-            color: "white",
-            fontFamily: "Roboto",
-            fontSize: "16px",
-            width: "90px",
-            height: "42px",
-            borderRadius: "9px",
-            "&:hover": {
-              backgroundColor: "#5F2BCF", // Change to your desired hover color
-            },
-          }}
-          onClick={handleProfile}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-full ml-14 mr-14 mt-10"
         >
-          Save
-        </Button>
+          {[
+            { label: "Name", name: "name", placeholder: "Enter your name" },
+            {
+              label: "Email",
+              name: "emailId",
+              placeholder: "Enter your email",
+            },
+            {
+              label: "Phone Number",
+              name: "mobileNumber",
+              placeholder: "Enter your phone number",
+            },
+          ].map((field, index) => (
+            <div key={index} className="flex flex-col mb-4">
+              <label htmlFor={field.name} className="text-gray-700 mb-2">
+                {field.label}
+              </label>
+              <input
+                id={field.name}
+                name={field.name}
+                type="text"
+                value={formData[field.name as keyof typeof formData]}
+                placeholder={field.placeholder}
+                onChange={handleChange}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+            </div>
+          ))}
 
-        </div>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              textTransform: "none",
+              backgroundColor: "#855CDD",
+              color: "white",
+              fontSize: "16px",
+              borderRadius: "9px",
+              "&:hover": {
+                backgroundColor: "#5F2BCF",
+              },
+              marginBottom: "14px",
+            }}
+          >
+            Save
+          </Button>
+
+          <Button
+            variant="outlined"
+            sx={{
+              textTransform: "none",
+              border: "1px solid #5F2BCF",
+              color: "#5F2BCF",
+              fontFamily: "Roboto",
+              fontSize: "14px",
+              borderRadius: "9px",
+              "&:hover": {
+                backgroundColor: "#EFEFEF",
+                borderColor: "#5F2BCF",
+              },
+              marginTop: "14px",
+              marginBottom: "14px",
+            }}
+            onClick={() => navigate("/profileLu")}
+          >
+            Cancel
+          </Button>
+        </form>
       </div>
     </div>
   );
