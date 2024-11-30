@@ -1,30 +1,102 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import "../../channeling/summaryPay/summaryPay.scss";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Grid, Box } from '@mui/material';
 import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 import Button from "@mui/material/Button";
-declare const payhere: any;
+import { toast } from "react-toastify";
 
 const BookingSummaryPay: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    // Extract data from location state
+    const state = location.state as {
+        doctor?: any;
+        selectedDate: string;
+        time: string;
+        availableAppointments: number;
 
-    const handlePayLater = () => {
-        navigate("/appointments");
+        patientName?: string;
+        patientAge?: string;
+        patientSex?: string;
+        patientAddress?: string;
     };
 
-    useEffect(() => {
-        const payHereScript = document.createElement('script');
-        payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
-        payHereScript.async = true;
-        document.body.appendChild(payHereScript);
+    // Destructure state
+    const {
+        doctor,
+        selectedDate,
+        time,
+        availableAppointments,
+        patientName,
+        patientAge,
+        patientSex,
+        patientAddress
+    } = state || {};
 
-        return () => {
-            document.body.removeChild(payHereScript);
-        };
-    }, []);
+    // Handle payment later
+    const handlePayLater = async () => {
+        try {
+            // Retrieve the access_token from localStorage
+            const user = localStorage.getItem('user');
+            let token = null;
 
+            if (user) {
+                    const parsedUser = JSON.parse(user);
+                    token = parsedUser.access_token;
+
+            // Prepare the request body
+            const requestBody = {
+                doctorId: doctor?.id || 0, // Ensure doctor ID is set
+                appointmentDate: selectedDate,
+                slotNumber: availableAppointments, // Example slot number calculation
+                status: 0, // Assuming status is 0 for a pending appointment
+                reasonForVisit: "Routine check-up",
+                payment: 0 // Payment is 0 for 'Pay Later'
+            };
+
+            // Make the API call
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/add_appointment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (response.ok) {
+                // Handle success response
+                toast.success('Appointment has been added successfully.');
+                navigate("/appointments");
+            } else {
+                // Handle error response
+                const errorData = await response.json();
+                alert(`Error: ${errorData.message}`);
+            }
+        } else {
+            toast.error("Field Authentication");
+        }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while adding the appointment.');
+        }
+    };
+
+    // Initialize payment on component mount
+    // useEffect(() => {
+    //     const payHereScript = document.createElement('script');
+    //     // payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
+    //     payHereScript.async = true;
+    //     document.body.appendChild(payHereScript);
+
+    //     return () => {
+    //         document.body.removeChild(payHereScript);
+    //     };
+    // }, []);
+
+    // Start payment process
     const initiatePayment = () => {
         const payment = {
             sandbox: true, // Use false for live payments
@@ -36,51 +108,48 @@ const BookingSummaryPay: React.FC = () => {
             items: 'Doctor Appointment',
             amount: '3000.00',
             currency: 'LKR',
-            first_name: 'Saman',
-            last_name: 'Perera',
-            email: 'samanp@gmail.com',
-            phone: '0771234567',
-            address: 'No.1, Galle Road',
+            first_name: patientName || 'Unknown',
+            last_name: '', // Consider adding last name if available
+            email: '', // Consider adding email if available
+            phone: '', // Consider adding phone number if available
+            address: patientAddress || 'N/A',
             city: 'Colombo',
             country: 'Sri Lanka',
         };
 
         // Trigger the payment
-        payhere.startPayment(payment);
+        (window as any).payhere.startPayment(payment);
     };
+
+    if (!doctor) {
+        return <div>No doctor information available.</div>;
+    }
 
     return (
         <div className="appointments">
             <SidebarPatient />
             <div className="appointmentsContainer">
-                {/*<NavbarLu />*/}
                 <div className="mainContent">
-                    Booking Summary
+                    <h1>Booking Summary</h1>
                     <div className="subContent">
-                        View and Confirm The Booking Details
+                        <p>View and Confirm The Booking Details</p>
                         <Box className="content">
                             <Grid container spacing={2}>
                                 <Grid item xs={3}>
                                     <div className="line">Doctor Name :</div>
                                     <div className="line">Date :</div>
                                     <div className="line">Appointment Number :</div>
-                                    <div className="line">Time :</div>
+                                    <div className="line">Scheduled Time :</div>
                                     <div className="line">Total Amount: </div>
                                     <div className="line">Patient Name :</div>
-                                    <div className="line">Age :</div>
-                                    <div className="line">Sex :</div>
-                                    <div className="line">Address :</div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div className="line"><b>Dr. Amarasiri Perera </b></div>
-                                    <div className="line"><b>2022/04/04</b></div>
-                                    <div className="line"><b>23</b></div>
-                                    <div className="line"><b>06:50</b></div>
-                                    <div className="line"><b>Rs.3000 </b></div>
-                                    <div className="line"><b>Mr. Kasun Jayasinghe</b></div>
-                                    <div className="line"><b>30 Years</b></div>
-                                    <div className="line"><b>Male</b></div>
-                                    <div className="line"><b>No.25, Havelock Rd, Colombo 5</b></div>
+                                    <div className="line"><b>{doctor.name}</b></div>
+                                    <div className="line"><b>{selectedDate}</b></div>
+                                    <div className="line"><b>{availableAppointments}</b></div>
+                                    <div className="line"><b>{time || ""}</b></div> {/* Replace with actual time if available */}
+                                    <div className="line"><b>{doctor.docCharge + 1000}</b></div> {/* Replace with actual amount if different */}
+                                    <div className="line"><b>{patientName}</b></div>
                                 </Grid>
                             </Grid>
                             <Box sx={{ marginTop: '40px', display: 'flex', gap: '16px' }}>
@@ -128,7 +197,6 @@ const BookingSummaryPay: React.FC = () => {
                                 >
                                     Pay Now
                                 </Button>
-
                             </Box>
                         </Box>
                     </div>

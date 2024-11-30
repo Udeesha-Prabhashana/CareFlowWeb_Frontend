@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify"; // Toast for better notifications
-import vector from "../../components/images/patient.jpg";
 
 const ProfileMain: React.FC = () => {
   const navigate = useNavigate();

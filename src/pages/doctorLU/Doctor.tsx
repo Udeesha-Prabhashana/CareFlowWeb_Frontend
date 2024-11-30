@@ -76,7 +76,7 @@ const Doctor: React.FC = () => {
   const [openModel, setOpenModel] = useState(false);
 
   const data = dummyData[id - 1]; // Get the dummy data by id
-  const { dates, options } = useContext(SearchContext);
+  const { date, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
