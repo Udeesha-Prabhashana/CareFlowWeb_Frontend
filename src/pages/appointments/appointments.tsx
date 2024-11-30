@@ -29,6 +29,7 @@ import axios from "axios"; // Import axios for making API requests
 import { toast } from "react-toastify";
 
 interface Appointment {
+    ID?: number;
     title?: string;
     description: string;
     body: string;
@@ -73,6 +74,7 @@ const Appointments: React.FC = () => {
                     const upcoming = data
                         .filter((appointment: any) => appointment.status === 0)
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             title: `No. ${appointment.slotNumber}`,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
@@ -84,6 +86,7 @@ const Appointments: React.FC = () => {
                     const completed = data
                         .filter((appointment: any) => appointment.status === 2)
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
                             date: appointment.appointmentDate,
@@ -93,6 +96,7 @@ const Appointments: React.FC = () => {
                     const missed = data
                         .filter((appointment: any) => appointment.status === 1)
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
                             date: appointment.appointmentDate,
@@ -119,8 +123,11 @@ const Appointments: React.FC = () => {
         }
     };
 
-    const handlePayNow = () => {
-        navigate("/bookingSummaryPay");
+    const handlePayNow = (appointmentId: number, doctorName: string) => {
+        const data = {
+            doctor: doctorName,  // Now passing the correct doctor's name
+        };
+        navigate(`/NowbookingSummaryPay?appointmentId=${appointmentId}`, { state: data });
     };
 
     const handleViewDetails = () => {
@@ -211,23 +218,23 @@ const Appointments: React.FC = () => {
                     <CardActions sx={{ display: "flex", alignItems: "center", justifyContent: "flex-end", mr: 2 }}>
                         {alignment === "upcoming" ? (
                             <Button
-                                variant="outlined"
-                                sx={{
-                                    width: "138px",
-                                    height: "38px",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    borderRadius: "11px",
-                                    border: "1px solid var(--normal-hover, #5F2BCF)",
-                                    whiteSpace: "nowrap",
-                                    color: "#855CDD",
-                                    textTransform: "none",
-                                }}
-                                onClick={card.paid ? handleViewDetails : handlePayNow}
-                                disabled={card.paid}
-                            >
-                                {card.paid ? "Pay Now" : "Pay Now"}
-                            </Button>
+                            variant="outlined"
+                            sx={{
+                                width: "138px",
+                                height: "38px",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                borderRadius: "11px",
+                                border: "1px solid var(--normal-hover, #5F2BCF)",
+                                whiteSpace: "nowrap",
+                                color: "#855CDD",
+                                textTransform: "none",
+                            }}
+                            onClick={() => card.paid ? handleViewDetails() : handlePayNow(card.ID!, card.doctorName!)} // Passing the `appointmentId`
+                            disabled={card.paid}
+                        >
+                            {card.paid ? "Pay Now" : "Pay Now"}
+                        </Button>                        
                         ) : (
                             <Button
                                 variant="outlined"
