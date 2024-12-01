@@ -16,7 +16,7 @@ import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
 
 import New from "./pages/new/New";  // Make sure this path is correct
-import { hotelInputs, roomInputs, userInputs } from "./formSource";  // Import userInputs correctly
+import { hotelInputs, roomInputs, DoctorInputs } from "./formSource";  // Import userInputs correctly
 
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
@@ -180,7 +180,7 @@ function App() {
                 path="new"
                 element={
                   // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                  <New inputs={DoctorInputs as Input[]} title="Add New Doctor" />
                   // </ProtectedRoute>
                 }
                 />
@@ -332,7 +332,7 @@ function App() {
               path="new"
               element={
                 // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New User" />
+                  <New inputs={DoctorInputs as Input[]} title="Add New User" />
                 // </ProtectedRoute>
               }
             />
