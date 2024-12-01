@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../channeling/summaryPay/summaryPay.scss";
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Grid, Box } from '@mui/material';
+import { Grid, Box, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import SidebarPatient from "../../../components/sidebarPatient/sidebarPatient";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
@@ -10,6 +10,15 @@ const BookingSummaryPay: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     
+    // State for the modal
+    const [openModal, setOpenModal] = useState(false);
+    const [paymentDetails, setPaymentDetails] = useState({
+        accountNumber: '',
+        cardHolderName: '',
+        expiryDate: '',
+        cvv: '',
+    });
+
     // Extract data from location state
     const state = location.state as {
         doctor?: any;
@@ -38,46 +47,93 @@ const BookingSummaryPay: React.FC = () => {
     // Handle payment later
     const handlePayLater = async () => {
         try {
-            // Retrieve the access_token from localStorage
             const user = localStorage.getItem('user');
             let token = null;
 
             if (user) {
-                    const parsedUser = JSON.parse(user);
-                    token = parsedUser.access_token;
+                const parsedUser = JSON.parse(user);
+                token = parsedUser.access_token;
 
-            // Prepare the request body
-            const requestBody = {
-                doctorId: doctor?.id || 0, // Ensure doctor ID is set
-                appointmentDate: selectedDate,
-                slotNumber: availableAppointments, // Example slot number calculation
-                status: 0, // Assuming status is 0 for a pending appointment
-                reasonForVisit: "Routine check-up",
-                payment: 0 // Payment is 0 for 'Pay Later'
-            };
+                const requestBody = {
+                    doctorId: doctor?.id || 0,
+                    appointmentDate: selectedDate,
+                    slotNumber: availableAppointments,
+                    status: 0,
+                    reasonForVisit: "Routine check-up",
+                    payment: 0
+                };
 
-            // Make the API call
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/add_appointment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(requestBody)
-            });
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/add_appointment`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(requestBody)
+                });
 
-            if (response.ok) {
-                // Handle success response
-                toast.success('Appointment has been added successfully.');
-                navigate("/appointments");
+                if (response.ok) {
+                    toast.success('Appointment has been added successfully.');
+                    navigate("/appointments");
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message}`);
+                }
             } else {
-                // Handle error response
-                const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
+                toast.error("Field Authentication");
             }
-        } else {
-            toast.error("Field Authentication");
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while adding the appointment.');
         }
+    };
+
+    // Open the payment modal
+    const handlePayNow = () => {
+        setOpenModal(true);
+    };
+
+    // Handle payment submission
+    const handleSubmitPayment = async () => {
+        try {
+            const user = localStorage.getItem('user');
+            let token = null;
+
+            if (user) {
+                const parsedUser = JSON.parse(user);
+                token = parsedUser.access_token;
+
+                const requestBody = {
+                    doctorId: doctor?.id || 0,
+                    appointmentDate: selectedDate,
+                    slotNumber: availableAppointments,
+                    status: 0,
+                    reasonForVisit: "Routine check-up",
+                    payment: 1,
+                    paymentDetails: {
+                        amountPaid: totalAmount
+                    }
+                };
+
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/add_appointment_with_payment`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (response.ok) {
+                    toast.success('Appointment has been added successfully.');
+                    navigate("/appointments");
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message}`);
+                }
+            } else {
+                toast.error("Field Authentication");
+            }
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred while adding the appointment.');
@@ -85,45 +141,22 @@ const BookingSummaryPay: React.FC = () => {
     };
 
     // Initialize payment on component mount
-    // useEffect(() => {
-    //     const payHereScript = document.createElement('script');
-    //     // payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
-    //     payHereScript.async = true;
-    //     document.body.appendChild(payHereScript);
+    useEffect(() => {
+        const payHereScript = document.createElement('script');
+        payHereScript.src = "https://www.payhere.lk/lib/payhere.js";
+        payHereScript.async = true;
+        document.body.appendChild(payHereScript);
 
-    //     return () => {
-    //         document.body.removeChild(payHereScript);
-    //     };
-    // }, []);
-
-    // Start payment process
-    const initiatePayment = () => {
-        const payment = {
-            sandbox: true, // Use false for live payments
-            merchant_id: '1227782',
-            return_url: 'http://localhost:3000/bookingSummaryPay',
-            cancel_url: 'http://localhost:3000/bookingSummaryPay',
-            notify_url: 'http://sample.com/notify',
-            order_id: 'ItemNo12345',
-            items: 'Doctor Appointment',
-            amount: '3000.00',
-            currency: 'LKR',
-            first_name: patientName || 'Unknown',
-            last_name: '', // Consider adding last name if available
-            email: '', // Consider adding email if available
-            phone: '', // Consider adding phone number if available
-            address: patientAddress || 'N/A',
-            city: 'Colombo',
-            country: 'Sri Lanka',
+        return () => {
+            document.body.removeChild(payHereScript);
         };
-
-        // Trigger the payment
-        (window as any).payhere.startPayment(payment);
-    };
+    }, []);
 
     if (!doctor) {
         return <div>No doctor information available.</div>;
     }
+
+    const totalAmount = (doctor.docCharge || 0) + 1000;
 
     return (
         <div className="appointments">
@@ -147,8 +180,8 @@ const BookingSummaryPay: React.FC = () => {
                                     <div className="line"><b>{doctor.name}</b></div>
                                     <div className="line"><b>{selectedDate}</b></div>
                                     <div className="line"><b>{availableAppointments}</b></div>
-                                    <div className="line"><b>{time || ""}</b></div> {/* Replace with actual time if available */}
-                                    <div className="line"><b>{doctor.docCharge + 1000}</b></div> {/* Replace with actual amount if different */}
+                                    <div className="line"><b>{time || ""}</b></div>
+                                    <div className="line"><b>{totalAmount}</b></div>
                                     <div className="line"><b>{patientName}</b></div>
                                 </Grid>
                             </Grid>
@@ -163,7 +196,7 @@ const BookingSummaryPay: React.FC = () => {
                                         alignItems: 'center',
                                         borderRadius: '11px',
                                         border: '1px solid #B0B0B0',
-                                        backgroundColor: '#B0B0B0', // Grey color
+                                        backgroundColor: '#B0B0B0',
                                         color: 'white',
                                         textTransform: 'none',
                                         '&:hover': {
@@ -185,7 +218,7 @@ const BookingSummaryPay: React.FC = () => {
                                         alignItems: 'center',
                                         borderRadius: '11px',
                                         border: '1px solid #855CDD',
-                                        backgroundColor: '#855CDD', // Purple color
+                                        backgroundColor: '#855CDD',
                                         color: 'white',
                                         textTransform: 'none',
                                         '&:hover': {
@@ -193,7 +226,7 @@ const BookingSummaryPay: React.FC = () => {
                                             border: '1px solid #5F2BCF',
                                         }
                                     }}
-                                    onClick={initiatePayment}
+                                    onClick={handlePayNow}
                                 >
                                     Pay Now
                                 </Button>
@@ -202,6 +235,46 @@ const BookingSummaryPay: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Payment Modal */}
+            <Dialog open={openModal} onClose={() => setOpenModal(false)}>
+                <DialogTitle>Enter Payment Details</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        label="Account Number"
+                        fullWidth
+                        value={paymentDetails.accountNumber}
+                        onChange={(e) => setPaymentDetails({ ...paymentDetails, accountNumber: e.target.value })}
+                        sx={{ marginBottom: '16px' }}
+                    />
+                    <TextField
+                        label="Card Holder Name"
+                        fullWidth
+                        value={paymentDetails.cardHolderName}
+                        onChange={(e) => setPaymentDetails({ ...paymentDetails, cardHolderName: e.target.value })}
+                        sx={{ marginBottom: '16px' }}
+                    />
+                    <TextField
+                        label="Expiry Date"
+                        fullWidth
+                        value={paymentDetails.expiryDate}
+                        onChange={(e) => setPaymentDetails({ ...paymentDetails, expiryDate: e.target.value })}
+                        sx={{ marginBottom: '16px' }}
+                    />
+                    <TextField
+                        label="CVV"
+                        fullWidth
+                        value={paymentDetails.cvv}
+                        onChange={(e) => setPaymentDetails({ ...paymentDetails, cvv: e.target.value })}
+                        sx={{ marginBottom: '16px' }}
+                    />
+                    <div>Total Amount: LKR {totalAmount}</div>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpenModal(false)} color="secondary">Cancel</Button>
+                    <Button onClick={handleSubmitPayment} color="primary">Submit Payment</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };
