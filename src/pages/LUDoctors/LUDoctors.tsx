@@ -12,100 +12,92 @@ import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import SearchItemnlu2 from "../../components/searchItemLUNEW2/searchItemLUN2";
 
 interface Doctor {
-  _id: string;
+  id: string;
   name: string;
   address: string;
   city: string;
-  photo: string[];
+  photoUrl: string;
   title: string;
-  desc: string;
+  description: string;
   featured: boolean;
 }
 
 const dummyData: Doctor[] = [
   {
-    _id: "1",
+    id: "1",
     name: "Dr. Ajith Kumara",
     address: "123 Sunshine St, Kottawa",
     city: "Kottawa",
-    photo: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU"],
+    photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MRNQQfqm_G3F-AQ17YCJiTqnd-fCHKrsO_vqDM7KjwPAvM2IOs5ctb7k77wAhW11gmE&usqp=CAU",
     title: "Expert General Practitioner",
-    desc: "Dr. Ajith Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
+    description: "Dr. Ajith Perera has over 20 years of experience in general medicine. He is known for his compassionate care and comprehensive approach to patient health.",
     featured: true,
   },
   {
-    _id: "2",
+    id: "2",
     name: "Dr. Sampath Samarasinghe",
     address: "456 Mountain Rd, Colombo",
     city: "Colombo",
-    photo: [
+    photoUrl: 
       "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
-    ],
     title: "Renowned Cardiologist",
-    desc: "Dr. Sampath Samarasinghe specializes in cardiology with a focus on preventive care and advanced treatments. His expertise and patient-centered approach have earned him high regard.",
+    description: "Dr. Sampath Samarasinghe specializes in cardiology with a focus on preventive care and advanced treatments. His expertise and patient-centered approach have earned him high regard.",
     featured: false,
   },
   {
-    _id: "3",
+    id: "3",
     name: "Dr. Nimal Jayasinghe",
     address: "789 Ocean Ave, Colombo",
     city: "Colombo",
-    photo: [
-      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
-    ],
+    photoUrl:
+      "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",  
     title: "Pediatric Specialist",
-    desc: "Dr. Nimal Jayasinghe is a dedicated pediatrician with a passion for children's health and development. He provides expert care in a friendly and welcoming environment.",
+    description: "Dr. Nimal Jayasinghe is a dedicated pediatrician with a passion for children's health and development. He provides expert care in a friendly and welcoming environment.",
     featured: true,
   },
   {
-    _id: "4",
+    id: "4",
     name: "Dr. Malini Fernando",
     address: "321 Garden St, Kandy",
     city: "Kandy",
-    photo: [
+    photoUrl: 
       "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
-    ],
     title: "Leading Dermatologist",
-    desc: "Dr. Malini Fernando offers comprehensive dermatological care, including treatment for skin conditions and cosmetic procedures. She is known for her precision and patient care.",
+    description: "Dr. Malini Fernando offers comprehensive dermatological care, including treatment for skin conditions and cosmetic procedures. She is known for her precision and patient care.",
     featured: false,
   },
   {
-    _id: "5",
+    id: "5",
     name: "Dr. Sanjay Perera",
     address: "654 City St, Galle",
     city: "Galle",
-    photo: [
+    photoUrl:
       "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
-    ],
     title: "Orthopedic Surgeon",
-    desc: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment.",
+    description: "Dr. Sanjay Perera is an experienced orthopedic surgeon specializing in joint replacements and sports injuries. He is committed to providing personalized and effective treatment.",
     featured: true,
   },
 ];
+
 const LUDoctors: React.FC = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(
     location.state?.destination || ""
   );
-  const [date, setDate] = useState<string>(new Date().toISOString().split("T")[0]); // Initialize with current date
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(
-    location.state?.options || { adult: 1, children: 0, room: 1 }
-  );
-  const [min, setMin] = useState<number | undefined>(undefined);
-  const [max, setMax] = useState<number | undefined>(undefined);
+  const [doctorName, setDoctorName] = useState(location.state?.doctorName || "");
+  const [specialization, setSpecialization] = useState(location.state?.specialization || "");
+  const [date, setDate] = useState<string>(location.state?.date || "");
 
   const { data, loading, error, reFetch } = useFetch<Doctor[]>(
-    `http://127.0.0.1:5000/getAllFilteredDoctors?city=${destination}&min=${
-      min || 0
-    }&max=${max || 999}`
+    `${process.env.REACT_APP_API_BASE_URL}/api/getAllFilteredDoctors?roles=ROLE_DOCTOR&name=${doctorName}&specialization=${specialization}&date=${date}`
   );
 
   useEffect(() => {
     if (location.state?.destination) setDestination(location.state.destination);
   }, [location.state]);
 
-  console.log(" DATA", data);
+  console.log(" DATAqqq", data);
 
   const handleClick = () => {
     reFetch();
@@ -148,7 +140,7 @@ const LUDoctors: React.FC = () => {
                   {/* Add more options as needed */}
                 </select>
               </div>
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <label className="text-gray-700 mb-2">Date</label>
                 <input
                   type="date"
@@ -157,9 +149,9 @@ const LUDoctors: React.FC = () => {
                   onChange={(e) => setDate(e.target.value)}
                   min={new Date().toISOString().split("T")[0]} // Minimum date set to today
                 />
-              </div>
+              </div> */}
               <Button
-            className="ml-14"
+            className="ml-34"
             variant="contained"
             sx={{
               textTransform: "none",
@@ -191,7 +183,7 @@ const LUDoctors: React.FC = () => {
               <p>Loading...</p>
             ) : (
               (data || dummyData)?.map((item) => (
-                <div key={item._id} className="p-4">
+                <div key={item.id} className="p-4">
                   <SearchItemnlu2 item={item} />
                 </div>
               ))
