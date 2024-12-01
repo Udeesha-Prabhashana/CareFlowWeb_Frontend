@@ -105,6 +105,8 @@ import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 import Profile1 from "./pages/profileLu/profile";
+import LaterBookingSummaryPay from "./pages/channeling/laterSummaryPay/latersummaryPay";
+import NowBookingSummaryPay from "./pages/channeling/laterSummaryPay/latersummaryPay";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -397,6 +399,7 @@ function App() {
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
           <Route path="bookingSummaryPay" element={<BookingSummaryPay />} />
+          <Route path="NowbookingSummaryPay" element={<NowBookingSummaryPay />} />
 
 
 

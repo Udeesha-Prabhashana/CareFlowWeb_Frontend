@@ -13,11 +13,6 @@ import { createTheme } from "@mui/material/styles";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Grid from "@mui/material/Grid";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import "@fontsource/roboto/300.css";
@@ -29,6 +24,7 @@ import axios from "axios"; // Import axios for making API requests
 import { toast } from "react-toastify";
 
 interface Appointment {
+    ID?: number;
     title?: string;
     description: string;
     body: string;
@@ -69,34 +65,44 @@ const Appointments: React.FC = () => {
                     });
 
                     const data = response.data;
+                    const today = dayjs();
 
                     const upcoming = data
-                        .filter((appointment: any) => appointment.status === 0)
+                        .filter(
+                            (appointment: any) =>
+                                appointment.status === 0 && dayjs(appointment.appointmentDate).isAfter(today)
+                        )
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             title: `No. ${appointment.slotNumber}`,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
                             date: appointment.appointmentDate,
-                            doctorName: appointment.doctorName, // Assuming you have the doctor's name here
-                            paid: false,
+                            doctorName: appointment.doctorName,
+                            paid: appointment.payment === 1,
                         }));
 
                     const completed = data
-                        .filter((appointment: any) => appointment.status === 2)
+                        .filter((appointment: any) => appointment.status === 1)
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
                             date: appointment.appointmentDate,
-                            doctorName: appointment.doctorName, // Assuming you have the doctor's name here
+                            doctorName: appointment.doctorName,
                         }));
 
                     const missed = data
-                        .filter((appointment: any) => appointment.status === 1)
+                        .filter(
+                            (appointment: any) =>
+                                appointment.status === 0 && dayjs(appointment.appointmentDate).isBefore(today)
+                        )
                         .map((appointment: any) => ({
+                            ID: appointment.id,
                             description: `${appointment.doctorName}`,
                             body: appointment.reasonForVisit,
                             date: appointment.appointmentDate,
-                            doctorName: appointment.doctorName, // Assuming you have the doctor's name here
+                            doctorName: appointment.doctorName,
                         }));
 
                     setUpcomingAppointments(upcoming);
@@ -119,8 +125,11 @@ const Appointments: React.FC = () => {
         }
     };
 
-    const handlePayNow = () => {
-        navigate("/bookingSummaryPay");
+    const handlePayNow = (appointmentId: number, doctorName: string) => {
+        const data = {
+            doctor: doctorName,
+        };
+        navigate(`/NowbookingSummaryPay?appointmentId=${appointmentId}`, { state: data });
     };
 
     const handleViewDetails = () => {
@@ -144,7 +153,6 @@ const Appointments: React.FC = () => {
                 break;
         }
 
-        // Apply the doctor name filter
         if (doctorNameFilter) {
             cards = cards.filter(card =>
                 card.doctorName?.toLowerCase().includes(doctorNameFilter.toLowerCase())
@@ -223,10 +231,10 @@ const Appointments: React.FC = () => {
                                     color: "#855CDD",
                                     textTransform: "none",
                                 }}
-                                onClick={card.paid ? handleViewDetails : handlePayNow}
+                                onClick={() => card.paid ? handleViewDetails() : handlePayNow(card.ID!, card.doctorName!)}
                                 disabled={card.paid}
                             >
-                                {card.paid ? "Pay Now" : "Pay Now"}
+                                {card.paid ? "Paid" : "Pay Now"}
                             </Button>
                         ) : (
                             <Button
@@ -312,8 +320,8 @@ const Appointments: React.FC = () => {
                                 </Box>
                             </Grid>
                         </Grid>
+                        <Box>{getCards()}</Box>
                     </ThemeProvider>
-                    {getCards()}
                 </div>
             </div>
         </div>
