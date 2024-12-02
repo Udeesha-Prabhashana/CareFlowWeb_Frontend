@@ -139,15 +139,16 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
           params.row.receptionist_id ||
           params.row.id; // Use doctor_id, nurse_id, or id as the unique identifier
   
-        if (path2 === "Appointments") {
-          return (
-            <div className="cellActionadm">
-              {/* <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}> */}
+          if (path2 === "Appointments" || path2 === "Patients") {
+            return (
+              <div className="cellActionadm">
+                {/* <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}> */}
                 <div className="viewButtonadm">View</div>
-              {/* </Link> */}
-            </div>
-          );
-        }
+                {/* </Link> */}
+              </div>
+            );
+          }
+          
   
         return (
           <div className="cellActionadm">
@@ -177,7 +178,7 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
       <div className="datatableTitleadm">
         {path2}
               <div className="datatableTitleadm">
-        {path2 !== "Appointments" && (
+        {(path2 !== "Appointments" && path2 !== "Patients") && (
           <Link to={`/${path1}/${path2}/new`} className="link">
             Add New
           </Link>
