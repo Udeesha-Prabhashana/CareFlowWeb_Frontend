@@ -4,10 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="">
+    <list default="true" id="0295da63-e4bb-4ec1-b450-47558c8b68c4" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/default.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/actors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Receptionist/RSummaryPay/RSummaryPay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Receptionist/RSummaryPay/RSummaryPay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/datatable/Datatable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datatable/Datatable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LUBookingsDoctors/LUBookingsDoctors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LUBookingsDoctors/LUBookingsDoctors.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/appointments/appointments.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/appointments/appointments.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/channeling/summaryPay/summaryPay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/channeling/summaryPay/summaryPay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/list/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list/List.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/new/New.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/new/New.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profileLu/ProfileLu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileLu/ProfileLu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profileLu/ProfileLu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileLu/ProfileLu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profileMain/profileMain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileMain/profileMain.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="liviru-dev" />
+        <entry key="$PROJECT_DIR$" value="liviru_new" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,26 +53,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;liviru__new&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CareFlow_Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "liv",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/CareFlow_Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "ts.external.directory.path": "D:\\CareFlowWeb_Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\CareFlowWeb_Frontend\src\components\images" />
@@ -115,6 +132,10 @@
       <workItem from="1722345502114" duration="1843000" />
       <workItem from="1722381102983" duration="8464000" />
       <workItem from="1722394835659" duration="5500000" />
+      <workItem from="1732751467005" duration="528000" />
+      <workItem from="1733030623893" duration="48000" />
+      <workItem from="1733039009564" duration="11000" />
+      <workItem from="1733039689640" duration="597000" />
     </task>
     <servers />
   </component>
@@ -139,5 +160,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

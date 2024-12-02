@@ -29,7 +29,7 @@ const LUBookingDoctors: React.FC = () => {
   const { dispatch } = useContext(SearchContext);
 
   const { data, loading, error, reFetch } = useFetch<Doctor[]>(
-    `http://localhost:8080/api/getAllFilteredDoctors?roles=ROLE_DOCTOR&name=${doctorName}&specialization=${specialization}&date=${date}`
+    `${process.env.REACT_APP_API_BASE_URL}/api/getAllFilteredDoctors?roles=ROLE_DOCTOR&name=${doctorName}&specialization=${specialization}&date=${date}`
   );
 
   // useEffect(() => {

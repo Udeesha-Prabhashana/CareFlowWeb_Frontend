@@ -468,6 +468,8 @@ function App() {
           <Route path="receptionist/profile-edit" element={<RProfile/>}/>
           <Route path="receptionist/profile" element={<RProfileMain/>}/>
           <Route path="landingpage" element={<Landing/>}/>
+
+
         </Routes>
 
  
