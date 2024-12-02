@@ -90,11 +90,11 @@ export const roomColumns = [
 ];
 
 export const doctorColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "registrationNumber", headerName: "Registration ID", width: 120 },
   {
     field: "name",
     headerName: "Name",
-    width: 100,
+    width: 150,
   },
   {
     field: "specialization",
@@ -111,11 +111,11 @@ export const doctorColumns = [
     headerName: "Email",
     width: 200,
   },
-  {
-    field: "address",
-    headerName: "Address",
-    width: 200,
-  },
+  // {
+  //   field: "address",
+  //   headerName: "Address",
+  //   width: 150,
+  // },
 ];
 
 // Columns for nurses
@@ -131,23 +131,59 @@ export const nurseColumns = [
 
 // Columns for appointments
 export const appointmentColumns = [
-  { field: "appointment_id", headerName: "ID", width: 70 },
-  { field: "patient_name", headerName: "Patient Name", width: 200 },
-  { field: "doctor_name", headerName: "Doctor Name", width: 200 },
-  { field: "date", headerName: "Date", width: 150 },
-  { field: "time", headerName: "Time", width: 150 },
-  { field: "status", headerName: "Status", width: 100 },
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "patientName", headerName: "Patient Name", width: 150 },
+  { field: "doctorName", headerName: "Doctor Name", width: 150 },
+  { field: "appointmentDate", headerName: "Date", width: 120 },
+  { 
+    field: "payment", 
+    headerName: "Payment", 
+    width: 120,
+    renderCell: (params) => (
+      <div 
+        style={{
+          width: "60px", 
+          padding: "5px 10px",
+          borderRadius: "5px",
+          color: "white",
+          backgroundColor: params.value === 1 ? "#006400" : "#8B0000",
+          textAlign: "center",
+        }}
+      >
+        {params.value === 1 ? "Paid" : "Unpaid"}
+      </div>
+    ),
+  },
+  { 
+    field: "status", 
+    headerName: "Status", 
+    width: 150,
+    renderCell: (params) => (
+      <div 
+        style={{
+          width: "80px", 
+          padding: "5px 10px",
+          borderRadius: "5px",
+          color: "white",
+          backgroundColor: params.value === 1 ? "#9D7CE5" : "gray",
+          textAlign: "center",
+        }}
+      >
+        {params.value === 1 ? "Completed" : "Pending"}
+      </div>
+    ),
+  },
 ];
 
+
 export const patientColumns = [
-  { field: "patient_id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 150 },
-  { field: "age", headerName: "Age", width: 70 },
-  { field: "gender", headerName: "Gender", width: 100 },
-  { field: "email", headerName: "Email", width: 150 },
-  { field: "phone", headerName: "Phone", width: 100 },
+  // { field: "age", headerName: "Age", width: 70 },
+  // { field: "gender", headerName: "Gender", width: 100 },
+  { field: "emailId", headerName: "Email", width: 200 },
+  { field: "mobileNumber", headerName: "Phone", width: 150 },
   { field: "address", headerName: "Address", width: 130 },
-  { field: "city", headerName: "City", width: 100 },
   // { field: "country", headerName: "Country", width: 100 },
 ];
 

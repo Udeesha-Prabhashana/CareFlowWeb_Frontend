@@ -5,16 +5,10 @@ export interface Input {
   placeholder?: string; // Making placeholder optional
 }
 
-export const userInputs: Input[] = [
+export const DoctorInputs: Input[] = [
   {
     id: "name",
     label: "Full Name",
-    type: "text",
-    placeholder: "john_doe",
-  },
-  {
-    id: "userName",
-    label: "Username",
     type: "text",
     placeholder: "john_doe",
   },
@@ -37,10 +31,28 @@ export const userInputs: Input[] = [
     placeholder: "Cardiology",
   },
   {
-    id: "userAddress",
+    id: "address",
     label: "Address",
     type: "text",
-    placeholder: "Amar streat, colombo 7.",
+    placeholder: "Amar Street, Colombo 7.",
+  },
+  {
+    id: "BookingCharge",
+    label: "Booking Charge",
+    type: "number",
+    placeholder: "2000",
+  },
+  {
+    id: "registrationNumber",
+    label: "Registration Number",
+    type: "text",
+    placeholder: "AW2323242",
+  },
+  {
+    id: "description",
+    label: "Description",
+    type: "text",
+    placeholder: "Enter description",
   },
 ];
 

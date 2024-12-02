@@ -1,12 +1,10 @@
 import React, { useState, useContext, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { DateRange, RangeKeyDict } from "react-date-range";
-import { format } from "date-fns";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { mdiDoctor } from "@mdi/js";
-import { mdiAccountCheckOutline } from "@mdi/js";
-import Icon from "@mdi/react";
+import { format } from "date-fns";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; // Import the CSS for the date picker
 
 import Chart from "../../components/chart/Chat";
 import Featured from "../../components/featuredA/FeaturedA";
@@ -19,22 +17,11 @@ import { AuthContext } from "../../context/AuthContext";
 import "./channeling.scss";
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 
-interface DateRangeType {
-    startDate: Date;
-    endDate: Date;
-    key: string;
-}
-
 const Channeling: React.FC = () => {
-    const [openDate, setOpenDate] = useState(false);
-    const [destination, setDestination] = useState<string>("");
-    const [dates, setDates] = useState<DateRangeType[]>([
-        {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: "selection",
-        },
-    ]);
+    const [doctorName, setDoctorName] = useState<string>("");
+    const [specialization, setSpecialization] = useState<string>("");
+    const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Use a single date
+
     const [openOption, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         adult: 1,
@@ -58,17 +45,17 @@ const Channeling: React.FC = () => {
     const handleSearch = () => {
         dispatch({
             type: "NEW_SEARCH",
-            payload: { city: destination, dates, options },
+            payload: { doctor: doctorName, specialization, date: selectedDate, options },
         });
-        navigate("/doclist", { state: { destination, dates, options } });
+        navigate("/doclist", { state: { doctorName, specialization, date: selectedDate, options } });
     };
-    const handleaskCura = () => {
 
+    const handleaskCura = () => {
         navigate("/chatbot");
     };
 
     const handleSpecializationChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        setDestination(e.target.value);
+        setSpecialization(e.target.value);
     };
 
     const dummyDoctors = [
@@ -83,7 +70,7 @@ const Channeling: React.FC = () => {
 
     const handleDoctorNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value;
-        setDestination(query);
+        setDoctorName(query);
         if (query) {
             setFilteredDoctors(
                 dummyDoctors.filter((doctor) =>
@@ -109,13 +96,12 @@ const Channeling: React.FC = () => {
                 <div className="headerSerch2">
                     <div className="lableschan">Doctor Name</div>
                     <div className="headerSearchItem2">
-                        {/* <Icon path={mdiDoctor} size={1} className="headerIcon2" /> */}
                         <input
                             type="text"
                             placeholder="Search Doctor Name"
                             className="headerSearchInput2"
                             onChange={handleDoctorNameChange}
-                            value={destination}
+                            value={doctorName}
                             list="doctorOptions"
                         />
                         <datalist id="doctorOptions">
@@ -126,42 +112,27 @@ const Channeling: React.FC = () => {
                     </div>
                     <div className="lableschan">Specialty</div>
                     <div className="headerSearchItem2">
-                        {/* <Icon path={mdiAccountCheckOutline} size={1} className="headerIcon2" /> */}
                         <select
                             className="headerSearchInput2"
                             onChange={handleSpecializationChange}
                         >
                             <option className="place">Select Specialization</option>
-                            <option value="Specialization 1">Specialization 1</option>
-                            <option value="Specialization 2">Specialization 2</option>
-                            <option value="Specialization 3">Specialization 3</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Oncologist">Oncologist</option>
                             {/* Add more options as needed */}
                         </select>
                     </div>
                     <div className="lableschan">Date</div>
                     <div className="headerSearchItem2">
-                        {/* <FontAwesomeIcon icon={faCalendarDays} className="headerIcon2" /> */}
-                        <span
-                            onClick={() => setOpenDate(!openDate)}
-                            className="headerSearchtext2chan"
-                        >
-              {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                  dates[0].endDate,
-                  "MM/dd/yyyy"
-              )}`}
-            </span>
-                        {openDate && (
-                            <DateRange
-                                editableDateInputs={true}
-                                onChange={(item: RangeKeyDict) =>
-                                    setDates([item.selection as DateRangeType])
-                                }
-                                moveRangeOnFirstSelection={false}
-                                ranges={dates}
-                                className="date2"
-                                minDate={new Date()}
-                            />
-                        )}
+                        <DatePicker
+                        placeholderText="Select the date"
+                            selected={selectedDate}
+                            onChange={(date: Date | null) => setSelectedDate(date ?? undefined)}
+                            dateFormat="MM/dd/yyyy"
+                            className="headerSearchInput2"
+                            // minDate={new Date()}
+                        />
                     </div>
                     <div className="headerSearchItem2Button">
                         <button className="headerBtn2chan" onClick={handleSearch}>
