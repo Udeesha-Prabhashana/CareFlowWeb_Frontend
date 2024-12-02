@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./revenueRecordsAdmin.scss";
 import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
-import { Grid, Box } from '@mui/material';
+import { Grid, Box, Button } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -13,9 +13,17 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import axios from 'axios';
-
-// Import the correct types from chart.js
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas'; // To capture content as an image
+import 'jspdf-autotable';
 import { ChartData } from 'chart.js';
+
+// Extend jsPDF with autoTable
+declare module 'jspdf' {
+    interface jsPDF {
+        autoTable: (options: any) => jsPDF;
+    }
+}
 
 // Define the type for lineChartData
 type LineChartData = ChartData<'line', (number | null)[], unknown>;
@@ -111,6 +119,39 @@ const RevenueRecordsAdmin: React.FC = () => {
         fetchRevenueData();
     }, []);
 
+    // Generate the report (PDF)
+    const generateReport = async () => {
+        console.log("Generate report clicked");
+        const doc = new jsPDF();
+
+        // Capture the charts and table content as images
+        const content = document.getElementById('reportContent');
+        
+        if (content) {
+            await html2canvas(content).then((canvas) => {
+                console.log("Canvas generated", canvas); // Debugging line
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Add image to PDF
+                doc.addImage(imgData, 'PNG', 10, 10, 180, 160); // Adjust the dimensions as needed
+                
+                // Add title to the PDF
+                doc.setFontSize(18);
+                doc.text('Revenue Records Report', 10, 180);
+                
+                // Add the table below the chart image
+                doc.autoTable({
+                    startY: 200,
+                    head: [['Month', 'Number of Patients', 'Revenue (LKR)']],
+                    body: revenueData.map((row) => [row.date, row.number, row.revenue]),
+                });
+                
+                // Save the generated PDF
+                doc.save('revenue_report.pdf');
+            });
+        }
+    };
+
     return (
         <div className="sideAdmRR">
             <SidebarAdmin />
@@ -119,48 +160,67 @@ const RevenueRecordsAdmin: React.FC = () => {
                     Revenue Records
                     <div className="subContentAdmRR">View Details of your Revenues</div>
                     <br /><br />
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} md={6}>
-                            <div className="chartContainerAdmRR">
-                                <Line data={lineChartData} />
-                            </div>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={generateReport}
+                        size="small"  // Make the button smaller
+                        sx={{ 
+                            display: 'flex', 
+                            marginLeft: '850px',  // Align to the right
+                            justifyContent: 'flex-start',  // Align to the right
+                            width: '160px',  // Set width to auto to reduce the background color width
+                            paddingLeft: 2, // Optional: Adjust padding if needed
+                            paddingRight: 2, // Optional: Adjust padding if needed
+                        }}
+                        >
+                        Generate Report
+                        </Button>
+
+                    <div id="reportContent">
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} md={6}>
+                                <div className="chartContainerAdmRR">
+                                    <Line data={lineChartData} />
+                                </div>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                                <div className="chartContainerAdmRR">
+                                    <Bar data={barChartData} />
+                                </div>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} md={6}>
-                            <div className="chartContainerAdmRR">
-                                <Bar data={barChartData} />
-                            </div>
-                        </Grid>
-                    </Grid>
-                    <Box my={6}>
-                        <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align="center">Month</TableCell>
-                                        <TableCell align="center">Number of Patients</TableCell>
-                                        <TableCell align="center">Revenue (LKR)</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {revenueData.map((row: any, index: number) => (
-                                        <TableRow
-                                            key={index}
-                                            sx={{
-                                                '&:last-child td, &:last-child th': { border: 0 },
-                                                backgroundColor: index % 2 === 0 ? '#EEE7FF' : 'inherit',
-                                                boxShadow: index % 2 === 0 ? '0 4px 8px rgba(133, 92, 221, 0.3)' : 'none',
-                                                height: '60px',
-                                            }}
-                                        >
-                                            <TableCell align="center">{row.date}</TableCell>
-                                            <TableCell align="center">{row.number}</TableCell>
-                                            <TableCell align="center">{row.revenue}</TableCell>
+                        <Box my={6}>
+                            <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="center">Month</TableCell>
+                                            <TableCell align="center">Number of Patients</TableCell>
+                                            <TableCell align="center">Revenue (LKR)</TableCell>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Box>
+                                    </TableHead>
+                                    <TableBody>
+                                        {revenueData.map((row: any, index: number) => (
+                                            <TableRow
+                                                key={index}
+                                                sx={{
+                                                    '&:last-child td, &:last-child th': { border: 0 },
+                                                    backgroundColor: index % 2 === 0 ? '#EEE7FF' : 'inherit',
+                                                    boxShadow: index % 2 === 0 ? '0 4px 8px rgba(133, 92, 221, 0.3)' : 'none',
+                                                    height: '60px',
+                                                }}
+                                            >
+                                                <TableCell align="center">{row.date}</TableCell>
+                                                <TableCell align="center">{row.number}</TableCell>
+                                                <TableCell align="center">{row.revenue}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Box>
+                    </div>
                 </div>
             </div>
         </div>
