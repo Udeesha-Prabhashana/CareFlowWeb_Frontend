@@ -177,14 +177,13 @@ export const appointmentColumns = [
 
 
 export const patientColumns = [
-  { field: "patient_id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 150 },
-  { field: "age", headerName: "Age", width: 70 },
-  { field: "gender", headerName: "Gender", width: 100 },
-  { field: "email", headerName: "Email", width: 150 },
-  { field: "phone", headerName: "Phone", width: 100 },
+  // { field: "age", headerName: "Age", width: 70 },
+  // { field: "gender", headerName: "Gender", width: 100 },
+  { field: "emailId", headerName: "Email", width: 200 },
+  { field: "mobileNumber", headerName: "Phone", width: 150 },
   { field: "address", headerName: "Address", width: 130 },
-  { field: "city", headerName: "City", width: 100 },
   // { field: "country", headerName: "Country", width: 100 },
 ];
 
