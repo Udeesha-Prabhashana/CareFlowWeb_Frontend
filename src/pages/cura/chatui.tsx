@@ -1,32 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SidebarPatient from '../../components/sidebarPatient/sidebarPatient';
 import { Avatar, List, ListItem, ListItemText, TextField, IconButton } from '@mui/material';
 import './chatui.scss';
 import SendIcon from '@mui/icons-material/Send';
 import patient from "../../components/images/patient.jpg";
 import bot from "../../components/images/bot.png";
+import axios from 'axios';
 
-const messages = [
-    { type: 'user', text: 'I have been experiencing back pain for 7 days. Can you recommend a doctor?' },
-    { type: 'bot', text: 'It sounds like you should consult with a Neurologist. Would you like to know more about the available doctors?' },
-    { type: 'user', text: 'Yes, please tell me more about them.' },
-    {
-        type: 'bot',
-        text: 'Here are two highly recommended Neurologists in CareFlow:',
-        options: [
-            'Dr. Janaka Wedarachchi: Over 10 years of experience, specialized in spinal disorders.',
-            'Prof. Namal Jayasinghe: 15 years of experience, known for high patient satisfaction in back pain treatments.'
-        ]
-    },
-    { type: 'user', text: 'Can you give me more details about Prof. Namal Jayasinghe?' },
-    { type: 'bot', text: 'Prof. Namal Jayasinghe has been practicing Neurology for 15 years. He has a reputation for excellent patient care and specializes in treating various neurological conditions.' },
-    { type: 'user', text: 'What about Dr. Janaka Wedarachchi?' },
-    { type: 'bot', text: 'Dr. Janaka Wedarachchi has over 10 years of experience and focuses on spinal disorders. Patients appreciate his thorough approach and dedication to their well-being.' },
-    { type: 'user', text: 'Thank you for the information!' },
-    { type: 'bot', text: 'You are welcome! If you have any other questions or need further assistance, feel free to ask.' }
-];
+interface Message {
+    type: 'user' | 'bot';
+    text: string;
+    options?: string[];
+}
 
 const ChatUI: React.FC = () => {
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [input, setInput] = useState<string>("");
+
+    const sendMessage = async () => {
+        if (!input.trim()) return;
+
+        // Append user message to the chat
+        const userMessage: Message = { type: 'user', text: input };
+        setMessages((prevMessages) => [...prevMessages, userMessage]);
+
+        try {
+            // Send user message to the backend
+            const response = await axios.post('http://localhost:5000/ask', { question: input });
+            const botMessage: Message = { type: 'bot', text: response.data.answer };
+
+            // Append bot response to the chat
+            setMessages((prevMessages) => [...prevMessages, botMessage]);
+        } catch (error) {
+            console.error("Error communicating with the backend:", error);
+            const errorMessage: Message = { type: 'bot', text: 'Sorry, there was an error. Please try again later.' };
+            setMessages((prevMessages) => [...prevMessages, errorMessage]);
+        } finally {
+            // Clear input field
+            setInput("");
+        }
+    };
+
     return (
         <div className="homecura">
             <SidebarPatient />
@@ -61,10 +75,14 @@ const ChatUI: React.FC = () => {
                         fullWidth
                         placeholder="Enter a prompt here"
                         className="input-field"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                     />
                     <IconButton
                         color="primary"
                         aria-label="send"
+                        onClick={sendMessage}
                         sx={{
                             color: '#855CDD', // Send icon color
                             '&:hover': {
@@ -74,7 +92,6 @@ const ChatUI: React.FC = () => {
                     >
                         <SendIcon />
                     </IconButton>
-
                 </div>
             </div>
         </div>
