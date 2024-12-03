@@ -1,34 +1,107 @@
-.homeA{
-    display: flex;    //home class is sidebar 
-
-    .homeContainerA{ //homeContainer class is navbar 
-
-        flex: 6;     //used to divide both sidebar and navbar 
-        margin-left: 320px;
-    }
-
-    .widgetsA , .chartsA{
-        display: flex;    //use to get horizontal given datas
+.homeA {
+    display: flex; // Sidebar and main content side-by-side
+    
+    .homeContainerA {
+      flex: 6;
+      margin-left: 320px; // Adjust for sidebar width
+      padding: 20px;
+  
+      .welcomeContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; // Align at the top
         padding: 20px;
-        gap: 40px;   //get the space
-        margin-top: 60px;
-            z-index: 1; //used to get the top of the page
-    }
-
-    .chartsA{
-        padding: 5px 20px;        
-    }
-
-    .listContainerA{
-        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);    //use to get some box to write some contient in side the box
-        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-        padding: 20px;
-        margin: 20px;
-
-        .listTitleA{
-            font-weight: 500;
-            color: gray;
+        background-color: #ffffff; // Light background
+        border-radius: 10px;
+        position: relative; // Added for positioning the centered content
+  
+        .welcomeText {
+          flex: 1;
+          padding-right: 20px;
+  
+          h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+  
+            .adminName {
+              color: #855CDD; // Highlight color for Admin
+            }
+          }
+  
+          p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
             margin-bottom: 15px;
+          }
+  
+          .welcomeButton {
+            background: linear-gradient(to right, #905EFF, #CAB3FD); // Button background color
+            color: #ffffff;
+            padding: 2% 5% 8% 3%;
+            font-size: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            margin-top: 80px;
+          }
+  
+          .description {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 30px;
+            font-size: 20px;
+            width: 60%; // Space between description and contact info
+          }
+  
+          .contactInfo {
+            margin-top: 20px;
+            position: absolute;
+            bottom: 20px; // Align to the bottom of the container
+  
+            p {
+              margin: 5px 0;
+  
+              &:first-child {
+                margin-bottom: 10px;
+              }
+  
+              .contactText {
+                margin-left: 10px; // Add space between icon and text
+              }
+            }
+          }
+  
+          // New container for centering the welcome section
+          .centeredContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%; // Take up full height of the welcomeText
+            position: absolute; // Position this content in the middle
+            top: 50%;
+            transform: translateY(-50%); // Vertically center the content
+  
+            .welcomeButton {
+              margin-top: 20px; // Space between description and button
+            }
+          }
         }
+  
+        .welcomeImage {
+          flex: 1;
+          text-align: center;
+  
+          img {
+            max-width: 100%; // Responsive image
+            height: auto;
+            border-radius: 10px; // Optional rounded edges
+          }
+        }
+      }
     }
-}
+  }
+  

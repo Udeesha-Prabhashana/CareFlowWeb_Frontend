@@ -1,36 +1,50 @@
 import React from "react";
-import Chart from "../../components/chart/Chat";
-import Featured from "../../components/featuredA/FeaturedA";
-import NavbarAd from "../../components/navbarAdm/NavbarAdm";
-import SidebarAdm from "../../components/sidebarAdm/SidebarAdm";
-import Widget from "../../components/widget/Widget";
-import List from "../../components/table/Table";
 import "./home.scss";
 import SidebarAdmin from "../../components/sidebarAdmin/sidebarAdmin";
 
-const Home: React.FC = () => {
-    return (
-        <div className="homeA">
-            <SidebarAdmin/>
-            {/* <NavbarAd /> */}
-            <div className="homeContainerA">
-                <div className="widgetsA">
-                    <Widget type="user"/>
-                    <Widget type="order"/>
-                    <Widget type="earning"/>
-                    <Widget type="balance"/>
-                </div>
-                <div className="chartsA">
-                    <Featured />
-                    <Chart title="Last 6 Month (Revenue)" aspect={2/1} />
-                </div>
-                <div className="listContainerA">
-                    <div className="listTitleA">Latest Appointment</div>
-                    <List />
-                </div>
-            </div>
-        </div>
-    )
-}
+// Import images
+import phoneIcon from "../../components/images/phone.png";
+import locationIcon from "../../components/images/location.png";
+import doctorImage from "../../components/images/doctorhalf.png";
 
-export default Home;
+const Home: React.FC = () => {
+  return (
+    <div className="homeA">
+      <SidebarAdmin />
+      <div className="homeContainerA">
+        <div className="welcomeContainer">
+          <div className="welcomeText">
+            <h1>
+              Good Morning, <span className="adminName">Admin!</span>
+            </h1>
+            <p>Welcome to your Dashboard</p>
+            <button className="welcomeButton">Welcome To CareFlow!</button>
+            <p className="description">
+              “We provide exceptional healthcare services through CareFlow, our
+              dedicated app that streamlines patient record management and ensures
+              doctors have seamless access to medical histories for better care and
+              communication.”
+            </p>
+            <div className="contactInfo">
+              <p>
+                <img src={phoneIcon} alt="Phone Icon" className="icon" />
+                <span className="contactText">+94 71 0 225 225</span>
+              </p>
+              <p>
+                <img src={locationIcon} alt="Location Icon" className="icon" />
+                <span className="contactText">
+                  CareFlow PLC, No: 108, W A D Ramanayake Mawatha, Colombo 2, Sri Lanka.
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="welcomeImage">
+            <img src={doctorImage} alt="Doctor with stethoscope" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
