@@ -152,9 +152,9 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
   
         return (
           <div className="cellActionadm">
-            <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}>
+            {/* <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}> */}
               <div className="viewButtonadm">View</div>
-            </Link>
+            {/* </Link> */}
             <div
               className="deleteButtonadm"
               onClick={(e) => {
@@ -178,11 +178,17 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
       <div className="datatableTitleadm">
         {path2}
               <div className="datatableTitleadm">
-        {(path2 !== "Appointments" && path2 !== "Patients") && (
-          <Link to={`/${path1}/${path2}/new`} className="link">
-            Add New
-          </Link>
-        )}
+              {(path2 !== "Appointments" && path2 !== "Patients") && (
+              <>
+                {path2 === "Nurses" ? (
+                  <div className="link">Add New</div>
+                ) : (
+                  <Link to={`/${path1}/${path2}/new`} className="link">
+                    Add New
+                  </Link>
+                )}
+              </>
+            )}
       </div>
       </div>
       <DataGrid
