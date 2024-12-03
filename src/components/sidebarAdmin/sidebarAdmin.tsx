@@ -75,11 +75,11 @@ const SidebarAdmin: React.FC = () => {
             </div>
             <div className="bottomContainerAdm">
                 <ul>
-                    <li className={activeLink === "/adminhome/notification" ? "activeAdm" : ""} onClick={() => handleLinkClick("/adminhome/notification")}>
+                    {/* <li className={activeLink === "/adminhome/notification" ? "activeAdm" : ""} onClick={() => handleLinkClick("/adminhome/notification")}>
                         <NotificationsNoneIcon className="iconAdm" />
                         <span>Notifications</span>
                         <span className="notificationBadge">2</span>
-                    </li>
+                    </li> */}
                     <li className={activeLink === "/adminhome/settings" ? "activeAdm" : ""} onClick={() => handleLinkClick("/adminhome/settings")}>
                         <SettingsApplicationsIcon className="iconAdm" />
                         <span>Settings</span>
