@@ -1,71 +1,110 @@
-@tailwind components;
-@tailwind utilities;
+.homelu {
+    display: flex;
 
-
-.homelu{
-    display: flex;    //home class is sidebar 
-
-    .homeContainer2lu{ //homeContainer class is navbar 
-
-        flex: 6;     //used to divide both sidebar and navbar 
-        margin-left: 300px;    //used to get the space between sidebar and navbar
+    .homeContainer2lu {
+        flex: 6;
+        margin-left: 300px;
     }
 
-    .widgetslu , .chartslu{
-        display: flex;    //use to get horizontal given datas
-        padding: 20px;
-        gap: 20px;   //get the space
-        margin-top: 10px;
-        z-index: 1;    //used to get the top of the page
+    .widgetslu {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch; /* Ensures all children take equal height */
+        padding: 15px 60px; /* Adjusted padding to decrease height */
+        gap: 0px;
+        height: 200px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(to right, #855CDD, #D6C4FE);
+        color: white;
+        margin-top: 20px; /* Adds space between the sub-topic and the widget */
+
+        .textContainer {
+            flex: 1; /* Take up available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h2 {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+            }
+
+            p {
+                font-size: 16px;
+                color: white;
+            }
+        }
+
+        .imageContainer {
+            flex: 0 0 auto; /* Prevent shrinking or growing */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                height: 100%; /* Make image stretch to the full height of the widget */
+                width: auto; /* Maintain aspect ratio */
+                border-radius: 12px; /* Optional for rounded corners */
+                object-fit: cover; /* Ensure the image fully covers the area without distortion */
+            }
+        }
     }
 
-    .chartslu{
-        padding: 5px 20px;        
+    .chartslu {
+        padding: 5px 20px;
     }
 
-    .listContainerlu{
-        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);    //use to get some box to write some contient in side the box
+    .listContainerlu {
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
         margin: 20px;
 
-        .listTitlelu{
+        .listTitlelu {
             font-weight: 500;
             color: gray;
             margin-bottom: 15px;
         }
     }
 
-    .bodyContainerLu{
+    .bodyContainerLu {
         margin: 40px;
         margin-top: 100px;
     }
 
-    .mainTopic{
+    .mainTopic {
         margin-left: 20px;
         font-weight: 500;
         font-size: 25px;
     }
 
-    .subTopic{
+    .subTopic {
         margin-left: 20px;
         font-size: 18px;
         font-weight: lighter;
-
-
+        margin-bottom: 20px; /* Adds spacing between sub-topic and widget */
     }
 
-    .purpleText{
+    .purpleText {
         color: #855CDD;
     }
 
-    .hero_image{
-        width: 500px;
-
+    .hero_image {
+        width: 500px; /* Reduce the width */
+        margin: 0; /* Remove any margin */
+    
         img {
-                height: 400px; // Apply height to the img tag
-                object-fit: cover; // Ensures the image covers the specified height while maintaining aspect ratio
-            }
+            height: 350px; /* Adjust height proportionally */
+            object-fit: cover;
+            border-radius: 8px; /* Optional: for consistency with widget images */
+        }
     }
+    .flex.justify-between {
+        align-items: center; /* Ensures both text and image are aligned vertically */
+        gap: 10px; /* Optional: Adjust space between elements */
+    }
+    
+    
 }
-

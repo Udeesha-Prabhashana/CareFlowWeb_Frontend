@@ -1,17 +1,11 @@
 import React, { useEffect } from "react";
-import Chart from "../../components/chart/Chat";
-import Featured from "../../components/featuredA/FeaturedA";
-import NavbarLu from "../../components/navbarA/NavbarA";
-import WidgetLu from "../../components/widgetLU/WidgetLU";
-import List from "../../components/table/Table";
-import "./homelu.scss";
-import SidebarLu from "../../components/sidebarLu/SidebarLu";
+import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import doctorImage from "../../components/images/doctor2.png";
+import "./homelu.scss";
 
 const HomeLu: React.FC = () => {
     const navigate = useNavigate();
@@ -22,9 +16,7 @@ const HomeLu: React.FC = () => {
     };
 
     useEffect(() => {
-        // Check if we are on a page where the chat widget should be loaded
         if (location.pathname === "/userloginhome") {
-            // Create script elements
             const script1 = document.createElement('script');
             script1.src = "https://cdn.botpress.cloud/webchat/v2/inject.js";
             script1.async = true;
@@ -35,7 +27,6 @@ const HomeLu: React.FC = () => {
             script2.async = true;
             document.body.appendChild(script2);
 
-            // Cleanup function to remove the scripts when the component unmounts or path changes
             return () => {
                 document.body.removeChild(script1);
                 document.body.removeChild(script2);
@@ -46,26 +37,31 @@ const HomeLu: React.FC = () => {
     return (
         <div className="homelu">
             <SidebarPatient />
-            <NavbarLu />
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
                         Good Morning, <span className="purpleText">Kasun</span>
                     </div>
-                    <div className="subTopic">
-                        Welcome to your Dashboard
+                    <div className="subTopic">Welcome to your Dashboard</div>
+                    
+                    <div className="widgetslu">
+                        <div className="textContainer">
+                            <h2>Welcome To CareFlow!</h2>
+                            <p>
+                                "We provide exceptional healthcare services through CareFlow, our
+                                dedicated app that streamlines patient record management and
+                                ensures doctors have seamless access to medical histories for
+                                better care and communication."
+                            </p>
+                        </div>
+                        <div className="imageContainer">
+                            <img
+                                src={doctorImage}
+                                alt="Doctor Illustration"
+                            />
+                        </div>
                     </div>
-                    <div className="widgetslu flex flex-col items-start p-5 gap-4 bg-gradient-to-r from-[#855CDD] to-[#D6C4FE] rounded-lg shadow-md">
-                        <h2 className="text-2xl font-bold text-black">Widget Title</h2> {/* Headline */}
-                        <p className="text-base text-gray-700">
-                            This is a paragraph inside the widget. Add any details or content here to fit your widget's purpose.
-                        </p>
-                        <img 
-                            src={doctorImage} 
-                            alt="Widget Illustration" 
-                            className="top-1 right-5 transform -translate-y-1/2 w-24 h-24"
-                        />
-                    </div>
+                    
                     <div className="flex justify-between">
                         <div>
                             <div className="mainTopic mt-20">
@@ -91,7 +87,7 @@ const HomeLu: React.FC = () => {
                                         height: '44px',
                                         borderRadius: '65px',
                                         '&:hover': {
-                                            backgroundColor: '#5F2BCF', // Change to your desired hover color
+                                            backgroundColor: '#5F2BCF',
                                         },
                                     }}
                                     onClick={handleAskCuraClick}
