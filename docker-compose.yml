@@ -1,0 +1,13 @@
+version: '3.8'  # Specify the Compose file format version
+
+services:
+  frontend:      # Name of the service
+    image: careflowweb-frontend  # Use the built image
+    build:
+      context: .  # Build the image from the current directory
+      dockerfile: Dockerfile  # Optional if the file is named 'Dockerfile'
+    ports:
+      - "80:80"  # Map port 80 of the container to port 80 of the host
+    restart: always  # Ensure the container restarts automatically on failure
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf  # Optional, for custom NGINX config

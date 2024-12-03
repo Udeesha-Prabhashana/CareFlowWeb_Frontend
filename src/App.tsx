@@ -16,7 +16,7 @@ import Listroom from "./pages/listrooms/ListB";
 import Single from "./pages/single/Single";
 
 import New from "./pages/new/New";  // Make sure this path is correct
-import { hotelInputs, roomInputs, userInputs } from "./formSource";  // Import userInputs correctly
+import { hotelInputs, roomInputs, DoctorInputs } from "./formSource";  // Import userInputs correctly
 
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
@@ -105,6 +105,8 @@ import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
 import RevenueRecordsAdmin from "./pages/revenueRecordsAdmin/revenueRecordsAdmin";
 import Profile1 from "./pages/profileLu/profile";
+import LaterBookingSummaryPay from "./pages/channeling/laterSummaryPay/latersummaryPay";
+import NowBookingSummaryPay from "./pages/channeling/laterSummaryPay/latersummaryPay";
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -178,7 +180,7 @@ function App() {
                 path="new"
                 element={
                   // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New Doctor" />
+                  <New inputs={DoctorInputs as Input[]} title="Add New Doctor" />
                   // </ProtectedRoute>
                 }
                 />
@@ -330,7 +332,7 @@ function App() {
               path="new"
               element={
                 // <ProtectedRoute>
-                  <New inputs={userInputs as Input[]} title="Add New User" />
+                  <New inputs={DoctorInputs as Input[]} title="Add New User" />
                 // </ProtectedRoute>
               }
             />
@@ -397,6 +399,7 @@ function App() {
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
           <Route path="bookingSummaryPay" element={<BookingSummaryPay />} />
+          <Route path="NowbookingSummaryPay" element={<NowBookingSummaryPay />} />
 
 
 
@@ -468,6 +471,8 @@ function App() {
           <Route path="receptionist/profile-edit" element={<RProfile/>}/>
           <Route path="receptionist/profile" element={<RProfileMain/>}/>
           <Route path="landingpage" element={<Landing/>}/>
+
+
         </Routes>
 
  

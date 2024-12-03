@@ -3,10 +3,10 @@ import "./searchItemLUN.css";
 
 // Define the types for the item prop
 interface Item {
-  _id: string;
+  id: string;
   name: string;
-  photo: string[];
-  desc: string;
+  photoUrl: string; 
+  description: string;
   rating?: number;
   // Add other optional properties as needed
 }
@@ -16,13 +16,15 @@ interface SearchItemProps {
 }
 
 const searchItemLUN: React.FC<SearchItemProps> = ({ item }) => {
+
+  console.log("ITEM_SEarchItem" , item)
   return (
     <div
       className="flex flex-col md:flex-row bg-white rounded-lg shadow-md p-4 mb-4"
       style={{ width: "800px", height: "200px" }}
     >
       <img
-        src={item.photo[0]}
+        src={item.photoUrl}
         alt=""
         className="object-cover rounded-lg"
         style={{ width: "174px" }}
@@ -33,7 +35,7 @@ const searchItemLUN: React.FC<SearchItemProps> = ({ item }) => {
           {/* <span className="text-gray-500">
             Studio Apartment with Air conditioning
           </span> */}
-          <span className="block mt-2 text-gray-600">{item.desc}</span>
+          <span className="block mt-2 text-gray-600">{item.description}</span>
         </div>
         <div className="flex flex-row justify-between items-center mt-4 md:mt-0">
           {item.rating && (
@@ -46,7 +48,8 @@ const searchItemLUN: React.FC<SearchItemProps> = ({ item }) => {
           )}
           <div className="text-right">
             <Link
-              to={`/doclist/${item._id}`}
+              to={`/doclist/${item.id}`}
+              state={{ item }} // Pass item details here
             >
               <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"

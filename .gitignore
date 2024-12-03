@@ -1,4 +1,5 @@
 node_modules
+build
 .idea/misc.xml
 # Environment
 .env

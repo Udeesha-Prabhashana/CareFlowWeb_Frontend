@@ -3,10 +3,10 @@ import "./searchItemnlu.css";
 
 // Define the types for the item prop
 interface Item {
-  _id: string;
+  id: string;
   name: string;
-  photo: string[];
-  desc: string;
+  photoUrl: string; 
+  description: string;
   rating?: number;
   // Add other optional properties as needed
 }
@@ -24,7 +24,7 @@ const SearchItemnlu: React.FC<SearchItemProps> = ({ item }) => {
       style={{ width: "800px", height: "200px" }}
     >
       <img
-        src={item.photo[0]}
+        src={item.photoUrl}
         alt=""
         className="object-cover rounded-lg"
         style={{ width: "174px" }}
@@ -35,7 +35,7 @@ const SearchItemnlu: React.FC<SearchItemProps> = ({ item }) => {
           {/* <span className="text-gray-500">
             Studio Apartment with Air conditioning
           </span> */}
-          <span className="block mt-2 text-gray-600">{item.desc}</span>
+          <span className="block mt-2 text-gray-600">{item.description}</span>
         </div>
         <div className="flex flex-row justify-between items-center mt-4 md:mt-0">
           {item.rating && (
@@ -48,7 +48,8 @@ const SearchItemnlu: React.FC<SearchItemProps> = ({ item }) => {
           )}
           <div className="text-right">
             <Link
-              to={`/doctorlistNlu/${item._id}`}
+              to={`/doctorlistNlu/${item.id}`}
+              state={{ item }} // Pass item details here
             >
               <button
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
