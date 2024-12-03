@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+        .title {
+            font-size: 36px;
+            color: #7b42f5;
+            margin-bottom: 40px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 10px;
+        }
+        .grid-item i {
+            font-size: 50px;
+            color: #7b42f5;
+            margin-bottom: 10px;
+        }
+        .grid-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Actors</div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <i class="fas fa-user-injured"></i>
+            <p>PATIENT</p>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-user-md"></i>
+            <p>DOCTOR</p>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-user-nurse"></i>
+            <p>NURSE</p>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-user-edit"></i>
+            <p>RECEPTIONIST</p>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-cogs"></i>
+            <p>SYSTEM ADMIN</p>
+        </div>
+    </div>
+</body>
+</html>

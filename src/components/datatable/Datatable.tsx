@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { doctorDummyData, nurseDummyData,patientDummyData, appointmentDummyData , receptionistDummyData} from "../../dummyData"; // Import dummy data
+import { toast } from "react-toastify";
 
 interface DataItem {
   doctor_id?: number;
@@ -39,8 +40,10 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
   const path1 = location.pathname.split("/")[1];
   const path2 = location.pathname.split("/")[2];
 
+  console.log("Path:", path1, path2); // Debugging: Check the path
+
   const [list, setList] = useState<DataItem[]>([]);
-  const { data, loading, error } = useFetch<DataItem[]>(`http://localhost:8080/api/${path2}`);
+  const { data, loading, error } = useFetch<DataItem[]>(`${process.env.REACT_APP_API_BASE_URL}/api/${path2}`);
 
   useEffect(() => {
     console.log("Fetched Data:", data); // Debugging: Check fetched data
@@ -70,21 +73,57 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
     }
   }, [data, path2]);
 
+  useEffect(() => {
+    setList(data || []); // Ensure default to empty array if data is undefined
+  }, [data]);
+  
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/${path2}/${id}`);
-      setList(list.filter((item) => {
-        if (path2 === "Doctors") return item.doctor_id !== id;
-        if (path2 === "Nurses") return item.nurse_id !== id;
-        if (path2 === "Appointments") return item.appointment_id !== id;
-        if (path2 === "Patients") return item.patient_id !== id;
-        if (path2 === "Receptionists") return item.receptionist_id !== id;
-        return true;
-      }));
+      // Retrieve token from localStorage
+      const user = localStorage.getItem("user");
+      let token = null;
+      if (user) {
+        const parsedUser = JSON.parse(user);
+        token = parsedUser.access_token;
+      }
+  
+      // Check if token exists before making the request
+      if (!token) {
+        toast.error("Unauthorized: No token found!");
+        return;
+      }
+  
+      // Make DELETE API call with Authorization header
+      await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/api/${path2}/${id}`,
+        {}, // Pass an empty body for POST requests
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in Authorization header
+          },
+        }
+      );
+  
+      // Update the list after successful deletion
+      setList(list
+        .filter((item) => {
+          if (path2 === "Doctors") return item.doctor_id !== id;
+          if (path2 === "Nurses") return item.nurse_id !== id;
+          if (path2 === "Appointments") return item.appointment_id !== id;
+          if (path2 === "Patients") return item.patient_id !== id;
+          if (path2 === "Receptionists") return item.receptionist_id !== id;
+          // return true;
+        })
+      );
+  
+      toast.success(`${path2.slice(0, -1)} deleted successfully!`);
+      window.location.reload();
     } catch (err) {
       console.error("Error deleting item:", err);
+      toast.error("Failed to delete item. Please try again.");
     }
   };
+  
 
   const actionColumn: GridColDef[] = [
     {
@@ -92,13 +131,37 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
-        const id = params.row.doctor_id || params.row.nurse_id || params.row.appointment_id || params.row.patient_id || params.row.receptionist_id || params.row.id; // Use doctor_id, nurse_id, or id as the unique identifier
+        const id =
+          params.row.doctor_id ||
+          params.row.nurse_id ||
+          params.row.appointment_id ||
+          params.row.patient_id ||
+          params.row.receptionist_id ||
+          params.row.id; // Use doctor_id, nurse_id, or id as the unique identifier
+  
+          if (path2 === "Appointments" || path2 === "Patients") {
+            return (
+              <div className="cellActionadm">
+                {/* <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}> */}
+                <div className="viewButtonadm">View</div>
+                {/* </Link> */}
+              </div>
+            );
+          }
+          
+  
         return (
           <div className="cellActionadm">
-            <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}>
+            {/* <Link to={`/${path1}/${path2}/${id}`} style={{ textDecoration: "none" }}> */}
               <div className="viewButtonadm">View</div>
-            </Link>
-            <div className="deleteButtonadm" onClick={() => handleDelete(id)}>
+            {/* </Link> */}
+            <div
+              className="deleteButtonadm"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent row selection on delete button click
+                handleDelete(id);
+              }}
+            >
               Delete
             </div>
           </div>
@@ -106,6 +169,7 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
       },
     },
   ];
+  
 
   if (loading) return <div>Loading...</div>;
 
@@ -113,9 +177,19 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
     <div className="datatableadm">
       <div className="datatableTitleadm">
         {path2}
-        <Link to={`/${path1}/${path2}/new`} className="link">
-          Add New
-        </Link>
+              <div className="datatableTitleadm">
+              {(path2 !== "Appointments" && path2 !== "Patients") && (
+              <>
+                {path2 === "Nurses" ? (
+                  <div className="link">Add New</div>
+                ) : (
+                  <Link to={`/${path1}/${path2}/new`} className="link">
+                    Add New
+                  </Link>
+                )}
+              </>
+            )}
+      </div>
       </div>
       <DataGrid
         className="datagridadm"
