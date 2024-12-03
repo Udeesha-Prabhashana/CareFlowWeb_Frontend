@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
 import "./doctors.scss";
+import axios from "axios";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -12,12 +13,6 @@ import { createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Grid from '@mui/material/Grid';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import dayjs from "dayjs";
 import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -27,24 +22,32 @@ import '@fontsource/roboto/700.css';
 interface Doctors {
     description: string;
     body: string;
+    doctor_id: string;
 }
-
-const Paid: Doctors[] = [
-    { description: "Dr. John Smith", body: "PhD, Neurologist" },
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    // add more appointments as needed
-];
-
-const Unpaid: Doctors[] = [
-    { description: "Dr. Alice Johnson", body: "MD, Cardiologist" },
-    { description: "Dr. John Smith", body: "PhD, Neurologist" },
-    // add more appointments as needed
-];
 
 const Doctors: React.FC = () => {
     const [alignment, setAlignment] = React.useState<string>('paid');
+    const [paidDoctors, setPaidDoctors] = useState<Doctors[]>([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchPaidDoctors = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/Doctors`);
+
+                const doctorsData = response.data.map((doctor: any) => ({
+                    description: doctor.name,
+                    body: doctor.specialization,
+                    doctor_id: doctor.id,
+                }));
+                setPaidDoctors(doctorsData);
+            } catch (error) {
+                console.error("Error fetching doctors data:", error);
+            }
+        };
+
+        fetchPaidDoctors();
+    }, []);
 
     const theme = createTheme({
         palette: {
@@ -63,12 +66,8 @@ const Doctors: React.FC = () => {
         }
     };
 
-    const handleViewDetails = () => {
-        if (alignment === 'paid') {
-            navigate('/nurse/patients');
-        } else if (alignment === 'unpaid') {
-            navigate('/nurse/patients');
-        }
+    const handleViewDetails = (doctorId: string) => {
+        navigate(`/nurse/patients/${doctorId}`);
     };
 
     const handleAddBooking = () => {
@@ -79,10 +78,10 @@ const Doctors: React.FC = () => {
         let cards: Doctors[] = [];
         switch (alignment) {
             case 'paid':
-                cards = Paid;
+                cards = paidDoctors;
                 break;
             case 'unpaid':
-                cards = Unpaid;
+                cards = []; // Assuming you will fetch unpaid doctors similarly
                 break;
             default:
                 cards = [];
@@ -143,7 +142,7 @@ const Doctors: React.FC = () => {
                                 color: '#855CDD',
                                 textTransform: 'none',
                             }}
-                            onClick={handleViewDetails}
+                            onClick={() => handleViewDetails(card.doctor_id)}
                         >
                             View
                         </Button>
@@ -157,11 +156,10 @@ const Doctors: React.FC = () => {
         <div className="appointments">
             <SidebarNurse />
             <div className="appointmentsContainer">
-                {/*<NavbarLu />*/}
                 <div className="mainContent">
                     Doctors
                     <div className="subContent">
-                     Select your designated doctor to start the shitft
+                     Select your designated doctor to start the shift
                     </div>
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
@@ -193,17 +191,13 @@ const Doctors: React.FC = () => {
                                         }
                                     }}
                                 >
-                                  
                                 </ToggleButtonGroup>
                             </Grid>
                             <Grid item xs />
                             <Grid item>
-                           
                             </Grid>
-                       
                         </Grid>
                     </ThemeProvider>
-
                     <div className="cardsContainer">
                         {getCards()}
                     </div>
