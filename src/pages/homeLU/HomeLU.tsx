@@ -11,12 +11,12 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import SidebarPatient from "../../components/sidebarPatient/sidebarPatient";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
+import doctorImage from "../../components/images/doctor2.png";
 
 const HomeLu: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const handleAskCuraClick = () => {
         navigate("/chatbot");
     };
@@ -46,7 +46,7 @@ const HomeLu: React.FC = () => {
     return (
         <div className="homelu">
             <SidebarPatient />
-            {/*<NavbarLu />*/}
+            <NavbarLu />
             <div className="homeContainer2lu">
                 <div className="bodyContainerLu">
                     <div className="mainTopic">
@@ -55,12 +55,17 @@ const HomeLu: React.FC = () => {
                     <div className="subTopic">
                         Welcome to your Dashboard
                     </div>
-                    <div className="widgetslu">
-                        <WidgetLu type="ong_appointments" />
-                        <WidgetLu type="upcom_appointments" />
-                        <WidgetLu type="miss_appointments" />
+                    <div className="widgetslu flex flex-col items-start p-5 gap-4 bg-gradient-to-r from-[#855CDD] to-[#D6C4FE] rounded-lg shadow-md">
+                        <h2 className="text-2xl font-bold text-black">Widget Title</h2> {/* Headline */}
+                        <p className="text-base text-gray-700">
+                            This is a paragraph inside the widget. Add any details or content here to fit your widget's purpose.
+                        </p>
+                        <img 
+                            src={doctorImage} 
+                            alt="Widget Illustration" 
+                            className="top-1 right-5 transform -translate-y-1/2 w-24 h-24"
+                        />
                     </div>
-
                     <div className="flex justify-between">
                         <div>
                             <div className="mainTopic mt-20">
