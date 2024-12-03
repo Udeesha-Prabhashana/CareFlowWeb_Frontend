@@ -99,7 +99,7 @@ import RNotifications from "./pages/Receptionist/RNotifications/RNotifications";
 
 import LUBookingsDoctors from "./pages/LUBookingsDoctors/LUBookingsDoctors";
 import LUBookingsDoctorsView from "./pages/LUBookingsDoctorsView/LUBookingsDoctorsView";
-import ChatUI from "./pages/cura/chatui";
+import ChatUI from "./pages/cura/chatUI";
 import BookingSummaryPay from "./pages/channeling/summaryPay/summaryPay";
 import LUDoctors from "./pages/LUDoctors/LUDoctors";
 import LUDoctorsView from "./pages/LUDoctorsView/LUDoctorsView";
@@ -419,8 +419,8 @@ function App() {
 
           <Route path="nurse/home" element={<HomeNurse/>}/>
           <Route path="nurse/doctors" element={<Doctors/>}/>
-            <Route path="nurse/patients" element={<Patients/>}/>
-            <Route path="nurse/patients/view_patients" element={<ViewPatient/>}/>
+          <Route path="/nurse/patients/:doctorId" element={<Patients />} />
+          <Route path="/nurse/patients/view_patients/:doctorid/:patientid" element={<ViewPatient />} />
             <Route path="nurse/settings" element={<SettingsNurse/>}/>
             <Route path="nurse/profile" element={<ProfileNurseMain/>}/>
             <Route path="nurse/profile-edit" element={<ProfileNurse/>}/>
