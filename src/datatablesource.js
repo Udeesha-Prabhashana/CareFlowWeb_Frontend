@@ -120,12 +120,11 @@ export const doctorColumns = [
 
 // Columns for nurses
 export const nurseColumns = [
-  { field: "nurse_id", headerName: "ID", width: 70 },
+  { field: "registrationNumber", headerName: "registration Number", width: 100 },
   { field: "name", headerName: "Name", width: 150 },
-  { field: "department", headerName: "Department", width: 200 },
-  { field: "email", headerName: "Email", width: 200 },
-  { field: "phone", headerName: "Phone", width: 150 },
-  { field: "city", headerName: "City", width: 100 },
+  { field: "department", headerName: "Department", width: 150 },
+  { field: "emailId", headerName: "Email", width: 200 },
+  { field: "mobileNumber", headerName: "Phone", width: 150 },
 ];
 
 
@@ -189,11 +188,10 @@ export const patientColumns = [
 
 
 export const receptionistColumns = [
-  { field: "receptionist_id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 150 },
-  { field: "email", headerName: "Email", width: 200 },
-  { field: "phone", headerName: "Phone", width: 150 },
-  { field: "city", headerName: "City", width: 100 },
+  { field: "emailId", headerName: "Email", width: 200 },
+  { field: "mobileNumber", headerName: "Phone", width: 150 },
   { field: "department", headerName: "Department", width: 200 },
 ];
 
