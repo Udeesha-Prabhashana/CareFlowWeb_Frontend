@@ -1,22 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import SidebarNurse from "../../../components/sidebarNurse/sidebarNurse";
 import "./patients.scss";
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from '@mui/material/styles';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Grid from '@mui/material/Grid';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import dayjs from "dayjs";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -24,8 +11,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
+// Define theme to customize Material UI components
 const theme = createTheme({
     palette: {
         primary: {
@@ -34,33 +22,45 @@ const theme = createTheme({
     },
 });
 
-const todayRows = [
-    { number: 1, name: 'Sandani Gamage' },
-    { number: 2, name: 'Piyath Rajapakshe' },
-    { number: 3, name: 'Nelly Jackson' },
-    { number: 4, name: 'Kasun Priyantha' },
-    { number: 5, name: 'Abdulla Naseem' },
-];
-
-
 const BookingNurse: React.FC = () => {
-    const [alignment, setAlignment] = useState('today');
-    const [rows, setRows] = useState(todayRows);
-    const navigate = useNavigate();
+    const [rows, setRows] = useState<{ number: number, name: string, patient_id: number }[]>([]); // Stores patient data
+    const [loading, setLoading] = useState<boolean>(true); // Loading state for API call
+    const [error, setError] = useState<string | null>(null); // Error state for API call
+    const navigate = useNavigate(); // Navigate function for routing
+    const { doctorId } = useParams<{ doctorId: string }>(); // Get doctorId from the URL
 
-    const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
-        if (newAlignment !== null) {
-            setAlignment(newAlignment);
-            
-            
-            setRows(todayRows);
-           
+    // Fetch patient data from the API
+    useEffect(() => {
+        const fetchPatients = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(`${process.env.REACT_APP_FASTAPI_BASE_URL}/patients_by_Doctor_id/${doctorId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch patients');
+                }
+                const data = await response.json();
+                const patients = data.patients.map((patient: { name: string, number:number, patient_id:number }) => ({
+                    name: patient.name, // Extract only the name
+                    number: patient.number,
+                    patient_id: patient.patient_id,
+                }));
+                setRows(patients);
+            } catch (error) {
+                setError('Error fetching patients');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (doctorId) {
+            fetchPatients();
         }
-    };
+    }, [doctorId]);
 
-    const handleViewDetails = (row: { number: number, name: string }) => {
-        console.log('View details for:', row);
-        navigate("../nurse/patients/view_patients");
+    // Handle "View Details" button click
+    const handleViewDetails = (row: { number: number, name: string, patient_id: number }) => {
+
+        navigate("../nurse/patients/view_patients/"+doctorId+"/"+ row.patient_id);
     };
 
     return (
@@ -68,32 +68,29 @@ const BookingNurse: React.FC = () => {
             <SidebarNurse />
             <div className="navNurse">
                 <div className="mainContentNurseBooking">
-                    Bookings
+                    <h1>Bookings</h1>
                     <div className="subContentNurseBooking">
                         View Details of your Patients Bookings
                     </div>
                     <ThemeProvider theme={theme}>
                         <Grid container spacing={3} alignItems="center" sx={{ mb: 2 }}>
-                            <Grid item>
-                                
-                                   
-                                    
-                                
-                            </Grid>
+                            {/* Empty grid for layout purposes */}
                             <Grid item xs />
-                            <Grid item>
-                                
-                            </Grid>
+                            <Grid item xs />
                         </Grid>
                     </ThemeProvider>
 
-                    <TableContainer component={Paper} sx={{ boxShadow: 'none' }} >
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    {/* Loading or error states */}
+                    {loading && <p>Loading patients...</p>}
+                    {error && <p>{error}</p>}
+
+                    <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
+                        <Table sx={{ minWidth: 650 }} aria-label="patient bookings">
                             <TableHead>
                                 <TableRow>
                                     <TableCell align="center">Number</TableCell>
                                     <TableCell align="center">Patient's Name</TableCell>
-                                    <TableCell align="center"></TableCell>
+                                    <TableCell align="center">Actions</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -104,7 +101,7 @@ const BookingNurse: React.FC = () => {
                                             '&:last-child td, &:last-child th': { border: 0 },
                                             backgroundColor: index % 2 === 0 ? '#EEE7FF' : 'inherit',
                                             boxShadow: index % 2 === 0 ? '0 4px 8px rgba(133, 92, 221, 0.3)' : 'none',
-                                            height: '60px' // Add height to avoid overlapping
+                                            height: '60px',
                                         }}
                                     >
                                         <TableCell align="center">{row.number}</TableCell>
@@ -118,7 +115,7 @@ const BookingNurse: React.FC = () => {
                                                     justifyContent: 'center',
                                                     alignItems: 'center',
                                                     borderRadius: '11px',
-                                                    border: '1px solid var(--normal-hover, #5F2BCF)',
+                                                    border: '1px solid #855CDD',
                                                     whiteSpace: 'nowrap',
                                                     color: '#855CDD',
                                                     textTransform: 'none',

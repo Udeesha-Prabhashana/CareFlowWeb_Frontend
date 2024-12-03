@@ -55,7 +55,7 @@ const Login = () => {
       setCookie('JWT', "Bearer " + res.data.access_token, res.data.access_token_expiry);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      toast.success("Login successfully!");
+      toast.success("Logged in successfully!");
 
       if (res.data.user_role === "ROLE_MANAGER") {
         navigate("/");
@@ -68,7 +68,7 @@ const Login = () => {
       }
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
-      toast.error("Login unsuccessfully!");
+      toast.error("Login unsuccessful!");
     }
   };
 
