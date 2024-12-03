@@ -67,11 +67,11 @@ const SidebarPatient: React.FC = () => {
             </div>
             <div className="bottomContainerPatient">
                 <ul>
-                    <li className={activeLink === "/notifications" ? "activePatient" : ""} onClick={() => handleLinkClick("/notifications")}>
+                    {/* <li className={activeLink === "/notifications" ? "activePatient" : ""} onClick={() => handleLinkClick("/notifications")}>
                         <NotificationsNoneIcon className="iconPatient" />
                         <span>Notifications</span>
                         <span className="notificationBadge">2</span>
-                    </li>
+                    </li> */}
                     <li className={activeLink === "/settings" ? "activePatient" : ""} onClick={() => handleLinkClick("/settings")}>
                         <SettingsApplicationsIcon className="iconPatient" />
                         <span>Settings</span>

@@ -180,7 +180,7 @@ const Datatable: React.FC<DatatableProps> = ({ columns }) => {
               <div className="datatableTitleadm">
               {(path2 !== "Appointments" && path2 !== "Patients") && (
               <>
-                {path2 === "Nurses" ? (
+                {path2 === "Nurses" || path2 === "Receptionists" ? (
                   <div className="link">Add New</div>
                 ) : (
                   <Link to={`/${path1}/${path2}/new`} className="link">

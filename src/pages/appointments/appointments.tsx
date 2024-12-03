@@ -13,6 +13,11 @@ import { createTheme } from "@mui/material/styles";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Grid from "@mui/material/Grid";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogActions from "@mui/material/DialogActions";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import "@fontsource/roboto/300.css";
@@ -39,6 +44,8 @@ const Appointments: React.FC = () => {
     const [completedAppointments, setCompletedAppointments] = useState<Appointment[]>([]);
     const [missedAppointments, setMissedAppointments] = useState<Appointment[]>([]);
     const [doctorNameFilter, setDoctorNameFilter] = useState<string>("");
+    const [openDialog, setOpenDialog] = useState<boolean>(false);
+    const [appointmentToCancel, setAppointmentToCancel] = useState<number | null>(null);
 
     const navigate = useNavigate();
 
@@ -136,6 +143,54 @@ const Appointments: React.FC = () => {
         navigate("/appointments/bookingSummary");
     };
 
+    const handleCancelRequest = (appointmentId: number) => {
+        // Implement the cancel request logic here
+        console.log(`Cancel request for appointment ID: ${appointmentId}`);
+    };
+
+    const handleOpenDialog = (appointmentId: number) => {
+        setAppointmentToCancel(appointmentId);
+        setOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+        setAppointmentToCancel(null);
+    };
+
+    const handleConfirmCancel = async () => {
+        try {
+            if (appointmentToCancel) {
+                const user = localStorage.getItem("user");
+                if (user) {
+                    const parsedUser = JSON.parse(user);
+                    const token = parsedUser.access_token;
+    
+                    // Send a cancel request to the API
+                    await axios.post(
+                        `${process.env.REACT_APP_API_BASE_URL}/api/${appointmentToCancel}/cancel`,
+                        {},
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    );
+    
+                    toast.success("Appointment canceled successfully!");
+                    setUpcomingAppointments((prev) =>
+                        prev.filter((appointment) => appointment.ID !== appointmentToCancel)
+                    );
+                }
+            }
+        } catch (error) {
+            console.error("Error canceling appointment:", error);
+            toast.error("Failed to cancel the appointment.");
+        } finally {
+            handleCloseDialog();
+        }
+    };    
+
     const getCards = () => {
         let cards: Appointment[] = [];
         switch (alignment) {
@@ -217,7 +272,8 @@ const Appointments: React.FC = () => {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: "flex", alignItems: "center", justifyContent: "flex-end", mr: 2 }}>
-                        {alignment === "upcoming" ? (
+                    {alignment === "upcoming" && (
+                        <>
                             <Button
                                 variant="outlined"
                                 sx={{
@@ -236,7 +292,6 @@ const Appointments: React.FC = () => {
                             >
                                 {card.paid ? "Paid" : "Pay Now"}
                             </Button>
-                        ) : (
                             <Button
                                 variant="outlined"
                                 sx={{
@@ -245,16 +300,37 @@ const Appointments: React.FC = () => {
                                     justifyContent: "center",
                                     alignItems: "center",
                                     borderRadius: "11px",
-                                    border: "1px solid var(--normal-hover, #5F2BCF)",
+                                    border: "1px solid #ff0000",
                                     whiteSpace: "nowrap",
-                                    color: "#855CDD",
+                                    color: "#ff0000",
                                     textTransform: "none",
+                                    ml: 1, // Add spacing between buttons
                                 }}
-                                onClick={handleViewDetails}
+                                onClick={() => handleOpenDialog(card.ID!)}
                             >
-                                View Details
+                                Cancel
                             </Button>
-                        )}
+                        </>
+                    )}
+                    {alignment !== "upcoming" && (
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                width: "138px",
+                                height: "38px",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                borderRadius: "11px",
+                                border: "1px solid var(--normal-hover, #5F2BCF)",
+                                whiteSpace: "nowrap",
+                                color: "#855CDD",
+                                textTransform: "none",
+                            }}
+                            onClick={handleViewDetails}
+                        >
+                            View Details
+                        </Button>
+                    )}
                     </CardActions>
                 </Card>
             </Box>
@@ -324,6 +400,27 @@ const Appointments: React.FC = () => {
                     </ThemeProvider>
                 </div>
             </div>
+            <Dialog
+                open={openDialog}
+                onClose={handleCloseDialog}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{"Cancel Appointment"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Are you sure you want to cancel this appointment? This action cannot be undone.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleConfirmCancel} color="secondary" autoFocus>
+                        Confirm
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };
