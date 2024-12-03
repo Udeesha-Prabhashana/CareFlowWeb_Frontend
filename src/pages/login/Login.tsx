@@ -65,6 +65,8 @@ const Login = () => {
         navigate("/userloginhome");
       } else if (res.data.user_role === "ROLE_DOCTOR") {
         navigate("/doctor/home");
+      } else if (res.data.user_role === "ROLE_RECEP") {
+        navigate("/receptionist/home");
       }
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
