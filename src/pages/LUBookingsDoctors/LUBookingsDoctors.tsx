@@ -133,7 +133,7 @@ const LUBookingDoctors: React.FC = () => {
                   <option value="">Select Specialty</option>
                   <option value="General Practitioner">General Practitioner</option>
                   <option value="Neurologist">Neurologist</option>
-                  <option value="Cardiologist">Cardiologist</option>
+                  <option value="Cardiologist">Cardiology</option>
                   <option value="Oncologist">Oncologist</option>
                   {/* Add more options as needed */}
                 </select>

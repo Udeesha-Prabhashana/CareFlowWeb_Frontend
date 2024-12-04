@@ -62,7 +62,7 @@ const HomeDoc: React.FC = () => {
       <div className="navDoc">
         <div className="bodyContainerDocHome">
           <div className="mainTopicDocHome">
-            Good Morning, <span className="purpleTextDoc">Dr. {formData.name}</span>
+            Good Morning, <span className="purpleTextDoc"> {formData.name}</span>
           </div>
           <div className="subTopicDocHome">
             Welcome to your Dashboard

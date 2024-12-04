@@ -64,11 +64,11 @@ const SidebarDoctor: React.FC = () => {
             </div>
             <div className="bottomContainerDoc">
                 <ul>
-                    <li className={activeLink === "/doctor/notifications" ? "activeDoc" : ""} onClick={() => handleLinkClick("/doctor/notifications")}>
+                    {/* <li className={activeLink === "/doctor/notifications" ? "activeDoc" : ""} onClick={() => handleLinkClick("/doctor/notifications")}>
                         <NotificationsNoneIcon className="iconDoc" />
                         <span>Notifications</span>
                         <span className="notificationBadge">2</span>
-                    </li>
+                    </li> */}
                     <li className={activeLink === "/doctor/settings" ? "activeDoc" : ""} onClick={() => handleLinkClick("/doctor/settings")}>
                         <SettingsApplicationsIcon className="iconDoc" />
                         <span>Settings</span>
@@ -78,15 +78,18 @@ const SidebarDoctor: React.FC = () => {
                         <span>Logout</span>
                     </li>
                 </ul>
-                <Link to="/doctor/profile" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/doctor/profile")}>
-                    <div className="profileDoc">
-                        <img src={vector} alt="Profile"/>
-                        <div className="detailsDoc">
-                            <span className="nameDoc">Michael Smith</span>
-                            <span className="emailDoc">michaelsmith12@gmail.com</span>
-                        </div>
+                {/* <Link to="/doctor/profile" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/doctor/profile")}> */}
+                <div className="profileDoc">
+                    <img 
+                        src="https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg" 
+                        alt="Profile" 
+                    />
+                    <div className="detailsDoc">
+                        <span className="nameDoc">Sadun Perera</span>
+                        <span className="emailDoc">sadunperera12@gmail.com</span>
                     </div>
-                </Link>
+                </div>
+                {/* </Link> */}
             </div>
         </div>
     );

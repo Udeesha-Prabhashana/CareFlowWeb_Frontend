@@ -82,11 +82,14 @@ const SidebarPatient: React.FC = () => {
                     </li>
                 </ul>
                 <Link to="/profileLu" style={{ textDecoration: "none" }} onClick={() => handleLinkClick("/profileLu")}>
-                    <div className="profilePatient">
-                        <img src={patient} alt="Profile"/>
+                <div className="profilePatient">
+                        <img 
+                            src="https://as1.ftcdn.net/v2/jpg/02/00/90/24/1000_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg" 
+                            alt="Profile" 
+                        />
                         <div className="detailsPatient">
-                            <span className="namePatient">Mr. Kasun</span>
-                            <span className="emailPatient">kasunjay@gmail.com</span>
+                            <span className="namePatient">Mr. Udeesha</span>
+                            <span className="emailPatient">udeeshapashana123@gmail.com</span>
                         </div>
                     </div>
                 </Link>
